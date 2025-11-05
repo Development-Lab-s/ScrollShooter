@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Member.JYG.Input;
 using UnityEngine;
 
@@ -9,6 +7,8 @@ namespace Member.JYG._Code
     public class Player : MonoBehaviour
     {
         [field:SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
+
+        #region PlayerMovement
         public Rigidbody2D Rigidbody2D { get; private set; }
         [field:SerializeField] public float MaxSpeed { get; private set; }
         [field:SerializeField] public float ReverseForce { get; private set; }
@@ -76,5 +76,10 @@ namespace Member.JYG._Code
         {
             Rigidbody2D.linearVelocityX = speed;
         }
+        #endregion
+        
+        #region Render
+        public SpriteRenderer SpriteRenderer { get; private set; }
+        #endregion
     }
 }
