@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FolderBlock : BlockBase
 {
+    [field: SerializeField]
     public GameObject BreakParticlePrefabs { get; private set; }
     public override void Break(GameObject target)
     {

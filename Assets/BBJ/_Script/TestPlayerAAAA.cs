@@ -11,7 +11,7 @@ public class TestPlayerAAAA : MonoBehaviour
     {
         if(collision.TryGetComponent(out IBlock block))
         {
-            if(block.CheckBreak(gameObject))
+            if(block.CheckBreak(true))
             {
                 block.Break(gameObject);
                 Debug.Log("ºÎ½¥´Ù.");
