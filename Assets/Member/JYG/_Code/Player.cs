@@ -13,6 +13,7 @@ namespace Member.JYG._Code
         public Rigidbody2D Rigidbody2D { get; private set; }
         [field:SerializeField] public float MaxSpeed { get; private set; }
         [field:SerializeField] public float ReverseForce { get; private set; }
+        [field:SerializeField] public float BrakePower { get; private set; }
 
         private float _xVelocity;
 
@@ -41,10 +42,24 @@ namespace Member.JYG._Code
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             Rigidbody2D.gravityScale = 0;
+            Rigidbody2D.linearVelocityY = 5f;
         }
         
-        private void SetVelocity() //Update에서 실행중
+        private void SetVelocity(bool isBrake) //Update에서 실행중
         {
+            if (isBrake)
+            {
+                if (Mathf.Abs(XVelocity) < 0.1f)
+                {
+                    XVelocity = 0;
+                    return;
+                }
+                XVelocity = Mathf.Lerp(XVelocity, 0, Time.deltaTime * BrakePower);
+                Debug.Log("Brake : " + XVelocity);
+                
+                return;
+            }
+            
             float moveDir = PlayerInputSO.XMoveDir;
             if (moveDir == 1) //우측으로 이동한다.
             {
@@ -87,14 +102,14 @@ namespace Member.JYG._Code
         private void SetRotation(GameObject target, float velocity)
         {
             float zValue = Mathf.Lerp(-MaxDegree, MaxDegree, 0.5f + velocity / MaxSpeed * 0.5f) * -1;
-            zValue = Mathf.MoveTowardsAngle(transform.eulerAngles.z, zValue, Time.deltaTime * 300f);
+            zValue = Mathf.MoveTowardsAngle(transform.eulerAngles.z, zValue, Time.deltaTime * 450f);
             transform.rotation = Quaternion.Euler(0, 0, zValue);
         }
         #endregion
         
         private void Update()
         {
-            SetVelocity(); //현재 이동속도를 설정한다.
+            SetVelocity(PlayerInputSO.IsBraking); //현재 이동속도를 설정한다.
             SetRotation(gameObject, XVelocity); //이동속도를 받아와서 나를 돌린다
         }
     }

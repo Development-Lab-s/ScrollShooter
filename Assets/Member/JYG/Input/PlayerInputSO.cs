@@ -10,6 +10,8 @@ namespace Member.JYG.Input
     {
         private PlayerInput _playerInput;
 
+        public bool IsBraking { get; private set; }
+
         private void OnEnable()
         {
             if (_playerInput == null)
@@ -33,7 +35,15 @@ namespace Member.JYG.Input
 
         public void OnBrake(InputAction.CallbackContext context)
         {
-            
+            if (context.performed)
+            {
+                IsBraking = true;
+            }
+
+            if (context.canceled)
+            {
+                IsBraking = false;
+            }
         }
     }
 }
