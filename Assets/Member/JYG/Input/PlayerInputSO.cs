@@ -29,7 +29,6 @@ namespace Member.JYG.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             XMoveDir = context.ReadValue<float>();
-            Debug.Log(XMoveDir);
         }
 
         public void OnBrake(InputAction.CallbackContext context)
