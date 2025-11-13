@@ -15,6 +15,11 @@ namespace Member.JYG._Code
         [field:SerializeField] public float ReverseForce { get; private set; }
         [field:SerializeField] public float BrakePower { get; private set; }
 
+        private Vector3 _currentPosition;
+
+        private bool _canLeftMoving = true;
+        private bool _canRightMoving = true;
+
         private float _xVelocity;
 
         public float XVelocity //Player의 진짜 이동속도
@@ -55,27 +60,28 @@ namespace Member.JYG._Code
                     return;
                 }
                 XVelocity = Mathf.Lerp(XVelocity, 0, Time.deltaTime * BrakePower);
-                Debug.Log("Brake : " + XVelocity);
                 
                 return;
             }
             
             float moveDir = PlayerInputSO.XMoveDir;
-            if (moveDir == 1) //우측으로 이동한다.
+            if (moveDir == 1 && _canRightMoving) //우측으로 이동한다.
             {
                 if(XVelocity < -0.1f) // 우측으로 이동하는 도중에 좌측으로 이동하려 한다.
                     XVelocity += Time.deltaTime * MovePower * 2 * moveDir; //파워 2배로 증가
                 /*XVelocity = 0;*/
                 
                 XVelocity += Time.deltaTime * MovePower * moveDir; //현재 이속 설정
+                _canLeftMoving = true;
             }
-            else if (moveDir == -1) //좌측으로 이동한다.
+            else if (moveDir == -1 && _canLeftMoving) //좌측으로 이동한다.
             {
                 if(XVelocity > 0.1f) // 좌측으로 이동하는 도중에 우측으로 이동하려 한다.
                     XVelocity +=  Time.deltaTime * MovePower * 2 * moveDir; //파워 2배로 증가
                 /*    XVelocity = 0;*/
                 
                 XVelocity += Time.deltaTime * MovePower * moveDir;
+                _canRightMoving = true;
             }
 
             //겹치는 코드가 많은데 어떻게 잘 해결해보자
@@ -106,11 +112,40 @@ namespace Member.JYG._Code
             transform.rotation = Quaternion.Euler(0, 0, zValue);
         }
         #endregion
-        
+
+        [field: SerializeField] public float Offset { get; private set; }
+
         private void Update()
         {
             SetVelocity(PlayerInputSO.IsBraking); //현재 이동속도를 설정한다.
             SetRotation(gameObject, XVelocity); //이동속도를 받아와서 나를 돌린다
+            KeepViewport();
+        }
+
+        private void KeepViewport()
+        {
+            _currentPosition = Camera.main.WorldToViewportPoint(transform.position);
+
+            if (_currentPosition.x < Offset)
+            {
+                _currentPosition.x = Offset;
+                _canLeftMoving = false;
+            }
+            else if (_currentPosition.x >= Offset)
+            {
+                _canLeftMoving = true;
+            }
+            if (_currentPosition.x > 1f - Offset)
+            {
+                _currentPosition.x = 1f - Offset;
+                _canRightMoving = false;
+            }
+            else if (_currentPosition.x <= 1f - Offset)
+            {
+                _canRightMoving = true;
+            }
+
+            transform.position = Camera.main.ViewportToWorldPoint(_currentPosition);
         }
     }
 }
