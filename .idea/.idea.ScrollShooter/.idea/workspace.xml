@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aesst/Sprite/Player/Light/Arrows/Arrow2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aesst/Sprite/Player/Light/Arrows/Arrow2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/DungGeunMo SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/DungGeunMo SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,23 +28,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;JYG&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "PTY",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -57,7 +55,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -109,6 +107,7 @@
       <workItem from="1762348558930" duration="2730000" />
       <workItem from="1762398923598" duration="4852000" />
       <workItem from="1762416811752" duration="7000" />
+      <workItem from="1764151195445" duration="4250000" />
     </task>
     <servers />
   </component>
