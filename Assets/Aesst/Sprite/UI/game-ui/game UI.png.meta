@@ -432,6 +432,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -439,10 +465,10 @@ TextureImporter:
       name: game UI_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 623
-        width: 640
-        height: 401
+        x: 49
+        y: 833
+        width: 158
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -461,10 +487,10 @@ TextureImporter:
       name: game UI_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 559
-        width: 130
-        height: 50
+        x: 241
+        y: 834
+        width: 158
+        height: 141
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,10 +509,10 @@ TextureImporter:
       name: game UI_2
       rect:
         serializedVersion: 2
-        x: 175
-        y: 559
-        width: 130
-        height: 50
+        x: 433
+        y: 833
+        width: 158
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -505,10 +531,10 @@ TextureImporter:
       name: game UI_3
       rect:
         serializedVersion: 2
-        x: 319
-        y: 559
-        width: 130
-        height: 50
+        x: 49
+        y: 657
+        width: 158
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -527,10 +553,10 @@ TextureImporter:
       name: game UI_4
       rect:
         serializedVersion: 2
-        x: 463
-        y: 559
-        width: 130
-        height: 50
+        x: 241
+        y: 657
+        width: 158
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,10 +575,10 @@ TextureImporter:
       name: game UI_5
       rect:
         serializedVersion: 2
-        x: 31
-        y: 431
-        width: 82
-        height: 114
+        x: 433
+        y: 657
+        width: 158
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -571,10 +597,10 @@ TextureImporter:
       name: game UI_6
       rect:
         serializedVersion: 2
-        x: 127
-        y: 483
-        width: 50
-        height: 61
+        x: 32
+        y: 560
+        width: 128
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,10 +619,10 @@ TextureImporter:
       name: game UI_7
       rect:
         serializedVersion: 2
-        x: 191
-        y: 435
-        width: 162
-        height: 109
+        x: 176
+        y: 560
+        width: 128
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -615,10 +641,10 @@ TextureImporter:
       name: game UI_8
       rect:
         serializedVersion: 2
-        x: 367
-        y: 444
-        width: 66
-        height: 101
+        x: 320
+        y: 560
+        width: 128
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -637,10 +663,10 @@ TextureImporter:
       name: game UI_9
       rect:
         serializedVersion: 2
-        x: 447
-        y: 444
-        width: 34
-        height: 101
+        x: 464
+        y: 560
+        width: 128
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -659,10 +685,10 @@ TextureImporter:
       name: game UI_10
       rect:
         serializedVersion: 2
-        x: 495
-        y: 444
-        width: 98
-        height: 101
+        x: 32
+        y: 432
+        width: 80
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -681,10 +707,10 @@ TextureImporter:
       name: game UI_11
       rect:
         serializedVersion: 2
-        x: 127
-        y: 431
-        width: 50
-        height: 50
+        x: 128
+        y: 484
+        width: 48
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -703,10 +729,10 @@ TextureImporter:
       name: game UI_12
       rect:
         serializedVersion: 2
-        x: 31
-        y: 351
-        width: 66
-        height: 66
+        x: 192
+        y: 436
+        width: 160
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -725,10 +751,10 @@ TextureImporter:
       name: game UI_13
       rect:
         serializedVersion: 2
-        x: 111
-        y: 367
-        width: 114
-        height: 50
+        x: 368
+        y: 445
+        width: 64
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -747,10 +773,10 @@ TextureImporter:
       name: game UI_14
       rect:
         serializedVersion: 2
-        x: 239
-        y: 399
-        width: 18
-        height: 17
+        x: 448
+        y: 445
+        width: 32
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -769,10 +795,10 @@ TextureImporter:
       name: game UI_15
       rect:
         serializedVersion: 2
-        x: 239
-        y: 383
-        width: 18
-        height: 17
+        x: 496
+        y: 445
+        width: 96
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -791,10 +817,10 @@ TextureImporter:
       name: game UI_16
       rect:
         serializedVersion: 2
-        x: 271
-        y: 367
-        width: 98
-        height: 50
+        x: 128
+        y: 432
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -813,10 +839,10 @@ TextureImporter:
       name: game UI_17
       rect:
         serializedVersion: 2
-        x: 383
-        y: 271
-        width: 98
-        height: 146
+        x: 32
+        y: 352
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -835,10 +861,10 @@ TextureImporter:
       name: game UI_18
       rect:
         serializedVersion: 2
-        x: 495
-        y: 271
-        width: 98
-        height: 146
+        x: 112
+        y: 368
+        width: 112
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -857,10 +883,10 @@ TextureImporter:
       name: game UI_19
       rect:
         serializedVersion: 2
-        x: 31
-        y: 287
-        width: 50
-        height: 50
+        x: 240
+        y: 400
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -879,10 +905,10 @@ TextureImporter:
       name: game UI_20
       rect:
         serializedVersion: 2
-        x: 99
-        y: 291
-        width: 42
-        height: 42
+        x: 272
+        y: 368
+        width: 96
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -901,10 +927,10 @@ TextureImporter:
       name: game UI_21
       rect:
         serializedVersion: 2
-        x: 159
-        y: 303
-        width: 18
-        height: 18
+        x: 384
+        y: 272
+        width: 96
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -923,10 +949,10 @@ TextureImporter:
       name: game UI_22
       rect:
         serializedVersion: 2
-        x: 175
-        y: 319
-        width: 18
-        height: 18
+        x: 496
+        y: 272
+        width: 96
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -945,10 +971,10 @@ TextureImporter:
       name: game UI_23
       rect:
         serializedVersion: 2
-        x: 191
-        y: 303
-        width: 18
-        height: 18
+        x: 240
+        y: 384
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -967,10 +993,10 @@ TextureImporter:
       name: game UI_24
       rect:
         serializedVersion: 2
-        x: 223
-        y: 319
-        width: 66
-        height: 18
+        x: 32
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -989,10 +1015,10 @@ TextureImporter:
       name: game UI_25
       rect:
         serializedVersion: 2
-        x: 223
-        y: 303
-        width: 66
-        height: 17
+        x: 100
+        y: 292
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1011,10 +1037,10 @@ TextureImporter:
       name: game UI_26
       rect:
         serializedVersion: 2
-        x: 303
-        y: 319
-        width: 18
-        height: 18
+        x: 160
+        y: 304
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1033,10 +1059,10 @@ TextureImporter:
       name: game UI_27
       rect:
         serializedVersion: 2
-        x: 303
-        y: 303
-        width: 18
-        height: 17
+        x: 176
+        y: 320
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1055,10 +1081,10 @@ TextureImporter:
       name: game UI_28
       rect:
         serializedVersion: 2
-        x: 175
-        y: 287
-        width: 18
-        height: 18
+        x: 192
+        y: 304
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1077,10 +1103,10 @@ TextureImporter:
       name: game UI_29
       rect:
         serializedVersion: 2
-        x: 31
-        y: 247
-        width: 98
-        height: 26
+        x: 224
+        y: 320
+        width: 64
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1099,10 +1125,10 @@ TextureImporter:
       name: game UI_30
       rect:
         serializedVersion: 2
-        x: 135
-        y: 247
-        width: 26
-        height: 26
+        x: 304
+        y: 320
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1121,10 +1147,10 @@ TextureImporter:
       name: game UI_31
       rect:
         serializedVersion: 2
-        x: 167
-        y: 247
-        width: 26
-        height: 26
+        x: 176
+        y: 288
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1143,10 +1169,10 @@ TextureImporter:
       name: game UI_32
       rect:
         serializedVersion: 2
-        x: 199
-        y: 247
-        width: 98
-        height: 26
+        x: 224
+        y: 304
+        width: 64
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1165,10 +1191,10 @@ TextureImporter:
       name: game UI_33
       rect:
         serializedVersion: 2
-        x: 319
-        y: 239
-        width: 18
-        height: 18
+        x: 304
+        y: 304
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1187,10 +1213,10 @@ TextureImporter:
       name: game UI_34
       rect:
         serializedVersion: 2
-        x: 336
-        y: 111
-        width: 41
-        height: 146
+        x: 32
+        y: 248
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1209,10 +1235,10 @@ TextureImporter:
       name: game UI_35
       rect:
         serializedVersion: 2
-        x: 383
-        y: 239
-        width: 18
-        height: 18
+        x: 136
+        y: 248
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1231,10 +1257,10 @@ TextureImporter:
       name: game UI_36
       rect:
         serializedVersion: 2
-        x: 400
-        y: 111
-        width: 41
-        height: 146
+        x: 168
+        y: 248
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1253,10 +1279,10 @@ TextureImporter:
       name: game UI_37
       rect:
         serializedVersion: 2
-        x: 463
-        y: 240
-        width: 17
-        height: 16
+        x: 200
+        y: 248
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1275,9 +1301,9 @@ TextureImporter:
       name: game UI_38
       rect:
         serializedVersion: 2
-        x: 480
+        x: 320
         y: 240
-        width: 42
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1297,10 +1323,10 @@ TextureImporter:
       name: game UI_39
       rect:
         serializedVersion: 2
-        x: 528
-        y: 239
-        width: 16
-        height: 18
+        x: 337
+        y: 112
+        width: 39
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1319,9 +1345,9 @@ TextureImporter:
       name: game UI_40
       rect:
         serializedVersion: 2
-        x: 544
+        x: 384
         y: 240
-        width: 42
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1341,10 +1367,10 @@ TextureImporter:
       name: game UI_41
       rect:
         serializedVersion: 2
-        x: 31
-        y: 215
-        width: 74
-        height: 26
+        x: 401
+        y: 112
+        width: 39
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1363,10 +1389,10 @@ TextureImporter:
       name: game UI_42
       rect:
         serializedVersion: 2
-        x: 135
-        y: 215
-        width: 26
-        height: 26
+        x: 464
+        y: 241
+        width: 15
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1385,10 +1411,10 @@ TextureImporter:
       name: game UI_43
       rect:
         serializedVersion: 2
-        x: 167
-        y: 215
-        width: 26
-        height: 26
+        x: 481
+        y: 241
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1407,10 +1433,10 @@ TextureImporter:
       name: game UI_44
       rect:
         serializedVersion: 2
-        x: 199
-        y: 215
-        width: 74
-        height: 26
+        x: 529
+        y: 240
+        width: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1429,10 +1455,10 @@ TextureImporter:
       name: game UI_45
       rect:
         serializedVersion: 2
-        x: 480
-        y: 224
-        width: 42
-        height: 16
+        x: 545
+        y: 241
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1451,10 +1477,10 @@ TextureImporter:
       name: game UI_46
       rect:
         serializedVersion: 2
-        x: 480
-        y: 208
-        width: 42
-        height: 16
+        x: 32
+        y: 216
+        width: 72
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1473,10 +1499,10 @@ TextureImporter:
       name: game UI_47
       rect:
         serializedVersion: 2
-        x: 544
-        y: 224
-        width: 42
-        height: 16
+        x: 136
+        y: 216
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1495,10 +1521,10 @@ TextureImporter:
       name: game UI_48
       rect:
         serializedVersion: 2
-        x: 544
-        y: 208
-        width: 42
-        height: 16
+        x: 168
+        y: 216
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1517,10 +1543,10 @@ TextureImporter:
       name: game UI_49
       rect:
         serializedVersion: 2
-        x: 31
-        y: 183
-        width: 98
-        height: 26
+        x: 200
+        y: 216
+        width: 72
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1539,10 +1565,10 @@ TextureImporter:
       name: game UI_50
       rect:
         serializedVersion: 2
-        x: 135
-        y: 183
-        width: 26
-        height: 26
+        x: 481
+        y: 225
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1561,10 +1587,10 @@ TextureImporter:
       name: game UI_51
       rect:
         serializedVersion: 2
-        x: 167
-        y: 183
-        width: 26
-        height: 26
+        x: 545
+        y: 225
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1583,10 +1609,10 @@ TextureImporter:
       name: game UI_52
       rect:
         serializedVersion: 2
-        x: 199
-        y: 183
-        width: 98
-        height: 26
+        x: 481
+        y: 209
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1605,10 +1631,10 @@ TextureImporter:
       name: game UI_53
       rect:
         serializedVersion: 2
-        x: 480
-        y: 192
-        width: 42
-        height: 16
+        x: 545
+        y: 209
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1627,10 +1653,10 @@ TextureImporter:
       name: game UI_54
       rect:
         serializedVersion: 2
-        x: 480
-        y: 176
-        width: 42
-        height: 16
+        x: 32
+        y: 184
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1649,10 +1675,10 @@ TextureImporter:
       name: game UI_55
       rect:
         serializedVersion: 2
-        x: 544
-        y: 192
-        width: 42
-        height: 16
+        x: 136
+        y: 184
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1671,10 +1697,10 @@ TextureImporter:
       name: game UI_56
       rect:
         serializedVersion: 2
-        x: 544
-        y: 176
-        width: 42
-        height: 16
+        x: 168
+        y: 184
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1693,10 +1719,10 @@ TextureImporter:
       name: game UI_57
       rect:
         serializedVersion: 2
-        x: 31
-        y: 151
-        width: 98
-        height: 26
+        x: 200
+        y: 184
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1715,10 +1741,10 @@ TextureImporter:
       name: game UI_58
       rect:
         serializedVersion: 2
-        x: 135
-        y: 151
-        width: 26
-        height: 26
+        x: 481
+        y: 193
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1737,10 +1763,10 @@ TextureImporter:
       name: game UI_59
       rect:
         serializedVersion: 2
-        x: 167
-        y: 151
-        width: 26
-        height: 26
+        x: 545
+        y: 193
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1759,10 +1785,10 @@ TextureImporter:
       name: game UI_60
       rect:
         serializedVersion: 2
-        x: 199
-        y: 151
-        width: 98
-        height: 26
+        x: 481
+        y: 177
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1781,10 +1807,10 @@ TextureImporter:
       name: game UI_61
       rect:
         serializedVersion: 2
-        x: 480
-        y: 160
-        width: 42
-        height: 16
+        x: 545
+        y: 177
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1803,10 +1829,10 @@ TextureImporter:
       name: game UI_62
       rect:
         serializedVersion: 2
-        x: 480
-        y: 144
-        width: 42
-        height: 16
+        x: 32
+        y: 152
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1825,10 +1851,10 @@ TextureImporter:
       name: game UI_63
       rect:
         serializedVersion: 2
-        x: 544
-        y: 160
-        width: 42
-        height: 16
+        x: 136
+        y: 152
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1847,10 +1873,10 @@ TextureImporter:
       name: game UI_64
       rect:
         serializedVersion: 2
-        x: 544
-        y: 144
-        width: 42
-        height: 16
+        x: 168
+        y: 152
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1869,10 +1895,10 @@ TextureImporter:
       name: game UI_65
       rect:
         serializedVersion: 2
-        x: 31
-        y: 119
-        width: 98
-        height: 26
+        x: 200
+        y: 152
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1891,10 +1917,10 @@ TextureImporter:
       name: game UI_66
       rect:
         serializedVersion: 2
-        x: 135
-        y: 119
-        width: 26
-        height: 26
+        x: 481
+        y: 161
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1913,10 +1939,10 @@ TextureImporter:
       name: game UI_67
       rect:
         serializedVersion: 2
-        x: 167
-        y: 119
-        width: 26
-        height: 26
+        x: 545
+        y: 161
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1935,10 +1961,10 @@ TextureImporter:
       name: game UI_68
       rect:
         serializedVersion: 2
-        x: 199
-        y: 119
-        width: 98
-        height: 26
+        x: 481
+        y: 145
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1957,10 +1983,10 @@ TextureImporter:
       name: game UI_69
       rect:
         serializedVersion: 2
-        x: 480
-        y: 128
-        width: 42
-        height: 16
+        x: 545
+        y: 145
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1979,10 +2005,10 @@ TextureImporter:
       name: game UI_70
       rect:
         serializedVersion: 2
-        x: 544
-        y: 128
-        width: 42
-        height: 16
+        x: 32
+        y: 120
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2001,10 +2027,10 @@ TextureImporter:
       name: game UI_71
       rect:
         serializedVersion: 2
-        x: 31
-        y: 31
-        width: 146
-        height: 66
+        x: 136
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2023,10 +2049,10 @@ TextureImporter:
       name: game UI_72
       rect:
         serializedVersion: 2
-        x: 175
-        y: 31
-        width: 258
-        height: 66
+        x: 168
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2045,10 +2071,10 @@ TextureImporter:
       name: game UI_73
       rect:
         serializedVersion: 2
-        x: 432
-        y: 79
-        width: 15
-        height: 18
+        x: 200
+        y: 120
+        width: 96
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2067,10 +2093,10 @@ TextureImporter:
       name: game UI_74
       rect:
         serializedVersion: 2
-        x: 452
-        y: 79
-        width: 8
-        height: 18
+        x: 481
+        y: 129
+        width: 40
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2089,9 +2115,9 @@ TextureImporter:
       name: game UI_75
       rect:
         serializedVersion: 2
-        x: 465
-        y: 81
-        width: 14
+        x: 545
+        y: 129
+        width: 40
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2111,10 +2137,10 @@ TextureImporter:
       name: game UI_76
       rect:
         serializedVersion: 2
-        x: 481
-        y: 81
-        width: 14
-        height: 14
+        x: 32
+        y: 32
+        width: 144
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2133,10 +2159,10 @@ TextureImporter:
       name: game UI_77
       rect:
         serializedVersion: 2
-        x: 497
-        y: 81
-        width: 14
-        height: 14
+        x: 176
+        y: 32
+        width: 256
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2155,10 +2181,10 @@ TextureImporter:
       name: game UI_78
       rect:
         serializedVersion: 2
-        x: 513
-        y: 81
-        width: 14
-        height: 14
+        x: 433
+        y: 80
+        width: 13
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2177,10 +2203,10 @@ TextureImporter:
       name: game UI_79
       rect:
         serializedVersion: 2
-        x: 529
-        y: 81
-        width: 14
-        height: 14
+        x: 453
+        y: 80
+        width: 6
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2199,10 +2225,10 @@ TextureImporter:
       name: game UI_80
       rect:
         serializedVersion: 2
-        x: 545
-        y: 81
-        width: 14
-        height: 14
+        x: 466
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2221,10 +2247,10 @@ TextureImporter:
       name: game UI_81
       rect:
         serializedVersion: 2
-        x: 561
-        y: 81
-        width: 14
-        height: 14
+        x: 482
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2243,10 +2269,10 @@ TextureImporter:
       name: game UI_82
       rect:
         serializedVersion: 2
-        x: 577
-        y: 81
-        width: 14
-        height: 14
+        x: 498
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2265,10 +2291,10 @@ TextureImporter:
       name: game UI_83
       rect:
         serializedVersion: 2
-        x: 433
-        y: 65
-        width: 14
-        height: 14
+        x: 514
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2287,10 +2313,10 @@ TextureImporter:
       name: game UI_84
       rect:
         serializedVersion: 2
-        x: 449
-        y: 65
-        width: 14
-        height: 14
+        x: 530
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2309,10 +2335,10 @@ TextureImporter:
       name: game UI_85
       rect:
         serializedVersion: 2
-        x: 465
-        y: 65
-        width: 14
-        height: 14
+        x: 546
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2331,10 +2357,10 @@ TextureImporter:
       name: game UI_86
       rect:
         serializedVersion: 2
-        x: 481
-        y: 65
-        width: 14
-        height: 14
+        x: 562
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2353,10 +2379,10 @@ TextureImporter:
       name: game UI_87
       rect:
         serializedVersion: 2
-        x: 497
-        y: 65
-        width: 14
-        height: 14
+        x: 578
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2375,10 +2401,10 @@ TextureImporter:
       name: game UI_88
       rect:
         serializedVersion: 2
-        x: 513
-        y: 65
-        width: 14
-        height: 14
+        x: 434
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2397,10 +2423,10 @@ TextureImporter:
       name: game UI_89
       rect:
         serializedVersion: 2
-        x: 529
-        y: 65
-        width: 14
-        height: 14
+        x: 450
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2419,10 +2445,10 @@ TextureImporter:
       name: game UI_90
       rect:
         serializedVersion: 2
-        x: 545
-        y: 65
-        width: 14
-        height: 14
+        x: 466
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2441,10 +2467,10 @@ TextureImporter:
       name: game UI_91
       rect:
         serializedVersion: 2
-        x: 561
-        y: 65
-        width: 14
-        height: 14
+        x: 482
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2463,10 +2489,10 @@ TextureImporter:
       name: game UI_92
       rect:
         serializedVersion: 2
-        x: 577
-        y: 65
-        width: 14
-        height: 14
+        x: 498
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2485,10 +2511,10 @@ TextureImporter:
       name: game UI_93
       rect:
         serializedVersion: 2
-        x: 432
-        y: 31
-        width: 17
-        height: 18
+        x: 514
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2507,10 +2533,10 @@ TextureImporter:
       name: game UI_94
       rect:
         serializedVersion: 2
-        x: 433
-        y: 49
-        width: 14
-        height: 14
+        x: 530
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2529,10 +2555,10 @@ TextureImporter:
       name: game UI_95
       rect:
         serializedVersion: 2
-        x: 449
-        y: 49
-        width: 14
-        height: 14
+        x: 546
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2551,10 +2577,10 @@ TextureImporter:
       name: game UI_96
       rect:
         serializedVersion: 2
-        x: 465
-        y: 49
-        width: 14
-        height: 14
+        x: 562
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2573,10 +2599,10 @@ TextureImporter:
       name: game UI_97
       rect:
         serializedVersion: 2
-        x: 481
-        y: 49
-        width: 14
-        height: 14
+        x: 578
+        y: 66
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2595,10 +2621,10 @@ TextureImporter:
       name: game UI_98
       rect:
         serializedVersion: 2
-        x: 497
-        y: 49
-        width: 14
-        height: 14
+        x: 434
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2617,10 +2643,10 @@ TextureImporter:
       name: game UI_99
       rect:
         serializedVersion: 2
-        x: 513
-        y: 49
-        width: 14
-        height: 14
+        x: 450
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2639,10 +2665,10 @@ TextureImporter:
       name: game UI_100
       rect:
         serializedVersion: 2
-        x: 529
-        y: 49
-        width: 14
-        height: 14
+        x: 466
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2661,10 +2687,10 @@ TextureImporter:
       name: game UI_101
       rect:
         serializedVersion: 2
-        x: 545
-        y: 49
-        width: 14
-        height: 14
+        x: 482
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2683,10 +2709,10 @@ TextureImporter:
       name: game UI_102
       rect:
         serializedVersion: 2
-        x: 561
-        y: 49
-        width: 14
-        height: 14
+        x: 498
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2705,10 +2731,10 @@ TextureImporter:
       name: game UI_103
       rect:
         serializedVersion: 2
-        x: 577
-        y: 49
-        width: 14
-        height: 14
+        x: 514
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2727,10 +2753,10 @@ TextureImporter:
       name: game UI_104
       rect:
         serializedVersion: 2
-        x: 449
-        y: 33
-        width: 14
-        height: 14
+        x: 530
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2749,10 +2775,10 @@ TextureImporter:
       name: game UI_105
       rect:
         serializedVersion: 2
-        x: 465
-        y: 33
-        width: 14
-        height: 14
+        x: 546
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2771,10 +2797,10 @@ TextureImporter:
       name: game UI_106
       rect:
         serializedVersion: 2
-        x: 481
-        y: 33
-        width: 14
-        height: 14
+        x: 562
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2793,10 +2819,10 @@ TextureImporter:
       name: game UI_107
       rect:
         serializedVersion: 2
-        x: 497
-        y: 33
-        width: 14
-        height: 14
+        x: 578
+        y: 50
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2815,10 +2841,10 @@ TextureImporter:
       name: game UI_108
       rect:
         serializedVersion: 2
-        x: 513
-        y: 33
-        width: 14
-        height: 14
+        x: 433
+        y: 32
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2837,10 +2863,10 @@ TextureImporter:
       name: game UI_109
       rect:
         serializedVersion: 2
-        x: 529
-        y: 33
-        width: 14
-        height: 14
+        x: 450
+        y: 34
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2859,10 +2885,10 @@ TextureImporter:
       name: game UI_110
       rect:
         serializedVersion: 2
-        x: 545
-        y: 33
-        width: 14
-        height: 14
+        x: 466
+        y: 34
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2881,10 +2907,10 @@ TextureImporter:
       name: game UI_111
       rect:
         serializedVersion: 2
-        x: 561
-        y: 33
-        width: 14
-        height: 14
+        x: 482
+        y: 34
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2903,10 +2929,10 @@ TextureImporter:
       name: game UI_112
       rect:
         serializedVersion: 2
-        x: 577
-        y: 33
-        width: 14
-        height: 14
+        x: 498
+        y: 34
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2921,11 +2947,121 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: game UI_113
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019825a129ef06145ae01477a8edf383
+      internalID: 889453817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game UI_114
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b621a30e271d74998734c338b039bc
+      internalID: -1866402015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game UI_115
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff01ba23c94aeb545b02b10e098fb966
+      internalID: -422159474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game UI_116
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2d942957f79c14c81514e419950d20
+      internalID: 658539085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game UI_117
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd663fa06f1d184ab54283f2c89dc4e
+      internalID: -1090430147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 89c22761e104e0149890be1d2e9aad42
     internalID: 0
     vertices: []
     indices: 
@@ -2952,6 +3088,11 @@ TextureImporter:
       game UI_110: -3976702926414547342
       game UI_111: 4938116148719789791
       game UI_112: -6631359262736942450
+      game UI_113: 889453817
+      game UI_114: -1866402015
+      game UI_115: -422159474
+      game UI_116: 658539085
+      game UI_117: -1090430147
       game UI_12: -6810676366896839486
       game UI_13: 3384857707263566521
       game UI_14: 1130749035206920265

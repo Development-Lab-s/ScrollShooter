@@ -4,25 +4,24 @@ using UnityEngine;
 
 namespace Member.JYG._Code
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(PolygonCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
     public class Player : MonoBehaviour
     {
         [field:SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
-
-        #region PlayerMovement
         public Rigidbody2D Rigidbody2D { get; private set; }
+        public CircleCollider2D Collider { get; private set; }
         [field:SerializeField] public float MaxSpeed { get; private set; }
         [field:SerializeField] public float ReverseForce { get; private set; }
         [field:SerializeField] public float BrakePower { get; private set; }
-
+        [field: SerializeField] public float MovePower { get; private set; } //User's acceleration power (Move Force)
+        
         private float _xVelocity;
 
-        public float XVelocity //Player의 진짜 이동속도
+        private float _radius;
+
+        public float XVelocity //Player's real move speed
         {
-            get
-            {
-                return _xVelocity;
-            }
+            get => _xVelocity;
             private set
             {
                 if (Mathf.Abs(value) < MaxSpeed)
@@ -36,16 +35,28 @@ namespace Member.JYG._Code
             }
             
         }
-        [field: SerializeField] public float MovePower { get; private set; } //유저가 가속할 때 더해주는 크기
 
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<CircleCollider2D>();
+            
             Rigidbody2D.gravityScale = 0;
             Rigidbody2D.linearVelocityY = 5f;
+            
+            _radius = Collider.radius;
+        }
+        private void FixedUpdate()
+        {
+            SetXMove(XVelocity);
+        }
+        private void Update()
+        {
+            SetVelocity(PlayerInputSO.IsBraking); //Setting my speed Method
+            SetPlayerPositionInCamera();
         }
         
-        private void SetVelocity(bool isBrake) //Update에서 실행중
+        private void SetVelocity(bool isBrake) //Use in Update
         {
             if (isBrake)
             {
@@ -55,62 +66,45 @@ namespace Member.JYG._Code
                     return;
                 }
                 XVelocity = Mathf.Lerp(XVelocity, 0, Time.deltaTime * BrakePower);
-                Debug.Log("Brake : " + XVelocity);
                 
                 return;
             }
-            
             float moveDir = PlayerInputSO.XMoveDir;
-            if (moveDir == 1) //우측으로 이동한다.
+            ToMove(moveDir);
+        }
+
+        private void ToMove(float moveXDir)
+        {
+            if ((XVelocity > 0.1f && moveXDir < 0.5f) || (XVelocity < -0.1f && moveXDir > 0.5f))
             {
-                if(XVelocity < -0.1f) // 우측으로 이동하는 도중에 좌측으로 이동하려 한다.
-                    XVelocity += Time.deltaTime * MovePower * 2 * moveDir; //파워 2배로 증가
-                /*XVelocity = 0;*/
-                
-                XVelocity += Time.deltaTime * MovePower * moveDir; //현재 이속 설정
+                XVelocity += Time.deltaTime * MovePower * 2 * moveXDir; //Power x2
             }
-            else if (moveDir == -1) //좌측으로 이동한다.
+                
+            XVelocity += Time.deltaTime * MovePower * moveXDir; //현재 이속 설정
+        }
+        private void SetXMove(float speed) //Use in FixedUpdate
+        {
+            Rigidbody2D.linearVelocityX = speed; //Set my speed
+        }
+
+        private void SetPlayerPositionInCamera()
+        {
+            if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x + _radius, 0)).x > 1f)
             {
-                if(XVelocity > 0.1f) // 좌측으로 이동하는 도중에 우측으로 이동하려 한다.
-                    XVelocity +=  Time.deltaTime * MovePower * 2 * moveDir; //파워 2배로 증가
-                /*    XVelocity = 0;*/
-                
-                XVelocity += Time.deltaTime * MovePower * moveDir;
+                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0));
+
+                Vector3 playerPosition = transform.position;
+                playerPosition.x = newPosition.x - _radius;
+                transform.position = playerPosition;
             }
+            else if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x - _radius, 0)).x < 0f)
+            {
+                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
 
-            //겹치는 코드가 많은데 어떻게 잘 해결해보자
-        }
-
-        private void FixedUpdate()
-        {
-            SetXMove(XVelocity);
-        }
-
-
-        private void SetXMove(float speed) //FixedUpdate에서 실행중
-        {
-            Rigidbody2D.linearVelocityX = speed; //현재 이동속도를 받아와서 고정
-        }
-        #endregion
-        
-        #region Render
-        public SpriteRenderer SpriteRenderer { get; private set; }
-        [field:SerializeField] public float MaxDegree { get; private set; }
-
-        //속도를 가져와서 속도가 높을수록 기울기를 크게.
-        
-        private void SetRotation(GameObject target, float velocity)
-        {
-            float zValue = Mathf.Lerp(-MaxDegree, MaxDegree, 0.5f + velocity / MaxSpeed * 0.5f) * -1;
-            zValue = Mathf.MoveTowardsAngle(transform.eulerAngles.z, zValue, Time.deltaTime * 450f);
-            transform.rotation = Quaternion.Euler(0, 0, zValue);
-        }
-        #endregion
-        
-        private void Update()
-        {
-            SetVelocity(PlayerInputSO.IsBraking); //현재 이동속도를 설정한다.
-            SetRotation(gameObject, XVelocity); //이동속도를 받아와서 나를 돌린다
+                Vector3 playerPosition = transform.position;
+                playerPosition.x = newPosition.x + _radius;
+                transform.position = playerPosition;
+            }
         }
     }
 }
