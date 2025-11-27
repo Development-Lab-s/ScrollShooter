@@ -10,6 +10,13 @@ namespace Member.JYG.Input
     {
         private PlayerInput _playerInput;
 
+        public Action OnDashPressed;
+        public Action OnBrakePressed;
+        
+        public Action OnLeftClicked;
+        public Action OnRightClicked;
+        public Action OnWheelBtnClicked;
+
         public bool IsBraking { get; private set; }
 
         private void OnEnable()
@@ -44,6 +51,27 @@ namespace Member.JYG.Input
             {
                 IsBraking = false;
             }
+            OnBrakePressed?.Invoke();
+        }
+
+        public void OnBoost(InputAction.CallbackContext context)
+        {
+            OnDashPressed?.Invoke();
+        }
+
+        public void OnLeftClick(InputAction.CallbackContext context)  
+        {
+            OnLeftClicked?.Invoke();
+        }
+
+        public void OnRightClick(InputAction.CallbackContext context)
+        {
+            OnRightClicked?.Invoke();
+        }
+
+        public void OnWheelClick(InputAction.CallbackContext context)
+        {
+            OnWheelBtnClicked?.Invoke();
         }
     }
 }
