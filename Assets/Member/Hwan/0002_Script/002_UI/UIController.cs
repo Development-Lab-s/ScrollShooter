@@ -1,11 +1,16 @@
+using DG.Tweening;
+using Member.JYG.Input;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     private Dictionary<UIType, IUI> uiDictionary = new();
     public bool MouseEnable { get; set; } = false;
+    [SerializeField] private PlayerInputSO inputSO;
 
     private void Awake()
     {
@@ -39,6 +44,7 @@ public class UIController : MonoBehaviour
         if (interactiveType == InteractiveType.Middle)
         {
             uiDictionary[UIType.SettingUI].Open();
+
             return;
         }
 
