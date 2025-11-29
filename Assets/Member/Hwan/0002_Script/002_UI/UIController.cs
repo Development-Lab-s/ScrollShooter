@@ -1,4 +1,5 @@
 using Member.JYG.Input;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class UIController : MonoBehaviour
     public bool MouseEnable { get; set; } = false;
     [SerializeField] private PlayerInputSO inputSO;
 
-    public List<UIType> InputList { get; private set; }
+    public List<UIType> InputList { get; private set; } = new();
 
     private void Awake()
     {
@@ -52,8 +53,10 @@ public class UIController : MonoBehaviour
         inputSO.OnLeftClicked -= GetInputLeft;
         inputSO.OnRightClicked -= GetInputRight;
         inputSO.OnWheelBtnClicked -= GetInputMiddle;
+        inputSO.OnWheeling -= GetInputWheel;
     }
 
+    private void GetInputWheel() => UIInteractive(InteractiveType.Scroll);
     private void GetInputMiddle() => UIInteractive(InteractiveType.Middle);
     private void GetInputBack() => UIInteractive(InteractiveType.Back);
     private void GetInputForward() => UIInteractive(InteractiveType.Forward);
@@ -62,6 +65,7 @@ public class UIController : MonoBehaviour
 
     private void UIInteractive(InteractiveType interactiveType)
     {
+        if (InputList.Count == 0) return;
         IUI inputUI = uiDictionary[InputList[InputList.Count - 1]];
         switch (interactiveType)
         {
@@ -70,6 +74,7 @@ public class UIController : MonoBehaviour
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;
             case InteractiveType.Middle: inputUI.MiddleMove(); break;
+            case InteractiveType.Scroll: inputUI.ScrollMove(inputSO.XMoveDir); break;
         }
     }
 }

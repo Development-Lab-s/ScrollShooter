@@ -54,10 +54,12 @@ public class SettingUI : MonoBehaviour, IUI
     {
         if (UIObject.activeSelf == true)
         {
+            Debug.Log("sdfsfs");
             Close();
         }
         else
         {
+            Debug.Log("sdfsfs");
             Open();
         }
     }

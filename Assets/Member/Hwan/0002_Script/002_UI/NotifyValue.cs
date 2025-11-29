@@ -6,6 +6,7 @@ public interface IReadOnlyNotifyValue<T>
 
     public Action<T, T> OnValueCanged { get; }
 }
+
 public class NotifyValue<T> : IReadOnlyNotifyValue<T>
 {
     public event Action<T, T> OnValueCanged;

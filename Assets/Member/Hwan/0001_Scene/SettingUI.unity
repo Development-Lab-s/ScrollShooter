@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 130044269}
   - component: {fileID: 130044268}
   - component: {fileID: 130044267}
-  - component: {fileID: 130044270}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -360,18 +359,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130044265}
   m_CullTransparentMesh: 0
---- !u!114 &130044270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130044265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86d56379605cb0349b6cb08714b0e03c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &194736069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1146,7 @@ MonoBehaviour:
   m_text: Setting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9fb72713462bd34a99acbf23a40dd74, type: 2}
-  m_sharedMaterial: {fileID: -2543835605136209189, guid: a9fb72713462bd34a99acbf23a40dd74, type: 2}
+  m_sharedMaterial: {fileID: -4406428672775297824, guid: a9fb72713462bd34a99acbf23a40dd74, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
