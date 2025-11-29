@@ -13,8 +13,8 @@ public class GoButtonUI : MonoBehaviour
     private RectTransform goButton_Left;
     private RectTransform goButton_Right;
 
-    [SerializeField] private float targetYPos;
-    private float defaultYPos;
+    [SerializeField] private readonly float UpYPos;
+    [SerializeField] private readonly float DownYPos;
 
     private void Awake()
     {
@@ -23,8 +23,6 @@ public class GoButtonUI : MonoBehaviour
 
         goButton_Left.GetComponent<Button>().onClick.AddListener(OnLeftClick);
         goButton_Right.GetComponent<Button>().onClick.AddListener(OnRightClick);
-
-        defaultYPos = goButton_Left.anchoredPosition.y;
     }
 
     public void GoButtonActive(bool value)
@@ -32,7 +30,12 @@ public class GoButtonUI : MonoBehaviour
         goButton_Left.gameObject.SetActive(value);
         goButton_Right.gameObject.SetActive(value);
 
-        float target = value ? targetYPos : defaultYPos;
+        float target = value ? UpYPos : DownYPos;
+        float firstPos = value ? DownYPos : UpYPos;
+
+        goButton_Left.anchoredPosition = new Vector2(goButton_Left.anchoredPosition.x, firstPos);
+        goButton_Right.anchoredPosition = new Vector2(goButton_Right.anchoredPosition.x, firstPos);
+
         goButton_Left.DOAnchorPosY(target, duration).SetUpdate(true);
         goButton_Right.DOAnchorPosY(target, duration).SetUpdate(true);
     }

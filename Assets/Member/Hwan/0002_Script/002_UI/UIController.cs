@@ -1,10 +1,6 @@
-using DG.Tweening;
 using Member.JYG.Input;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -12,55 +8,68 @@ public class UIController : MonoBehaviour
     public bool MouseEnable { get; set; } = false;
     [SerializeField] private PlayerInputSO inputSO;
 
+    public List<UIType> InputList { get; private set; }
+
     private void Awake()
     {
         foreach (IUI ui in GetComponentsInChildren<IUI>())
         {
             ui.Initialize();
+            ui.OnOpen += AddInputUI;
+            ui.OnClose += RemoveInputUI;
             uiDictionary.Add(ui.UIType, ui);
         }
+
+        inputSO.OnBrakePressed += GetInputBack;
+        inputSO.OnDashPressed += GetInputForward;
+        inputSO.OnLeftClicked += GetInputLeft;
+        inputSO.OnRightClicked += GetInputRight;
+        inputSO.OnWheelBtnClicked += GetInputMiddle;
     }
 
-    private void Update()
+    private void AddInputUI(UIType type)
     {
-        if (Mouse.current.middleButton.wasPressedThisFrame)
-            UIInteractive(InteractiveType.Middle);
-
-        if (Mouse.current.backButton.wasPressedThisFrame)
-            UIInteractive(InteractiveType.Back);
-
-        if (Mouse.current.forwardButton.wasPressedThisFrame)
-            UIInteractive(InteractiveType.Forward);
-
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-            UIInteractive(InteractiveType.Left);
-
-        if (Mouse.current.rightButton.wasPressedThisFrame)
-            UIInteractive(InteractiveType.Right);
+        InputList.Add(type);
     }
+
+    private void RemoveInputUI(UIType type)
+    {
+        InputList.Remove(type);
+    }
+
+    public int GetInputListCnt() => InputList.Count;
+
+    private void OnDestroy()
+    {
+        foreach (IUI ui in uiDictionary.Values)
+        {
+            ui.OnOpen -= AddInputUI;
+            ui.OnClose -= RemoveInputUI;
+        }
+
+        inputSO.OnBrakePressed -= GetInputBack;
+        inputSO.OnDashPressed -= GetInputForward;
+        inputSO.OnLeftClicked -= GetInputLeft;
+        inputSO.OnRightClicked -= GetInputRight;
+        inputSO.OnWheelBtnClicked -= GetInputMiddle;
+    }
+
+    private void GetInputMiddle() => UIInteractive(InteractiveType.Middle);
+    private void GetInputBack() => UIInteractive(InteractiveType.Back);
+    private void GetInputForward() => UIInteractive(InteractiveType.Forward);
+    private void GetInputLeft() => UIInteractive(InteractiveType.Left);
+    private void GetInputRight() => UIInteractive(InteractiveType.Right);
 
     private void UIInteractive(InteractiveType interactiveType)
     {
-        if (interactiveType == InteractiveType.Middle)
+        IUI inputUI = uiDictionary[InputList[InputList.Count - 1]];
+        switch (interactiveType)
         {
-            uiDictionary[UIType.SettingUI].Open();
-
-            return;
-        }
-
-        foreach (IUI ui in uiDictionary.Values)
-        {
-            if (ui.UIObject.activeSelf == true)
-            {
-                switch (interactiveType)
-                {
-                    case InteractiveType.Forward: ui.FrontMove(); break;
-                    case InteractiveType.Back: ui.BackMove(); break;
-                    case InteractiveType.Left: ui.LeftButton(); break;
-                    case InteractiveType.Right: ui.RightButton(); break;
-                    case InteractiveType.Middle: ui.MiddleButton(); break;
-                }
-            }
+            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Back: inputUI.BackMove(); break;
+            case InteractiveType.Left: inputUI.LeftMove(); break;
+            case InteractiveType.Right: inputUI.RightMove(); break;
+            case InteractiveType.Middle: inputUI.MiddleMove(); break;
         }
     }
 }

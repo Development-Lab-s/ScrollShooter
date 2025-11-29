@@ -1,42 +1,56 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour, IUI
 {
+    [SerializeField] private SettingValuesSO settingValuesSO;
+    [SerializeField] private Slider slider;
     [field: SerializeField] public GameObject UIObject { get; private set; }
     private TextChangeMove changeText;
 
+    public event Action<UIType> OnOpen;
+    public event Action<UIType> OnClose;
+
     public UIType UIType => UIType.SettingUI;
+
+    public ValueSetter valueSetter;
+
     public void Initialize()
     {
         UIObject.GetComponentInChildren<SliderUI>().InitializeSlider();
         changeText = GetComponentInChildren<TextChangeMove>();
+        valueSetter = new(settingValuesSO.SettingValues, slider);
         Close();
     }
+
     public void Open()
     {
         UIObject.SetActive(true);
+        OnOpen?.Invoke(UIType);
     }
+
     public void Close()
     {
         UIObject.SetActive(false);
+        OnClose?.Invoke(UIType);
     }
 
     public void BackMove()
     {
-        changeText.TryChangeText("감도");
+        valueSetter.ChangeSliderValue(-1);
     }
 
     public void FrontMove()
     {
-        changeText.TryChangeText("사운드");
+        valueSetter.ChangeSliderValue(1);
     }
 
-    public void LeftButton() { }
+    public void LeftMove() { }
 
-    public void RightButton() { }
+    public void RightMove() { }
 
-    public void MiddleButton()
+    public void MiddleMove()
     {
         if (UIObject.activeSelf == true)
         {
@@ -47,4 +61,6 @@ public class SettingUI : MonoBehaviour, IUI
             Open();
         }
     }
+
+    public void ScrollMove(int value) { }
 }

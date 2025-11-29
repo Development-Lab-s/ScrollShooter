@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 193c7ce4d21ff5b4c84af677370654b9
+guid: 5911d0ceda0b557449d0539673f8eee6
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -129,20 +129,20 @@ TextureImporter:
       name: GoButton_Left_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 10
         y: 0
-        width: 79
-        height: 16
+        width: 92
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 15, y: 0, z: 7, w: 0}
+      border: {x: 40, y: 2, z: 11, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6338c0e76f307d14db0563a77b8a259a
-      internalID: 1332296742
+      spriteID: e6c09e865f6d08b4eb2545a09000609d
+      internalID: -1862314132
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GoButton_Left_0: 1332296742
+      GoButton_Left_0: -1862314132
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

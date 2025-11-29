@@ -11,5 +11,13 @@ public enum InteractiveType
     Forward,
     Back,
     Left,
-    Right
+    Right,
+    Scroll
+}
+
+public enum SettingType
+{
+    BGMSlider,
+    SFXSlider,
+    SensitivitySlider
 }

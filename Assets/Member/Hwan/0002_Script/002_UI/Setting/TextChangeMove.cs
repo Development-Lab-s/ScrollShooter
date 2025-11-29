@@ -21,7 +21,6 @@ public class TextChangeMove : MonoBehaviour
     public bool TryChangeText(string text)
     {
         if (isShaking == true) return false;
-        isShaking = true;
 
         tmpProUGUI.text = text;
 
@@ -33,6 +32,7 @@ public class TextChangeMove : MonoBehaviour
     {
         seq = DOTween.Sequence();
         float tempYValue = rectTrn.anchoredPosition.y;
+        isShaking = true;
 
         seq = DOTween.Sequence();
         seq.Append(rectTrn.DOPunchAnchorPos(new Vector2(0f, strengthY), duration).SetUpdate(true));
