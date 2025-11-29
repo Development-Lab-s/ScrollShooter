@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -10,32 +11,29 @@ public class TextChangeMove : MonoBehaviour
     [SerializeField] float strengthY = 18f;  // À§¾Æ·¡ ÁøÆø(ÇÈ¼¿ ±âÁØ)
 
     private Sequence seq;
-    private bool isShaking;
+    public bool IsShaking { get; private set; }
 
-    private void Awake()
+    public void Initialize()
     {
         rectTrn = GetComponent<RectTransform>();
         tmpProUGUI = GetComponent<TextMeshProUGUI>();
     }
 
-    public bool TryChangeText(string text)
+    public void ChangeText(string text)
     {
-        if (isShaking == true) return false;
-
         tmpProUGUI.text = text;
 
         ChangeTextMove();
-        return true;
     }
 
     private void ChangeTextMove()
     {
+        IsShaking = true;
         seq = DOTween.Sequence();
         float tempYValue = rectTrn.anchoredPosition.y;
-        isShaking = true;
 
         seq = DOTween.Sequence();
         seq.Append(rectTrn.DOPunchAnchorPos(new Vector2(0f, strengthY), duration).SetUpdate(true));
-        seq.OnComplete(() => isShaking = false);
+        seq.OnComplete(() => IsShaking = false);
     }
 }

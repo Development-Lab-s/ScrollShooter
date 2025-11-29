@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour, IUI
 {
+    [SerializeField] private Image iconImage;
     [SerializeField] private SettingValuesSO settingValuesSO;
     [SerializeField] private Slider slider;
     [field: SerializeField] public GameObject UIObject { get; private set; }
@@ -20,7 +21,9 @@ public class SettingUI : MonoBehaviour, IUI
     {
         UIObject.GetComponentInChildren<SliderUI>().InitializeSlider();
         changeText = GetComponentInChildren<TextChangeMove>();
+        changeText.Initialize();
         valueSetter = new(settingValuesSO.SettingValues, slider);
+        InitializeSetting();
         Close();
     }
 
@@ -38,12 +41,22 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        valueSetter.ChangeSliderValue(-1);
+        if (UIObject.activeSelf == false || changeText.IsShaking == true) return;
+        valueSetter.ChangeType(-1);
+        InitializeSetting();
     }
 
     public void FrontMove()
     {
-        valueSetter.ChangeSliderValue(1);
+        if (UIObject.activeSelf == false || changeText.IsShaking == true) return;
+        valueSetter.ChangeType(1);
+        InitializeSetting();
+    }
+
+    private void InitializeSetting()
+    {
+        changeText.ChangeText(valueSetter.CurrentValue.Text);
+        iconImage.sprite = valueSetter.CurrentValue.Icon;
     }
 
     public void LeftMove() { }
@@ -54,15 +67,17 @@ public class SettingUI : MonoBehaviour, IUI
     {
         if (UIObject.activeSelf == true)
         {
-            Debug.Log("sdfsfs");
             Close();
         }
         else
         {
-            Debug.Log("sdfsfs");
             Open();
         }
     }
 
-    public void ScrollMove(int value) { }
+    public void ScrollMove(int value) 
+    {
+        if (UIObject.activeSelf == false) return;
+        valueSetter.ChangeSliderValue(-value);
+    }
 }

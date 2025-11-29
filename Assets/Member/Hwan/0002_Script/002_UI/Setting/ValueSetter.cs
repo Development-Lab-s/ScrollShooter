@@ -12,6 +12,8 @@ public class ValueSetter
     {
         this.settingValueSOs = settingValueSOs;
         this.slider = slider;
+        CurrentValue = settingValueSOs[0];
+        InitializeSlider();
     }
 
     public void ChangeType(int value)

@@ -26,6 +26,7 @@ public class UIController : MonoBehaviour
         inputSO.OnLeftClicked += GetInputLeft;
         inputSO.OnRightClicked += GetInputRight;
         inputSO.OnWheelBtnClicked += GetInputMiddle;
+        inputSO.OnWheeling += GetInputWheel;
     }
 
     private void AddInputUI(UIType type)
@@ -65,8 +66,22 @@ public class UIController : MonoBehaviour
 
     private void UIInteractive(InteractiveType interactiveType)
     {
-        if (InputList.Count == 0) return;
+        if (InputList.Count == 0)
+        {
+            foreach (IUI ui in uiDictionary.Values)
+            {
+                DoMove(interactiveType, ui);
+            }
+            return;
+        }
+
         IUI inputUI = uiDictionary[InputList[InputList.Count - 1]];
+
+        DoMove(interactiveType, inputUI);
+    }
+
+    private void DoMove(InteractiveType interactiveType, IUI inputUI)
+    {
         switch (interactiveType)
         {
             case InteractiveType.Forward: inputUI.FrontMove(); break;
