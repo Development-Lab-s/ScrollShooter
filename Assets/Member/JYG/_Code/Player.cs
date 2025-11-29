@@ -1,6 +1,7 @@
 using System;
 using Member.JYG.Input;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Member.JYG._Code
 {
@@ -18,6 +19,7 @@ namespace Member.JYG._Code
         [field: SerializeField] public float DashDuration { get; private set; } 
         
         private float _xVelocity;
+        
 
         private float _radius;
 
