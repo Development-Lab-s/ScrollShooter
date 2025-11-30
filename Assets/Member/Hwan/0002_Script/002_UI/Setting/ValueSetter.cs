@@ -12,6 +12,7 @@ public class ValueSetter
     {
         this.settingValueSOs = settingValueSOs;
         this.slider = slider;
+        slider.onValueChanged.AddListener(SaveValue);
         CurrentValue = settingValueSOs[0];
         InitializeSlider();
     }
@@ -19,7 +20,7 @@ public class ValueSetter
     public void ChangeType(int value)
     {
         currentValueType += value;
-        CurrentValue = settingValueSOs[currentValueType % settingValueSOs.Length];
+        CurrentValue = settingValueSOs[Mathf.Abs(currentValueType) % settingValueSOs.Length];
         InitializeSlider();
     }
 
@@ -33,8 +34,11 @@ public class ValueSetter
 
     public void ChangeSliderValue(float value)
     {
-        float changeValue = Mathf.Clamp(slider.value + value, CurrentValue.MinValue, CurrentValue.MaxValue);
+        slider.value += value;
+    }
+
+    public void SaveValue(float changeValue)
+    {
         SettingValueContainer.Instance.SetSettingValue(CurrentValue.MyType, changeValue);
-        slider.value = changeValue;
     }
 }
