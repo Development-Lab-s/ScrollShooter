@@ -1,14 +1,16 @@
-using System;
 using UnityEngine;
+using YGPacks;
 
 namespace Member.JYG._Code
 {
-    public class GameManager : MonoBehaviour
+    [DefaultExecutionOrder(-1000)]
+    public class GameManager : Singleton<GameManager>
     {
         public Player Player { get; private set; }
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
             Player = FindFirstObjectByType<Player>();
         }
     }

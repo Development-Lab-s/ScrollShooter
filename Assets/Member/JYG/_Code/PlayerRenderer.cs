@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Member.JYG._Code
 {
@@ -7,13 +11,14 @@ namespace Member.JYG._Code
         private Player _player;
         [field: SerializeField] public float Offset { get; private set; }
         [field:SerializeField] public float MaxDegree { get; private set; }
-
+        
+        private Vector3 _currentPosition;
+        
         private void Awake()
         {
             _player = GetComponent<Player>();
         }
 
-        private Vector3 _currentPosition;
         private void Update()
         {
             SetRotation(gameObject, _player.XVelocity); //이동속도를 받아와서 나를 돌린다

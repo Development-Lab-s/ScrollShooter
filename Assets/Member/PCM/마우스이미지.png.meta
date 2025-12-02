@@ -1,10 +1,19 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
 guid: c4c15ba0c41fde7499d39891d0d01628
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1172286141432131573
     second: "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0"
+========
+guid: 5911d0ceda0b557449d0539673f8eee6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5883908543513742245
+    second: Button-export_0
+>>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,10 +81,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 3
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,6 +135,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
       name: "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0"
       rect:
         serializedVersion: 2
@@ -136,13 +146,30 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+========
+      name: GoButton_Left_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 92
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 2, z: 11, w: 0}
+>>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
       spriteID: 5ffec2bd80cc44010800000000000000
       internalID: 1172286141432131573
+========
+      spriteID: e6c09e865f6d08b4eb2545a09000609d
+      internalID: -1862314132
+>>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
       vertices: []
       indices: 
       edges: []
@@ -151,7 +178,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
     spriteID: 764e2e073274b5e4fb7c47e84c48a6f2
+========
+    spriteID: 5e97eb03825dee720800000000000000
+>>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +192,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
       "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0": 1172286141432131573
+========
+      GoButton_Left_0: -1862314132
+>>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

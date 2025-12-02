@@ -1,0 +1,97 @@
+using Member.JYG.Input;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIController : MonoBehaviour
+{
+    [SerializeField] private PlayerInputSO inputSO;
+
+    private Dictionary<UIType, IUI> uiDictionary = new();
+    public List<UIType> InputList { get; private set; } = new();
+    private GoButtonUI goButtonUI;
+
+    private void Awake()
+    {
+        goButtonUI = GetComponentInChildren<GoButtonUI>();
+        goButtonUI.Initialize(GetInputForward, GetInputBack);
+
+        foreach (IUI ui in GetComponentsInChildren<IUI>())
+        {
+            ui.Initialize();
+            ui.OnOpen += AddInputUI;
+            ui.OnClose += RemoveInputUI;
+            uiDictionary.Add(ui.UIType, ui);
+        }
+
+        inputSO.OnBrakePressed += GetInputBack;
+        inputSO.OnDashPressed += GetInputForward;
+        inputSO.OnLeftClicked += GetInputLeft;
+        inputSO.OnRightClicked += GetInputRight;
+        inputSO.OnWheelBtnClicked += GetInputMiddle;
+        inputSO.OnWheeling += GetInputWheel;
+    }
+
+    private void AddInputUI(UIType type)
+    {
+        InputList.Add(type);
+        if (InputList.Count == 1) goButtonUI.ButtonUp();
+    }
+
+    private void RemoveInputUI(UIType type)
+    {
+        InputList.Remove(type);
+        if (InputList.Count == 0) goButtonUI.ButtonDown();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (IUI ui in uiDictionary.Values)
+        {
+            ui.OnOpen -= AddInputUI;
+            ui.OnClose -= RemoveInputUI;
+        }
+
+        inputSO.OnBrakePressed -= GetInputBack;
+        inputSO.OnDashPressed -= GetInputForward;
+        inputSO.OnLeftClicked -= GetInputLeft;
+        inputSO.OnRightClicked -= GetInputRight;
+        inputSO.OnWheelBtnClicked -= GetInputMiddle;
+        inputSO.OnWheeling -= GetInputWheel;
+    }
+
+    private void GetInputWheel() => UIInteractive(InteractiveType.Scroll);
+    private void GetInputMiddle() => UIInteractive(InteractiveType.Middle);
+    private void GetInputBack() => UIInteractive(InteractiveType.Back);
+    private void GetInputForward() => UIInteractive(InteractiveType.Forward);
+    private void GetInputLeft() => UIInteractive(InteractiveType.Left);
+    private void GetInputRight() => UIInteractive(InteractiveType.Right);
+
+    private void UIInteractive(InteractiveType interactiveType)
+    {
+        if (InputList.Count == 0)
+        {
+            foreach (IUI ui in uiDictionary.Values)
+            {
+                DoMove(interactiveType, ui);
+            }
+            return;
+        }
+
+        IUI inputUI = uiDictionary[InputList[InputList.Count - 1]];
+
+        DoMove(interactiveType, inputUI);
+    }
+
+    private void DoMove(InteractiveType interactiveType, IUI inputUI)
+    {
+        switch (interactiveType)
+        {
+            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Back: inputUI.BackMove(); break;
+            case InteractiveType.Left: inputUI.LeftMove(); break;
+            case InteractiveType.Right: inputUI.RightMove(); break;
+            case InteractiveType.Middle: inputUI.MiddleMove(); break;
+            case InteractiveType.Scroll: inputUI.ScrollMove(inputSO.XMoveDir); break;
+        }
+    }
+}

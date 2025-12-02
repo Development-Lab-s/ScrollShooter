@@ -1,6 +1,7 @@
 using System;
 using Member.JYG.Input;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Member.JYG._Code
 {
@@ -14,8 +15,11 @@ namespace Member.JYG._Code
         [field:SerializeField] public float ReverseForce { get; private set; }
         [field:SerializeField] public float BrakePower { get; private set; }
         [field: SerializeField] public float MovePower { get; private set; } //User's acceleration power (Move Force)
+        [field: SerializeField] public float DashCoolTime { get; private set; } 
+        [field: SerializeField] public float DashDuration { get; private set; } 
         
         private float _xVelocity;
+        
 
         private float _radius;
 

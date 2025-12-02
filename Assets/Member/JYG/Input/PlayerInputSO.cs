@@ -10,7 +10,16 @@ namespace Member.JYG.Input
     {
         private PlayerInput _playerInput;
 
+        public Action OnDashPressed;
+        public Action OnBrakePressed;
+        
+        public Action OnLeftClicked;
+        public Action OnRightClicked;
+        public Action OnWheelBtnClicked;
+
+        public Action OnWheeling;
         public bool IsBraking { get; private set; }
+        public int XMoveDir { get; private set; }
 
         private void OnEnable()
         {
@@ -27,10 +36,10 @@ namespace Member.JYG.Input
             _playerInput.Player.Disable();
         }
         
-        public float XMoveDir { get; private set; }
         public void OnMove(InputAction.CallbackContext context)
         {
-            XMoveDir = context.ReadValue<float>();
+            XMoveDir = (int)context.ReadValue<float>();
+            OnWheeling?.Invoke();
         }
 
         public void OnBrake(InputAction.CallbackContext context)
@@ -44,6 +53,31 @@ namespace Member.JYG.Input
             {
                 IsBraking = false;
             }
+            OnBrakePressed?.Invoke();
+        }
+
+        public void OnBoost(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnDashPressed?.Invoke();
+        }
+
+        public void OnLeftClick(InputAction.CallbackContext context)  
+        {
+            if(context.performed)
+                OnLeftClicked?.Invoke();
+        }
+
+        public void OnRightClick(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnRightClicked?.Invoke();
+        }
+
+        public void OnWheelClick(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnWheelBtnClicked?.Invoke();
         }
     }
 }
