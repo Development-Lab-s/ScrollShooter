@@ -63,5 +63,6 @@ public class GoButtonUI : MonoBehaviour
     private void OnDestroy()
     {
         goButton_Left.GetComponent<Button>().onClick?.RemoveAllListeners();
+        goButton_Right.GetComponent<Button>().onClick?.RemoveAllListeners();
     }
 }

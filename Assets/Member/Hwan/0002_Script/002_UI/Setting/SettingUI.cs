@@ -19,8 +19,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        //UIObject.GetComponentInChildren<SliderUI>().InitializeSlider(ScrollMove);
-        changeText = GetComponentInChildren<TextChangeMove>();
+        changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
         valueSetter = new(settingValuesSO.SettingValues, slider);
         InitializeSetting();
