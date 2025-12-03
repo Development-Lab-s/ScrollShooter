@@ -2,7 +2,8 @@ using UnityEngine;
 
 public enum UIType
 {
-    SettingUI
+    SettingUI,
+    GameOverUI
 }
 
 public enum InteractiveType

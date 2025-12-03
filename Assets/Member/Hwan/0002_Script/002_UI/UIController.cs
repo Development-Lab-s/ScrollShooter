@@ -1,18 +1,20 @@
 using Member.JYG.Input;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    private Dictionary<UIType, IUI> uiDictionary = new();
-    public bool MouseEnable { get; set; } = false;
     [SerializeField] private PlayerInputSO inputSO;
 
+    private Dictionary<UIType, IUI> uiDictionary = new();
     public List<UIType> InputList { get; private set; } = new();
+    private GoButtonUI goButtonUI;
 
     private void Awake()
     {
+        goButtonUI = GetComponentInChildren<GoButtonUI>();
+        goButtonUI.Initialize(GetInputForward, GetInputBack);
+
         foreach (IUI ui in GetComponentsInChildren<IUI>())
         {
             ui.Initialize();
@@ -32,14 +34,14 @@ public class UIController : MonoBehaviour
     private void AddInputUI(UIType type)
     {
         InputList.Add(type);
+        if (InputList.Count == 1) goButtonUI.ButtonUp();
     }
 
     private void RemoveInputUI(UIType type)
     {
         InputList.Remove(type);
+        if (InputList.Count == 0) goButtonUI.ButtonDown();
     }
-
-    public int GetInputListCnt() => InputList.Count;
 
     private void OnDestroy()
     {

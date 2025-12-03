@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Member/PCM/찐막 레전드 마우스 휠 깜빡.png.meta
-guid: 45e3d5dce052dda4aad92eda7dc9e46a
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 3060594270281221881
-    second: "\uCC10\uB9C9 \uB808\uC804\uB4DC \uB9C8\uC6B0\uC2A4 \uD720 \uAE5C\uBE61_0"
-========
-guid: a9e43923c65b99e4abe97ad90693f5b0
+guid: 39824cd5aaf9d2d47a4ae9afba2bff2a
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5883908543513742245
     second: Button-export_0
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Right.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,22 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/Member/PCM/찐막 레전드 마우스 휠 깜빡.png.meta
-      name: "\uCC10\uB9C9 \uB808\uC804\uB4DC \uB9C8\uC6B0\uC2A4 \uD720 \uAE5C\uBE61_0"
-========
       name: GoButton_Right_0
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Right.png.meta
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-<<<<<<<< HEAD:Assets/Member/PCM/찐막 레전드 마우스 휠 깜빡.png.meta
-        width: 1057
-        height: 478
-========
         width: 92
         height: 19
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Right.png.meta
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 25, y: 2, z: 49, w: 0}
@@ -159,13 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<<< HEAD:Assets/Member/PCM/찐막 레전드 마우스 휠 깜빡.png.meta
-      spriteID: 9f645b9e54a697a20800000000000000
-      internalID: 3060594270281221881
-========
       spriteID: 6fa2ba97cf75d7546b6eadcfaf9135a9
       internalID: -388434234
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Right.png.meta
       vertices: []
       indices: 
       edges: []
@@ -184,11 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<<< HEAD:Assets/Member/PCM/찐막 레전드 마우스 휠 깜빡.png.meta
-      "\uCC10\uB9C9 \uB808\uC804\uB4DC \uB9C8\uC6B0\uC2A4 \uD720 \uAE5C\uBE61_0": 3060594270281221881
-========
       GoButton_Right_0: -388434234
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Right.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

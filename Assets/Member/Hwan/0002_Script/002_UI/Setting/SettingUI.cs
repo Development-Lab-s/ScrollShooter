@@ -19,8 +19,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        UIObject.GetComponentInChildren<SliderUI>().InitializeSlider();
-        changeText = GetComponentInChildren<TextChangeMove>();
+        changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
         valueSetter = new(settingValuesSO.SettingValues, slider);
         InitializeSetting();
@@ -29,12 +28,14 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
+        Time.timeScale = 0;
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
     }
 
     public void Close()
     {
+        Time.timeScale = 1;
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
     }
@@ -77,6 +78,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value) 
     {
+        Debug.Log(value);
         if (UIObject.activeSelf == false) return;
         valueSetter.ChangeSliderValue(-value);
     }
