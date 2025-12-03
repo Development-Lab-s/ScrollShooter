@@ -67,7 +67,7 @@ public class UIController : MonoBehaviour
     private void GetInputRight() => UIInteractive(InteractiveType.Right);
 
     private void UIInteractive(InteractiveType interactiveType)
-    {
+    { 
         if (InputList.Count == 0)
         {
             foreach (IUI ui in uiDictionary.Values)
