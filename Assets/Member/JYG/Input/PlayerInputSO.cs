@@ -11,6 +11,7 @@ namespace Member.JYG.Input
         private PlayerInput _playerInput;
 
         public Action OnDashPressed;
+        public Action OnDashBlocked;
         public Action OnBrakePressed;
         
         public Action OnLeftClicked;
@@ -21,8 +22,12 @@ namespace Member.JYG.Input
         public bool IsBraking { get; private set; }
         public int XMoveDir { get; private set; }
 
+        private float _prevDashTime;
+        public bool canDash = true;
+
         private void OnEnable()
         {
+            canDash = true;
             if (_playerInput == null)
             {
                 _playerInput = new PlayerInput();
@@ -58,8 +63,21 @@ namespace Member.JYG.Input
 
         public void OnBoost(InputAction.CallbackContext context)
         {
-            if(context.performed)
-                OnDashPressed?.Invoke();
+            if (canDash)
+            {
+                if (context.performed)
+                {
+                    OnDashPressed?.Invoke();
+                    canDash = false;
+                }
+            }
+            else
+            {
+                if (context.performed)
+                {
+                    OnDashBlocked?.Invoke();
+                }
+            }
         }
 
         public void OnLeftClick(InputAction.CallbackContext context)  

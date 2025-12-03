@@ -6,28 +6,40 @@ namespace Member.JYG._Code
 {
     public class AfterEffector : MonoBehaviour
     {
-        [SerializeField] private Volume dashEffectVolume;
-        //private Player Player => GameManager.Instance.Player;
-    
-        private Player player => GameManager.Instance.Player; 
-        private void Awake()
+        [SerializeField] private Volume changeVolume;
+        [SerializeField] private int effectApplySpeed;
+        [SerializeField] private float effectCloseTime;
+        public void PlayPostProcessing(float duration) // Play with UnityEvent
         {
-            GameManager.Instance.Player.PlayerInputSO.OnDashPressed += HandlePlayerDashEffect;
+            StopAllCoroutines();
+            StartCoroutine(EffectWeightUp(duration));
         }
 
-        private void HandlePlayerDashEffect()
+        private IEnumerator EffectWeightDown()
         {
-            //StartCoroutine(EffectApply());
+            changeVolume.weight = 1;
+            while (changeVolume.weight > 0)
+            {
+                changeVolume.weight -= Time.deltaTime / effectCloseTime;
+                yield return null;
+            }
+            changeVolume.weight = 0;
+            changeVolume.enabled = false;
         }
-        private void OnDestroy()
+
+        private IEnumerator EffectWeightUp(float duration)
         {
-            GameManager.Instance.Player.PlayerInputSO.OnDashPressed -= HandlePlayerDashEffect;
+            changeVolume.enabled = true;
+            changeVolume.weight = 0;
+            while (changeVolume.weight < 1)
+            {
+                changeVolume.weight += Time.deltaTime * effectApplySpeed;
+                yield return null;
+            }
+            changeVolume.weight = 1;
+            yield return new WaitForSeconds(duration);
+            StartCoroutine(EffectWeightDown());
         }
-/*
-        private IEnumerator EffectApply()
-        {
-            
-        }*/
 
     }
 }

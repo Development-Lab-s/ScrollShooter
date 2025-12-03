@@ -1,9 +1,8 @@
 using UnityEngine;
-using YGPacks;
+using YGPacks; 
 
 namespace Member.JYG._Code
 {
-    [DefaultExecutionOrder(-1000)]
     public class GameManager : Singleton<GameManager>
     {
         public Player Player { get; private set; }
