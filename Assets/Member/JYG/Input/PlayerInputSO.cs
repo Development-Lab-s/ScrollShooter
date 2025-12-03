@@ -51,6 +51,7 @@ namespace Member.JYG.Input
         {
             if (context.performed)
             {
+                OnBrakePressed?.Invoke();
                 IsBraking = true;
             }
 
@@ -58,7 +59,7 @@ namespace Member.JYG.Input
             {
                 IsBraking = false;
             }
-            OnBrakePressed?.Invoke();
+            
         }
 
         public void OnBoost(InputAction.CallbackContext context)

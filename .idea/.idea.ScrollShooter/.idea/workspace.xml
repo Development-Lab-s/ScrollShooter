@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/AfterEffector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/AfterEffector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" afterDir="false" />
-    </list>
+    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +117,7 @@
       <workItem from="1764230797637" duration="8452000" />
       <workItem from="1764508776246" duration="3144000" />
       <workItem from="1764681735304" duration="3561000" />
-      <workItem from="1764749658188" duration="5143000" />
+      <workItem from="1764749658188" duration="5576000" />
     </task>
     <servers />
   </component>
