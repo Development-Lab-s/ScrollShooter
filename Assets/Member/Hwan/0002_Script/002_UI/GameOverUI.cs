@@ -1,14 +1,9 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class GameOverUI : MonoBehaviour, IUI
 {
-    [SerializeField] private RectTransform subObject;
-    [SerializeField] private int subOffset;
-    [SerializeField] private int subCount;
-    private Stack<RectTransform> subObjects = new();
-
     public GameObject UIObject { get; private set; }
 
     public UIType UIType => UIType.GameOverUI;
@@ -16,39 +11,28 @@ public class GameOverUI : MonoBehaviour, IUI
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
+    private NestingOpener nestingOpener;
+
     public void BackMove()
     {
-        OnClose?.Invoke(UIType);
+        Close();
     }
 
     public void Close()
     {
+        Time.timeScale = 1;
         OnClose?.Invoke(UIType);
     }
 
     public void FrontMove()
     {
-        OnClose?.Invoke(UIType);
+        Close();
     }
 
     public void Initialize()
     {
-        Transform subParent = transform.GetChild(1);
-
-        float middleX = Screen.width / 2;
-        float middleY = -Screen.height / 2;
-        float startX = -middleX + subObject.sizeDelta.x / 2 + subOffset;
-        float startY = middleY - subObject.sizeDelta.y / 2 - subOffset;
-
-        for (int i = 0; i < subCount; i++)
-        {
-            float t = (float)i / (subCount - 1); // 0 ~ 1
-            RectTransform rect = Instantiate(subObject, subParent).GetComponent<RectTransform>();
-            float anchorX = Mathf.Lerp(startX, 0, t);
-            float anchorY = Mathf.Lerp(startY, 0, t);
-            rect.anchoredPosition = new Vector2(anchorX, anchorY);
-            subObjects.Push(rect);
-        }
+        nestingOpener = GetComponent<NestingOpener>();
+        nestingOpener.Initialize();
     }
 
     public void LeftMove() { }
@@ -57,6 +41,8 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void Open()
     {
+        Time.timeScale = 0;
+        nestingOpener.StartNesting(UIObject);
         OnOpen?.Invoke(UIType);
     }
 

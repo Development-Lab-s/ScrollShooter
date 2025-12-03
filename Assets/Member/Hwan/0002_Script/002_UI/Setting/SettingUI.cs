@@ -28,12 +28,14 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
+        Time.timeScale = 0;
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
     }
 
     public void Close()
     {
+        Time.timeScale = 1;
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
     }
