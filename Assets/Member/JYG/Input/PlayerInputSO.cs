@@ -10,8 +10,24 @@ namespace Member.JYG.Input
     {
         private PlayerInput _playerInput;
 
+        public Action OnDashPressed;
+        public Action OnDashBlocked;
+        public Action OnBrakePressed;
+        
+        public Action OnLeftClicked;
+        public Action OnRightClicked;
+        public Action OnWheelBtnClicked;
+
+        public Action OnWheeling;
+        public bool IsBraking { get; private set; }
+        public int XMoveDir { get; private set; }
+
+        private float _prevDashTime;
+        public bool canDash = true;
+
         private void OnEnable()
         {
+            canDash = true;
             if (_playerInput == null)
             {
                 _playerInput = new PlayerInput();
@@ -25,16 +41,62 @@ namespace Member.JYG.Input
             _playerInput.Player.Disable();
         }
         
-        public float XMoveDir { get; private set; }
         public void OnMove(InputAction.CallbackContext context)
         {
-            XMoveDir = context.ReadValue<float>();
-            Debug.Log(XMoveDir);
+            XMoveDir = (int)context.ReadValue<float>();
+            OnWheeling?.Invoke();
         }
 
         public void OnBrake(InputAction.CallbackContext context)
         {
+            if (context.performed)
+            {
+                OnBrakePressed?.Invoke();
+                IsBraking = true;
+            }
+
+            if (context.canceled)
+            {
+                IsBraking = false;
+            }
             
+        }
+
+        public void OnBoost(InputAction.CallbackContext context)
+        {
+            if (canDash)
+            {
+                if (context.performed)
+                {
+                    OnDashPressed?.Invoke();
+                    canDash = false;
+                }
+            }
+            else
+            {
+                if (context.performed)
+                {
+                    OnDashBlocked?.Invoke();
+                }
+            }
+        }
+
+        public void OnLeftClick(InputAction.CallbackContext context)  
+        {
+            if(context.performed)
+                OnLeftClicked?.Invoke();
+        }
+
+        public void OnRightClick(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnRightClicked?.Invoke();
+        }
+
+        public void OnWheelClick(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnWheelBtnClicked?.Invoke();
         }
     }
 }

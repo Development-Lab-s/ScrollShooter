@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Movement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Movement.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerInput.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerInput.inputactions.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +15,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d35f3fd492a14898b9e7cb0372b7ba3d1e0200/75/7289ea11/Mathf.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/ParticleFeedback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@3d082aa477f5/Runtime/Volume/Volume.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@3d082aa477f5/Runtime/Volume/VolumeParameter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -107,6 +107,17 @@
       <workItem from="1762262731377" duration="36000" />
       <workItem from="1762263182901" duration="942000" />
       <workItem from="1762330340042" duration="3852000" />
+      <workItem from="1762348558930" duration="2730000" />
+      <workItem from="1762398923598" duration="4852000" />
+      <workItem from="1762416811752" duration="7000" />
+      <workItem from="1764144834411" duration="8808000" />
+      <workItem from="1764159581905" duration="1336000" />
+      <workItem from="1764222794760" duration="1318000" />
+      <workItem from="1764224174789" duration="1398000" />
+      <workItem from="1764230797637" duration="8452000" />
+      <workItem from="1764508776246" duration="3144000" />
+      <workItem from="1764681735304" duration="3561000" />
+      <workItem from="1764749658188" duration="5576000" />
     </task>
     <servers />
   </component>
