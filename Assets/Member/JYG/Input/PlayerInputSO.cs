@@ -48,6 +48,11 @@ namespace Member.JYG.Input
                 XMoveDir = (int)context.ReadValue<float>();
                 OnWheeling?.Invoke();
             }
+
+            if (context.canceled)
+            {
+                XMoveDir = 0;
+            }
         }
 
         public void OnBrake(InputAction.CallbackContext context)
