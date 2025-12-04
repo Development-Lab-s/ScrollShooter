@@ -14,6 +14,7 @@ public class SettingUI : MonoBehaviour, IUI
     public event Action<UIType> OnClose;
 
     public InteractiveType OpenInput => InteractiveType.Middle;
+
     public UIType UIType => UIType.SettingUI;
 
     public ValueSetter valueSetter;
@@ -29,6 +30,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
+
         Time.timeScale = 0;
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
@@ -65,17 +67,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void RightMove() { }
 
-    public void MiddleMove()
-    {
-        if (UIObject.activeSelf == true)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public void MiddleMove() => Close();
 
     public void ScrollMove(int value) 
     {
