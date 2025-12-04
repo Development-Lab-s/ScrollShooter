@@ -22,9 +22,10 @@ public class ShopUI : MonoBehaviour, IUI
     private int _currentIndex = 0;
 
     public GameObject UIObject { get; }
-    public UIType UIType { get; }
+    public UIType UIType => UIType.ShopUI;
+    public InteractiveType OpenInput => InteractiveType.None;
 
-    public void Initialize()
+    public void Initialize(UIController uIController)
     {
         for (int i = 0; i < buttonAmount; i++)
         {
@@ -40,7 +41,6 @@ public class ShopUI : MonoBehaviour, IUI
 
         Open();
     }
-
 
     public void Open()
     {

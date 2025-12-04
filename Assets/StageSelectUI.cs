@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour, IUI
@@ -22,8 +21,12 @@ public class StageSelectUI : MonoBehaviour, IUI
     
     public GameObject UIObject { get; }
     public UIType UIType { get; }
-    public void Initialize()
+    public InteractiveType OpenInput { get; }
+
+    public void Initialize(UIController uIController)
     {
+        
+        
         for (int i = 0; i < buttonAmount; i++)
         {
             var button = Instantiate(buttonPrefab, transform);
