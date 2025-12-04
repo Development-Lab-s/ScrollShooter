@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1641285328893480261}
   - component: {fileID: 1663108916272520863}
   - component: {fileID: 6881158876693191813}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Number_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19627,7 +19627,7 @@ GameObject:
   - component: {fileID: 5160119008397824316}
   - component: {fileID: 1169502226479659339}
   - component: {fileID: 109944953715730855}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Number_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29644,7 +29644,7 @@ GameObject:
   - component: {fileID: 841418291506339848}
   - component: {fileID: 7774286477074411705}
   - component: {fileID: 712442058002197330}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Number_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39368,7 +39368,7 @@ GameObject:
   - component: {fileID: 1806230480411513950}
   - component: {fileID: 4181079904666366746}
   - component: {fileID: 5621033978985679525}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Number_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44428,6 +44428,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 999999
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7172907735105212498}
+        m_TargetAssemblyTypeName: Member.JYG._Code.AfterEffector, Assembly-CSharp
+        m_MethodName: VignettePosChangeToPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
           m_IntArgument: 0
           m_FloatArgument: 999999
           m_StringArgument: 
