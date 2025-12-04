@@ -1,3 +1,4 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,18 +35,6 @@ public class UIController : MonoBehaviour
         inputSO.OnRightClicked += GetInputRight;
         inputSO.OnWheelBtnClicked += GetInputMiddle;
         inputSO.OnWheeling += GetInputWheel;
-    }
-
-    private void AddInputUI(UIType type)
-    {
-        openUI = type;
-        goButtonUI.ButtonUp();
-    }
-
-    private void RemoveInputUI(UIType type)
-    {
-        openUI = UIType.None;
-        goButtonUI.ButtonDown();
     }
 
     private void OnDestroy()
@@ -86,8 +75,20 @@ public class UIController : MonoBehaviour
             return;
         }
         IUI inputUI = uiDictionary[openUI];
-
         DoMove(interactiveType, inputUI);
+    }
+    private void AddInputUI(UIType type)
+    {
+        GameManager.Instance.Player.PlayerInputSO.OffInput();
+        openUI = type;
+        goButtonUI.ButtonUp();
+    }
+
+    private void RemoveInputUI(UIType type)
+    {
+        GameManager.Instance.Player.PlayerInputSO.ActiveInput();
+        openUI = UIType.None;
+        goButtonUI.ButtonDown();
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)

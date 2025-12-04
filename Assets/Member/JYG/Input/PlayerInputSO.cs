@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 using static PlayerInput;
 
 namespace Member.JYG.Input
@@ -21,9 +22,11 @@ namespace Member.JYG.Input
         public Action OnWheeling;
         public bool IsBraking { get; private set; }
         public int XMoveDir { get; private set; }
+        public float wheelDeltaValue { get; private set; }
 
         private float _prevDashTime;
         public bool canDash = true;
+        public bool isUIInput = false;
 
         private void OnEnable()
         {
@@ -72,20 +75,20 @@ namespace Member.JYG.Input
 
         public void OnBoost(InputAction.CallbackContext context)
         {
-            if (canDash)
+            if (context.performed == false) return;
+            if (isUIInput == true)
             {
-                if (context.performed)
-                {
-                    OnDashPressed?.Invoke();
-                    canDash = false;
-                }
+                OnDashPressed?.Invoke();
+                return;
+            }
+            if (canDash == true)
+            {
+                OnDashPressed?.Invoke();
+                canDash = false;
             }
             else
             {
-                if (context.performed)
-                {
-                    OnDashBlocked?.Invoke();
-                }
+                OnDashBlocked?.Invoke();
             }
         }
 

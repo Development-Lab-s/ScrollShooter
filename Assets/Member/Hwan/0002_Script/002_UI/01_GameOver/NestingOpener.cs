@@ -1,7 +1,9 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class NestingOpener : MonoBehaviour
 {
@@ -44,10 +46,12 @@ public class NestingOpener : MonoBehaviour
         WaitForSecondsRealtime waitCoroutine = new WaitForSecondsRealtime(nestingTime / nestingCount);
         for (int i = 0; i < nestingCount; i++)
         {
+            SoundManager.Instance.PlaySound("GameOver");
             UIObjects[i].gameObject.SetActive(true);
             yield return waitCoroutine;
         }
 
+        SoundManager.Instance.PlaySound("GameOver");
         OpenAction?.Invoke();
     }
     public void StartDeNesting(Action CloseAction)

@@ -9,8 +9,6 @@ public class TextChangeMove : MonoBehaviour
     private TextMeshProUGUI tmpProUGUI;
     [SerializeField] float duration = 0.18f; // ÀüÃ¼ ½Ã°£(Âª°Ô)
     [SerializeField] float strengthY = 18f;  // À§¾Æ·¡ ÁøÆø(ÇÈ¼¿ ±âÁØ)
-
-    private Sequence seq;
     public bool IsShaking { get; private set; }
 
     public void Initialize()
@@ -29,11 +27,8 @@ public class TextChangeMove : MonoBehaviour
     private void ChangeTextMove()
     {
         IsShaking = true;
-        seq = DOTween.Sequence();
         float tempYValue = rectTrn.anchoredPosition.y;
 
-        seq = DOTween.Sequence();
-        seq.Append(rectTrn.DOPunchAnchorPos(new Vector2(0f, strengthY), duration).SetUpdate(true));
-        seq.OnComplete(() => IsShaking = false);
+        rectTrn.DOPunchAnchorPos(new Vector2(0f, strengthY), duration).SetUpdate(true).OnComplete(() => IsShaking = false);
     }
 }

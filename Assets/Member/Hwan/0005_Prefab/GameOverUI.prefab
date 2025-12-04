@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 8080924069130259889}
   - component: {fileID: 7618746305837469102}
   m_Layer: 5
-  m_Name: UI
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
