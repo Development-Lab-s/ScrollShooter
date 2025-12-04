@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/ObjectViewportKeeper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/ObjectViewportKeeper.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/Sounds/SampleSound.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/Sounds/SampleSound.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +19,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d35f3fd492a14898b9e7cb0372b7ba3d1e0200/75/7289ea11/Mathf.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/ParticleFeedback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -128,6 +123,7 @@
       <workItem from="1764681735304" duration="3561000" />
       <workItem from="1764749658188" duration="5576000" />
       <workItem from="1764768267922" duration="762000" />
+      <workItem from="1764813229451" duration="1993000" />
     </task>
     <servers />
   </component>
