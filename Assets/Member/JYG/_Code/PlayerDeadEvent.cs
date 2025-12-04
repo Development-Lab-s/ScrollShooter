@@ -25,11 +25,11 @@ public class PlayerDeadEvent : MonoBehaviour
 
     private IEnumerator DeletePlayer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.275f);
         SoundManager.Instance.PlaySound("ValueOut");
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.8f - 0.275f);
         SoundManager.Instance.PlaySound("DeadSound");
-        GameManager.Instance.Player.SpriteRenderer.sprite = null;
+        _player.SpriteRenderer.sprite = null;
         foreach (GameObject hideThing in hideThings)
         {
             hideThing.gameObject.SetActive(false);

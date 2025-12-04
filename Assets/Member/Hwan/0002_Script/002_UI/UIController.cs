@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlayerInputSO inputSO;
 
     private Dictionary<UIType, IUI> uiDictionary = new();
-    private UIType openUI;
+    private List<UIType> openUIList = new();
     private GoButtonUI goButtonUI;
 
     public bool CanInput { get; set; }
@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour
         goButtonUI = GetComponentInChildren<GoButtonUI>();
         goButtonUI.Initialize(GetInputForward, GetInputBack);
 
-        foreach (IUI ui in GetComponentsInChildren<IUI>())
+        foreach (IUI ui in GetComponentsInChildren<IUI>(true))
         {
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
@@ -64,31 +64,39 @@ public class UIController : MonoBehaviour
     {
         if (CanInput == false) return;
 
-        if (openUI == UIType.None)
+        if (openUIList.Count == 0)
         {
             foreach (IUI ui in uiDictionary.Values)
             {
                 if (ui.OpenInput != interactiveType) continue;
-                DoMove(interactiveType, ui);
+                ui.Open();
                 return;
             }
             return;
         }
-        IUI inputUI = uiDictionary[openUI];
+
+        IUI inputUI = uiDictionary[openUIList.Last()];
         DoMove(interactiveType, inputUI);
     }
+
     private void AddInputUI(UIType type)
     {
-        GameManager.Instance.Player.PlayerInputSO.OffInput();
-        openUI = type;
-        goButtonUI.ButtonUp();
+        openUIList.Add(type);
+        if (openUIList.Count == 1)
+        {
+            GameManager.Instance.Player.PlayerInputSO.OffInput();
+            goButtonUI.ButtonUp();
+        }
     }
 
     private void RemoveInputUI(UIType type)
     {
-        GameManager.Instance.Player.PlayerInputSO.ActiveInput();
-        openUI = UIType.None;
-        goButtonUI.ButtonDown();
+        openUIList.Remove(type);
+        if (openUIList.Count == 0)
+        {
+            GameManager.Instance.Player.PlayerInputSO.ActiveInput();
+            goButtonUI.ButtonDown();
+        }
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)
