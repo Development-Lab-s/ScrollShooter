@@ -1,10 +1,17 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour, IUI
 {
+    public int buttonAmount;
+    [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private GameObject buttonsParent;
+    
+    [SerializeField] private TextMeshProUGUI previewSkinName;
+    
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
@@ -19,10 +26,13 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        // 스킨 버튼 수집
-        foreach (var btn in skinContent.GetComponentsInChildren<SkinButton>())
+        for (int i = 0; i < buttonAmount; i++)
         {
-            skinButtons.Add(btn);
+            var button = Instantiate(buttonPrefab, transform);
+            button.transform.SetParent(buttonsParent.transform);
+            button.name = "button" + i;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "스킨" + i;
+            skinButtons.Add(button.GetComponentInChildren<SkinButton>());
         }
 
         Highlight(0);
@@ -39,19 +49,19 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void Close()
     {
-        
+        OnClose?.Invoke(UIType);
     }
 
     public void BackMove()
     {
-        //스킨 선택
-        skinButtons[currentIndex].OnClick();
+        //상점 닫기
+        Close();
     }
 
     public void FrontMove()
     {
-        //상점 닫기
-        gameObject.SetActive(false);
+        //스킨 선택
+        skinButtons[currentIndex].OnClick();
     }
 
     public void LeftMove()
@@ -72,7 +82,6 @@ public class ShopUI : MonoBehaviour, IUI
     public void ScrollMove(int value)
     {
         //스킨 둘러보기
-        Debug.Log(value);
         if (value == 0) return;
 
         int next = Mathf.Clamp(currentIndex + value, 0, skinButtons.Count - 1);
@@ -83,6 +92,8 @@ public class ShopUI : MonoBehaviour, IUI
 
         Highlight(currentIndex);
         ScrollTo(currentIndex);
+        
+        previewSkinName.text = skinButtons[currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
     }
     
     private void Highlight(int index)
