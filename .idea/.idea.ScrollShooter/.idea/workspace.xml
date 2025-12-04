@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/002_UI/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/002_UI/UIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/003_Util/DefineEnum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/003_Util/DefineEnum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StageSelectUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StageSelectUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Material/Particle/Player/Smoke.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Material/Particle/Player/Smoke.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +40,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "PTY",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;JYG&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -67,7 +67,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -129,6 +129,7 @@
       <workItem from="1764749658188" duration="5576000" />
       <workItem from="1764768267922" duration="762000" />
       <workItem from="1764813229451" duration="3947000" />
+      <workItem from="1764836653419" duration="2724000" />
     </task>
     <servers />
   </component>
