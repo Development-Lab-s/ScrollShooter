@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour, IUI
@@ -16,6 +17,7 @@ public class ShopUI : MonoBehaviour, IUI
     public event Action<UIType> OnOpen;
 
     [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private Transform skinContent;
     private List<SkinButton> _skinButtons = new();
 
@@ -37,7 +39,7 @@ public class ShopUI : MonoBehaviour, IUI
         }
 
         Highlight(0);
-        ScrollTo(0);
+        ScrollTo();
 
         Open();
     }
@@ -91,7 +93,7 @@ public class ShopUI : MonoBehaviour, IUI
         _currentIndex = next;
 
         Highlight(_currentIndex);
-        ScrollTo(_currentIndex);
+        ScrollTo();
         
         previewSkinName.text = _skinButtons[_currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
     }
@@ -102,12 +104,17 @@ public class ShopUI : MonoBehaviour, IUI
             _skinButtons[i].SetHighlight(i == index);
     }
 
-    private void ScrollTo(int index)
+    private void ScrollTo()
     {
-        if (_skinButtons.Count <= 1) return;
-
-        float normalized = 1f - (float)index / (_skinButtons.Count - 1);
-        scrollRect.verticalNormalizedPosition = normalized;
+        if (Mouse.current.scroll.ReadValue().y == -1)
+        {
+            if (_currentIndex % 3 == 0)
+                scrollbar.value = 1 - _currentIndex / 3 * 0.5f;
+        }
+        else if (Mouse.current.scroll.ReadValue().y == 1)
+        {
+            if ((_currentIndex + 1) % 3 == 0)
+                scrollbar.value = 1 - _currentIndex / 3 * 0.5f;
+        }
     }
-
 }

@@ -14,5 +14,23 @@ namespace Member.JYG._Code
                 return player;
             }
         }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            SetCursorLock(true);
+        }
+
+        public void SetCursorLock(bool isActive)
+        {
+            if (isActive)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
     }
 }

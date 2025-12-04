@@ -67,6 +67,12 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.OnDashPressed += HandleDashPressed;
             PlayerInputSO.OnDashBlocked += HandleDashBlocked;
+            PlayerInputSO.OnBrakePressed += HandleBraked;
+        }
+
+        private void HandleBraked()
+        {
+            SoundManager.Instance.PlaySound("Braking");
         }
 
         private void HandleDashBlocked()
@@ -87,6 +93,7 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
+            PlayerInputSO.OnBrakePressed -= HandleBraked;
         }
 
         private IEnumerator PlayerDash()
