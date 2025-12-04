@@ -13,11 +13,12 @@ public class SettingUI : MonoBehaviour, IUI
     public event Action<UIType> OnOpen;
     public event Action<UIType> OnClose;
 
+    public InteractiveType OpenInput => InteractiveType.Middle;
     public UIType UIType => UIType.SettingUI;
 
     public ValueSetter valueSetter;
 
-    public void Initialize()
+    public void Initialize(UIController uIController)
     {
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
@@ -42,14 +43,14 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        if (UIObject.activeSelf == false || changeText.IsShaking == true) return;
+        if (changeText.IsShaking == true) return;
         valueSetter.ChangeType(-1);
         InitializeSetting();
     }
 
     public void FrontMove()
     {
-        if (UIObject.activeSelf == false || changeText.IsShaking == true) return;
+        if (changeText.IsShaking == true) return;
         valueSetter.ChangeType(1);
         InitializeSetting();
     }
@@ -78,8 +79,6 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value) 
     {
-        Debug.Log(value);
-        if (UIObject.activeSelf == false) return;
         valueSetter.ChangeSliderValue(-value);
     }
 }

@@ -1,5 +1,6 @@
 using Member.JYG.Input;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -7,17 +8,21 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlayerInputSO inputSO;
 
     private Dictionary<UIType, IUI> uiDictionary = new();
-    public List<UIType> InputList { get; private set; } = new();
+    private UIType openUI;
     private GoButtonUI goButtonUI;
+
+    public bool CanInput { get; set; }
 
     private void Awake()
     {
+        CanInput = true; 
+
         goButtonUI = GetComponentInChildren<GoButtonUI>();
         goButtonUI.Initialize(GetInputForward, GetInputBack);
 
         foreach (IUI ui in GetComponentsInChildren<IUI>())
         {
-            ui.Initialize();
+            ui.Initialize(this);
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
             uiDictionary.Add(ui.UIType, ui);
@@ -33,14 +38,14 @@ public class UIController : MonoBehaviour
 
     private void AddInputUI(UIType type)
     {
-        InputList.Add(type);
-        if (InputList.Count == 1) goButtonUI.ButtonUp();
+        openUI = type;
+        goButtonUI.ButtonUp();
     }
 
     private void RemoveInputUI(UIType type)
     {
-        InputList.Remove(type);
-        if (InputList.Count == 0) goButtonUI.ButtonDown();
+        openUI = UIType.None;
+        goButtonUI.ButtonDown();
     }
 
     private void OnDestroy()
@@ -68,16 +73,20 @@ public class UIController : MonoBehaviour
 
     private void UIInteractive(InteractiveType interactiveType)
     {
-        if (InputList.Count == 0)
+        if (CanInput == false) return;
+
+        if (openUI == UIType.None)
         {
             foreach (IUI ui in uiDictionary.Values)
             {
+                if (ui.OpenInput != interactiveType) continue;
                 DoMove(interactiveType, ui);
+                return;
             }
             return;
         }
 
-        IUI inputUI = uiDictionary[InputList[InputList.Count - 1]];
+        IUI inputUI = uiDictionary[openUI];
 
         DoMove(interactiveType, inputUI);
     }
