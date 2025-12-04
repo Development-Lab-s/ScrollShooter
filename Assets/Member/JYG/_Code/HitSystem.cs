@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,39 +8,32 @@ public class HitSystem : MonoBehaviour
 
     [SerializeField] private int maxLife;
 
+    private int _life;
     public int Life
     {
-        get => Life;
+        get => _life;
         set
         {
-            if (value + Life >= maxLife)
+            if (value > maxLife)
             {
-                Life = maxLife;
+                _life = maxLife;
             }
-            else if(value + Life <= 0)
+            else if(value <= 0)
             {
-                Life = 0;
+                _life = 0;
+                onDead?.Invoke();
             }
             else
             {
-                Life += value;
+                _life = value;
             }
 
-            if (value < 0)
-            {
-                JudgeIsDead();
-            }
+            onHit?.Invoke();
         }
     }
 
-    private void JudgeIsDead()
+    private void Awake()
     {
-        if (Life == 0)
-        {
-            onDead?.Invoke();
-            return;
-        }
-        onHit?.Invoke();
+        _life = maxLife;
     }
-    
 }
