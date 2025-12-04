@@ -1,7 +1,8 @@
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DisableScrollWheel : ScrollRect
+public class UIWheel : ScrollRect
 {
     public override void OnScroll(PointerEventData data)
     {

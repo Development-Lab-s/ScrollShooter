@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/002_UI/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/002_UI/UIController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/003_Util/DefineEnum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/Hwan/0002_Script/003_Util/DefineEnum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Assets/PreviewRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Assets/PreviewRenderTexture.renderTexture" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/ShopScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/ShopScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/StageSelectScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/StageSelectScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/DisableScroolWheel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/DisableScroolWheel.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StageSelectUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StageSelectUI.cs" afterDir="false" />
     </list>
@@ -40,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "PTY",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PTY&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
