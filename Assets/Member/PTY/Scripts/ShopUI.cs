@@ -17,9 +17,9 @@ public class ShopUI : MonoBehaviour, IUI
 
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private Transform skinContent;
-    private List<SkinButton> skinButtons = new();
+    private List<SkinButton> _skinButtons = new();
 
-    private int currentIndex = 0;
+    private int _currentIndex = 0;
 
     public GameObject UIObject { get; }
     public UIType UIType { get; }
@@ -30,9 +30,9 @@ public class ShopUI : MonoBehaviour, IUI
         {
             var button = Instantiate(buttonPrefab, transform);
             button.transform.SetParent(buttonsParent.transform);
-            button.name = "button" + i;
+            button.name = "skin" + i;
             button.GetComponentInChildren<TextMeshProUGUI>().text = "스킨" + i;
-            skinButtons.Add(button.GetComponentInChildren<SkinButton>());
+            _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
         }
 
         Highlight(0);
@@ -61,7 +61,7 @@ public class ShopUI : MonoBehaviour, IUI
     public void FrontMove()
     {
         //스킨 선택
-        skinButtons[currentIndex].OnClick();
+        _skinButtons[_currentIndex].OnClick();
     }
 
     public void LeftMove()
@@ -84,29 +84,29 @@ public class ShopUI : MonoBehaviour, IUI
         //스킨 둘러보기
         if (value == 0) return;
 
-        int next = Mathf.Clamp(currentIndex + value, 0, skinButtons.Count - 1);
+        int next = Mathf.Clamp(_currentIndex + value, 0, _skinButtons.Count - 1);
 
-        if (next == currentIndex) return;
+        if (next == _currentIndex) return;
 
-        currentIndex = next;
+        _currentIndex = next;
 
-        Highlight(currentIndex);
-        ScrollTo(currentIndex);
+        Highlight(_currentIndex);
+        ScrollTo(_currentIndex);
         
-        previewSkinName.text = skinButtons[currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
+        previewSkinName.text = _skinButtons[_currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
     }
     
     private void Highlight(int index)
     {
-        for (int i = 0; i < skinButtons.Count; i++)
-            skinButtons[i].SetHighlight(i == index);
+        for (int i = 0; i < _skinButtons.Count; i++)
+            _skinButtons[i].SetHighlight(i == index);
     }
 
     private void ScrollTo(int index)
     {
-        if (skinButtons.Count <= 1) return;
+        if (_skinButtons.Count <= 1) return;
 
-        float normalized = 1f - (float)index / (skinButtons.Count - 1);
+        float normalized = 1f - (float)index / (_skinButtons.Count - 1);
         scrollRect.verticalNormalizedPosition = normalized;
     }
 
