@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Input/PlayerInputSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test/PP Profile 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Input/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Input/PlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Input/PlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Input/PlayerInput.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/ParticleFeedback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@3d082aa477f5/Runtime/Volume/Volume.cs" root0="SKIP_HIGHLIGHTING" />

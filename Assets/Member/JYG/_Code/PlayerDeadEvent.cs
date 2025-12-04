@@ -1,0 +1,34 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Member.JYG._Code;
+using UnityEngine;
+
+public class PlayerDeadEvent : MonoBehaviour
+{
+    private Player _player;
+    public List<GameObject> hideThings = new  List<GameObject>();
+
+    private void Awake()
+    {
+        _player = transform.parent.root.GetComponent<Player>();
+    }
+
+    public void PlayerDeadEvt()
+    {
+        _player.StopAllCoroutines();
+        _player.StopXYVelocity();
+        _player.PlayerInputSO.OffInput();
+        StartCoroutine(DeletePlayer());
+    }
+
+    private IEnumerator DeletePlayer()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.Player.SpriteRenderer.sprite = null;
+        foreach (GameObject hideThing in hideThings)
+        {
+            hideThing.gameObject.SetActive(false);
+        }
+    }
+}

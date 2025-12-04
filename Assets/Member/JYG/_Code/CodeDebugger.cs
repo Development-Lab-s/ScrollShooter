@@ -17,9 +17,4 @@ public class CodeDebugger : MonoBehaviour
             hitSystem.Life -= 1;
         }
     }
-
-    public void Debugging()
-    {
-        Debug.Log("Debugging");
-    }
 }

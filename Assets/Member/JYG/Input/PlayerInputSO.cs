@@ -106,5 +106,15 @@ namespace Member.JYG.Input
             if(context.performed)
                 OnWheelBtnClicked?.Invoke();
         }
+
+        public void OffInput()
+        {
+            _playerInput.Player.Disable();
+        }
+
+        public void ActiveInput()
+        {
+            _playerInput.Player.Enable();
+        }
     }
 }

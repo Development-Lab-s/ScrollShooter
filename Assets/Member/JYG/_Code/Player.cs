@@ -12,6 +12,7 @@ namespace Member.JYG._Code
     {
         [field:SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
         public Rigidbody2D Rigidbody2D { get; private set; }
+        public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
         
         [field:SerializeField] public float MaxSpeed { get; private set; }
@@ -53,6 +54,7 @@ namespace Member.JYG._Code
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             Collider = GetComponent<CircleCollider2D>();
+            SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
             
             Rigidbody2D.gravityScale = 0;
             Rigidbody2D.linearVelocityY = YSpeed;
@@ -179,6 +181,12 @@ namespace Member.JYG._Code
                 MaxSpeed = speed;
                 Rigidbody2D.linearVelocityY = YSpeed;
             }
+        }
+
+        public void StopXYVelocity()
+        {
+            Rigidbody2D.linearVelocityY = 0;
+            XVelocity = 0;
         }
     }
 }

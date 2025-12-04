@@ -4939,7 +4939,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -5007,7 +5007,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5060,7 +5060,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9940,7 +9940,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -19805,6 +19805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67946569375582191}
   - component: {fileID: 7456655244151820500}
+  - component: {fileID: 4749156053469969332}
   m_Layer: 0
   m_Name: DeadParticle
   m_TagString: Untagged
@@ -19846,6 +19847,18 @@ MonoBehaviour:
   - {fileID: 7315879886176503653}
   - {fileID: 5482308259899361718}
   - {fileID: 6004395363313886923}
+--- !u!114 &4749156053469969332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276158675237999918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a381bad2e0d3144929b58aef51d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6306832427052725546
 GameObject:
   m_ObjectHideFlags: 0
@@ -19941,7 +19954,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -25003,12 +25016,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CodeDebugger, Assembly-CSharp
-        m_MethodName: Debugging
+      - m_Target: {fileID: 4749156053469969332}
+        m_TargetAssemblyTypeName: PlayerDeadEvent, Assembly-CSharp
+        m_MethodName: PlayerDeadEvt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25018,6 +25028,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   maxLife: 5
 --- !u!1 &8334526850832328004
 GameObject:
