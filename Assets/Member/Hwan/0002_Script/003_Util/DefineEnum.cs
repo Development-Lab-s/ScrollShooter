@@ -4,7 +4,8 @@ public enum UIType
 {
     None,
     SettingUI,
-    GameOverUI
+    GameOverUI,
+    ShopUI
 }
 
 public enum InteractiveType

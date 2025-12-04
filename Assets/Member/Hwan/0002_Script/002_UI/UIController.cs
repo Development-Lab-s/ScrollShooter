@@ -22,10 +22,10 @@ public class UIController : MonoBehaviour
 
         foreach (IUI ui in GetComponentsInChildren<IUI>())
         {
-            ui.Initialize(this);
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
             uiDictionary.Add(ui.UIType, ui);
+            ui.Initialize(this);
         }
 
         inputSO.OnBrakePressed += GetInputBack;
@@ -85,7 +85,6 @@ public class UIController : MonoBehaviour
             }
             return;
         }
-
         IUI inputUI = uiDictionary[openUI];
 
         DoMove(interactiveType, inputUI);
@@ -100,7 +99,7 @@ public class UIController : MonoBehaviour
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;
             case InteractiveType.Middle: inputUI.MiddleMove(); break;
-            case InteractiveType.Scroll: inputUI.ScrollMove(inputSO.XMoveDir); break;
+            case InteractiveType.Scroll: inputUI.ScrollMove(-inputSO.XMoveDir); break;
         }
     }
 }

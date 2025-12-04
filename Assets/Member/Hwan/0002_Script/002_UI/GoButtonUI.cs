@@ -23,6 +23,8 @@ public class GoButtonUI : MonoBehaviour
         goButton_Right = transform.GetChild(1).GetComponent<Button>();
         goButton_Left.onClick.AddListener(() => leftClick?.Invoke());
         goButton_Right.onClick.AddListener(() => rigthClick?.Invoke());
+        goButton_Left.gameObject.SetActive(true);
+        goButton_Right.gameObject.SetActive(true);
     }
 
     public void ButtonUp()

@@ -40,7 +40,7 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void Initialize(UIController uiController)
     {
-        //GameManager.Instance.Player.OnDead += Open;
+        GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(Open);
         this.uiController = uiController;
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
