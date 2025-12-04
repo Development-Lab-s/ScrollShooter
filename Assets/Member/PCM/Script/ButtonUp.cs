@@ -9,6 +9,7 @@ public class ButtonUp : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private float targetY = 0;
     [SerializeField] private TitlePAni pAni;
+    [SerializeField] private DescChange desc;
     private bool isBool;
     private bool IsBool
     {
@@ -30,12 +31,14 @@ public class ButtonUp : MonoBehaviour
 
     private void Awake()
     {
-         pAni.GetComponent<TitlePAni>();
+        pAni.GetComponent<TitlePAni>();
+        desc.GetComponent<DescChange>();
         rectTransform = buttonUp.GetComponent<RectTransform>();
     }
 
     private void Start()
     {
+        desc.OnChange += desc.ChangeText;
         pAni.isTrigger += pAni.ConverSion;
         rectTransform.anchoredPosition = Vector2.zero;
     }
@@ -49,11 +52,13 @@ public class ButtonUp : MonoBehaviour
         if (isBool)
         {
             Debug.Log("aa");
+            desc.ChangeText(true);
             pAni?.isTrigger.Invoke(true);
         }
         if (!isBool)
         {
             Debug.Log("DD");
+            desc.ChangeText(false);
             pAni?.isTrigger.Invoke(false);
         }
         Debug.Log(isBool);

@@ -5,7 +5,8 @@ public enum UIType
     None,
     SettingUI,
     GameOverUI,
-    ShopUI
+    ShopUI,
+    StageSelectUI
 }
 
 public enum InteractiveType
