@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/AfterEffector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/AfterEffector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/csiimnida/CSILib/SoundManager/SoundListSO.asset" afterDir="false" />
-    </list>
+    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +121,7 @@
       <workItem from="1764749658188" duration="5576000" />
       <workItem from="1764768267922" duration="762000" />
       <workItem from="1764813229451" duration="3947000" />
-      <workItem from="1764855783715" duration="1333000" />
+      <workItem from="1764855783715" duration="2314000" />
     </task>
     <servers />
   </component>

@@ -24562,7 +24562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5910713047d0b441956dbaa7b24122a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeVolume: {fileID: 0}
+  changeVolume: {fileID: 987059472767125103}
   effectApplySpeed: 20
   effectCloseTime: 1
 --- !u!1 &3750739969321558977
@@ -34466,6 +34466,55 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6440932842494235558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918840619094050764}
+  - component: {fileID: 987059472767125103}
+  m_Layer: 0
+  m_Name: PP (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &918840619094050764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440932842494235558}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7519325051438981142}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987059472767125103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440932842494235558}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: dbe0c26021585ee439ea9bdf06cc1038, type: 2}
 --- !u!1 &7415295024267414238
 GameObject:
   m_ObjectHideFlags: 0
@@ -44227,6 +44276,7 @@ Transform:
   - {fileID: 6316591200596497723}
   - {fileID: 5290364929203457663}
   - {fileID: 561497856716970405}
+  - {fileID: 918840619094050764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &705383825179212660
@@ -44438,7 +44488,7 @@ MonoBehaviour:
         m_MethodName: VignettePosChangeToPlayer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 987059472767125103}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
           m_IntArgument: 0
           m_FloatArgument: 999999
