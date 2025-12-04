@@ -2,12 +2,15 @@ using UnityEngine;
 
 public enum UIType
 {
+    None,
     SettingUI,
-    GameOverUI
+    GameOverUI,
+    ShopUI
 }
 
 public enum InteractiveType
 {
+    None,
     Middle,
     Forward,
     Back,
@@ -21,4 +24,10 @@ public enum SettingType
     BGMSlider,
     SFXSlider,
     SensitivitySlider
+}
+
+public enum StartEnd
+{
+    Start,
+    End
 }
