@@ -15,7 +15,6 @@ public class TypingEffect : MonoBehaviour
     public FullTextSO fullText;
 
     private Coroutine typingCoroutine;
-    private bool isTyping = false;
     [TextArea()] private string[] _fullText;
     
     public Action OnEndStory;
@@ -64,7 +63,6 @@ public class TypingEffect : MonoBehaviour
     private IEnumerator TypeSingleLine(string line)
     {
         textUI.text = "";
-        isTyping = true;
 
         foreach (char c in line)
         {
@@ -72,8 +70,6 @@ public class TypingEffect : MonoBehaviour
             if (audioSource != null) audioSource.Play();
             yield return new WaitForSeconds(typingSpeed);
         }
-
-        isTyping = false;
     }
 
     private IEnumerator FadeOutText()
