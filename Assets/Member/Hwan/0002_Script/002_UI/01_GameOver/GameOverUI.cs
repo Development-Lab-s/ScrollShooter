@@ -56,6 +56,7 @@ public class GameOverUI : MonoBehaviour, IUI
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
+        
         uiController.CanInput = false;
         nestingOpener.StartNesting(OnPopUp);
     }
