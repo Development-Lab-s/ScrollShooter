@@ -1,11 +1,25 @@
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class CompressedFolder : BlockBase
+public class FolderBlock : BlockBase, IBreakable
 {
+    [field: SerializeField]
     public GameObject BreakParticlePrefabs { get; private set; }
-    public override void Break(GameObject target)
+
+    public void OnBreak()
+    {
+        DoBreak();
+    }
+
+    public void TryBreak(ContactInfo info)
+    {
+        if (info.dashable.IsDash)
+            OnBreak();
+        else
+            info.health.TakeDamage(1f);
+    }
+
+    private void DoBreak()
     {
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOScale(2, 0.05f)
@@ -19,11 +33,5 @@ public class CompressedFolder : BlockBase
             Destroy(gameObject);
             // +a 이벤트(공격, 텔포 등등)
         });
-    }
-
-
-    public override void Collision(GameObject target)
-    {
-        Debug.Log("튕겨나감");
     }
 }

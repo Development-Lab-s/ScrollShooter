@@ -1,12 +1,14 @@
 using DG.Tweening;
-using TMPro;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class FolderBlock : BlockBase
+public class CompressedFolder : BlockBase, IBreakable
 {
-    [field: SerializeField]
     public GameObject BreakParticlePrefabs { get; private set; }
-    public override void Break(GameObject target)
+    [SerializeField]private LayerMask whatIsPlayer;
+
+    public void OnBreak()
     {
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOScale(2, 0.05f)
@@ -18,13 +20,10 @@ public class FolderBlock : BlockBase
             var particl = Instantiate(BreakParticlePrefabs, transform.position, Quaternion.identity);
             // 파괴
             Destroy(gameObject);
-            // +a 이벤트(공격, 텔포 등등)
         });
-
     }
-
-    public override void Collision(GameObject target)
+    public void TryBreak(ContactInfo info)
     {
-        Debug.Log("주금");
+        Debug.Log("튕겨나감");
     }
 }
