@@ -119,5 +119,17 @@ namespace Member.JYG.Input
         {
             _playerInput.Player.Enable();
         }
+
+        public void ChangeInputState(bool canInteractive)
+        {
+            if (canInteractive == true)
+            {
+                _playerInput.Player.Enable();
+            }
+            else
+            {
+                _playerInput.Player.Disable();
+            }
+        }
     }
 }

@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using YGPacks; 
 
 namespace Member.JYG._Code
@@ -18,18 +21,19 @@ namespace Member.JYG._Code
         protected override void Awake()
         {
             base.Awake();
-            SetCursorLock(true);
+            SetCursorLock(false);
         }
 
         public void SetCursorLock(bool isActive)
         {
+            Player.PlayerInputSO.ChangeInputState(!isActive);
             if (isActive)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }

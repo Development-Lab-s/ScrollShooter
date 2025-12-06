@@ -27,8 +27,8 @@ public enum SettingType
     SensitivitySlider
 }
 
-public enum StartEnd
+public enum GoButtonIconType
 {
-    Start,
-    End
+    Sprite,
+    Text
 }

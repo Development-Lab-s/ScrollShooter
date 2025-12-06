@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GoButtonUI : MonoBehaviour
 {
+    private GoButtonIconChanger iconChanger;
+
     private RectTransform rectTrn;
     private Button goButton_Left;
     private Button goButton_Right;
@@ -25,25 +27,16 @@ public class GoButtonUI : MonoBehaviour
         goButton_Right.onClick.AddListener(() => rigthClick?.Invoke());
         goButton_Left.gameObject.SetActive(true);
         goButton_Right.gameObject.SetActive(true);
+
+        iconChanger = GetComponent<GoButtonIconChanger>();
+        iconChanger.Initialize();
     }
 
-    public void ButtonUp()
+    public void ButtonMove(UIType uiType, bool isUp)
     {
-        float target = upYPos;
-        float firstPos = downYPos;
-
-        rectTrn.anchoredPosition = new Vector2(rectTrn.anchoredPosition.x, firstPos);
-
-        if (rectTrn != null)
-        {
-            rectTrn.DOAnchorPosY(target, duration).SetUpdate(true);
-        }
-    }
-
-    public void ButtonDown()
-    {
-        float target = downYPos;
-        float firstPos = upYPos;
+        if (isUp == true) iconChanger.ChangeIcon(uiType);
+        float target = isUp ? upYPos : downYPos;
+        float firstPos = !isUp ? upYPos : downYPos;
 
         rectTrn.anchoredPosition = new Vector2(rectTrn.anchoredPosition.x, firstPos);
 
