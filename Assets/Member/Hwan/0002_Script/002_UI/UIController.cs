@@ -107,7 +107,7 @@ public class UIController : MonoBehaviour
     {
         switch (interactiveType)
         {
-            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Forward: inputUI.ForwardMove(); break;
             case InteractiveType.Back: inputUI.BackMove(); break;
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;

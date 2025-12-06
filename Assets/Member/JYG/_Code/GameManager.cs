@@ -29,7 +29,7 @@ namespace Member.JYG._Code
 
         public void SetCursorLock(bool isActive)
         {
-            Player.PlayerInputSO.ChangeInputState(!isActive);
+            Player.PlayerInputSO.ChangeAllInputState(!isActive);
             if (isActive)
             {
                 Cursor.lockState = CursorLockMode.None;

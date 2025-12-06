@@ -56,7 +56,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         Close();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         
     }

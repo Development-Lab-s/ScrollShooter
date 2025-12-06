@@ -14,16 +14,21 @@ public class TimeManager : Singleton<TimeManager>
         Time.timeScale = 1;
     }
 
-    public IEnumerator FadeStopTime(float fadeTime)
+    private IEnumerator FadeTimeCoroutine(float fadeTime, float lastScale = 0)
     {
         Time.timeScale = 1;
 
-        while (Time.timeScale != 0)
+        while (Time.timeScale != lastScale)
         {
             Time.timeScale -= Time.unscaledDeltaTime / fadeTime;
             yield return null;
         }
 
-        Time.timeScale = 0;
+        Time.timeScale = lastScale;
+    }
+
+    public void FadeStopTime(float fadeTime, float lastScale = 0)
+    {
+        StartCoroutine(FadeTimeCoroutine(fadeTime, lastScale));
     }
 }

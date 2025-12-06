@@ -32,7 +32,7 @@ public class GameOverUI : MonoBehaviour, IUI
         Time.timeScale = 1;
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         uiController.CanInput = false;
         Close();

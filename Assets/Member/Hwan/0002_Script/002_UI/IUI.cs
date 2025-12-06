@@ -17,7 +17,7 @@ public interface IUI
 
     public void BackMove();
 
-    public void FrontMove();
+    public void ForwardMove();
 
     public void LeftMove();
 
