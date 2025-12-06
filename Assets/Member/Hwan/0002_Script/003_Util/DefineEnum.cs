@@ -2,12 +2,16 @@ using UnityEngine;
 
 public enum UIType
 {
+    None,
     SettingUI,
-    GameOverUI
+    GameOverUI,
+    ShopUI,
+    StageSelectUI
 }
 
 public enum InteractiveType
 {
+    None,
     Middle,
     Forward,
     Back,
@@ -21,4 +25,10 @@ public enum SettingType
     BGMSlider,
     SFXSlider,
     SensitivitySlider
+}
+
+public enum GoButtonIconType
+{
+    Sprite,
+    Text
 }

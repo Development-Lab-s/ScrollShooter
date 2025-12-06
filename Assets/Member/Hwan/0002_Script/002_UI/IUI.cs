@@ -7,8 +7,9 @@ public interface IUI
     public event Action<UIType> OnOpen;
     public GameObject UIObject { get; }
     public UIType UIType { get; }
+    public InteractiveType OpenInput { get; } 
 
-    public void Initialize();
+    public void Initialize(UIController uIController);
 
     public void Open();
 

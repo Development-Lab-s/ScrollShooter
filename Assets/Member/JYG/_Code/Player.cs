@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG.Input;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,7 @@ namespace Member.JYG._Code
     {
         [field:SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
         public Rigidbody2D Rigidbody2D { get; private set; }
+        public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
         
         [field:SerializeField] public float MaxSpeed { get; private set; }
@@ -23,6 +25,7 @@ namespace Member.JYG._Code
         
         [field: SerializeField] public float YSpeed { get; private set; } 
         [field: SerializeField] public float YSpeedAddForce { get; private set; } 
+        [field:SerializeField] public bool IsBoosting { get; private set; }
         public UnityEvent<float> onBoost;
         public UnityEvent onBoostFailed;
         public float OriginalSpeed { get; private set; }
@@ -51,6 +54,7 @@ namespace Member.JYG._Code
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             Collider = GetComponent<CircleCollider2D>();
+            SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
             
             Rigidbody2D.gravityScale = 0;
             Rigidbody2D.linearVelocityY = YSpeed;
@@ -63,11 +67,21 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.OnDashPressed += HandleDashPressed;
             PlayerInputSO.OnDashBlocked += HandleDashBlocked;
+            PlayerInputSO.OnBrakePressed += HandleBraked;
+        }
+
+        private void HandleBraked()
+        {
+            SoundManager.Instance.PlaySound("Braking");
         }
 
         private void HandleDashBlocked()
         {
-            onBoostFailed?.Invoke();
+            if (!IsBoosting)
+            {
+                onBoostFailed?.Invoke();
+                SoundManager.Instance.PlaySound("BoostFail");
+            }
         }
 
         private void HandleDashPressed()
@@ -79,13 +93,17 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
+            PlayerInputSO.OnBrakePressed -= HandleBraked;
         }
 
         private IEnumerator PlayerDash()
         {
+            IsBoosting = true;
+            SoundManager.Instance.PlaySound("Boosting");
             StartCoroutine(SetSpeedWithTime(25f, 1f));
             yield return new WaitForSeconds(DashDuration);
             StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
+            IsBoosting = false;
             yield return new WaitForSeconds(DashCoolTime);
             PlayerInputSO.canDash = true;
         }
@@ -104,13 +122,7 @@ namespace Member.JYG._Code
         {
             if (isBrake)
             {
-                if (Mathf.Abs(XVelocity) < 0.1f)
-                {
-                    XVelocity = 0;
-                    return;
-                }
-                XVelocity = Mathf.Lerp(XVelocity, 0, Time.deltaTime * BrakePower);
-                
+                XVelocity = 0;
                 return;
             }
             float moveDir = PlayerInputSO.XMoveDir;
@@ -176,6 +188,12 @@ namespace Member.JYG._Code
                 MaxSpeed = speed;
                 Rigidbody2D.linearVelocityY = YSpeed;
             }
+        }
+
+        public void StopXYVelocity()
+        {
+            Rigidbody2D.linearVelocityY = 0;
+            XVelocity = 0;
         }
     }
 }
