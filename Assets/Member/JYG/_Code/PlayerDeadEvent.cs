@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using UnityEngine;
 
@@ -18,14 +19,17 @@ public class PlayerDeadEvent : MonoBehaviour
     {
         _player.StopAllCoroutines();
         _player.StopXYVelocity();
-        _player.PlayerInputSO.OffInput();
+        _player.PlayerInputSO.ChangeAllInputState(false);
         StartCoroutine(DeletePlayer());
     }
 
     private IEnumerator DeletePlayer()
     {
-        yield return new WaitForSeconds(2f);
-        GameManager.Instance.Player.SpriteRenderer.sprite = null;
+        yield return new WaitForSeconds(0.275f);
+        SoundManager.Instance.PlaySound("ValueOut");
+        yield return new WaitForSeconds(3.8f - 0.275f);
+        SoundManager.Instance.PlaySound("DeadSound");
+        _player.SpriteRenderer.sprite = null;
         foreach (GameObject hideThing in hideThings)
         {
             hideThing.gameObject.SetActive(false);

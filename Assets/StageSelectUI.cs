@@ -14,19 +14,18 @@ public class StageSelectUI : MonoBehaviour, IUI
     public event Action<UIType> OnOpen;
     
     [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private Transform stageContent;
     private List<SkinButton> _stageButtons = new();
 
     private int _currentIndex = 0;
     
     public GameObject UIObject { get; }
-    public UIType UIType { get; }
-    public InteractiveType OpenInput { get; }
+    public UIType UIType => UIType.StageSelectUI;
+    public InteractiveType OpenInput => InteractiveType.None;
 
     public void Initialize(UIController uIController)
     {
-        
-        
         for (int i = 0; i < buttonAmount; i++)
         {
             var button = Instantiate(buttonPrefab, transform);
@@ -37,7 +36,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         }
 
         Highlight(0);
-        ScrollTo(0);
+        ScrollTo();
         
         Open();
     }
@@ -57,7 +56,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         Close();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         
     }
@@ -85,7 +84,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         _currentIndex = next;
 
         Highlight(_currentIndex);
-        ScrollTo(_currentIndex);
+        ScrollTo();
     }
     
     private void Highlight(int index)
@@ -94,11 +93,8 @@ public class StageSelectUI : MonoBehaviour, IUI
             _stageButtons[i].SetHighlight(i == index);
     }
 
-    private void ScrollTo(int index)
+    private void ScrollTo()
     {
-        if (_stageButtons.Count <= 1) return;
-
-        float normalized = 1f - (float)index / (_stageButtons.Count - 1);
-        scrollRect.verticalNormalizedPosition = normalized;
+        scrollbar.value = (float)_currentIndex / (_stageButtons.Count - 1);
     }
 }

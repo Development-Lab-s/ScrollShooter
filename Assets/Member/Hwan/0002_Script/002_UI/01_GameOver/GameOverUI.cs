@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using System;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class GameOverUI : MonoBehaviour, IUI
 {
     [field: SerializeField]public GameObject UIObject { get; private set; }
 
-    public InteractiveType OpenInput => InteractiveType.None;
+    public InteractiveType OpenInput => InteractiveType.Left;
     public UIType UIType => UIType.GameOverUI;
 
     public event Action<UIType> OnClose;
@@ -31,7 +32,7 @@ public class GameOverUI : MonoBehaviour, IUI
         Time.timeScale = 1;
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         uiController.CanInput = false;
         Close();
@@ -48,18 +49,14 @@ public class GameOverUI : MonoBehaviour, IUI
         Close();
     }
 
-    public void LeftMove() { }
-
-    public void GameOver()
-    {
-
-    }
+    public void LeftMove() => Open();
 
     public void MiddleMove() { }
 
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
+        
         uiController.CanInput = false;
         nestingOpener.StartNesting(OnPopUp);
     }

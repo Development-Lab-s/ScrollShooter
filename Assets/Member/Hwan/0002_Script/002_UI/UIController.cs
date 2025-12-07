@@ -1,3 +1,4 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlayerInputSO inputSO;
 
     private Dictionary<UIType, IUI> uiDictionary = new();
-    private UIType openUI;
+    private List<UIType> openUIList = new();
     private GoButtonUI goButtonUI;
 
     public bool CanInput { get; set; }
@@ -20,7 +21,7 @@ public class UIController : MonoBehaviour
         goButtonUI = GetComponentInChildren<GoButtonUI>();
         goButtonUI.Initialize(GetInputForward, GetInputBack);
 
-        foreach (IUI ui in GetComponentsInChildren<IUI>())
+        foreach (IUI ui in GetComponentsInChildren<IUI>(true))
         {
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
@@ -34,18 +35,6 @@ public class UIController : MonoBehaviour
         inputSO.OnRightClicked += GetInputRight;
         inputSO.OnWheelBtnClicked += GetInputMiddle;
         inputSO.OnWheeling += GetInputWheel;
-    }
-
-    private void AddInputUI(UIType type)
-    {
-        openUI = type;
-        goButtonUI.ButtonUp();
-    }
-
-    private void RemoveInputUI(UIType type)
-    {
-        openUI = UIType.None;
-        goButtonUI.ButtonDown();
     }
 
     private void OnDestroy()
@@ -75,26 +64,50 @@ public class UIController : MonoBehaviour
     {
         if (CanInput == false) return;
 
-        if (openUI == UIType.None)
+        if (openUIList.Count == 0)
         {
             foreach (IUI ui in uiDictionary.Values)
             {
                 if (ui.OpenInput != interactiveType) continue;
-                DoMove(interactiveType, ui);
+                ui.Open();
                 return;
             }
             return;
         }
-        IUI inputUI = uiDictionary[openUI];
 
+        IUI inputUI = uiDictionary[openUIList.Last()];
         DoMove(interactiveType, inputUI);
+    }
+
+    private void AddInputUI(UIType type)
+    {
+        openUIList.Add(type);
+        if (openUIList.Count == 1)
+        {
+            OnInputChange(type, true);
+        }
+    }
+
+    private void RemoveInputUI(UIType type)
+    {
+        openUIList.Remove(type);
+        if (openUIList.Count == 0)
+        {
+            OnInputChange(type, false);
+        }
+    }
+
+    private void OnInputChange(UIType type, bool canInteractive)
+    {
+        GameManager.Instance.SetCursorLock(canInteractive);
+        goButtonUI.ButtonMove(type, canInteractive);
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)
     {
         switch (interactiveType)
         {
-            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Forward: inputUI.ForwardMove(); break;
             case InteractiveType.Back: inputUI.BackMove(); break;
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;
