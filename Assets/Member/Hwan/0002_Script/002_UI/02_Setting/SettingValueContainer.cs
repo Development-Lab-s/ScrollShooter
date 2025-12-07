@@ -11,9 +11,10 @@ public class SettingValueContainer : YGPacks.Singleton<SettingValueContainer>
     {
         base.Awake();
 
-        settingValueDictionary.Add(SettingType.BGMSlider, new());
-        settingValueDictionary.Add(SettingType.SFXSlider, new());
+        settingValueDictionary.Add(SettingType.BGMVolumeSlider, new());
+        settingValueDictionary.Add(SettingType.SFXVolumeSlider, new());
         settingValueDictionary.Add(SettingType.SensitivitySlider, new());
+        settingValueDictionary.Add(SettingType.MasterVolumeSlider, new());
     }
 
     public float GetSettingValue(SettingType type)
@@ -26,12 +27,12 @@ public class SettingValueContainer : YGPacks.Singleton<SettingValueContainer>
         settingValueDictionary[type].Value = value;
     }
 
-    public void SubSettingValueEvent(SettingType type, ref Action<float, float> action)
+    public void SubSettingValueEvent(SettingType type, Action<float, float> action)
     {
         settingValueDictionary[type].OnValueCanged += action;
     }
 
-    public void UnSubSettingValueEvent(SettingType type, ref Action<float, float> action)
+    public void UnSubSettingValueEvent(SettingType type, Action<float, float> action)
     {
         settingValueDictionary[type].OnValueCanged -= action;
     }

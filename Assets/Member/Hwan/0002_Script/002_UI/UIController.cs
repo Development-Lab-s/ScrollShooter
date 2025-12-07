@@ -84,8 +84,7 @@ public class UIController : MonoBehaviour
         openUIList.Add(type);
         if (openUIList.Count == 1)
         {
-            GameManager.Instance.Player.PlayerInputSO.OffInput();
-            goButtonUI.ButtonUp();
+            OnInputChange(type, true);
         }
     }
 
@@ -94,16 +93,21 @@ public class UIController : MonoBehaviour
         openUIList.Remove(type);
         if (openUIList.Count == 0)
         {
-            GameManager.Instance.Player.PlayerInputSO.ActiveInput();
-            goButtonUI.ButtonDown();
+            OnInputChange(type, false);
         }
+    }
+
+    private void OnInputChange(UIType type, bool canInteractive)
+    {
+        GameManager.Instance.SetCursorLock(canInteractive);
+        goButtonUI.ButtonMove(type, canInteractive);
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)
     {
         switch (interactiveType)
         {
-            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Forward: inputUI.ForwardMove(); break;
             case InteractiveType.Back: inputUI.BackMove(); break;
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;

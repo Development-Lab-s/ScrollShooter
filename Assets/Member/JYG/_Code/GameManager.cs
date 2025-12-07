@@ -1,10 +1,15 @@
+using csiimnida.CSILib.SoundManager.RunTime;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using YGPacks; 
 
 namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
+        [SerializeField] private string SceneBGM;
         private Player player;
         public Player Player 
         { 
@@ -18,18 +23,20 @@ namespace Member.JYG._Code
         protected override void Awake()
         {
             base.Awake();
-            SetCursorLock(true);
+            SetCursorLock(false);
+            SoundManager.Instance.PlaySound(SceneBGM);
         }
 
         public void SetCursorLock(bool isActive)
         {
+            Player.PlayerInputSO.ChangeAllInputState(!isActive);
             if (isActive)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }

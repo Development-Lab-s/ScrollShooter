@@ -60,7 +60,7 @@ public class ShopUI : MonoBehaviour, IUI
         Close();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         //스킨 선택
         _skinButtons[_currentIndex].OnClick();

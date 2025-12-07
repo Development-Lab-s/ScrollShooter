@@ -19,7 +19,7 @@ public class PlayerDeadEvent : MonoBehaviour
     {
         _player.StopAllCoroutines();
         _player.StopXYVelocity();
-        _player.PlayerInputSO.OffInput();
+        _player.PlayerInputSO.ChangeAllInputState(false);
         StartCoroutine(DeletePlayer());
     }
 

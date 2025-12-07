@@ -32,7 +32,7 @@ public class GameOverUI : MonoBehaviour, IUI
         Time.timeScale = 1;
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         uiController.CanInput = false;
         Close();
@@ -56,6 +56,7 @@ public class GameOverUI : MonoBehaviour, IUI
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
+        
         uiController.CanInput = false;
         nestingOpener.StartNesting(OnPopUp);
     }

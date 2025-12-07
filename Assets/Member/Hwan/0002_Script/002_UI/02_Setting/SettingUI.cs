@@ -50,7 +50,7 @@ public class SettingUI : MonoBehaviour, IUI
         InitializeSetting();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         if (changeText.IsShaking == true) return;
         valueSetter.ChangeType(1);

@@ -6,7 +6,8 @@ public enum UIType
     SettingUI,
     GameOverUI,
     ShopUI,
-    StageSelectUI
+    StageSelectUI,
+    TurorialUI
 }
 
 public enum InteractiveType
@@ -22,13 +23,19 @@ public enum InteractiveType
 
 public enum SettingType
 {
-    BGMSlider,
-    SFXSlider,
-    SensitivitySlider
+    BGMVolumeSlider,
+    SFXVolumeSlider,
+    SensitivitySlider,
+    MasterVolumeSlider
 }
 
-public enum StartEnd
+public enum GoButtonIconType
 {
-    Start,
-    End
+    Sprite,
+    Text
+}
+
+public enum ObstacleType
+{
+
 }
