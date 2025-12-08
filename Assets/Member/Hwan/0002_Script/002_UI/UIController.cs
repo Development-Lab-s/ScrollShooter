@@ -1,23 +1,21 @@
 using Member.JYG._Code;
 using Member.JYG.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private PlayerInputSO inputSO;
-
     private List<UIType> openUIList = new();
     private GoButtonUI goButtonUI;
     private Dictionary<UIType, IUI> uiDictionary = new();
-
-    public bool CanInput { get; set; }
+    private PlayerInputSO inputSO;
+    public event Action<List<UIType>> OnUIChange;
 
     private void Awake()
     {
         uiDictionary = UIManager.Instance.UIDictionary;
-        CanInput = true; 
 
         goButtonUI = GetComponentInChildren<GoButtonUI>();
         goButtonUI.Initialize(GetInputForward, GetInputBack);
@@ -26,7 +24,7 @@ public class UIController : MonoBehaviour
         {
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
-            ui.Initialize(this);
+            ui.Initialize();
         }
 
         inputSO.OnBrakePressed += GetInputForward;
@@ -62,7 +60,6 @@ public class UIController : MonoBehaviour
 
     private void UIInteractive(InteractiveType interactiveType)
     {
-        if (CanInput == false) return;
         foreach (IUI ui in uiDictionary.Values)
         {
             if (ui.OpenInput != interactiveType) continue;
@@ -78,24 +75,13 @@ public class UIController : MonoBehaviour
     private void AddInputUI(UIType type)
     {
         openUIList.Add(type);
-        OnInputUIChange(type, true);
+        OnUIChange?.Invoke(openUIList);
     }
 
     private void RemoveInputUI(UIType type)
     {
-        if (openUIList.Remove(type) == false) return;
-        if (openUIList.Count == 0)
-        {
-            OnInputUIChange(type, false);
-            return;
-        }
-        OnInputUIChange(openUIList.Last(), true);
-    }
-
-    private void OnInputUIChange(UIType type, bool canInteractive)
-    {
-        GameManager.Instance.SetCursorActive(canInteractive);
-        goButtonUI.ButtonMove(type, canInteractive);
+        openUIList.Remove(type);
+        OnUIChange?.Invoke(openUIList);
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)

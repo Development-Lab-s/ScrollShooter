@@ -16,7 +16,8 @@ public class TutorialUI : MonoBehaviour, IUI
 
     [SerializeField] private TextMeshProUGUI tmp;
     private RectTransform uiObjectRect;
-    private UIController uiController;
+
+    private InputControlleManager inputController;
 
     public void BackMove() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 
@@ -27,12 +28,12 @@ public class TutorialUI : MonoBehaviour, IUI
         OnClose?.Invoke(UIType);
     }
 
-    public void Initialize(UIController uiController)
+    public void Initialize()
     {
-        this.uiController = uiController;
         uiObjectRect = UIObject.GetComponent<RectTransform>();
         TutorialManager.Instance.OnPlayerNearObstacle += Open;
         TutorialManager.Instance.OnSkipPhaze += Close;
+        inputController = GetComponentInParent<InputControlleManager>();
         UIObject.SetActive(false);
     }
 
@@ -61,9 +62,8 @@ public class TutorialUI : MonoBehaviour, IUI
 
     private IEnumerator waitForInput()
     {
-        uiController.CanInput = false;
+        inputController.ChangeUIInputActive(false);
         yield return new WaitForSecondsRealtime(1);
-        uiController.CanInput = true;
-
+        inputController.ChangeUIInputActive(true);
     }
 }

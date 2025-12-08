@@ -8,7 +8,6 @@ using YGPacks;
 
 public class TutorialManager : Singleton<TutorialManager>
 {
-    [SerializeField] private PlayerInputSO playerInputSO;
     [SerializeField] private TutorialInfoSO[] tutoInfos; 
     public event Action<TutorialInfoSO> OnPlayerNearObstacle;
     public event Action OnSkipPhaze;
@@ -25,7 +24,7 @@ public class TutorialManager : Singleton<TutorialManager>
         if (GameManager.Instance.StageSO.StageNumber == 0)
         {
             IsTutorialing = false;
-            playerInputSO.ChangeAllInputState(false);
+            InputControlleManager.Instance.ChangeAllPlayerActiveType(false); //½Ã¸£
             IsTutorialing = true;
         }
     }
@@ -56,19 +55,18 @@ public class TutorialManager : Singleton<TutorialManager>
 
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
         currentNeedInput = currentTutoInfo.NeedInput;
-        playerInputSO.ChangeInputState(currentNeedInput, true);
+        InputControlleManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
     }
 
     private void StartTuto()
     {
-        playerInputSO.ChangeAllInputState(false);
-        playerInputSO.ChangeInputState(InteractiveType.Middle, true);
+        InputControlleManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
     }
 
     private void EndTuto()
     {
         IsTutorialing = false;
-        playerInputSO.ChangeAllInputState(true);
+        InputControlleManager.Instance.ChangeAllPlayerActiveType(true);
     }
 
     public void GetInput(InteractiveType type)

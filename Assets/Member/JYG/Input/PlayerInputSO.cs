@@ -123,19 +123,20 @@ namespace Member.JYG.Input
             if(context.performed)
                 OnWheelBtnClicked?.Invoke();
         }
-
-        public void ChangeAllInputState(bool canInteractive)
-        {
-            if (TutorialManager.Instance.IsTutorialing == true) return;
-            foreach (InteractiveType type in Enum.GetValues(typeof(InteractiveType)))
-            {
-                inputActiveDictionary[type] = canInteractive;
-            }
-        }
-
-        public void ChangeInputState(InteractiveType type, bool active)
+        
+        public void SetInputTypeActive(InteractiveType type, bool active)
         {
             inputActiveDictionary[type] = active;
+        }
+
+        public void SetInputActive(bool active)
+        {
+            if (active == true)
+            {
+                _playerInput.Player.Disable();
+                return;
+            }
+            _playerInput.Player.Enable();
         }
     }
 }

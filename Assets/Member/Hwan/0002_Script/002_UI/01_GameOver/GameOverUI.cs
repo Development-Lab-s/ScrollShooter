@@ -14,18 +14,20 @@ public class GameOverUI : MonoBehaviour, IUI
     public event Action<UIType> OnOpen;
 
     private NestingOpener nestingOpener;
-    private UIController uiController;
     private CountdouwnTmp countdouwn;
 
     public void BackMove()
     {
+        InputControlleManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => {
+            SceneManager.LoadScene(1);
+            InputControlleManager.Instance.ChangeUIInputActive(true);
+        });
     }
 
     public void Close()
     {
-        uiController.CanInput = false;
         OnClose?.Invoke(UIType);
         UIObject.SetActive(false);
         TimeManager.Instance.UnStopTime();
@@ -33,14 +35,17 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
+        InputControlleManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => { 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            InputControlleManager.Instance.ChangeUIInputActive(true);
+        });
     }
 
-    public void Initialize(UIController uiController)
+    public void Initialize()
     {
         GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(Open);
-        this.uiController = uiController;
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
         countdouwn = GetComponent<CountdouwnTmp>();
@@ -56,13 +61,13 @@ public class GameOverUI : MonoBehaviour, IUI
         if (UIObject.activeSelf == true) return;
         UIManager.Instance.CloseAllUI();
 
-        uiController.CanInput = false;
+        InputControlleManager.Instance.ChangeUIInputActive(false);
         nestingOpener.StartNesting(OnPopUp);
     }
 
     public void OnPopUp()
     {
-        uiController.CanInput = true;
+        InputControlleManager.Instance.ChangeUIInputActive(true);
         TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         countdouwn.StartCount(BackMove);

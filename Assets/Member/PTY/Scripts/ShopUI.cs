@@ -27,7 +27,7 @@ public class ShopUI : MonoBehaviour, IUI
     public UIType UIType => UIType.ShopUI;
     public InteractiveType OpenInput => InteractiveType.None;
 
-    public void Initialize(UIController uIController)
+    public void Initialize()
     {
         for (int i = 0; i < buttonAmount; i++)
         {

@@ -19,7 +19,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public ValueSetter valueSetter;
 
-    public void Initialize(UIController uIController)
+    public void Initialize()
     {
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();

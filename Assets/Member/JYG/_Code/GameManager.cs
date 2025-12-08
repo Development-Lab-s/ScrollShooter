@@ -1,8 +1,5 @@
 using csiimnida.CSILib.SoundManager.RunTime;
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using YGPacks; 
 
 namespace Member.JYG._Code
@@ -33,7 +30,7 @@ namespace Member.JYG._Code
 
         public void SetCursorActive(bool isActive)
         {
-            Player.PlayerInputSO.ChangeAllInputState(!isActive);
+            InputControlleManager.Instance.ChangePlayerInputActive(!isActive);
             if (isActive)
             {
                 Cursor.lockState = CursorLockMode.None;
