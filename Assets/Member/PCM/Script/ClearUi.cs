@@ -18,6 +18,7 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField] private SkinListSO Skin;
     [SerializeField] private SkinListSO hiddenSkin;
     [SerializeField] private Sprite nullSpace;
+    private float StartTime;
     public UIType UIType => UIType.ClearUI;
 
     public InteractiveType OpenInput => InteractiveType.Right;
@@ -53,6 +54,7 @@ public class ClearUi : MonoBehaviour, IUI
     public void Initialize()
     {
         countdouwn = GetComponent<CountdouwnTmp>();
+        StartTime = Time.time;
         Close();
     }
 
@@ -67,10 +69,11 @@ public class ClearUi : MonoBehaviour, IUI
     public void Open()
     {
         OnOpen?.Invoke(UIType);
-        countdouwn.StartCount(null);
+        countdouwn.StartCount(() => SceneManager.LoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
-        playTime.text = $"ClearTime:{Time.time.ToString("F2")}";
+        float t = Time.time - StartTime;
+        playTime.text = $"ClearTime:{t.ToString("F2")}";
         UIObject.SetActive(true);
     }
 
