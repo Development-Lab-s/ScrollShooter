@@ -16,18 +16,24 @@ public class SettingValueContainer : YGPacks.Singleton<SettingValueContainer>
             { SettingType.SensitivitySlider, new() },
             { SettingType.MasterVolumeSlider, new() }
         };
+
+        foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
+        {
+            settingValueDictionary[type].Value = PlayerPrefs.GetFloat(type.ToString(), 0.5f);
+            settingValueDictionary[type].OnValueCanged += (_, value) => PlayerPrefs.SetFloat(type.ToString(), value);
+        }
     }
 
-    public float GetSettingValue(SettingType type)
+    public float GetSettingValue(SettingValueSO settingValueSO)
     {
         if (settingValueDictionary == null) Init();
-        return settingValueDictionary[type].Value;
+        return Mathf.Lerp(settingValueSO.MinValue, settingValueSO.MaxValue, settingValueDictionary[settingValueSO.MyType].Value);
     }
 
-    public void SetSettingValue(SettingType type, float value)
+    public void SetSettingValue(SettingValueSO settingValueSO, float value)
     {
         if (settingValueDictionary == null) Init();
-        settingValueDictionary[type].Value = value;
+        settingValueDictionary[settingValueSO.MyType].Value = (value - settingValueSO.MinValue) / (settingValueSO.MaxValue - settingValueSO.MinValue);
     }
 
     public void SubSettingValueEvent(SettingType type, Action<float, float> action)

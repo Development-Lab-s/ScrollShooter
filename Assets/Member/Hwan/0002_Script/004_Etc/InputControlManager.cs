@@ -6,7 +6,8 @@ using System.Linq;
 using UnityEngine;
 using YGPacks;
 
-public class InputControlleManager : Singleton<InputControlleManager>
+[DefaultExecutionOrder(-1)]
+public class InputControlManager : Singleton<InputControlManager>
 {
     [SerializeField] private PlayerInputSO playerInputSO;
     [SerializeField] private PlayerInputSO uiInputSO;
@@ -22,7 +23,7 @@ public class InputControlleManager : Singleton<InputControlleManager>
 
     private void OnUIChange(List<UIType> uiList)
     {
-        goButtonUI.ButtonMove(uiList.Count == 0);
+        goButtonUI.ButtonMove(uiList.Count != 0);
         if (uiList.Count == 0) return;
         goButtonUI.IconChange(uiList.Last());
     }

@@ -31,9 +31,9 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        InputControlleManager.Instance.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); InputControlleManager.Instance.ChangeUIInputActive(true); });
+        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); InputControlManager.Instance.ChangeUIInputActive(true); });
     }
 
     public void Close()
@@ -45,9 +45,9 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        InputControlleManager.Instance.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); InputControlleManager.Instance.ChangeUIInputActive(true); });
+        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); InputControlManager.Instance.ChangeUIInputActive(true); });
     }
 
     public void Initialize()

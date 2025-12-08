@@ -17,7 +17,7 @@ public class TutorialUI : MonoBehaviour, IUI
     [SerializeField] private TextMeshProUGUI tmp;
     private RectTransform uiObjectRect;
 
-    private InputControlleManager inputController;
+    private InputControlManager inputController;
 
     public void BackMove() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 
@@ -33,7 +33,7 @@ public class TutorialUI : MonoBehaviour, IUI
         uiObjectRect = UIObject.GetComponent<RectTransform>();
         TutorialManager.Instance.OnPlayerNearObstacle += Open;
         TutorialManager.Instance.OnSkipPhaze += Close;
-        inputController = GetComponentInParent<InputControlleManager>();
+        inputController = GetComponentInParent<InputControlManager>();
         UIObject.SetActive(false);
     }
 

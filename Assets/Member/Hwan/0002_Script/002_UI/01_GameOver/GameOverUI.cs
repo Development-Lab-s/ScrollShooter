@@ -18,11 +18,11 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        InputControlleManager.Instance.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
         nestingOpener.StartDeNesting(() => {
             SceneManager.LoadScene(1);
-            InputControlleManager.Instance.ChangeUIInputActive(true);
+            InputControlManager.Instance.ChangeUIInputActive(true);
         });
     }
 
@@ -35,11 +35,11 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        InputControlleManager.Instance.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
         nestingOpener.StartDeNesting(() => { 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            InputControlleManager.Instance.ChangeUIInputActive(true);
+            InputControlManager.Instance.ChangeUIInputActive(true);
         });
     }
 
@@ -61,13 +61,13 @@ public class GameOverUI : MonoBehaviour, IUI
         if (UIObject.activeSelf == true) return;
         UIManager.Instance.CloseAllUI();
 
-        InputControlleManager.Instance.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangeUIInputActive(false);
         nestingOpener.StartNesting(OnPopUp);
     }
 
     public void OnPopUp()
     {
-        InputControlleManager.Instance.ChangeUIInputActive(true);
+        InputControlManager.Instance.ChangeUIInputActive(true);
         TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         countdouwn.StartCount(BackMove);

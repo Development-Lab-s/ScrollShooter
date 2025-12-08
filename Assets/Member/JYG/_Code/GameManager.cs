@@ -7,7 +7,7 @@ namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
-        public event Action OnClear;
+        public event Action<int> OnClear;
         [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
         public Player Player 
@@ -29,7 +29,7 @@ namespace Member.JYG._Code
         {
             if (player.transform.position.y >= StageSO.MapDistance)
             {
-                OnClear?.Invoke();
+                OnClear?.Invoke(StageSO.StageNumber);
                 TimeManager.Instance.StopTime();
             }
         }

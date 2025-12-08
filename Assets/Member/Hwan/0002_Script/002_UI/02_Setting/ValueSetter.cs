@@ -29,7 +29,7 @@ public class ValueSetter
         slider.maxValue = CurrentValue.MaxValue;
         slider.minValue = CurrentValue.MinValue;
         slider.wholeNumbers = true;
-        slider.value = SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType);
+        slider.value = SettingValueContainer.Instance.GetSettingValue(CurrentValue);
     }
 
     public void ChangeSliderValue(float value)
@@ -39,6 +39,6 @@ public class ValueSetter
 
     public void SaveValue(float changeValue)
     {
-        SettingValueContainer.Instance.SetSettingValue(CurrentValue.MyType, changeValue);
+        SettingValueContainer.Instance.SetSettingValue(CurrentValue, changeValue);
     }
 }

@@ -8,12 +8,12 @@ public class CursetActiveController : MonoBehaviour
     private void Awake()
     {
         uiController = GetComponent<UIController>();
-        uiController.OnUIChange += (List<UIType> list) => SetCursorActive(list.Count == 0);
+        uiController.OnUIChange += (List<UIType> list) => SetCursorActive(list.Count != 0);
     }
 
     public void SetCursorActive(bool isActive)
     {
-        InputControlleManager.Instance.ChangePlayerInputActive(!isActive);
+        InputControlManager.Instance.ChangePlayerInputActive(!isActive);
         if (isActive)
         {
             Cursor.lockState = CursorLockMode.None;

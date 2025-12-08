@@ -24,7 +24,7 @@ public class TutorialManager : Singleton<TutorialManager>
         if (GameManager.Instance.StageSO.StageNumber == 0)
         {
             IsTutorialing = false;
-            InputControlleManager.Instance.ChangeAllPlayerActiveType(false); //시르
+            InputControlManager.Instance.ChangeAllPlayerActiveType(false); //시르
             IsTutorialing = true;
         }
     }
@@ -55,18 +55,18 @@ public class TutorialManager : Singleton<TutorialManager>
 
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
         currentNeedInput = currentTutoInfo.NeedInput;
-        InputControlleManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
+        InputControlManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
     }
 
     private void StartTuto()
     {
-        InputControlleManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
+        InputControlManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
     }
 
     private void EndTuto()
     {
         IsTutorialing = false;
-        InputControlleManager.Instance.ChangeAllPlayerActiveType(true);
+        InputControlManager.Instance.ChangeAllPlayerActiveType(true);
     }
 
     public void GetInput(InteractiveType type)

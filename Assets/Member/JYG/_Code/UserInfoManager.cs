@@ -17,6 +17,7 @@ namespace Member.JYG._Code
         protected override void Awake()
         {
             base.Awake();
+            GameManager.Instance.OnClear += ClearThisStage;
             DontDestroyOnLoad(this);
             InitData();
         }

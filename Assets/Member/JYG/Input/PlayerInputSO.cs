@@ -128,13 +128,11 @@ namespace Member.JYG.Input
         
         public void SetInputTypeActive(InteractiveType type, bool active)
         {
-            Debug.Log("sdf");
             inputActiveDictionary[type] = active;
         }
 
         public void SetInputActive(bool active)
         {
-            Debug.Log("sdf");
             if (active == true)
             {
                 _playerInput.Player.Disable();
