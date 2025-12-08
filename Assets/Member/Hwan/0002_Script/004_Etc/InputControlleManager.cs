@@ -14,9 +14,6 @@ public class InputControlleManager : Singleton<InputControlleManager>
 
     protected override void Awake()
     {
-        uiInputSO.SetInputActive(true);
-        playerInputSO.SetInputActive(true);
-
         UIController uiContoroller = GetComponent<UIController>();
         uiContoroller.OnUIChange += OnUIChange;
 
@@ -25,9 +22,9 @@ public class InputControlleManager : Singleton<InputControlleManager>
 
     private void OnUIChange(List<UIType> uiList)
     {
-        GameManager.Instance.SetCursorActive(uiList.Count == 0);
+        goButtonUI.ButtonMove(uiList.Count == 0);
         if (uiList.Count == 0) return;
-        goButtonUI.ButtonMove(uiList.Last(), true);
+        goButtonUI.IconChange(uiList.Last());
     }
 
     public void ChangeUIInputActive(bool active)

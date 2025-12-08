@@ -112,7 +112,9 @@ namespace Member.JYG.Input
 
         public void OnRightClick(InputAction.CallbackContext context)
         {
+            Debug.Log("sf");
             if (inputActiveDictionary[InteractiveType.Right] == false) return;
+            Debug.Log("sf");
             if(context.performed)
                 OnRightClicked?.Invoke();
         }
@@ -126,11 +128,13 @@ namespace Member.JYG.Input
         
         public void SetInputTypeActive(InteractiveType type, bool active)
         {
+            Debug.Log("sdf");
             inputActiveDictionary[type] = active;
         }
 
         public void SetInputActive(bool active)
         {
+            Debug.Log("sdf");
             if (active == true)
             {
                 _playerInput.Player.Disable();
