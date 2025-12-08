@@ -9,7 +9,7 @@ namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private string SceneBGM;
+        [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
         public Player Player 
         { 
@@ -23,11 +23,15 @@ namespace Member.JYG._Code
         protected override void Awake()
         {
             base.Awake();
-            SetCursorLock(false);
-            SoundManager.Instance.PlaySound(SceneBGM);
+            SoundManager.Instance.PlaySound(StageSO.StageBGM);
         }
 
-        public void SetCursorLock(bool isActive)
+        private void Start()
+        {
+            SetCursorActive(false);
+        }
+
+        public void SetCursorActive(bool isActive)
         {
             Player.PlayerInputSO.ChangeAllInputState(!isActive);
             if (isActive)

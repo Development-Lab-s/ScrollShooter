@@ -1,4 +1,3 @@
-using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using System;
 using UnityEngine;
@@ -8,7 +7,7 @@ public class GameOverUI : MonoBehaviour, IUI
 {
     [field: SerializeField]public GameObject UIObject { get; private set; }
 
-    public InteractiveType OpenInput => InteractiveType.Left;
+    public InteractiveType OpenInput => InteractiveType.None;
     public UIType UIType => UIType.GameOverUI;
 
     public event Action<UIType> OnClose;
@@ -20,21 +19,20 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        uiController.CanInput = false;
         Close();
         nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); uiController.CanInput = true; });
     }
 
     public void Close()
     {
+        uiController.CanInput = false;
         OnClose?.Invoke(UIType);
         UIObject.SetActive(false);
-        Time.timeScale = 1;
+        TimeManager.Instance.UnStopTime();
     }
 
     public void ForwardMove()
     {
-        uiController.CanInput = false;
         Close();
         nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); uiController.CanInput = true; });
     }
@@ -46,17 +44,18 @@ public class GameOverUI : MonoBehaviour, IUI
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
         countdouwn = GetComponent<CountdouwnTmp>();
-        Close();
+        UIObject.SetActive(false);
     }
 
-    public void LeftMove() => Open();
+    public void LeftMove() { }
 
     public void MiddleMove() { }
 
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
-        
+        UIManager.Instance.CloseAllUI();
+
         uiController.CanInput = false;
         nestingOpener.StartNesting(OnPopUp);
     }
@@ -64,7 +63,7 @@ public class GameOverUI : MonoBehaviour, IUI
     public void OnPopUp()
     {
         uiController.CanInput = true;
-        Time.timeScale = 0;
+        TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         countdouwn.StartCount(BackMove);
         OnOpen?.Invoke(UIType);

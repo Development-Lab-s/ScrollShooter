@@ -25,20 +25,19 @@ public class SettingUI : MonoBehaviour, IUI
         changeText.Initialize();
         valueSetter = new(settingValuesSO.SettingValues, slider);
         InitializeSetting();
-        Close();
+        UIObject.SetActive(false);
     }
 
     public void Open()
     {
-
-        Time.timeScale = 0;
+        TimeManager.Instance.StopAndSaveTime("setting");
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
     }
 
     public void Close()
     {
-        Time.timeScale = 1;
+        TimeManager.Instance.LoadTime("setting");
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
     }
@@ -67,7 +66,17 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void RightMove() { }
 
-    public void MiddleMove() => Close();
+    public void MiddleMove()
+    {
+        if (UIObject.activeSelf == true)
+        {
+            Close();
+        }
+        else
+        {
+            Open();
+        }
+    }
 
     public void ScrollMove(int value) 
     {

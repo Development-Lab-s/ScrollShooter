@@ -29,7 +29,8 @@ namespace Member.JYG.Input
         public bool canDash = true;
         public bool isUIInput = false;
 
-        public Dictionary<InteractiveType, bool> inputActiveDictionary = new();
+        private Dictionary<InteractiveType, bool> inputActiveDictionary = new();
+
         private void OnEnable()
         {
             canDash = true;
@@ -125,13 +126,10 @@ namespace Member.JYG.Input
 
         public void ChangeAllInputState(bool canInteractive)
         {
-            if (canInteractive == true)
+            if (TutorialManager.Instance.IsTutorialing == true) return;
+            foreach (InteractiveType type in Enum.GetValues(typeof(InteractiveType)))
             {
-                _playerInput.Player.Enable();
-            }
-            else
-            {
-                _playerInput.Player.Disable();
+                inputActiveDictionary[type] = canInteractive;
             }
         }
 
