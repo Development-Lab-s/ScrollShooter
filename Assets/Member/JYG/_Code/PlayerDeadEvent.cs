@@ -29,10 +29,14 @@ public class PlayerDeadEvent : MonoBehaviour
         SoundManager.Instance.PlaySound("ValueOut");
         yield return new WaitForSeconds(3.8f - 0.275f);
         SoundManager.Instance.PlaySound("DeadSound");
+        _player.playerInCamera = false;
+        CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 0.5f);
         _player.SpriteRenderer.sprite = null;
         foreach (GameObject hideThing in hideThings)
         {
             hideThing.gameObject.SetActive(false);
         }
+        yield return new WaitForSeconds(1f);
+        _player.playerInCamera = true;
     }
 }
