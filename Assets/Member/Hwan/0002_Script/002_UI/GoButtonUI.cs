@@ -34,9 +34,8 @@ public class GoButtonUI : MonoBehaviour
         iconChanger.Initialize();
     }
 
-    public void ButtonMove(UIType uiType, bool isUp)
+    public void ButtonMove(bool isUp)
     {
-        if (isUp == true) iconChanger.ChangeIcon(uiType);
         if (this.isUp == isUp) return;
 
         this.isUp = isUp;
@@ -49,6 +48,11 @@ public class GoButtonUI : MonoBehaviour
         {
             rectTrn.DOAnchorPosY(target, duration).SetUpdate(true);
         }
+    }
+
+    public void IconChange(UIType type)
+    {
+        iconChanger.ChangeIcon(type);
     }
 
     private void OnDestroy()
