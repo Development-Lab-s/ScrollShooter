@@ -1,4 +1,5 @@
 using csiimnida.CSILib.SoundManager.RunTime;
+using System;
 using UnityEngine;
 using YGPacks; 
 
@@ -6,6 +7,7 @@ namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
+        public event Action OnClear;
         [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
         public Player Player 
@@ -26,6 +28,15 @@ namespace Member.JYG._Code
         private void Start()
         {
             SetCursorActive(false);
+        }
+
+        private void Update()
+        {
+            if (player.transform.position.y >= StageSO.MapDistance)
+            {
+                OnClear?.Invoke();
+                TimeManager.Instance.StopTime();
+            }
         }
 
         public void SetCursorActive(bool isActive)

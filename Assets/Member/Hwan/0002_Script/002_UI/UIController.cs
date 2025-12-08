@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
     private List<UIType> openUIList = new();
     private GoButtonUI goButtonUI;
     private Dictionary<UIType, IUI> uiDictionary = new();
-    private PlayerInputSO inputSO;
+    [field: SerializeField] private PlayerInputSO inputSO;
     public event Action<List<UIType>> OnUIChange;
 
     private void Awake()

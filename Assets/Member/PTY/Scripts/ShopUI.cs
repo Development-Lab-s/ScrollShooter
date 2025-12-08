@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour, IUI
@@ -56,14 +57,13 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        //상점 닫기
-        Close();
+        //스킨 적용하기
+        _skinButtons[_currentIndex].OnClick();
     }
 
     public void ForwardMove()
     {
-        //스킨 선택
-        _skinButtons[_currentIndex].OnClick();
+        SceneManager.LoadScene(2);
     }
 
     public void LeftMove()
