@@ -11,7 +11,7 @@ namespace PCM
         }
         void Update()
         {
-            time.text = UnityEngine.Time.time.ToString("F2");
+            time.text = Time.time.ToString("F2");
         }
     }
 }
