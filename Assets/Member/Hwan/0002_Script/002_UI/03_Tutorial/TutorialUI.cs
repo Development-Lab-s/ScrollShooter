@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class TutorialUI : MonoBehaviour, IUI
 {
-    [SerializeField] public GameObject UIObject { get; }
+    [field: SerializeField] public GameObject UIObject { get; private set; }
 
     public UIType UIType => UIType.TurorialUI;
 
@@ -16,19 +17,24 @@ public class TutorialUI : MonoBehaviour, IUI
     [SerializeField] private TextMeshProUGUI tmp;
     private RectTransform uiObjectRect;
 
+    private InputControlleManager inputController;
+
     public void BackMove() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 
     public void Close()
     {
+        TimeManager.Instance.UnStopTime();
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
     }
 
-    public void Initialize(UIController uIController)
+    public void Initialize()
     {
         uiObjectRect = UIObject.GetComponent<RectTransform>();
         TutorialManager.Instance.OnPlayerNearObstacle += Open;
         TutorialManager.Instance.OnSkipPhaze += Close;
+        inputController = GetComponentInParent<InputControlleManager>();
+        UIObject.SetActive(false);
     }
 
     private void Open(TutorialInfoSO tutoInfo)
@@ -54,9 +60,10 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value) => TutorialManager.Instance.GetInput(InteractiveType.Scroll);
 
-    private void OnDestroy()
+    private IEnumerator waitForInput()
     {
-        TutorialManager.Instance.OnPlayerNearObstacle -= Open;
-        TutorialManager.Instance.OnSkipPhaze -= Close;
+        inputController.ChangeUIInputActive(false);
+        yield return new WaitForSecondsRealtime(1);
+        inputController.ChangeUIInputActive(true);
     }
 }

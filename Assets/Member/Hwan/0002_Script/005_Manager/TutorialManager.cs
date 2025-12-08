@@ -1,54 +1,93 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System;
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using YGPacks;
 
 public class TutorialManager : Singleton<TutorialManager>
 {
-    [SerializeField] private PlayerInputSO uiInputSO;
-    [SerializeField] private PlayerInputSO playerInputSO;
     [SerializeField] private TutorialInfoSO[] tutoInfos; 
     public event Action<TutorialInfoSO> OnPlayerNearObstacle;
     public event Action OnSkipPhaze;
 
     private int currentPhase = 0;
     private InteractiveType currentNeedInput;
+    private List<TutoTypeHolder> usedBlocks = new();
+
+    public bool IsTutorialing { get; private set; } = false;
 
     protected override void Awake()
     {
         base.Awake();
+        if (GameManager.Instance.StageSO.StageNumber == 0)
+        {
+            IsTutorialing = false;
+            InputControlleManager.Instance.ChangeAllPlayerActiveType(false); //½Ã¸£
+            IsTutorialing = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IBlock>(out IBlock block))
+        if (collision.TryGetComponent(out TutoTypeHolder block))
         {
-            StartTutoPattern();
+            usedBlocks.ForEach((holder) =>
+            {
+                if (holder.TutoNumber == block.TutoNumber) return;
+            });
+            usedBlocks.Add(block);
+            PlayTuto();
         }
     }
 
-    private void StartTutoPattern()
+    private void PlayTuto()
     {
-        TimeManager.Instance.FadeStopTime(1, 0.2f);
-        TutorialInfoSO currentTutoInfo = tutoInfos[0];
+        if (currentPhase == 0) StartTuto();
+        TimeManager.Instance.FadeStopTime(0.75f, 0.2f);
+        TutorialInfoSO currentTutoInfo = null;
         foreach (TutorialInfoSO tutoInfo in tutoInfos)
         {
-            if (tutoInfo.Phase != currentPhase) return;
+            if (tutoInfo.Phase != currentPhase) continue;
             currentTutoInfo = tutoInfos[currentPhase];
         }
+
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
         currentNeedInput = currentTutoInfo.NeedInput;
-        currentPhase++;
+        InputControlleManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
+    }
+
+    private void StartTuto()
+    {
+        InputControlleManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
+    }
+
+    private void EndTuto()
+    {
+        IsTutorialing = false;
+        InputControlleManager.Instance.ChangeAllPlayerActiveType(true);
     }
 
     public void GetInput(InteractiveType type)
     {
-        if (type == currentNeedInput)
+        if (currentNeedInput != InteractiveType.None)
         {
-            TimeManager.Instance.UnStopTime();
-            OnSkipPhaze?.Invoke();
-            currentNeedInput = InteractiveType.None;
+            if (type != currentNeedInput) return;
         }
+
+        currentNeedInput = InteractiveType.None;
+        currentPhase++;
+        OnSkipPhaze?.Invoke();
+
+        if (currentPhase == tutoInfos.Length - 1) StartCoroutine(WaitLastTuto());
+
+        if (currentPhase == tutoInfos.Length) EndTuto();
+    }
+
+    private IEnumerator WaitLastTuto()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        PlayTuto();
     }
 }

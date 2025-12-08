@@ -1136,6 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851595694}
   - component: {fileID: 1851595695}
+  - component: {fileID: 1851595696}
   m_Layer: 5
   m_Name: UIController
   m_TagString: Untagged
@@ -1177,6 +1178,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSO: {fileID: 11400000, guid: 167598a8d9fb04a4ab63c84659d6a706, type: 2}
+--- !u!114 &1851595696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851595693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b193fabcb2be3f943b6803190b7dc44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1906939441
 GameObject:
   m_ObjectHideFlags: 0
