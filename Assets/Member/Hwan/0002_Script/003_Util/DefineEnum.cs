@@ -7,7 +7,8 @@ public enum UIType
     GameOverUI,
     ShopUI,
     StageSelectUI,
-    TurorialUI
+    TurorialUI,
+    ClearUI
 }
 
 public enum InteractiveType
