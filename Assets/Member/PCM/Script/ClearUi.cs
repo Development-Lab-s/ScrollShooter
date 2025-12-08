@@ -20,33 +20,20 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField] private Sprite nullSpace;
     public UIType UIType => UIType.ClearUI;
 
-    public InteractiveType OpenInput => InteractiveType.None;
+    public InteractiveType OpenInput => InteractiveType.Right;
 
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
 
     private NestingOpener nestingOpener;
-    private UIController uiController;
     private CountdouwnTmp countdouwn;
 
-    private void Start()
-    {
-        UIObject.SetActive(false);
-    }
-    private void Update()
-    {
-        if (Keyboard.current.bKey.wasPressedThisFrame)
-        {
-            Open();
-            Debug.Log(Time.time.ToString("F2"));
-        }
-    }
     public void BackMove()
     {
-        uiController.CanInput = false;
+        InputControlleManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); InputControlleManager.Instance.ChangeUIInputActive(true); });
     }
 
     public void Close()
@@ -58,29 +45,29 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        uiController.CanInput = false;
+        InputControlleManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); InputControlleManager.Instance.ChangeUIInputActive(true); });
     }
 
-    public void Initialize(UIController uIController)
+    public void Initialize()
     {
-        throw new NotImplementedException();
+        countdouwn = GetComponent<CountdouwnTmp>();
+        Close();
     }
 
     public void LeftMove()
     {
-        throw new NotImplementedException();
     }
 
     public void MiddleMove()
     {
-        throw new NotImplementedException();
     }
 
     public void Open()
     {
         OnOpen?.Invoke(UIType);
+        countdouwn.StartCount(null);
         ClearShow(SceneManager.GetActiveScene().buildIndex); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         playTime.text = $"ClearTime:{Time.time.ToString("F2")}";
@@ -89,12 +76,12 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void RightMove()
     {
-        throw new NotImplementedException();
+        Open();
+        Debug.Log(Time.time.ToString("F2"));
     }
 
     public void ScrollMove(int value)
     {
-        throw new NotImplementedException();
     }
     public void ClearShow(int stage)
     {
