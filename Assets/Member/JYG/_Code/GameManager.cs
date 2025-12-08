@@ -25,30 +25,12 @@ namespace Member.JYG._Code
             SoundManager.Instance.PlaySound(StageSO.StageBGM);
         }
 
-        private void Start()
-        {
-            SetCursorActive(false);
-        }
-
         private void Update()
         {
             if (player.transform.position.y >= StageSO.MapDistance)
             {
                 OnClear?.Invoke();
                 TimeManager.Instance.StopTime();
-            }
-        }
-
-        public void SetCursorActive(bool isActive)
-        {
-            InputControlleManager.Instance.ChangePlayerInputActive(!isActive);
-            if (isActive)
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
