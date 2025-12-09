@@ -15100,7 +15100,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -16378,11 +16378,11 @@ ParticleSystem:
         key7: {r: 0.20247419, g: 0.25453898, b: 0.3066038, a: 0}
         ctime0: 0
         ctime1: 2602
-        ctime2: 10409
-        ctime3: 16769
-        ctime4: 21106
-        ctime5: 24768
-        ctime6: 30455
+        ctime2: 13685
+        ctime3: 18408
+        ctime4: 25829
+        ctime5: 32286
+        ctime6: 37008
         ctime7: 65535
         atime0: 0
         atime1: 58692
@@ -19826,7 +19826,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.76, y: 1.35, z: -0.2210099}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}

@@ -24,7 +24,7 @@ public class StageSelectUI : MonoBehaviour, IUI
     public UIType UIType => UIType.StageSelectUI;
     public InteractiveType OpenInput => InteractiveType.None;
 
-    public void Initialize(UIController uIController)
+    public void Initialize()
     {
         for (int i = 0; i < buttonAmount; i++)
         {
@@ -56,7 +56,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         Close();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
         
     }

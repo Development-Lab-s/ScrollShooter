@@ -1,36 +1,34 @@
 using Member.JYG._Code;
 using Member.JYG.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private PlayerInputSO inputSO;
-
-    private Dictionary<UIType, IUI> uiDictionary = new();
     private List<UIType> openUIList = new();
     private GoButtonUI goButtonUI;
-
-    public bool CanInput { get; set; }
+    private Dictionary<UIType, IUI> uiDictionary = new();
+    [field: SerializeField] private PlayerInputSO inputSO;
+    public event Action<List<UIType>> OnUIChange;
 
     private void Awake()
     {
-        CanInput = true; 
+        uiDictionary = UIManager.Instance.UIDictionary;
 
         goButtonUI = GetComponentInChildren<GoButtonUI>();
         goButtonUI.Initialize(GetInputForward, GetInputBack);
 
-        foreach (IUI ui in GetComponentsInChildren<IUI>(true))
+        foreach (IUI ui in uiDictionary.Values)
         {
             ui.OnOpen += AddInputUI;
             ui.OnClose += RemoveInputUI;
-            uiDictionary.Add(ui.UIType, ui);
-            ui.Initialize(this);
+            ui.Initialize();
         }
 
-        inputSO.OnBrakePressed += GetInputBack;
-        inputSO.OnDashPressed += GetInputForward;
+        inputSO.OnBrakePressed += GetInputForward;
+        inputSO.OnDashPressed += GetInputBack;
         inputSO.OnLeftClicked += GetInputLeft;
         inputSO.OnRightClicked += GetInputRight;
         inputSO.OnWheelBtnClicked += GetInputMiddle;
@@ -45,8 +43,8 @@ public class UIController : MonoBehaviour
             ui.OnClose -= RemoveInputUI;
         }
 
-        inputSO.OnBrakePressed -= GetInputBack;
-        inputSO.OnDashPressed -= GetInputForward;
+        inputSO.OnBrakePressed -= GetInputForward;
+        inputSO.OnDashPressed -= GetInputBack;
         inputSO.OnLeftClicked -= GetInputLeft;
         inputSO.OnRightClicked -= GetInputRight;
         inputSO.OnWheelBtnClicked -= GetInputMiddle;
@@ -62,19 +60,14 @@ public class UIController : MonoBehaviour
 
     private void UIInteractive(InteractiveType interactiveType)
     {
-        if (CanInput == false) return;
-
-        if (openUIList.Count == 0)
+        foreach (IUI ui in uiDictionary.Values)
         {
-            foreach (IUI ui in uiDictionary.Values)
-            {
-                if (ui.OpenInput != interactiveType) continue;
-                ui.Open();
-                return;
-            }
+            if (ui.OpenInput != interactiveType) continue;
+            DoMove(interactiveType, ui);
             return;
         }
 
+        if (openUIList.Count == 0) return;
         IUI inputUI = uiDictionary[openUIList.Last()];
         DoMove(interactiveType, inputUI);
     }
@@ -82,32 +75,20 @@ public class UIController : MonoBehaviour
     private void AddInputUI(UIType type)
     {
         openUIList.Add(type);
-        if (openUIList.Count == 1)
-        {
-            OnInputChange(type, true);
-        }
+        OnUIChange?.Invoke(openUIList);
     }
 
     private void RemoveInputUI(UIType type)
     {
         openUIList.Remove(type);
-        if (openUIList.Count == 0)
-        {
-            OnInputChange(type, false);
-        }
-    }
-
-    private void OnInputChange(UIType type, bool canInteractive)
-    {
-        GameManager.Instance.SetCursorLock(canInteractive);
-        goButtonUI.ButtonMove(type, canInteractive);
+        OnUIChange?.Invoke(openUIList);
     }
 
     private void DoMove(InteractiveType interactiveType, IUI inputUI)
     {
         switch (interactiveType)
         {
-            case InteractiveType.Forward: inputUI.FrontMove(); break;
+            case InteractiveType.Forward: inputUI.ForwardMove(); break;
             case InteractiveType.Back: inputUI.BackMove(); break;
             case InteractiveType.Left: inputUI.LeftMove(); break;
             case InteractiveType.Right: inputUI.RightMove(); break;

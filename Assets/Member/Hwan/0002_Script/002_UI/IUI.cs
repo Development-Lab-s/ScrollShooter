@@ -9,7 +9,7 @@ public interface IUI
     public UIType UIType { get; }
     public InteractiveType OpenInput { get; } 
 
-    public void Initialize(UIController uIController);
+    public void Initialize();
 
     public void Open();
 
@@ -17,7 +17,7 @@ public interface IUI
 
     public void BackMove();
 
-    public void FrontMove();
+    public void ForwardMove();
 
     public void LeftMove();
 

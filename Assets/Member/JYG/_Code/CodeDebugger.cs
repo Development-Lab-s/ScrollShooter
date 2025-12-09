@@ -16,5 +16,10 @@ public class CodeDebugger : MonoBehaviour
         {
             hitSystem.Life -= 1;
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 1f);
+        }
     }
 }

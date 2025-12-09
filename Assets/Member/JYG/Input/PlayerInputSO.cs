@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -28,6 +29,8 @@ namespace Member.JYG.Input
         public bool canDash = true;
         public bool isUIInput = false;
 
+        private Dictionary<InteractiveType, bool> inputActiveDictionary = new();
+
         private void OnEnable()
         {
             canDash = true;
@@ -37,6 +40,11 @@ namespace Member.JYG.Input
             }
             _playerInput.Player.Enable();
             _playerInput.Player.SetCallbacks(this);
+
+            foreach (InteractiveType type in Enum.GetValues(typeof(InteractiveType)))
+            {
+                inputActiveDictionary.Add(type, true);
+            }
         }
 
         private void OnDisable()
@@ -46,6 +54,7 @@ namespace Member.JYG.Input
         
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (inputActiveDictionary[InteractiveType.Scroll] == false) return;
             if (context.performed)
             {
                 XMoveDir = (int)context.ReadValue<float>();
@@ -60,6 +69,7 @@ namespace Member.JYG.Input
 
         public void OnBrake(InputAction.CallbackContext context)
         {
+            if (inputActiveDictionary[InteractiveType.Forward] == false) return;
             if (context.performed)
             {
                 OnBrakePressed?.Invoke();
@@ -75,6 +85,7 @@ namespace Member.JYG.Input
 
         public void OnBoost(InputAction.CallbackContext context)
         {
+            if (inputActiveDictionary[InteractiveType.Back] == false) return;
             if (context.performed == false) return;
             if (isUIInput == true)
             {
@@ -94,42 +105,40 @@ namespace Member.JYG.Input
 
         public void OnLeftClick(InputAction.CallbackContext context)  
         {
+            if (inputActiveDictionary[InteractiveType.Left] == false) return;
             if(context.performed)
                 OnLeftClicked?.Invoke();
         }
 
         public void OnRightClick(InputAction.CallbackContext context)
         {
+            Debug.Log("sf");
+            if (inputActiveDictionary[InteractiveType.Right] == false) return;
+            Debug.Log("sf");
             if(context.performed)
                 OnRightClicked?.Invoke();
         }
 
         public void OnWheelClick(InputAction.CallbackContext context)
         {
+            if (inputActiveDictionary[InteractiveType.Middle] == false) return;
             if(context.performed)
                 OnWheelBtnClicked?.Invoke();
         }
-
-        public void OffInput()
+        
+        public void SetInputTypeActive(InteractiveType type, bool active)
         {
-            _playerInput.Player.Disable();
+            inputActiveDictionary[type] = active;
         }
 
-        public void ActiveInput()
+        public void SetInputActive(bool active)
         {
-            _playerInput.Player.Enable();
-        }
-
-        public void ChangeInputState(bool canInteractive)
-        {
-            if (canInteractive == true)
-            {
-                _playerInput.Player.Enable();
-            }
-            else
+            if (active == true)
             {
                 _playerInput.Player.Disable();
+                return;
             }
+            _playerInput.Player.Enable();
         }
     }
 }

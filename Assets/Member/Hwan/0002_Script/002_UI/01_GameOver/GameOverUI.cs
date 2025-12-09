@@ -1,4 +1,3 @@
-using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using System;
 using UnityEngine;
@@ -8,63 +7,68 @@ public class GameOverUI : MonoBehaviour, IUI
 {
     [field: SerializeField]public GameObject UIObject { get; private set; }
 
-    public InteractiveType OpenInput => InteractiveType.Left;
+    public InteractiveType OpenInput => InteractiveType.None;
     public UIType UIType => UIType.GameOverUI;
 
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
     private NestingOpener nestingOpener;
-    private UIController uiController;
     private CountdouwnTmp countdouwn;
 
     public void BackMove()
     {
-        uiController.CanInput = false;
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => {
+            SceneManager.LoadScene(1);
+            InputControlManager.Instance.ChangeUIInputActive(true);
+        });
     }
 
     public void Close()
     {
         OnClose?.Invoke(UIType);
         UIObject.SetActive(false);
-        Time.timeScale = 1;
+        TimeManager.Instance.UnStopTime();
     }
 
-    public void FrontMove()
+    public void ForwardMove()
     {
-        uiController.CanInput = false;
+        InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); uiController.CanInput = true; });
+        nestingOpener.StartDeNesting(() => { 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            InputControlManager.Instance.ChangeUIInputActive(true);
+        });
     }
 
-    public void Initialize(UIController uiController)
+    public void Initialize()
     {
         GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(Open);
-        this.uiController = uiController;
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
         countdouwn = GetComponent<CountdouwnTmp>();
-        Close();
+        UIObject.SetActive(false);
     }
 
-    public void LeftMove() => Open();
+    public void LeftMove() { }
 
     public void MiddleMove() { }
 
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
-        
-        uiController.CanInput = false;
+        UIManager.Instance.CloseAllUI();
+
+        InputControlManager.Instance.ChangeUIInputActive(false);
         nestingOpener.StartNesting(OnPopUp);
     }
 
     public void OnPopUp()
     {
-        uiController.CanInput = true;
-        Time.timeScale = 0;
+        InputControlManager.Instance.ChangeUIInputActive(true);
+        TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         countdouwn.StartCount(BackMove);
         OnOpen?.Invoke(UIType);

@@ -1,15 +1,14 @@
 using csiimnida.CSILib.SoundManager.RunTime;
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using YGPacks; 
 
 namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private string SceneBGM;
+        public event Action<int> OnClear;
+        [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
         public Player Player 
         { 
@@ -23,20 +22,15 @@ namespace Member.JYG._Code
         protected override void Awake()
         {
             base.Awake();
-            SetCursorLock(false);
-            SoundManager.Instance.PlaySound(SceneBGM);
+            SoundManager.Instance.PlaySound(StageSO.StageBGM);
         }
 
-        public void SetCursorLock(bool isActive)
+        private void Update()
         {
-            Player.PlayerInputSO.ChangeInputState(!isActive);
-            if (isActive)
+            if (player.transform.position.y >= StageSO.MapDistance)
             {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
+                OnClear?.Invoke(StageSO.StageNumber);
+                TimeManager.Instance.StopTime();
             }
         }
     }

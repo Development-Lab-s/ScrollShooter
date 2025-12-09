@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-// 버튼을 누를 때마다 int값이 바뀌어서 그 값에 따라 배열의 값으로 현재 SO가 달라짐. 현재 SO가 바뀔 때마다 슬라이더를 초기화 해주고, 현재 SO에 따라 값이 올라갈 때 값을 슬라이더와 SettingValueContainer에 값을 적용시키기
+
 public class ValueSetter
 {
     private SettingValueSO[] settingValueSOs;
@@ -29,7 +29,7 @@ public class ValueSetter
         slider.maxValue = CurrentValue.MaxValue;
         slider.minValue = CurrentValue.MinValue;
         slider.wholeNumbers = true;
-        slider.value = SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType);
+        slider.value = SettingValueContainer.Instance.GetSettingValue(CurrentValue);
     }
 
     public void ChangeSliderValue(float value)
@@ -39,6 +39,6 @@ public class ValueSetter
 
     public void SaveValue(float changeValue)
     {
-        SettingValueContainer.Instance.SetSettingValue(CurrentValue.MyType, changeValue);
+        SettingValueContainer.Instance.SetSettingValue(CurrentValue, changeValue);
     }
 }

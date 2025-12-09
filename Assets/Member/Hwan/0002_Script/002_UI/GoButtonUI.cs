@@ -16,6 +16,8 @@ public class GoButtonUI : MonoBehaviour
     [SerializeField] private float upYPos;
     [SerializeField] private float downYPos;
 
+    private bool isUp;
+
     public void Initialize(Action rigthClick, Action leftClick)
     {
         rectTrn = GetComponent<RectTransform>();
@@ -32,9 +34,11 @@ public class GoButtonUI : MonoBehaviour
         iconChanger.Initialize();
     }
 
-    public void ButtonMove(UIType uiType, bool isUp)
+    public void ButtonMove(bool isUp)
     {
-        if (isUp == true) iconChanger.ChangeIcon(uiType);
+        if (this.isUp == isUp) return;
+
+        this.isUp = isUp;
         float target = isUp ? upYPos : downYPos;
         float firstPos = !isUp ? upYPos : downYPos;
 
@@ -44,6 +48,11 @@ public class GoButtonUI : MonoBehaviour
         {
             rectTrn.DOAnchorPosY(target, duration).SetUpdate(true);
         }
+    }
+
+    public void IconChange(UIType type)
+    {
+        iconChanger.ChangeIcon(type);
     }
 
     private void OnDestroy()

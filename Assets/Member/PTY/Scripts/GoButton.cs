@@ -11,6 +11,6 @@ public class GoButton : MonoBehaviour
     
     private void Start()
     {
-        _goButtonUI.ButtonMove(UIType.ShopUI, true);
+        _goButtonUI.ButtonMove(true);
     }
 }

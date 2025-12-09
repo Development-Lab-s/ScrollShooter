@@ -26,6 +26,7 @@ namespace Member.JYG._Code
         [field: SerializeField] public float YSpeed { get; private set; } 
         [field: SerializeField] public float YSpeedAddForce { get; private set; } 
         [field:SerializeField] public bool IsBoosting { get; private set; }
+        public bool playerInCamera = true;
         public UnityEvent<float> onBoost;
         public UnityEvent onBoostFailed;
         public float OriginalSpeed { get; private set; }
@@ -115,7 +116,10 @@ namespace Member.JYG._Code
         private void Update()
         {
             SetVelocity(PlayerInputSO.IsBraking); //Setting my speed Method
-            SetPlayerPositionInCamera();
+            if (playerInCamera)
+            {
+                SetPlayerPositionInCamera();
+            }
         }
         
         private void SetVelocity(bool isBrake) //Use in Update

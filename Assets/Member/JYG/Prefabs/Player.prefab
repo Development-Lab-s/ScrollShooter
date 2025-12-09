@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343119487764606917}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.275
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9765,7 +9765,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823020622464250776}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9840,7 +9840,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.2
+      scalar: 0.75
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9893,7 +9893,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 27.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10758,33 +10758,33 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 14.790371
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 0.11077118
           inSlope: 0
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -14781,7 +14781,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4.5
+    scalar: 3.8
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19657,7 +19657,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004286510630468941}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -19672,7 +19672,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.275
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -20486,7 +20486,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -24562,9 +24562,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5910713047d0b441956dbaa7b24122a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeVolume: {fileID: 987059472767125103}
-  effectApplySpeed: 20
+  changeVolume: {fileID: 0}
+  effectApplySpeed: 1
   effectCloseTime: 1
+  startDelay: 1.7
 --- !u!1 &3750739969321558977
 GameObject:
   m_ObjectHideFlags: 0
@@ -29632,7 +29633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeVolume: {fileID: 0}
   effectApplySpeed: 3
-  effectCloseTime: 1
+  effectCloseTime: 0
+  startDelay: 0
 --- !u!1 &6353155055440968096
 GameObject:
   m_ObjectHideFlags: 0
@@ -29674,7 +29676,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6353155055440968096}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -29689,7 +29691,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.275
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -30503,7 +30505,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -34571,7 +34573,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4.5
+    scalar: 3.8
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -39447,7 +39449,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7714897354138761247}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -39462,7 +39464,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.275
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -40276,7 +40278,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -44275,7 +44277,7 @@ Transform:
   m_Children:
   - {fileID: 6316591200596497723}
   - {fileID: 5290364929203457663}
-  - {fileID: 561497856716970405}
+  - {fileID: 3151588064772832864}
   - {fileID: 918840619094050764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44488,7 +44490,7 @@ MonoBehaviour:
         m_MethodName: VignettePosChangeToPlayer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 987059472767125103}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
           m_IntArgument: 0
           m_FloatArgument: 999999
@@ -44499,6 +44501,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   maxLife: 5
+--- !u!1 &8083794560705386664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3151588064772832864}
+  m_Layer: 0
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3151588064772832864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083794560705386664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 561497856716970405}
+  m_Father: {fileID: 7519325051438981142}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8116672806795909570
 GameObject:
   m_ObjectHideFlags: 0
@@ -54304,7 +54338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &561497856716970405
 Transform:
   m_ObjectHideFlags: 0
@@ -54314,11 +54348,11 @@ Transform:
   m_GameObject: {fileID: 8908805864061786518}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03000021, z: 0}
-  m_LocalScale: {x: 0.2, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7519325051438981142}
+  m_Father: {fileID: 3151588064772832864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &861733242483677264
 TrailRenderer:
@@ -54344,7 +54378,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c6a5ba08a9ed6e945a74d3858715146b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54375,7 +54409,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.7055789
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -54415,12 +54449,12 @@ TrailRenderer:
       m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 90
     numCapVertices: 0
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    shadowBias: 1
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0

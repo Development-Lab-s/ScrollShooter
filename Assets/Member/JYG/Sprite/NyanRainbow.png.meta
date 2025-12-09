@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
-guid: 949e211c2c48a674eae12d0cc4004feb
+guid: cee1b290213820449a2b5327b9e132af
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1172286141432131573
-    second: "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0"
-========
-guid: 5911d0ceda0b557449d0539673f8eee6
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5883908543513742245
-    second: Button-export_0
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
+      213: -1615284848893709261
+    second: NyanCat 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,18 +42,18 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 3
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -81,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 3
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,58 +109,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
-      name: "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0"
+      name: NyanCat 1_0
       rect:
         serializedVersion: 2
-        x: 117
-        y: 18
-        width: 268
-        height: 479
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-========
-      name: GoButton_Left_0
-      rect:
-        serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 92
-        height: 19
+        width: 16
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 40, y: 2, z: 11, w: 0}
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
+      border: {x: 6, y: 0, z: 6, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
-      spriteID: 5ffec2bd80cc44010800000000000000
-      internalID: 1172286141432131573
-========
-      spriteID: e6c09e865f6d08b4eb2545a09000609d
-      internalID: -1862314132
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
+      spriteID: 334be92fcfa5599e0800000000000000
+      internalID: -1615284848893709261
       vertices: []
       indices: 
       edges: []
@@ -178,11 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
-    spriteID: 764e2e073274b5e4fb7c47e84c48a6f2
-========
-    spriteID: 5e97eb03825dee720800000000000000
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
+    spriteID: d44343b50aa4e094da364bca041881ce
     internalID: 0
     vertices: []
     indices: 
@@ -192,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<<< HEAD:Assets/Member/PCM/마우스이미지.png.meta
-      "\uB9C8\uC6B0\uC2A4\uC774\uBBF8\uC9C0_0": 1172286141432131573
-========
-      GoButton_Left_0: -1862314132
->>>>>>>> Base:Assets/Member/PCM/Script/GoButton_Left.png.meta
+      NyanCat 1_0: -1615284848893709261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
