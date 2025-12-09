@@ -1,37 +1,32 @@
 using DG.Tweening;
-using UnityEngine;
+using UnityEngine.Events;
 
-public class FolderBlock : BlockBase, IBreakable
+public class FolderBlock : BlockBase, IBreakable, IContactable
 {
-    [field: SerializeField]
-    public GameObject BreakParticlePrefabs { get; private set; }
-
+    public UnityEvent Breaked;
     public void OnBreak()
     {
-        DoBreak();
+        tween = DoBreak(()=> 
+        {
+            Breaked?.Invoke();
+            Destroy();
+        });
     }
 
-    public void TryBreak(ContactInfo info)
+    public void TryContact(ContactInfo info)
     {
-        if (info.dashable.IsDash)
+        if (info.player.IsDash || info.player.IsInvincible)
             OnBreak();
         else
-            info.health.TakeDamage(1f);
+            info.player.TakeDamage(1f);
     }
 
-    private void DoBreak()
+    private Sequence DoBreak(TweenCallback callback)
     {
-        Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(2, 0.05f)
+        return DOTween.Sequence()
+            .Append(transform.DOScale(2, 0.05f)
             .SetLoops(2, LoopType.Yoyo)
-            .From(1));
-        seq.AppendCallback(() =>
-        {
-            // 이펙트 소환
-            var particl = Instantiate(BreakParticlePrefabs, transform.position, Quaternion.identity);
-            // 파괴
-            Destroy(gameObject);
-            // +a 이벤트(공격, 텔포 등등)
-        });
+            .From(1))
+            .AppendCallback(callback);
     }
 }

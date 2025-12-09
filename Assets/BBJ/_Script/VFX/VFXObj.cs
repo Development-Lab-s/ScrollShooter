@@ -9,14 +9,10 @@ public class VFXObj : MonoBehaviour, IYgPoolable
     public void AppearanceItem(){}
 
     public void ResetItem(){}
-    public void OnParticleTrigger()
-    {
-    }
     private void OnParticleSystemStopped()
     {
-        Debug.Log("a");
-        Destroy(gameObject);
-        //PoolManager.Instance.Push(this);
+        //Destroy(gameObject);
+        PoolManager.Instance.Push(this);
     }
 
 }

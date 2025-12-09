@@ -2,55 +2,39 @@ using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class MineGame : BlockBase, IBreakable, IExplosion
+public class MineGame : BlockBase, IContactable, IExplosion
 {
-    [field: SerializeField]
-    public GameObject BreakParticlePrefabs { get; private set; }
-
-    [SerializeField]private float explosionRadius;
-
-
-    public void OnBreak()
-    {
-        Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(2, 0.05f)
-            .SetLoops(2, LoopType.Yoyo)
-            .From(1));
-        seq.AppendCallback(() =>
-        {
-            // 이펙트 소환
-            var particl = Instantiate(BreakParticlePrefabs, transform.position, Quaternion.identity);
-            // 파괴
-            Destroy(gameObject);
-            // +a 이벤트(공격, 텔포 등등)
-        });
-    }
+    [SerializeField]private OverlapDataSO dataSO;
+    public UnityEvent<float> Explosioned;
 
     public void OnExplosion()
     {
-        var targets = Physics2D.OverlapCircleAll(transform.position, explosionRadius );
-        foreach(var item in targets)
+        DOVirtual.DelayedCall(0.05f, () =>
         {
-            if (item.TryGetComponent<IExplosion>(out var explosion))
+            Destroy();
+            Explosioned?.Invoke(dataSO.size);
+            var targets = Physics2D.OverlapCircleAll(transform.position, dataSO.size, dataSO.whatIsTarget);
+            for (int i = 0; i < targets.Length; i++)
             {
-                explosion.OnExplosion();
+                Collider2D target = targets[i];
+                if (target.TryGetComponent<IExplosion>(out var explosion)) explosion.OnExplosion();
+                else if (target.TryGetComponent<IBreakable>(out var blockable)) blockable.OnBreak();
+                else if (target.TryGetComponent<IDamagable>(out var damagable)) damagable.TakeDamage(1f);
             }
-            if(item.TryGetComponent<IBreakable>(out var blockable))
-            {
-                blockable.OnBreak();
-            }
-            if(item.TryGetComponent<IPlayer>(out var player))
-            {
-                Debug.Log("죽인다.");
-            }
-        }
+        });
     }
 
-    public void TryBreak(ContactInfo info)
+    public void TryContact(ContactInfo info)
     {
-        OnBreak();
         OnExplosion();
-        Debug.Log("죽인다.");
+        info.player.TakeDamage(1f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, dataSO.size);
     }
 }

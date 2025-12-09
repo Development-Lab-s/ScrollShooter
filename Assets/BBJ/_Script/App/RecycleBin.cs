@@ -1,9 +1,8 @@
 using DG.Tweening;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
-public class RecycleBin : BlockBase, IBreakable
+public class RecycleBin : BlockBase, IBreakable,IContactable
 {
 
     [SerializeField] private float bounceTime;
@@ -14,20 +13,21 @@ public class RecycleBin : BlockBase, IBreakable
     [SerializeField] private float delayTime;
     [SerializeField] private int warningBounceCnt;
 
+    public UnityEvent Breaked;
     private Sequence _seq;
     public void OnBreak()
     {
-
+        Breaked?.Invoke();
+        Destroy();
     }
 
-    public void TryBreak(ContactInfo info)
+    public void TryContact(ContactInfo info)
     {
-        if (info.dashable.IsDash)
-            OnBreak();
-        else
-            info.health.TakeDamage(1f);
+        OnBreak();
+        if (info.player.IsDash == false && info.player.IsInvincible == false)
+            info.player.TakeDamage(1f);
     }
-    private void Awake()
+    protected override void Awake()
     {
         Init();
     }
@@ -51,5 +51,10 @@ public class RecycleBin : BlockBase, IBreakable
         .SetLoops(warningBounceCnt));
 
         _seq.SetLoops(-1);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, transform.localScale * bounceScale);
     }
 }

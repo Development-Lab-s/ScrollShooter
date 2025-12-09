@@ -1,104 +1,142 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class WarningBlock : BlockBase, IBreakable, IExplosion
+public class WarningBlock : BlockBase, IExplosion, IContactable
 {
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private OverlapDataSO chackPlayerOverlap;
+    [SerializeField] private OverlapDataSO explostionOverlap;
+    [SerializeField] private string dynamicLayer;
 
-    [SerializeField] private float chackDistance;
-    [SerializeField] private float speed;
+    [Range(0, 100)]
+    public float acceleration;
 
-    [SerializeField] private float explosionRadius;
+    [Range(0.1f, 20)]
+    public float maxSpeed;
 
-    private Rigidbody2D _rbCompo;
+    [SerializeField] private float lifeTime;
+    [SerializeField] private float playerCheckTime;
+    [SerializeField] private float _currentVelocity = 3f;
 
-    private Transform _target;
+    public UnityEvent<float> OnVelocityChnged;
+    public UnityEvent<float> Explosioned;
+
     private Vector3 _moveDir;
+    private Rigidbody2D _rbCompo;
+    private bool _isTween;
+    private float _lastCheckTime;
 
-    private bool _isMove;
-
-    public void Awake()
+    public void TryContact(ContactInfo info) => OnExplosion();
+    private Collider2D ChackForTarget(OverlapDataSO data)
     {
-        _rbCompo = GetComponent<Rigidbody2D>();
-    }
-    public void TryBreak(ContactInfo info)
-    {
-        if (info.dashable.IsDash)
-            OnBreak();
-        else
-            info.health.TakeDamage(1f);
-    }
-    public void OnBreak()
-    {
-        Destroy(gameObject);
-        Debug.Log("파티클 생성");
+        return Physics2D.OverlapCircle(transform.position, data.size, data.whatIsTarget);
     }
 
-    private void RotateTween(Vector3 dir)
+    private Sequence RotateTween(Vector3 dir, TweenCallback callback)
     {
-        Sequence seq = DOTween.Sequence();
         Vector3 r = new Vector3(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
-        seq.Append(renderCompo.transform.DOLocalRotate(r + new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360));
-        seq.Join(renderCompo.transform.DOLocalMove(-dir, speed * Time.fixedDeltaTime)
-            .From(Vector3.zero)
-            .SetSpeedBased()
-            .SetLoops(2, LoopType.Yoyo))
-            .SetEase(Ease.InOutCirc);
-        seq.AppendCallback(() => this._moveDir = dir);
+        return DOTween.Sequence()
+                .Append(renderCompo.transform.DOLocalRotate(r + new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360))
+                .AppendCallback(callback);
+
+        //seq.Join(renderCompo.transform.DOLocalMove(-dir, speed * Time.fixedDeltaTime)
+        //    .From(Vector3.zero)
+        //    .SetSpeedBased()
+        //    .SetLoops(2, LoopType.Yoyo))
+        //    .SetEase(Ease.InOutCirc); 
+
     }
-    private void Update()
+    private void OnCollisionSet()
     {
-        if (_isMove == false)
-        {
-            if (ChackForTarget(chackDistance))
-            {
-                _isMove = true;
-                RotateTween((_target.transform.position - transform.position).normalized);
-            }
-        }
-    }
-    private void FixedUpdate()
-    {
-        if (_isMove)
-            Move();
-    }
-    private void Move()
-    {
-        _rbCompo.linearVelocity = _moveDir * speed;
-    }
-    private bool ChackForTarget(float distance)
-    {
-        var target = Physics2D.OverlapCircle(transform.position, distance, playerLayer);
-        if(target != null) this._target = target.transform;
-        return target != null;
-    }
-    private void OnTrigerEnter2D(Collider2D colition)
-    {
-        if(colition.TryGetComponent<IBreakable>(out var blockable))
-        {
-            OnExplosion();
-        }
+        colliderCompo.gameObject.layer = LayerMask.NameToLayer(dynamicLayer);
     }
 
     public void OnExplosion()
     {
-        var targets = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        foreach (var item in targets)
+        DOVirtual.DelayedCall(0.05f, () =>
         {
-            if (item.TryGetComponent<IExplosion>(out var explosion))
+            tween.Kill();
+            var data = explostionOverlap;
+            Explosioned?.Invoke(data.size);
+            Destroy();
+
+            var targets = Physics2D.OverlapCircleAll(transform.position, data.size, data.whatIsTarget);
+            for (int i = 0; i < targets.Length; i++)
             {
-                explosion.OnExplosion();
-                continue;
+                Collider2D target = targets[i];
+                if (target.TryGetComponent<IExplosion>(out var explosion)) explosion.OnExplosion();
+                else if (target.TryGetComponent<IBreakable>(out var blockable)) blockable.OnBreak();
+                else if (target.TryGetComponent<IDamagable>(out var health)) health.TakeDamage(1f);
             }
-            if (item.TryGetComponent<IBreakable>(out var blockable))
+        });
+    }
+
+
+    #region life cycile
+    protected override void Awake()
+    {
+        base.Awake();
+        _rbCompo = GetComponent<Rigidbody2D>();
+        _lastCheckTime = Time.time;
+    }
+    private void Update()
+    {
+        var time = Time.time;
+        if (playerCheckTime < time - _lastCheckTime)
+        {
+            _lastCheckTime = time;
+            if (_moveDir.sqrMagnitude <= 0f)
             {
-                blockable.OnBreak();
-                continue;
-            }
-            if (item.TryGetComponent<IDamagable>(out var health))
-            {
-                health.TakeDamage(1f);
+                var target = ChackForTarget(chackPlayerOverlap);
+                if (target)
+                {
+                    _isTween = true;
+                    OnCollisionSet();
+                    DOVirtual.DelayedCall(lifeTime, () => Destroy(), true);
+                    _moveDir = (target.transform.position - transform.position).normalized;
+                    tween = RotateTween(_moveDir, () =>
+                    {
+                        _isTween = false;
+                        tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
+                        .SetEase(Ease.OutExpo);
+                    });
+                }
             }
         }
+        if (_isTween == false)
+            _currentVelocity = CalculateSpeed(_moveDir);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnExplosion();
+    }
+    #endregion
+    private float CalculateSpeed(Vector2 value)
+    {
+        if (value.sqrMagnitude > 0)
+            _currentVelocity += acceleration * Time.deltaTime;
+
+        return Mathf.Clamp(_currentVelocity, 0, maxSpeed);
+    }
+
+    private void Move()
+    {
+        _rbCompo.linearVelocity = _moveDir * _currentVelocity;
+    }
+    private void FixedUpdate()
+    {
+        if (_isTween == false)
+        {
+            OnVelocityChnged?.Invoke(_currentVelocity);
+            Move();
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, chackPlayerOverlap.size);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explostionOverlap.size);
     }
 }

@@ -1,29 +1,34 @@
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Events;
 
-public class CompressedFolder : BlockBase, IBreakable
+public class CompressedFolder : BlockBase, IBreakable, IContactable
 {
-    public GameObject BreakParticlePrefabs { get; private set; }
-    [SerializeField]private LayerMask whatIsPlayer;
-
+    public UnityEvent Collitioned;
     public void OnBreak()
     {
-        Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOScale(2, 0.05f)
-            .SetLoops(2, LoopType.Yoyo)
-            .From(1));
-        seq.AppendCallback(() =>
+        tween=BreakTween(() =>
         {
-            // 이펙트 소환
-            var particl = Instantiate(BreakParticlePrefabs, transform.position, Quaternion.identity);
-            // 파괴
+            Collitioned?.Invoke();
             Destroy(gameObject);
         });
     }
-    public void TryBreak(ContactInfo info)
+
+    private Sequence BreakTween(TweenCallback callback)
     {
-        Debug.Log("튕겨나감");
+        return DOTween.Sequence()
+            .Append(transform.DOScale(2, 0.05f)
+            .SetLoops(2, LoopType.Yoyo)
+            .From(1))
+            .AppendCallback(callback);
+    }
+
+    public void TryContact(ContactInfo info)
+    {
+        if (info.player.IsInvincible) OnBreak();
+        Collitioned?.Invoke();
+        Debug.Log("튕겨져 나간다");
+        Debug.Log("잠시 대쉬를 못한다");
+        Debug.Log("감속된다.");
     }
 }

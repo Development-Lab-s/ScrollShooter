@@ -15,5 +15,15 @@ public class BlockRenderer : MonoBehaviour
     {
         tmp = GetComponentInChildren<TextMeshPro>();
         SrCompo = GetComponentInChildren<SpriteRenderer>();
+
+        string a= fileName;
+        if(typeData.fileType != "")
+        {
+            a += ".";
+            tmp.text = typeData.fileType;
+        }
+        tmp.text = a;
+        tmp.color = typeData.textColor;
+        SrCompo.sprite = typeData.Icon;
     }
 }

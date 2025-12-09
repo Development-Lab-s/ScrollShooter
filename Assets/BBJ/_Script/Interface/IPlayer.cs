@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IPlayer : IDashable, IInvincible { }
+public interface IPlayer : IDashable, IInvincible, IDamagable { }
 public interface IDamagable
 {
     public void TakeDamage(float dmg);
@@ -14,3 +14,4 @@ public interface IInvincible
     public bool IsInvincible { get; }
     public void OnInvincible(float invincibleTime);
 }
+

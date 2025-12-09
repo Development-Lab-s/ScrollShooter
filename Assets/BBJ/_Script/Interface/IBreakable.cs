@@ -3,16 +3,17 @@ using UnityEngine;
 
 public interface IBreakable
 {
-    public void TryBreak(ContactInfo info);
     public void OnBreak();
+}
+public interface IContactable
+{
+    public void TryContact(ContactInfo info);
 }
 public readonly struct ContactInfo
 {
-    public ContactInfo(IDamagable health = default, IDashable dashable = default)
+    public ContactInfo(IPlayer player = default)
     {
-        this.dashable = dashable;
-        this.health = health;
+        this.player = player;
     }
-    public readonly IDashable dashable;
-    public readonly IDamagable health;
+    public readonly IPlayer player;
 }

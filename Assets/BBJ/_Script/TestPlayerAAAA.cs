@@ -7,7 +7,7 @@ public class TestPlayerAAAA : MonoBehaviour, IPlayer, IDamagable
     public bool isInvincible;
     public bool isDash;
     public bool IsDash => isDash;
-    public bool IsInvincible => isDash;
+    public bool IsInvincible => isInvincible;
 
     public void TakeDamage(float dmg)
     {
@@ -17,18 +17,8 @@ public class TestPlayerAAAA : MonoBehaviour, IPlayer, IDamagable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IBreakable block))
-        {
-            if (IsInvincible)
-                block.OnBreak();
-            else
-                block.TryBreak(new ContactInfo(this,this));
-        }
-
-        if (collision.TryGetComponent(out IUseable useable))
-        {
-            useable.Use(new UseableInfo(this));
-        }
+        if (collision.TryGetComponent(out IContactable block)) block.TryContact(new ContactInfo(this));
+        if (collision.TryGetComponent(out IUseable useable)) useable.Use(new UseableInfo(this));
     }
 
     public void OnInvincible(float invincibleTime)
