@@ -1,26 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344c00355f060794ea582079ebb0a81f, type: 3}
-  m_Name: Wiggle
-  m_EditorClassIdentifier: 
-  shaderDescription: '- Wiggles the sprite <b>horizontally</b>.'
-  hints: []
-  lines:
-  - _WiggleSpeed
-  spaceHint: _WiggleOffset
-  requiresFullRectMesh: 0
-  requiresSpriteSheetFix: 0
-  requiresInstancing: 0
-  benchmarkValue: 200
-  textureSamples: 0
-  textureToggle: 
-  textureToggleExtra: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:9c175aa0c0b70c4ff56d3bf76f8e600285f3149694d63761e166a56003bf8d17
+size 686
