@@ -20,6 +20,7 @@ public class ShopUI : MonoBehaviour, IUI
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private Transform skinContent;
+    [SerializeField] private SkinListSO skinList;
     private List<SkinButton> _skinButtons = new();
 
     private int _currentIndex = 0;
@@ -30,15 +31,17 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        for (int i = 0; i < buttonAmount; i++)
+        for (int i = 0; i < skinList.skinList.Count; i++)
         {
             var button = Instantiate(buttonPrefab, transform);
             button.transform.SetParent(buttonsParent.transform);
-            button.name = "skin" + i;
-            button.GetComponentInChildren<TextMeshProUGUI>().text = "스킨" + i;
+            button.name = skinList.skinList[i].name;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = skinList.skinList[i].skinName;
+            button.transform.GetChild(1).GetComponent<Image>().sprite = skinList.skinList[i].skin;
             _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
         }
 
+        ShopManager.Instance.ChangeSkin(skinList.skinList[_currentIndex]);
         Highlight(0);
         ScrollTo();
 
@@ -48,6 +51,7 @@ public class ShopUI : MonoBehaviour, IUI
     public void Open()
     {
         OnOpen?.Invoke(UIType);
+        
     }
 
     public void Close()
@@ -92,6 +96,7 @@ public class ShopUI : MonoBehaviour, IUI
 
         _currentIndex = next;
 
+        ShopManager.Instance.ChangeSkin(skinList.skinList[_currentIndex]);
         Highlight(_currentIndex);
         ScrollTo();
         
