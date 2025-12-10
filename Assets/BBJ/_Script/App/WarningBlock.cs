@@ -25,6 +25,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     private Vector3 _moveDir;
     private Rigidbody2D _rbCompo;
     private bool _isTween;
+    private bool _isFindTarget;
     private float _lastCheckTime;
 
     public void TryContact(ContactInfo info) => OnExplosion();
@@ -69,7 +70,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
                 else if (target.TryGetComponent<IBreakable>(out var blockable)) blockable.OnBreak();
                 else if (target.TryGetComponent<IDamagable>(out var health)) health.TakeDamage(1);
             }
-        });
+        }, false);
     }
 
 
@@ -82,29 +83,33 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     }
     private void Update()
     {
-        var time = Time.time;
-        if (playerCheckTime < time - _lastCheckTime)
+        if (_isFindTarget== false)
         {
-            _lastCheckTime = time;
-            if (_moveDir.sqrMagnitude <= 0f)
+            var time = Time.time;
+            if (playerCheckTime < time - _lastCheckTime)
             {
-                var target = ChackForTarget(chackPlayerOverlap);
-                if (target)
+                _lastCheckTime = time;
+                if (_moveDir.sqrMagnitude <= 0f)
                 {
-                    _isTween = true;
-                    OnCollisionSet();
-                    DOVirtual.DelayedCall(lifeTime, () => Destroy(), true);
-                    _moveDir = (target.transform.position - transform.position).normalized;
-                    tween = RotateTween(_moveDir, () =>
+                    var target = ChackForTarget(chackPlayerOverlap);
+                    if (target)
                     {
-                        _isTween = false;
-                        tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
-                        .SetEase(Ease.OutExpo);
-                    });
+                        _isFindTarget = true;
+                        _isTween = true;
+                        OnCollisionSet();
+                        tween = DOVirtual.DelayedCall(lifeTime, () => Destroy(), false);
+                        _moveDir = (target.transform.position - transform.position).normalized;
+                        tween = RotateTween(_moveDir, () =>
+                        {
+                            _isTween = false;
+                            tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
+                            .SetEase(Ease.OutExpo);
+                        });
+                    }
                 }
             }
         }
-        if (_isTween == false)
+        else if (_isTween == false)
             _currentVelocity = CalculateSpeed(_moveDir);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,6 +121,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     {
         if (value.sqrMagnitude > 0)
             _currentVelocity += acceleration * Time.deltaTime;
+        OnVelocityChnged?.Invoke(_currentVelocity);
 
         return Mathf.Clamp(_currentVelocity, 0, maxSpeed);
     }
@@ -128,7 +134,6 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     {
         if (_isTween == false)
         {
-            OnVelocityChnged?.Invoke(_currentVelocity);
             Move();
         }
     }

@@ -14,7 +14,6 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
     [SerializeField] private int warningBounceCnt;
 
     public UnityEvent Breaked;
-    private Sequence _seq;
     public void OnBreak()
     {
         Breaked?.Invoke();
@@ -24,16 +23,16 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
     public void TryContact(ContactInfo info)
     {
         OnBreak();
-        if (info.player.IsDash == false && info.player.IsInvincible == false)
+        if (info.player.IsDash == false )
             info.player.TakeDamage(1);
     }
     protected override void Awake()
     {
-        Init();
+        tween = DOBounce();
     }
-    public void Init()
+    public Sequence DOBounce()
     {
-        _seq?.Kill();
+        var _seq = DOTween.Sequence();
 
         // 바운스 트윈
         _seq = DOTween.Sequence()
@@ -51,6 +50,7 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
         .SetLoops(warningBounceCnt));
 
         _seq.SetLoops(-1);
+        return _seq;
     }
     private void OnDrawGizmosSelected()
     {
