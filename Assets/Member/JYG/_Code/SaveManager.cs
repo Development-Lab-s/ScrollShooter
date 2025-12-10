@@ -34,7 +34,7 @@ namespace Member.JYG._Code
                 return;
             }
 
-            PlayerPrefs.GetString("userskin")
+            //PlayerPrefs.GetString("userskin")
         }
     }
 }
