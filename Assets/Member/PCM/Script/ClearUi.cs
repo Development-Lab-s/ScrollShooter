@@ -1,10 +1,7 @@
-
-using NUnit.Framework;
+using Member.JYG._Code;
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,20 +18,17 @@ public class ClearUi : MonoBehaviour, IUI
     private float StartTime;
     public UIType UIType => UIType.ClearUI;
 
-    public InteractiveType OpenInput => InteractiveType.Right;
+    public InteractiveType OpenInput => InteractiveType.None;
 
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
-
-    private NestingOpener nestingOpener;
     private CountdouwnTmp countdouwn;
 
     public void BackMove()
     {
-        InputControlManager.Instance.ChangeUIInputActive(false);
+        SceneManager.LoadScene(1); 
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(1); InputControlManager.Instance.ChangeUIInputActive(true); });
     }
 
     public void Close()
@@ -46,17 +40,19 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        InputControlManager.Instance.ChangeUIInputActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         Close();
-        nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); InputControlManager.Instance.ChangeUIInputActive(true); });
     }
 
     public void Initialize()
     {
+        GameManager.Instance.OnClear += Open;
         countdouwn = GetComponent<CountdouwnTmp>();
         StartTime = Time.time;
         Close();
     }
+
+    private void Open(int _) => Open();
 
     public void LeftMove()
     {
@@ -68,20 +64,16 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void Open()
     {
-        OnOpen?.Invoke(UIType);
         countdouwn.StartCount(() => SceneManager.LoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         float t = Time.time - StartTime;
         playTime.text = $"ClearTime:{t.ToString("F2")}";
         UIObject.SetActive(true);
+        OnOpen?.Invoke(UIType);
     }
 
-    public void RightMove()
-    {
-        Open();
-        Debug.Log(Time.time.ToString("F2"));
-    }
+    public void RightMove() { }
 
     public void ScrollMove(int value)
     {
@@ -97,4 +89,3 @@ public class ClearUi : MonoBehaviour, IUI
         //스킨을 가지고 있는애를 만들함
     }
 }
-
