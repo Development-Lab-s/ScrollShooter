@@ -46,6 +46,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
+        Debug.Log("¶ó¶ó¶ó");
         InputControlleManager.Instance.ChangeUIInputActive(false);
         Close();
         nestingOpener.StartDeNesting(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); InputControlleManager.Instance.ChangeUIInputActive(true); });
