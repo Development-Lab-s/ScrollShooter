@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerDeadEvent : MonoBehaviour
 {
     private Player _player;
     public List<GameObject> hideThings = new  List<GameObject>();
+    public UnityEvent afterEffect;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerDeadEvent : MonoBehaviour
             hideThing.gameObject.SetActive(false);
         }
         yield return new WaitForSeconds(1f);
+        afterEffect?.Invoke();
         _player.playerInCamera = true;
     }
 }

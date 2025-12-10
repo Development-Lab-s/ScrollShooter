@@ -1103,6 +1103,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &128975693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4249159516228096667, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+  m_PrefabInstance: {fileID: 5335917261885346605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201c0383875575047b09789b61dbf9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &129593481
 GameObject:
   m_ObjectHideFlags: 0
@@ -12405,6 +12416,34 @@ PrefabInstance:
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1593222028}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 128975693}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ParticleFeedback, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6966218555749179076, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
       propertyPath: changeVolume
       value: 
@@ -12457,6 +12496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8083794560705386664, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12474,6 +12517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2599294797453184180, guid: ded38a82748c92249b7e77688d02631c, type: 3}
+      propertyPath: <StageSO>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 268aa675257edb34dbebaab490b81b26, type: 2}
     - target: {fileID: 6558521466742850665, guid: ded38a82748c92249b7e77688d02631c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
