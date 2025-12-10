@@ -238,7 +238,7 @@ namespace Member.JYG._Code
 
         public void TakeDamage(int dmg)
         {
-            if(IsInvincible)
+            if(false==IsInvincible)
             _hitSystem.Life -= dmg;
         }
         private void OnTriggerEnter2D(Collider2D collision)
