@@ -14671,7 +14671,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 45097eeaf80c0d7459e74cb0aa3f09b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29587,6 +29587,9 @@ MonoBehaviour:
   - {fileID: 9085571011075842923}
   - {fileID: 3750739969321558977}
   - {fileID: 5035660726934473655}
+  afterEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6306832427052725546
 GameObject:
   m_ObjectHideFlags: 0
@@ -44255,7 +44258,7 @@ GameObject:
   - component: {fileID: 4743593050482025642}
   - component: {fileID: 8756779760302851639}
   - component: {fileID: 692167262871596184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -44358,6 +44361,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isInvincible: 0
 --- !u!50 &3669563048864094653
 Rigidbody2D:
   serializedVersion: 5

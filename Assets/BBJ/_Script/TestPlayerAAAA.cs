@@ -4,12 +4,12 @@ using UnityEngine;
 public class TestPlayerAAAA : MonoBehaviour, IPlayer, IDamagable
 {
     public float Health { get; private set; }
+    public bool IsInvincible => isInvincible;
     public bool isInvincible;
     public bool isDash;
     public bool IsDash => isDash;
-    public bool IsInvincible => isInvincible;
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(int dmg)
     {
         dmg = Mathf.Max(0, dmg);
         Health -= dmg;

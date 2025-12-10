@@ -18,7 +18,7 @@ public class Sender : MonoBehaviour
     [SerializeField] private Transform sendPos;
     private void Awake()
     {
-        DOVirtual.DelayedCall(throwDelayTime,() => channel.InvolkEevnt(StartSend))
+        DOVirtual.DelayedCall(throwDelayTime,() => channel.InvolkEevnt(StartSend), false)
             .SetLoops(-1);
     }
     public void StartSend(Transform target)
