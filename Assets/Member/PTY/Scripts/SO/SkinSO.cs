@@ -4,6 +4,7 @@ using UnityEngine;
 public class SkinSO : ScriptableObject
 {
     public string skinName;
+    public string prefsName;
     public int unlockStage;
     public Sprite skin;
 }
