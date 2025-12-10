@@ -31,14 +31,12 @@ namespace Member.JYG._Code
         public UnityEvent<float> onBoost;
         public UnityEvent onBoostFailed;
         public float OriginalSpeed { get; private set; }
+        public bool IsInvincible { get; private set; }
 
         private float _xVelocity;
 
         private float _radius;
-
-        public bool isInvincible;
         public bool IsDash => IsBoosting;
-        public bool IsInvincible => isInvincible;
         private HitSystem _hitSystem;
         Tween _coolTween;
         public float XVelocity //Player's real move speed
@@ -225,13 +223,13 @@ namespace Member.JYG._Code
 
         public void OnInvincible(float invincibleTime)
         {
-            isInvincible = true;
+            IsInvincible = true;
             this.SpriteRenderer.material.SetFloat("_FadingFade", 1);
 
             _coolTween?.Kill();
             TweenCallback callback = () => 
             {
-                isInvincible = false;
+                IsInvincible = false;
                 this.SpriteRenderer.material.SetFloat("_FadingFade", 0);
             };
 
@@ -240,6 +238,7 @@ namespace Member.JYG._Code
 
         public void TakeDamage(int dmg)
         {
+            if(IsInvincible)
             _hitSystem.Life -= dmg;
         }
         private void OnTriggerEnter2D(Collider2D collision)
