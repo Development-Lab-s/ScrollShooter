@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/UserInfoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/SaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/UserInfoManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/SaveManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d35f3fd492a14898b9e7cb0372b7ba3d1e0200/28/8c1ccb7d/LoadSceneMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,6 +136,7 @@
       <workItem from="1765191965965" duration="962000" />
       <workItem from="1765289856033" duration="2824000" />
       <workItem from="1765337088899" duration="470000" />
+      <workItem from="1765354232286" duration="1894000" />
     </task>
     <servers />
   </component>
