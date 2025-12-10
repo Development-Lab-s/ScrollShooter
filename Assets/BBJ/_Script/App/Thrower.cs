@@ -14,7 +14,7 @@ public class Thrower : MonoBehaviour
     [SerializeField] private Transform throwPos;
     private void Awake()
     {
-        DOVirtual.DelayedCall(throwDelayTime,() => AnimationTriggered?.Invoke(hash,ThrowDeletFile))
+        DOVirtual.DelayedCall(throwDelayTime,() => AnimationTriggered?.Invoke(hash,ThrowDeletFile), false)
             .SetLoops(-1);
     }
     private void ThrowDeletFile()

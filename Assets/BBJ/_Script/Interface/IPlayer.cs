@@ -3,7 +3,7 @@ using UnityEngine;
 public interface IPlayer : IDashable, IInvincible, IDamagable { }
 public interface IDamagable
 {
-    public void TakeDamage(float dmg);
+    public void TakeDamage(int dmg);
 }
 public interface IDashable
 {

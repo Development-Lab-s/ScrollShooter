@@ -67,7 +67,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
                 Collider2D target = targets[i];
                 if (target.TryGetComponent<IExplosion>(out var explosion)) explosion.OnExplosion();
                 else if (target.TryGetComponent<IBreakable>(out var blockable)) blockable.OnBreak();
-                else if (target.TryGetComponent<IDamagable>(out var health)) health.TakeDamage(1f);
+                else if (target.TryGetComponent<IDamagable>(out var health)) health.TakeDamage(1);
             }
         });
     }
