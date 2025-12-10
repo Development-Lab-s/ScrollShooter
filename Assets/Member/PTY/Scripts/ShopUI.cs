@@ -57,7 +57,7 @@ public class ShopUI : MonoBehaviour, IUI
             button.transform.GetChild(1).GetComponent<Image>().sprite = _skinList.skinList[i].skin;
             _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
 
-            if (ShopManager.Instance.stageCleared >= _skinList.skinList[i].unlockStage)
+            if (PlayerPrefs.GetInt("clearedstage") >= _skinList.skinList[i].unlockStage)
             {
                 _skinButtons[i].transform.GetChild(3).GetComponent<Image>().enabled = false;
             }
@@ -79,7 +79,7 @@ public class ShopUI : MonoBehaviour, IUI
     public void BackMove()
     {
         //스킨 적용하기
-        if (ShopManager.Instance.stageCleared >= _skinList.skinList[_currentIndex].unlockStage)
+        if (PlayerPrefs.GetInt("clearedstage") >= _skinList.skinList[_currentIndex].unlockStage)
         {
             _skinButtons[_currentIndex].OnClick();
             ShopManager.Instance.ChangeSkin(_skinList.skinList[_currentIndex]);
@@ -121,7 +121,7 @@ public class ShopUI : MonoBehaviour, IUI
 
         if (next == _currentIndex) return;
 
-        if (_skinList.skinList[next].unlockStage > ShopManager.Instance.stageCleared)
+        if (_skinList.skinList[next].unlockStage > PlayerPrefs.GetInt("clearedstage"))
         {
             Debug.LogError($"스테이지 {_skinList.skinList[next].unlockStage}을/를 클리어하지 않아 스킨을 선택할 수 없습니다.");
             return;

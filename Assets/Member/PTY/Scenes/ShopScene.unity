@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinList: {fileID: 11400000, guid: 2045e6f39005c7e448a1658902daf9ee, type: 2}
   player: {fileID: 1940993529}
-  stageCleared: 3
+  clearedStage: 5
 --- !u!4 &979440609
 Transform:
   m_ObjectHideFlags: 0
