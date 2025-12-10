@@ -19655,7 +19655,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977196162314976292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -29602,6 +29602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a381bad2e0d3144929b58aef51d1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  afterEffector: {fileID: 760619027632539018}
   hideThings:
   - {fileID: 9085571011075842923}
   - {fileID: 3750739969321558977}
@@ -29655,7 +29656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeVolume: {fileID: 0}
   effectApplySpeed: 3
-  effectCloseTime: 0
+  effectCloseTime: 1
   startDelay: 0
 --- !u!1 &6353155055440968096
 GameObject:
@@ -44381,7 +44382,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isInvincible: 0
 --- !u!50 &3669563048864094653
 Rigidbody2D:
   serializedVersion: 5
@@ -49454,9 +49454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeVolume: {fileID: 4274838900708548998}
-  effectApplySpeed: 3
-  effectCloseTime: 0
-  startDelay: 0
+  effectApplySpeed: 12
+  effectCloseTime: 0.1
+  startDelay: 3.2
 --- !u!1 &8334526850832328004
 GameObject:
   m_ObjectHideFlags: 0
