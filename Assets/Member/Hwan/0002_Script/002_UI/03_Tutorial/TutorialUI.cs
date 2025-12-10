@@ -1,7 +1,9 @@
+using Member.JYG.Input;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class TutorialUI : MonoBehaviour, IUI
 {
@@ -14,15 +16,14 @@ public class TutorialUI : MonoBehaviour, IUI
     public event Action<UIType> OnClose;
     public event Action<UIType> OnOpen;
 
+    [SerializeField] private PlayerInputSO playerInputSO;
     [SerializeField] private TextMeshProUGUI tmp;
     private RectTransform uiObjectRect;
 
-    private InputControlManager inputController;
-
-    public void BackMove() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 
     public void Close()
     {
+        InputControlManager.Instance.ChangeUIInputActive(true);
         TimeManager.Instance.UnStopTime();
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
@@ -30,24 +31,41 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
+        playerInputSO.OnBrakePressed += ForwardMove;
+        playerInputSO.OnDashPressed += BackMove;
+        playerInputSO.OnLeftClicked += LeftMove;
+        playerInputSO.OnRightClicked += RightMove;
+        playerInputSO.OnWheelBtnClicked += MiddleMove;
+        playerInputSO.OnWheeling += Scroll;
+
         uiObjectRect = UIObject.GetComponent<RectTransform>();
         TutorialManager.Instance.OnPlayerNearObstacle += Open;
         TutorialManager.Instance.OnSkipPhaze += Close;
-        inputController = GetComponentInParent<InputControlManager>();
         UIObject.SetActive(false);
     }
 
+    private void Scroll() => ScrollMove(playerInputSO.XMoveDir);
+
     private void Open(TutorialInfoSO tutoInfo)
+    {
+        TimeManager.Instance.StopTime();
+        SetPopUp(tutoInfo);
+
+        StartCoroutine(WaitForInputCor());
+        InputControlManager.Instance.ChangeUIInputActive(false);
+        Open();
+    }
+
+    private void SetPopUp(TutorialInfoSO tutoInfo)
     {
         uiObjectRect.anchoredPosition = tutoInfo.PopUpPos;
         tmp.text = tutoInfo.Text;
-        Open();
     }
 
     public void Open()
     {
-        OnOpen?.Invoke(UIType);
         UIObject.SetActive(true);
+        OnOpen?.Invoke(UIType);
     }
 
     public void ForwardMove() => TutorialManager.Instance.GetInput(InteractiveType.Forward);
@@ -60,10 +78,22 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value) => TutorialManager.Instance.GetInput(InteractiveType.Scroll);
 
-    private IEnumerator waitForInput()
+    public void BackMove() => TutorialManager.Instance.GetInput(InteractiveType.Back);
+
+    private IEnumerator WaitForInputCor()
     {
-        inputController.ChangeUIInputActive(false);
+        InputControlManager.Instance.ChangePlayerInputActive(false);
         yield return new WaitForSecondsRealtime(1);
-        inputController.ChangeUIInputActive(true);
+        InputControlManager.Instance.ChangePlayerInputActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        playerInputSO.OnBrakePressed -= ForwardMove;
+        playerInputSO.OnDashPressed -= BackMove;
+        playerInputSO.OnLeftClicked -= LeftMove;
+        playerInputSO.OnRightClicked -= RightMove;
+        playerInputSO.OnWheelBtnClicked -= MiddleMove;
+        playerInputSO.OnWheeling -= Scroll;
     }
 }

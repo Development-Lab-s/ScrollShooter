@@ -43,24 +43,11 @@ public class InputControlManager : Singleton<InputControlManager>
         playerInputSO.SetInputTypeActive(type, active);
     }
 
-    public void ChangeUIActiveType(InteractiveType type, bool active)
-    {
-        uiInputSO.SetInputTypeActive(type, active);
-    }
-
     public void ChangeAllPlayerActiveType(bool active)
     {
         foreach (InteractiveType type in Enum.GetValues(typeof(InteractiveType)))
         {
-            playerInputSO.SetInputTypeActive(type, active);
-        }
-    }
-
-    public void ChangeAllUIActiveType(bool active)
-    {
-        foreach (InteractiveType type in Enum.GetValues(typeof(InteractiveType)))
-        {
-            uiInputSO.SetInputTypeActive(type, active);
+            ChangePlayerInputActiveType(type, active);
         }
     }
 }

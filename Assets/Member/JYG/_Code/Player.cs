@@ -194,6 +194,21 @@ namespace Member.JYG._Code
             }
         }
 
+        public void SetMaxSpeed(float targetMaxSpeed, float duration)
+        {
+            float target = MaxSpeed - targetMaxSpeed; //30, 25 -> 5
+            StartCoroutine(SpeedChange(target, duration));
+        }
+
+        private IEnumerator SpeedChange(float force, float duration)
+        {
+            while (true)
+            {
+                MaxSpeed += force / duration;
+                yield return null;
+            }
+        }
+
         public void StopXYVelocity()
         {
             Rigidbody2D.linearVelocityY = 0;

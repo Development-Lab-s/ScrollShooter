@@ -30,14 +30,14 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
-        TimeManager.Instance.StopAndSaveTime("setting");
+        TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
     }
 
     public void Close()
     {
-        TimeManager.Instance.LoadTime("setting");
+        TimeManager.Instance.UnStopTime();
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
     }
