@@ -27,6 +27,7 @@ public class PlayerDeadEvent : MonoBehaviour
 
     private IEnumerator DeletePlayer()
     {
+        Debug.Log("sdf");
         yield return new WaitForSeconds(0.275f);
         SoundManager.Instance.PlaySound("ValueOut");
         yield return new WaitForSeconds(3.8f - 0.275f);

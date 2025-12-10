@@ -1,5 +1,6 @@
 using Member.JYG._Code;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,11 +46,19 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(Open);
+        GameManager.Instance.Player.GetComponentInChildren<PlayerDeadEvent>().afterEffect.AddListener(WaitForOpen);
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
         countdouwn = GetComponent<CountdouwnTmp>();
         UIObject.SetActive(false);
+    }
+
+    private void WaitForOpen() => StartCoroutine(WaitForOpenCor());
+
+    private IEnumerator WaitForOpenCor()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Open();
     }
 
     public void LeftMove() { }

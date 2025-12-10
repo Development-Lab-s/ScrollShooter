@@ -14,8 +14,6 @@ Material:
   m_ValidKeywords:
   - PIXELSNAP_ON
   - _ENABLECONTRAST_ON
-  - _ENABLEHOLOGRAM_ON
-  - _ENABLEPIXELOUTLINE_ON
   - _ENABLESATURATION_ON
   - _ENABLESHADOW_ON
   - _SHADERFADING_FULL
@@ -221,7 +219,7 @@ Material:
     - _EnableGaussianBlur: 0
     - _EnableGlitch: 0
     - _EnableHalftone: 0
-    - _EnableHologram: 1
+    - _EnableHologram: 0
     - _EnableHue: 0
     - _EnableInkSpread: 0
     - _EnableInnerOutline: 0
@@ -229,7 +227,7 @@ Material:
     - _EnableNegative: 0
     - _EnableOuterOutline: 0
     - _EnablePingPongGlow: 0
-    - _EnablePixelOutline: 1.1
+    - _EnablePixelOutline: 0
     - _EnablePixelate: 0
     - _EnablePoison: 0
     - _EnableRainbow: 0
@@ -295,7 +293,7 @@ Material:
     - _GaussianBlurFade: 1
     - _GaussianBlurOffset: 0.5
     - _GlitchBrightness: 4
-    - _GlitchFade: 1
+    - _GlitchFade: 0.15
     - _GlitchHueSpeed: 1
     - _GlitchMaskMin: 0.4
     - _HalftoneFade: 1
@@ -307,7 +305,7 @@ Material:
     - _HologramDistortionOffset: 0.5
     - _HologramDistortionScale: 10
     - _HologramDistortionSpeed: 2
-    - _HologramFade: 0.07
+    - _HologramFade: 0.08
     - _HologramLineFrequency: 500
     - _HologramLineGap: 3
     - _HologramLineSpeed: 0.01
