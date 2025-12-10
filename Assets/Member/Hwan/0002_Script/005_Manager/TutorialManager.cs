@@ -2,6 +2,7 @@ using Member.JYG._Code;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using YGPacks;
 
@@ -12,7 +13,7 @@ public class TutorialManager : Singleton<TutorialManager>
     public event Action OnSkipPhaze;
 
     private int currentPhase = 0;
-    private InteractiveType currentNeedInput;
+    private InteractiveType[] currentNeedInputs;
     private List<TutoTypeHolder> usedBlocks = new();
 
     private bool getInput = false;
@@ -54,29 +55,21 @@ public class TutorialManager : Singleton<TutorialManager>
 
         getInput = true;
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
-        currentNeedInput = currentTutoInfo.NeedInput; 
-        InputControlManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
+        currentNeedInputs = currentTutoInfo.NeedInput; 
+        foreach (InteractiveType type in currentNeedInputs)
+        {
+            InputControlManager.Instance.ChangePlayerInputActiveType(type, true);
+        }
         currentPhase++;
-
-        if (currentNeedInput == InteractiveType.None) StartCoroutine(EndCoroutine());
-    }
-
-    private IEnumerator EndCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(1);
-        getInput = false;
-        OnSkipPhaze?.Invoke();
-        EndTuto();
     }
 
     public void GetInput(InteractiveType type)
     {
-        if (getInput == false || type != currentNeedInput) return;
+        if (getInput == false || currentNeedInputs.Contains(type) == false) return;
 
         getInput = false;
         OnSkipPhaze?.Invoke();
-
-        if (currentPhase == tutoInfos.Length - 1) StartCoroutine(WaitLastTuto());
+        if (currentPhase == tutoInfos.Length - 1) EndTuto();
     }
 
     private TutorialInfoSO GetCurrentTuto()
@@ -105,11 +98,5 @@ public class TutorialManager : Singleton<TutorialManager>
     private void EndTuto()
     {
         InputControlManager.Instance.ChangeAllPlayerActiveType(true);
-    }
-
-    private IEnumerator WaitLastTuto()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        PlayTuto();
     }
 }
