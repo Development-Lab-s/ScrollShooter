@@ -4892,9 +4892,13 @@ PrefabInstance:
       value: -0.717
       objectReference: {fileID: 0}
     - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
+      propertyPath: fileName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: typeData
       value: 
-      objectReference: {fileID: 11400000, guid: 710f4c13e8b9b1140bad70901608dce6, type: 2}
+      objectReference: {fileID: 11400000, guid: 7c7430959494d2b4fa9e4377743dedd9, type: 2}
     - target: {fileID: 6601424970161935056, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: blockData
       value: 
@@ -4996,21 +5000,6 @@ MonoBehaviour:
   maxSpeed: 20
   lifeTime: 10
   playerCheckTime: 0.2
-  Explosioned:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3146786582728551385}
-        m_TargetAssemblyTypeName: VFXSystem, Assembly-CSharp
-        m_MethodName: SpawnVFX
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Explosion
-          m_BoolArgument: 0
-        m_CallState: 2
   _currentVelocity: 0
   OnVelocityChnged:
     m_PersistentCalls:
@@ -5025,6 +5014,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Explosioned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3146786582728551385}
+        m_TargetAssemblyTypeName: VFXSystem, Assembly-CSharp
+        m_MethodName: SpawnVFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Explosion
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3146786582728551385

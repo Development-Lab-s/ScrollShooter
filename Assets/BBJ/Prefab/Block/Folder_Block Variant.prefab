@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: typeData
       value: 
-      objectReference: {fileID: 11400000, guid: f8aa3d08c18a890449cd315c4e973ed3, type: 2}
+      objectReference: {fileID: 11400000, guid: 863fcc1d0a9b94040b94f4814d3970a3, type: 2}
     - target: {fileID: 6601424970161935056, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: <BreakParticlePrefabs>k__BackingField
       value: 
@@ -195,8 +195,6 @@ MonoBehaviour:
       Value:
         obj:
         - {fileID: 11400000, guid: 2af0a9adb585f734e870a336457e69d7, type: 2}
-        - {fileID: 0}
-        - {fileID: 0}
 --- !u!114 &8256842225148233553 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}

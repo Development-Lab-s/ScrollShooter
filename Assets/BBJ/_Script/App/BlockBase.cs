@@ -15,7 +15,7 @@ public abstract class BlockBase : MonoBehaviour, IYgPoolable
         renderCompo = GetComponentInChildren<BlockRenderer>();
         colliderCompo = GetComponentInChildren<Collider2D>();
     }
-    protected void Destroy()
+    protected virtual void Destroy()
     {
         tween.Kill();
         Destroy(gameObject);

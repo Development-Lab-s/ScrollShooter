@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,8 +50,15 @@ public class ThrowBlock : FolderBlock
             if (nextX >= x1 && _isArrival == false)
             {
                 _isArrival = true;
-                if (CheckForPlayer(overlap))
-                    yield break;
+                if (TryOverlapCircle(overlap, out var collider))
+                {
+                    if (collider.transform.TryGetComponent<Recipient>(out var recipient))
+                    {
+                        recipient.GotIt();
+                        Destroy();
+                        yield break;
+                    }
+                }
                 else
                     OnDel();
             }
@@ -58,18 +66,15 @@ public class ThrowBlock : FolderBlock
         }
     }
 
-    private bool CheckForPlayer(OverlapDataSO overlap)
+    private bool TryOverlapCircle(OverlapDataSO overlap, out Collider2D collider)
     {
-        var collider = Physics2D.OverlapCircle(transform.position, overlap.size, overlap.whatIsTarget);
-        if (collider != null&& collider.transform.TryGetComponent<Recipient>(out var recipient))
-        {
-            recipient.GotIt();
-            Destroy();
-            return true;
-        }
-        Debug.Log("못찾음");
-        return false;
-        
-        // 타겟이 있는지 확인 후 
+        collider = Physics2D.OverlapCircle(transform.position, overlap.size, overlap.whatIsTarget);
+        return collider != null;
+    }
+    protected override void Destroy()
+    {
+        tween.Kill();
+        StopAllCoroutines();
+        PoolManager.Instance.Push(this);
     }
 }

@@ -19,7 +19,8 @@ public class Thrower : MonoBehaviour
     }
     private void ThrowDeletFile()
     {
-        var a = Instantiate(prefab, transform.position, Quaternion.identity);
-        a.StartMove(throwPos.position, transform.position + throwTargetPos);
+        var b = PoolManager.Instance.PopByName(prefab.name) as ThrowBlock;
+        b.transform.position = transform.position;
+        b.StartMove(throwPos.position, transform.position + throwTargetPos);
     }
 }

@@ -37,9 +37,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8798590900699708655, guid: a9fb72713462bd34a99acbf23a40dd74, type: 2}
     - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
+      propertyPath: fileName
+      value: Help
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: typeData
       value: 
-      objectReference: {fileID: 11400000, guid: 69f06f2933bc69f4b8ae4c1daf35ece6, type: 2}
+      objectReference: {fileID: 11400000, guid: a6e937e08a617f341b1488dfe7cc7c91, type: 2}
     - target: {fileID: 6601424970161935056, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: blockData
       value: 

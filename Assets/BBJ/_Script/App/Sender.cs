@@ -3,6 +3,7 @@ using System;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class Sender : MonoBehaviour
 {
@@ -22,11 +23,13 @@ public class Sender : MonoBehaviour
     }
     public void StartSend(Transform target)
     {
-        AnimationTriggered?.Invoke(hash, ()=>SendeFile(target));
+        var targetPos = target.transform.position;
+        AnimationTriggered?.Invoke(hash, ()=>SendeFile(targetPos));
     }
-    private void SendeFile(Transform target)
+    private void SendeFile(Vector2 target)
     {
-        var b = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as ThrowBlock;
-        b.StartMove(sendPos.position, target.position);
+        var b = PoolManager.Instance.PopByName(prefab.name) as  ThrowBlock;
+        b.transform.position = transform.position;
+        b.StartMove(sendPos.position, target);
     }
 }

@@ -92,9 +92,13 @@ PrefabInstance:
       value: Thrower Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8256842225148233553, guid: 98b281bf4a247e244be9e73d9ab95f35, type: 3}
+      propertyPath: fileName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256842225148233553, guid: 98b281bf4a247e244be9e73d9ab95f35, type: 3}
       propertyPath: typeData
       value: 
-      objectReference: {fileID: 11400000, guid: f61232d000d979545af72f45d98f6c65, type: 2}
+      objectReference: {fileID: 11400000, guid: 863fcc1d0a9b94040b94f4814d3970a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
