@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class WarningBlock : BlockBase, IExplosion, IContactable
 {
@@ -18,6 +19,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     [SerializeField] private float lifeTime;
     [SerializeField] private float playerCheckTime;
     [SerializeField] private float _currentVelocity = 3f;
+    [SerializeField] private float delayTime = 0.4f;
 
     public UnityEvent<float> OnVelocityChnged;
     public UnityEvent<float> Explosioned;
@@ -38,7 +40,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     {
         Vector3 r = new Vector3(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
         return DOTween.Sequence()
-                .Append(renderCompo.transform.DOLocalRotate(r + new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360))
+                .Append(renderCompo.transform.DOLocalRotate(r + new Vector3(0, 0, 360), delayTime, RotateMode.FastBeyond360))
                 .AppendCallback(callback);
 
         //seq.Join(renderCompo.transform.DOLocalMove(-dir, speed * Time.fixedDeltaTime)
@@ -83,7 +85,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     }
     private void Update()
     {
-        if (_isFindTarget== false)
+        if (_isFindTarget == false)
         {
             var time = Time.time;
             if (playerCheckTime < time - _lastCheckTime)
@@ -97,7 +99,6 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
                         _isFindTarget = true;
                         _isTween = true;
                         OnCollisionSet();
-                        tween = DOVirtual.DelayedCall(lifeTime, () => Destroy(), false);
                         _moveDir = (target.transform.position - transform.position).normalized;
                         tween = RotateTween(_moveDir, () =>
                         {
@@ -105,6 +106,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
                             tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
                             .SetEase(Ease.OutExpo);
                         });
+                        tween = DOVirtual.DelayedCall(lifeTime, () => Destroy(), false);
                     }
                 }
             }
