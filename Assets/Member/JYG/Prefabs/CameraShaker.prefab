@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced44f79369ec4d4aa685b9ff07b81b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
   shakeItems:
   - impulse: {fileID: 751680896722474001}
     type: 0
@@ -228,8 +229,8 @@ MonoBehaviour:
     type: 2
   - impulse: {fileID: 1042492901688960720}
     type: 3
-  roughness: 0
-  magnitude: 0
+  roughness: 6
+  magnitude: 4
 --- !u!1 &4471956833869688233
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,10 +4,12 @@ using UnityEngine.Events;
 public class HitSystem : MonoBehaviour
 {
     public UnityEvent onDead;
+    public UnityEvent onSecondDead;
     public UnityEvent onHit;
 
     [SerializeField] private int maxLife;
-
+    public bool isSecondDead = false;
+    
     private int _life;
     public int Life
     {
@@ -21,7 +23,15 @@ public class HitSystem : MonoBehaviour
             else if(value <= 0)
             {
                 _life = 0;
-                onDead?.Invoke();
+                if (isSecondDead)
+                {
+                    onSecondDead.Invoke();
+                }
+                else
+                {
+                    onDead?.Invoke();
+                }
+                return;
             }
             else
             {
