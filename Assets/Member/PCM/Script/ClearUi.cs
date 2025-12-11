@@ -65,7 +65,7 @@ public class ClearUi : MonoBehaviour, IUI
     public void Open()
     {
         countdouwn.StartCount(() => SceneManager.LoadScene(1));
-        ClearShow(SceneManager.GetActiveScene().buildIndex); //아마도 1스테이지가 Buildindex가 2겠지?
+        ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         float t = Time.time - StartTime;
         playTime.text = $"ClearTime:{t.ToString("F2")}";
