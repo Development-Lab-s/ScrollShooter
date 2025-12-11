@@ -1,3 +1,4 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System;
 using System.Collections;
@@ -31,6 +32,12 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
+        if (GameManager.Instance.StageSO.StageNumber != 0)
+        {
+            UIObject.SetActive(false);
+            return;
+        }
+
         playerInputSO.OnBrakePressed += ForwardMove;
         playerInputSO.OnDashPressed += BackMove;
         playerInputSO.OnLeftClicked += LeftMove;
