@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e0cdcda539a5be849ad3e1248610c3f7
+guid: d9fa504f5b6628648ad93e9041684fcd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1775669009216684005
-    second: Strawberry_0
+      213: 7117668046249691774
+    second: nyangcat 1_0
+  - first:
+      213: 604727214628828351
+    second: nyangcat 1_1
+  - first:
+      213: 2176995095010951751
+    second: nyangcat 1_2
+  - first:
+      213: 5838099809743907970
+    second: nyangcat 1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +81,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Strawberry_0
+      name: nyangcat 1_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 24
-        height: 31
+        x: 6
+        y: 0
+        width: 22
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5efb7055e8174a810800000000000000
-      internalID: 1775669009216684005
+      spriteID: e7a8cd5806907c260800000000000000
+      internalID: 7117668046249691774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nyangcat 1_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 0
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb476fd923c646800800000000000000
+      internalID: 604727214628828351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nyangcat 1_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 0
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74245e3318d363e10800000000000000
+      internalID: 2176995095010951751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nyangcat 1_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28caf0b68d8150150800000000000000
+      internalID: 5838099809743907970
       vertices: []
       indices: 
       edges: []
@@ -151,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Strawberry_0: 1775669009216684005
+      nyangcat 1_0: 7117668046249691774
+      nyangcat 1_1: 604727214628828351
+      nyangcat 1_2: 2176995095010951751
+      nyangcat 1_3: 5838099809743907970
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
