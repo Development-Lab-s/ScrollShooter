@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +136,9 @@
       <workItem from="1765191965965" duration="962000" />
       <workItem from="1765289856033" duration="2824000" />
       <workItem from="1765337088899" duration="470000" />
+      <workItem from="1765354365814" duration="1825000" />
+      <workItem from="1765374912132" duration="3130000" />
+      <workItem from="1765410346386" duration="2394000" />
     </task>
     <servers />
   </component>

@@ -1103,17 +1103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &128975693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4249159516228096667, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-  m_PrefabInstance: {fileID: 5335917261885346605}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 201c0383875575047b09789b61dbf9a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &129593481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,6 +9377,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &1652449750 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3900716205978789003, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+  m_PrefabInstance: {fileID: 5335917261885346605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1672935250
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,33 +12410,25 @@ PrefabInstance:
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1593222028}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: boostParticles
       value: 
-      objectReference: {fileID: 128975693}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      objectReference: {fileID: 1652449750}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: <OriginYSpeed>k__BackingField
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartParticle
+    - target: {fileID: 760619027632539018, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: startDelay
+      value: 3.3
       objectReference: {fileID: 0}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ParticleFeedback, Assembly-CSharp
+    - target: {fileID: 760619027632539018, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: effectCloseTime
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4749156053469969332, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: afterEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+    - target: {fileID: 760619027632539018, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: effectApplySpeed
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6966218555749179076, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
       propertyPath: changeVolume
@@ -12495,10 +12481,6 @@ PrefabInstance:
     - target: {fileID: 7975533454825150910, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8083794560705386664, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
