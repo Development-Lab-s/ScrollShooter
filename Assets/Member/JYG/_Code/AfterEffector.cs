@@ -51,6 +51,11 @@ namespace Member.JYG._Code
                 Vector2 pos = new Vector2(Camera.main.WorldToViewportPoint(GameManager.Instance.Player.transform.position).x, 0.12f);
                 vignette.center.value = pos;
             }
+            if (volume.profile.TryGet(out LensDistortion lens))
+            {
+                Vector2 pos = new Vector2(Camera.main.WorldToViewportPoint(GameManager.Instance.Player.transform.position).x, 0.35f);
+                lens.center.value = pos;
+            }
         }
 
     }

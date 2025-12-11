@@ -15,6 +15,7 @@ namespace Member.JYG._Code
         public Rigidbody2D Rigidbody2D { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
+        [SerializeField] private GameObject trail;
 
         [field: SerializeField] public float MaxSpeed { get; private set; }
         [field: SerializeField] public float ReverseForce { get; private set; }
@@ -59,6 +60,10 @@ namespace Member.JYG._Code
             }
         }
 
+        public void Nyan()
+        {
+            trail.SetActive(true);
+        }
 
         private void Awake()
         {
@@ -113,11 +118,11 @@ namespace Member.JYG._Code
         private IEnumerator PlayerDash()
         {
             IsBoosting = true;
+            ParticleSystem.MainModule main = boostParticles.main;
+            main.duration = DashDuration + 1;
             SoundManager.Instance.PlaySound("Boosting");
             StartCoroutine(SetSpeedWithTime(25f, 1f));
-            StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 2.5f, OriginYSpeed));
-            ParticleSystem.MainModule main = boostParticles.main;
-            main.duration = DashDuration;
+            StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 1.5f, OriginYSpeed));
             yield return new WaitForSeconds(DashDuration);
             StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
             StartCoroutine(SetYSpeedWithTime(OriginYSpeed, 1f, OriginYSpeed));
