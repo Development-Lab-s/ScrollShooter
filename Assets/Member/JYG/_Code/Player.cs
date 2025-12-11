@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using csiimnida.CSILib.SoundManager.RunTime;
+using DG.Tweening;
 using Member.JYG.Input;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,33 +9,36 @@ using UnityEngine.Events;
 namespace Member.JYG._Code
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IPlayer
     {
-        [field:SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
+        [field: SerializeField] public PlayerInputSO PlayerInputSO { get; private set; }
         public Rigidbody2D Rigidbody2D { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
-        
-        [field:SerializeField] public float MaxSpeed { get; private set; }
-        [field:SerializeField] public float ReverseForce { get; private set; }
-        [field:SerializeField] public float BrakePower { get; private set; }
+
+        [field: SerializeField] public float MaxSpeed { get; private set; }
+        [field: SerializeField] public float ReverseForce { get; private set; }
+        [field: SerializeField] public float BrakePower { get; private set; }
         [field: SerializeField] public float MovePower { get; private set; } //User's acceleration power (Move Force)
-        [field: SerializeField] public float DashCoolTime { get; private set; } 
-        
-        [field: SerializeField] public float DashDuration { get; private set; } 
-        
-        [field: SerializeField] public float YSpeed { get; private set; } 
-        [field: SerializeField] public float YSpeedAddForce { get; private set; } 
-        [field:SerializeField] public bool IsBoosting { get; private set; }
+        [field: SerializeField] public float DashCoolTime { get; private set; }
+
+        [field: SerializeField] public float DashDuration { get; private set; }
+
+        [field: SerializeField] public float YSpeed { get; private set; }
+        [field: SerializeField] public float YSpeedAddForce { get; private set; }
+        [field: SerializeField] public bool IsBoosting { get; private set; }
         public bool playerInCamera = true;
         public UnityEvent<float> onBoost;
         public UnityEvent onBoostFailed;
         public float OriginalSpeed { get; private set; }
-        
+        public bool IsInvincible { get; private set; }
+
         private float _xVelocity;
 
         private float _radius;
-
+        public bool IsDash => IsBoosting;
+        private HitSystem _hitSystem;
+        Tween _coolTween;
         public float XVelocity //Player's real move speed
         {
             get => _xVelocity;
@@ -51,15 +55,17 @@ namespace Member.JYG._Code
             }
         }
 
+
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             Collider = GetComponent<CircleCollider2D>();
             SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            
+            _hitSystem = GetComponent<HitSystem>();
+
             Rigidbody2D.gravityScale = 0;
             Rigidbody2D.linearVelocityY = YSpeed;
-            
+
             _radius = Collider.radius;
             OriginalSpeed = MaxSpeed;
         }
@@ -121,7 +127,7 @@ namespace Member.JYG._Code
                 SetPlayerPositionInCamera();
             }
         }
-        
+
         private void SetVelocity(bool isBrake) //Use in Update
         {
             if (isBrake)
@@ -139,7 +145,7 @@ namespace Member.JYG._Code
             {
                 XVelocity += Time.deltaTime * MovePower * 2 * moveXDir; //Power x2
             }
-                
+
             XVelocity += Time.deltaTime * MovePower * moveXDir; //현재 이속 설정
         }
         private void SetXMove(float speed) //Use in FixedUpdate
@@ -172,7 +178,7 @@ namespace Member.JYG._Code
             if (MaxSpeed < speed)
             {
                 onBoost?.Invoke(DashDuration);
-                while(MaxSpeed < speed)
+                while (MaxSpeed < speed)
                 {
                     MaxSpeed += Time.deltaTime / duration * 10;
                     Rigidbody2D.linearVelocityY += YSpeedAddForce * Time.deltaTime;
@@ -183,7 +189,7 @@ namespace Member.JYG._Code
             }
             else
             {
-                while(MaxSpeed > speed)
+                while (MaxSpeed > speed)
                 {
                     MaxSpeed -= Time.deltaTime / duration * 10;
                     Rigidbody2D.linearVelocityY -= YSpeedAddForce * Time.deltaTime;
@@ -213,6 +219,32 @@ namespace Member.JYG._Code
         {
             Rigidbody2D.linearVelocityY = 0;
             XVelocity = 0;
+        }
+
+        public void OnInvincible(float invincibleTime)
+        {
+            IsInvincible = true;
+            this.SpriteRenderer.material.SetFloat("_FadingFade", 1);
+
+            _coolTween?.Kill();
+            TweenCallback callback = () => 
+            {
+                IsInvincible = false;
+                this.SpriteRenderer.material.SetFloat("_FadingFade", 0);
+            };
+
+            _coolTween = DOVirtual.DelayedCall(invincibleTime, callback, false);
+        }
+
+        public void TakeDamage(int dmg)
+        {
+            if(false==IsInvincible)
+            _hitSystem.Life -= dmg;
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IContactable block)) block.TryContact(new ContactInfo(this));
+            if (collision.TryGetComponent(out IUseable useable)) useable.Use(new UseableInfo(this));
         }
     }
 }

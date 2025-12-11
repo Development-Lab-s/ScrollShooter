@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class PlayerDeadEvent : MonoBehaviour
 {
+    [SerializeField] private AfterEffector afterEffector; 
     private Player _player;
     public List<GameObject> hideThings = new  List<GameObject>();
     public UnityEvent afterEffect;
@@ -27,17 +28,18 @@ public class PlayerDeadEvent : MonoBehaviour
 
     private IEnumerator DeletePlayer()
     {
+        foreach (GameObject hideThing in hideThings)
+        {
+            hideThing.gameObject.SetActive(false);
+        }
         yield return new WaitForSeconds(0.275f);
         SoundManager.Instance.PlaySound("ValueOut");
+        afterEffector.PlayPostProcessing(999999f);
         yield return new WaitForSeconds(3.8f - 0.275f);
         SoundManager.Instance.PlaySound("DeadSound");
         _player.playerInCamera = false;
         CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 0.5f);
         _player.SpriteRenderer.sprite = null;
-        foreach (GameObject hideThing in hideThings)
-        {
-            hideThing.gameObject.SetActive(false);
-        }
         yield return new WaitForSeconds(1f);
         afterEffect?.Invoke();
         _player.playerInCamera = true;

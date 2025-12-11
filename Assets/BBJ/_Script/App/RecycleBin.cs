@@ -25,7 +25,7 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
     {
         OnBreak();
         if (info.player.IsDash == false && info.player.IsInvincible == false)
-            info.player.TakeDamage(1f);
+            info.player.TakeDamage(1);
     }
     protected override void Awake()
     {

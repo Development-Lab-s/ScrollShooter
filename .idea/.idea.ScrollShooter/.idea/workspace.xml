@@ -6,43 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/ChainsawSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/ChainsawSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/ForkAndSpoonSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/ForkAndSpoonSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/HeartSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/HeartSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/NormalSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/NormalSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/PieceSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/PieceSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/RabbitSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/RabbitSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/StrawberrySkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/StrawberrySkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SwordSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SwordSkin.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/WatermelonSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/WatermelonSkin.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Assets/PreviewRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Assets/PreviewRenderTexture.renderTexture" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/ShopScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scenes/ShopScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVRotate.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVRotate.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVScale.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVScale.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVScroll.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_UVScroll.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_Vibrate.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_Vibrate.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_Wiggle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Transform/_Wiggle.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_2DLitStuff.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_2DLitStuff.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_3DLitStuff.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_3DLitStuff.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_AdditiveAlpha.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_AdditiveAlpha.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_GUIUber.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_GUIUber.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_MultiplicativeAlpha.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_MultiplicativeAlpha.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_PixelArtUV_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_PixelArtUV_1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_PixelArtUV_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_PixelArtUV_2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberColor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberColor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberColorFinal.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberColorFinal.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberCustomAlpha.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberCustomAlpha.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberDissolveFade.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberDissolveFade.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberEffect.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberFading.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberFading.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberGenerated.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberGenerated.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberInteractive.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberInteractive.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberSample.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberSample.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberSpreadFade.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberSpreadFade.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberTransformOffset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberTransformOffset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberTransformUV.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/ASE/Uber/_UberTransformUV.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/Demo/Misc/SSU_PP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/Demo/Misc/SSU_PP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/Demo/Misc/SSU_PP_URP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite Shaders Ultimate/Demo/Misc/SSU_PP_URP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test/DeadAfter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test/DeadAfter.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +47,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PTY&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;JYG&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -89,7 +58,7 @@
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -100,7 +69,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -169,7 +138,7 @@
       <workItem from="1765191965965" duration="962000" />
       <workItem from="1765289856033" duration="2824000" />
       <workItem from="1765337088899" duration="470000" />
-      <workItem from="1765354365814" duration="2901000" />
+      <workItem from="1765354365814" duration="1825000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@ public class FolderBlock : BlockBase, IBreakable, IContactable
         if (info.player.IsDash || info.player.IsInvincible)
             OnBreak();
         else
-            info.player.TakeDamage(1f);
+            info.player.TakeDamage(1);
     }
 
     private Sequence DoBreak(TweenCallback callback)
