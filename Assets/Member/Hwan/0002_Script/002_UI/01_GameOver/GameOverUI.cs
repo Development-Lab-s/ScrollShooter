@@ -61,7 +61,7 @@ public class GameOverUI : MonoBehaviour, IUI
         Open();
     }
 
-    public void LeftMove() { }
+    public void LeftMove(bool _) { }
 
     public void MiddleMove() { }
 

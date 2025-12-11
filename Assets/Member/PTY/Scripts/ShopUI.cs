@@ -97,7 +97,7 @@ public class ShopUI : MonoBehaviour, IUI
         SceneManager.LoadScene(2);
     }
 
-    public void LeftMove()
+    public void LeftMove(bool _)
     {
 
     }
