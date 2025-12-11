@@ -15,6 +15,7 @@ namespace Member.JYG._Code
         public Rigidbody2D Rigidbody2D { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
+        [SerializeField] private GameObject trail;
 
         [field: SerializeField] public float MaxSpeed { get; private set; }
         [field: SerializeField] public float ReverseForce { get; private set; }
@@ -59,6 +60,10 @@ namespace Member.JYG._Code
             }
         }
 
+        public void Nyan()
+        {
+            trail.SetActive(true);
+        }
 
         private void Awake()
         {
@@ -72,6 +77,8 @@ namespace Member.JYG._Code
 
             _radius = Collider.radius;
             OriginalSpeed = MaxSpeed;
+
+            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
         }
 
         private void Start()
@@ -102,6 +109,7 @@ namespace Member.JYG._Code
 
         private void OnDestroy()
         {
+            SettingValueContainer.Instance.UnSubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
@@ -110,11 +118,11 @@ namespace Member.JYG._Code
         private IEnumerator PlayerDash()
         {
             IsBoosting = true;
+            ParticleSystem.MainModule main = boostParticles.main;
+            main.duration = DashDuration + 1;
             SoundManager.Instance.PlaySound("Boosting");
             StartCoroutine(SetSpeedWithTime(25f, 1f));
-            StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 2.5f, OriginYSpeed));
-            ParticleSystem.MainModule main = boostParticles.main;
-            main.duration = DashDuration;
+            StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 1.5f, OriginYSpeed));
             yield return new WaitForSeconds(DashDuration);
             StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
             StartCoroutine(SetYSpeedWithTime(OriginYSpeed, 1f, OriginYSpeed));
@@ -127,6 +135,7 @@ namespace Member.JYG._Code
         {
             SetXMove(XVelocity);
         }
+
         private void Update()
         {
             SetVelocity(PlayerInputSO.IsBraking); //Setting my speed Method
@@ -156,6 +165,7 @@ namespace Member.JYG._Code
 
             XVelocity += Time.deltaTime * MovePower * moveXDir; //현재 이속 설정
         }
+
         private void SetXMove(float speed) //Use in FixedUpdate
         {
             Rigidbody2D.linearVelocityX = speed; //Set my speed
@@ -209,6 +219,11 @@ namespace Member.JYG._Code
         {
             float target = MaxSpeed - targetMaxSpeed; //30, 25 -> 5
             StartCoroutine(SpeedChange(target, duration));
+        }
+
+        private void SetXSpeed(float _, float value)
+        {
+            MovePower = value;
         }
 
         private IEnumerator SpeedChange(float force, float duration)

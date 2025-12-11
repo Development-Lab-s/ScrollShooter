@@ -19661,7 +19661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 7fa8c596e7c54254f8c8cc0a8c53ea56, type: 2}
@@ -44318,15 +44318,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerInputSO>k__BackingField: {fileID: 11400000, guid: 167598a8d9fb04a4ab63c84659d6a706, type: 2}
+  trail: {fileID: 8083794560705386664}
   <MaxSpeed>k__BackingField: 15
   <ReverseForce>k__BackingField: 8
   <BrakePower>k__BackingField: 10
   <MovePower>k__BackingField: 325
   <DashCoolTime>k__BackingField: 3
-  <DashDuration>k__BackingField: 5
+  <DashDuration>k__BackingField: 2
   <YSpeed>k__BackingField: 8
+  <OriginYSpeed>k__BackingField: 8
   <YSpeedAddForce>k__BackingField: 8
   <IsBoosting>k__BackingField: 0
+  boostParticles: {fileID: 3900716205978789003}
   playerInCamera: 1
   onBoost:
     m_PersistentCalls:
@@ -44516,6 +44519,18 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
+          m_IntArgument: 0
+          m_FloatArgument: 999999
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7172907735105212498}
+        m_TargetAssemblyTypeName: Member.JYG._Code.AfterEffector, Assembly-CSharp
+        m_MethodName: VignettePosChangeToPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4274838900708548998}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
           m_IntArgument: 0
           m_FloatArgument: 999999
@@ -49454,9 +49469,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeVolume: {fileID: 4274838900708548998}
-  effectApplySpeed: 12
-  effectCloseTime: 0.1
-  startDelay: 3.2
+  effectApplySpeed: 16
+  effectCloseTime: 0.5
+  startDelay: 3.35
 --- !u!1 &8334526850832328004
 GameObject:
   m_ObjectHideFlags: 0
