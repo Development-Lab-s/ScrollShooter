@@ -8,7 +8,8 @@ public enum UIType
     ShopUI,
     StageSelectUI,
     TurorialUI,
-    ClearUI
+    ClearUI,
+    ImageFilledUI
 }
 
 public enum InteractiveType

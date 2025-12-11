@@ -25,8 +25,12 @@ namespace Member.JYG._Code
         [field: SerializeField] public float DashDuration { get; private set; }
 
         [field: SerializeField] public float YSpeed { get; private set; }
+        [field: SerializeField] public float OriginYSpeed { get; private set; }
         [field: SerializeField] public float YSpeedAddForce { get; private set; }
         [field: SerializeField] public bool IsBoosting { get; private set; }
+        
+        [SerializeField] private ParticleSystem boostParticles;
+        
         public bool playerInCamera = true;
         public UnityEvent<float> onBoost;
         public UnityEvent onBoostFailed;
@@ -108,8 +112,12 @@ namespace Member.JYG._Code
             IsBoosting = true;
             SoundManager.Instance.PlaySound("Boosting");
             StartCoroutine(SetSpeedWithTime(25f, 1f));
+            StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 2.5f, OriginYSpeed));
+            ParticleSystem.MainModule main = boostParticles.main;
+            main.duration = DashDuration;
             yield return new WaitForSeconds(DashDuration);
             StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
+            StartCoroutine(SetYSpeedWithTime(OriginYSpeed, 1f, OriginYSpeed));
             IsBoosting = false;
             yield return new WaitForSeconds(DashCoolTime);
             PlayerInputSO.canDash = true;
@@ -175,28 +183,25 @@ namespace Member.JYG._Code
 
         private IEnumerator SetSpeedWithTime(float speed, float duration)
         {
+            float aSpeed = MaxSpeed - speed;
             if (MaxSpeed < speed)
             {
                 onBoost?.Invoke(DashDuration);
                 while (MaxSpeed < speed)
                 {
-                    MaxSpeed += Time.deltaTime / duration * 10;
-                    Rigidbody2D.linearVelocityY += YSpeedAddForce * Time.deltaTime;
+                    MaxSpeed -= Time.deltaTime / duration * aSpeed;
                     yield return null;
                 }
                 MaxSpeed = speed;
-                Rigidbody2D.linearVelocityY = YSpeed + YSpeedAddForce;
             }
             else
             {
                 while (MaxSpeed > speed)
                 {
-                    MaxSpeed -= Time.deltaTime / duration * 10;
-                    Rigidbody2D.linearVelocityY -= YSpeedAddForce * Time.deltaTime;
+                    MaxSpeed -= Time.deltaTime / duration * aSpeed;
                     yield return null;
                 }
                 MaxSpeed = speed;
-                Rigidbody2D.linearVelocityY = YSpeed;
             }
         }
 
@@ -245,6 +250,38 @@ namespace Member.JYG._Code
         {
             if (collision.TryGetComponent(out IContactable block)) block.TryContact(new ContactInfo(this));
             if (collision.TryGetComponent(out IUseable useable)) useable.Use(new UseableInfo(this));
+        }
+
+        public void SetYSpeed(float speed, float duration, float originYSpeed)
+        {
+            StartCoroutine(SetYSpeedWithTime(speed, duration, originYSpeed));
+        }
+
+        private IEnumerator SetYSpeedWithTime(float speed, float duration, float originSpeed)
+        {
+            float aSpeed = YSpeed - speed;
+            OriginalSpeed = speed;
+            if (YSpeed > speed)
+            {
+                while (YSpeed >= speed)
+                {
+                    YSpeed -=  Time.deltaTime / duration * aSpeed;
+                    Rigidbody2D.linearVelocityY = YSpeed;
+                    yield return null;
+                }
+            }
+            else
+            {
+                while (YSpeed <= speed)
+                {
+                    YSpeed -=  Time.deltaTime / duration * aSpeed;
+                    Rigidbody2D.linearVelocityY = YSpeed;
+                    yield return null;
+                }
+            }
+            YSpeed = speed;
+            Rigidbody2D.linearVelocityY = YSpeed;
+            OriginYSpeed = originSpeed;
         }
     }
 }
