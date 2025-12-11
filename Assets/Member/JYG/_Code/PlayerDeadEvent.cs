@@ -34,7 +34,7 @@ public class PlayerDeadEvent : MonoBehaviour
         }
         yield return new WaitForSeconds(0.275f);
         SoundManager.Instance.PlaySound("ValueOut");
-        afterEffector.PlayPostProcessing(999999f);
+        afterEffector.PlayPostProcessing(0.275f);
         yield return new WaitForSeconds(3.8f - 0.275f);
         SoundManager.Instance.PlaySound("DeadSound");
         _player.playerInCamera = false;
