@@ -96,4 +96,9 @@ public class TutorialUI : MonoBehaviour, IUI
         playerInputSO.OnWheelBtnClicked -= MiddleMove;
         playerInputSO.OnWheeling -= Scroll;
     }
+
+    public void LeftMove(bool isPerformed)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class SettingUI : MonoBehaviour, IUI
     [SerializeField] private Slider slider;
     [field: SerializeField] public GameObject UIObject { get; private set; }
     private TextChangeMove changeText;
+    private FilledUp filled;
 
     public event Action<UIType> OnOpen;
     public event Action<UIType> OnClose;
@@ -18,9 +20,11 @@ public class SettingUI : MonoBehaviour, IUI
     public UIType UIType => UIType.SettingUI;
 
     public ValueSetter valueSetter;
+    private Coroutine fills;
 
     public void Initialize()
     {
+        filled = GetComponentInChildren<FilledUp>();
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
         valueSetter = new(settingValuesSO.SettingValues, slider);
@@ -30,6 +34,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
+        filled.fillTrigger += filled.FillUp;
         TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
@@ -37,6 +42,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Close()
     {
+        filled.fillTrigger -= filled.FillUp;
         TimeManager.Instance.UnStopTime();
         UIObject.SetActive(false);
         OnClose?.Invoke(UIType);
@@ -82,4 +88,11 @@ public class SettingUI : MonoBehaviour, IUI
     {
         valueSetter.ChangeSliderValue(-value);
     }
+
+    public void LeftMove(bool isPerformed)
+    {
+       filled.fillTrigger?.Invoke(isPerformed);        
+       Debug.Log(isPerformed);
+    }
+    
 }

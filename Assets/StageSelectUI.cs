@@ -61,10 +61,6 @@ public class StageSelectUI : MonoBehaviour, IUI
         
     }
 
-    public void LeftMove()
-    {
-    }
-
     public void RightMove()
     {
     }
@@ -96,5 +92,10 @@ public class StageSelectUI : MonoBehaviour, IUI
     private void ScrollTo()
     {
         scrollbar.value = (float)_currentIndex / (_stageButtons.Count - 1);
+    }
+
+    public void LeftMove(bool isPerformed)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -54,7 +54,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     private void Open(int _) => Open();
 
-    public void LeftMove()
+    public void LeftMove(bool _)
     {
     }
 

@@ -52,7 +52,7 @@ public class GameOverUI : MonoBehaviour, IUI
         UIObject.SetActive(false);
     }
 
-    public void LeftMove() { }
+    public void LeftMove(bool _) { }
 
     public void MiddleMove() { }
 

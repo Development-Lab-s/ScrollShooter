@@ -28,6 +28,7 @@ namespace Member.JYG.Input
         private float _prevDashTime;
         public bool canDash = true;
         public bool isUIInput = false;
+        public bool leftPerformed;
 
         private Dictionary<InteractiveType, bool> inputActiveDictionary = new();
 
@@ -106,8 +107,28 @@ namespace Member.JYG.Input
         public void OnLeftClick(InputAction.CallbackContext context)  
         {
             if (inputActiveDictionary[InteractiveType.Left] == false) return;
-            if(context.performed)
-                OnLeftClicked?.Invoke();
+
+            if (context.performed || context.canceled)
+            {
+                leftPerformed = context.performed;
+            }
+            OnLeftClicked?.Invoke();
+            #region
+            //if (context.performed)
+            //{
+            //    Debug.Log("tlqkf");
+            //    OnLeftClicked?.Invoke();
+            //    leftPerformed = context.performed;
+
+            //}
+            //else if(context.canceled)
+            //{
+            //    Debug.Log("µé¾î");
+            //    leftPerformed = context.performed;
+            //    Debug.Log(leftPerformed);
+            //}
+            #endregion
+
         }
 
         public void OnRightClick(InputAction.CallbackContext context)
