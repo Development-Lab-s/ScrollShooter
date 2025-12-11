@@ -52,24 +52,26 @@ public class ThrowBlock : FolderBlock
                 _isArrival = true;
                 if (TryOverlapCircle(overlap, out var collider))
                 {
-                    if (collider.transform.TryGetComponent<Recipient>(out var recipient))
+                    foreach (var item in collider)
                     {
-                        recipient.GotIt();
-                        Destroy();
-                        yield break;
+                        if (item.transform.TryGetComponent<Recipient>(out var recipient))
+                        {
+                            recipient.GotIt();
+                            Destroy();
+                            yield break;
+                        }
                     }
                 }
-                else
-                    OnDel();
+                OnDel();
             }
             yield return null;
         }
     }
 
-    private bool TryOverlapCircle(OverlapDataSO overlap, out Collider2D collider)
+    private bool TryOverlapCircle(OverlapDataSO overlap, out Collider2D[] collider)
     {
-        collider = Physics2D.OverlapCircle(transform.position, overlap.size, overlap.whatIsTarget);
-        return collider != null;
+        collider = Physics2D.OverlapCircleAll(transform.position, overlap.size, overlap.whatIsTarget);
+        return collider.Length != 0;
     }
     protected override void Destroy()
     {

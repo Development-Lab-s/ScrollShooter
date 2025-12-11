@@ -7,6 +7,7 @@ public interface IDamagable
 }
 public interface IDashable
 {
+    //public void OnDash();
     public bool IsDash { get;}
 }
 public interface IInvincible
