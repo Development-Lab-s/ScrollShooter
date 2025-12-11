@@ -30,7 +30,7 @@ public class GoButtonUI : MonoBehaviour
         goButton_Left.gameObject.SetActive(true);
         goButton_Right.gameObject.SetActive(true);
 
-        iconChanger = GetComponent<GoButtonIconChanger>();
+        iconChanger = GetComponentInChildren<GoButtonIconChanger>();
         iconChanger.Initialize();
     }
 
