@@ -77,8 +77,6 @@ namespace Member.JYG._Code
 
             _radius = Collider.radius;
             OriginalSpeed = MaxSpeed;
-
-            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
         }
 
         private void Start()
@@ -107,9 +105,18 @@ namespace Member.JYG._Code
             StartCoroutine(PlayerDash());
         }
 
-        private void OnDestroy()
+        private void OnEnable()
+        {
+            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
+        }
+
+        private void OnDisable()
         {
             SettingValueContainer.Instance.UnSubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
+        }
+
+        private void OnDestroy()
+        {
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
