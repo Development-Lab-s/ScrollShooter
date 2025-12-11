@@ -77,6 +77,8 @@ namespace Member.JYG._Code
 
             _radius = Collider.radius;
             OriginalSpeed = MaxSpeed;
+
+            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
         }
 
         private void Start()
@@ -107,6 +109,7 @@ namespace Member.JYG._Code
 
         private void OnDestroy()
         {
+            SettingValueContainer.Instance.UnSubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
@@ -132,6 +135,7 @@ namespace Member.JYG._Code
         {
             SetXMove(XVelocity);
         }
+
         private void Update()
         {
             SetVelocity(PlayerInputSO.IsBraking); //Setting my speed Method
@@ -161,6 +165,7 @@ namespace Member.JYG._Code
 
             XVelocity += Time.deltaTime * MovePower * moveXDir; //현재 이속 설정
         }
+
         private void SetXMove(float speed) //Use in FixedUpdate
         {
             Rigidbody2D.linearVelocityX = speed; //Set my speed
@@ -214,6 +219,11 @@ namespace Member.JYG._Code
         {
             float target = MaxSpeed - targetMaxSpeed; //30, 25 -> 5
             StartCoroutine(SpeedChange(target, duration));
+        }
+
+        private void SetXSpeed(float _, float value)
+        {
+            MovePower = value;
         }
 
         private IEnumerator SpeedChange(float force, float duration)

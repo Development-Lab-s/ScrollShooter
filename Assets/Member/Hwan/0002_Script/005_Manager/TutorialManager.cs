@@ -8,7 +8,7 @@ using YGPacks;
 
 public class TutorialManager : Singleton<TutorialManager>
 {
-    [SerializeField] private TutorialInfoSO[] tutoInfos; 
+    [SerializeField] private int LastPhase; 
     public event Action<TutorialInfoSO> OnPlayerNearObstacle;
     public event Action OnSkipPhaze;
 
@@ -41,17 +41,17 @@ public class TutorialManager : Singleton<TutorialManager>
         {
             usedBlocks.ForEach((holder) =>
             {
-                if (holder.TutoNumber == block.TutoNumber) return;
+                if (holder == block) return;
             });
 
             usedBlocks.Add(block);
-            PlayTuto();
+            PlayTuto(block.tutoSO);
         }
     }
 
-    private void PlayTuto()
+    private void PlayTuto(TutorialInfoSO tutoInfoSO)
     {
-        TutorialInfoSO currentTutoInfo = GetCurrentTuto();
+        TutorialInfoSO currentTutoInfo = tutoInfoSO;
 
         getInput = true;
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
@@ -69,24 +69,7 @@ public class TutorialManager : Singleton<TutorialManager>
 
         getInput = false;
         OnSkipPhaze?.Invoke();
-        if (currentPhase == tutoInfos.Length - 1) EndTuto();
-    }
-
-    private TutorialInfoSO GetCurrentTuto()
-    {
-        TutorialInfoSO currentTutoInfo = null;
-
-        foreach (TutorialInfoSO tutoInfo in tutoInfos)
-        {
-            if (tutoInfo.Phase == currentPhase)
-            {
-                currentTutoInfo = tutoInfo;
-
-                break;
-            }
-        }
-
-        return currentTutoInfo;
+        if (currentPhase == LastPhase) EndTuto();
     }
 
     private void StartTuto()

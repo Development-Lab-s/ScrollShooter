@@ -19,7 +19,7 @@ public interface IUI
 
     public void ForwardMove();
 
-    public void LeftMove();
+    public void LeftMove(bool isPerformed);
 
     public void RightMove();
 
