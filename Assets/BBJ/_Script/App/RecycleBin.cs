@@ -28,6 +28,7 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
     }
     protected override void Awake()
     {
+        base.Awake();
         tween = DOBounce();
     }
     public Sequence DOBounce()
@@ -35,9 +36,9 @@ public class RecycleBin : BlockBase, IBreakable,IContactable
         var _seq = DOTween.Sequence();
 
         // 바운스 트윈
-        _seq = DOTween.Sequence()
+        _seq.Append(DOTween.Sequence()
         .Append(transform.DOScale(bounceScale, bounceTime)).Join(renderCompo.SrCompo.DOColor(Color.red, bounceTime))
-        .Append(transform.DOScale(1, comebackTime)).Join(renderCompo.SrCompo.DOColor(Color.white, comebackTime));
+        .Append(transform.DOScale(1, comebackTime)).Join(renderCompo.SrCompo.DOColor(Color.white, comebackTime)));
 
         float hafe = (delayTime / 2f)/ warningBounceCnt ;
 

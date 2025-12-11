@@ -91,29 +91,32 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
             if (playerCheckTime < time - _lastCheckTime)
             {
                 _lastCheckTime = time;
-                if (_moveDir.sqrMagnitude <= 0f)
-                {
-                    var target = ChackForTarget(chackPlayerOverlap);
-                    if (target)
-                    {
-                        _isFindTarget = true;
-                        _isTween = true;
-                        OnCollisionSet();
-                        _moveDir = (target.transform.position - transform.position).normalized;
-                        tween = RotateTween(_moveDir, () =>
-                        {
-                            _isTween = false;
-                            tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
-                            .SetEase(Ease.OutExpo);
-                        });
-                        tween = DOVirtual.DelayedCall(lifeTime, () => Destroy(), false);
-                    }
-                }
+                FindTarget();
             }
         }
         else if (_isTween == false)
             _currentVelocity = CalculateSpeed(_moveDir);
     }
+
+    private void FindTarget()
+    {
+        var target = ChackForTarget(chackPlayerOverlap);
+        if (target)
+        {
+            _isFindTarget = true;
+            _isTween = true;
+            OnCollisionSet();
+            _moveDir = (target.transform.position - transform.position).normalized;
+            tween = RotateTween(_moveDir, () =>
+            {
+                _isTween = false;
+                tween = renderCompo.transform.DOShakePosition(2.5f, 0.3f, 25)
+                .SetEase(Ease.OutExpo);
+            });
+            tween = DOVirtual.DelayedCall(lifeTime, () => Destroy(), false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         OnExplosion();
