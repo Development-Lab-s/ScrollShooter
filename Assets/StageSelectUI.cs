@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour, IUI
@@ -20,7 +21,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     private int _currentIndex = 0;
     
-    public GameObject UIObject { get; }
+    [field: SerializeField] public GameObject UIObject { get; private set; }
     public UIType UIType => UIType.StageSelectUI;
     public InteractiveType OpenInput => InteractiveType.None;
 
@@ -53,24 +54,22 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
+        SceneManager.LoadScene(1);
         Close();
     }
 
     public void ForwardMove()
     {
-        
+        SceneManager.LoadScene(_currentIndex + 4);
     }
 
-    public void RightMove()
-    {
-    }
+    public void RightMove() { }
 
-    public void MiddleMove()
-    {
-    }
+    public void MiddleMove() { }
 
     public void ScrollMove(int value)
     {
+        value = -value;
         if (value == 0) return;
 
         int next = Mathf.Clamp(_currentIndex + value, 0, _stageButtons.Count - 1);
@@ -94,8 +93,5 @@ public class StageSelectUI : MonoBehaviour, IUI
         scrollbar.value = (float)_currentIndex / (_stageButtons.Count - 1);
     }
 
-    public void LeftMove(bool isPerformed)
-    {
-        throw new NotImplementedException();
-    }
+    public void LeftMove(bool isPerformed) { }
 }
