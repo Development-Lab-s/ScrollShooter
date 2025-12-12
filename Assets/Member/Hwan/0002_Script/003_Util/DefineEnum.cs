@@ -28,7 +28,8 @@ public enum SettingType
     BGMVolumeSlider,
     SFXVolumeSlider,
     SensitivitySlider,
-    MasterVolumeSlider
+    MasterVolumeSlider,
+    SkipDeadMotionToggle
 }
 
 public enum GoButtonIconType

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class FilledUp : MonoBehaviour
 {
+    [SerializeField] private bool isStage;
     private RectTransform _rt;
     public Action<bool> fillTrigger;
     public float duration = 10;
@@ -15,10 +16,7 @@ public class FilledUp : MonoBehaviour
     {
         _rt = GetComponent<RectTransform>();
     }
-    private void Update()
-    {
-        //FillUp(Mouse.current.leftButton.isPressed);
-    }
+
     public void FillUp(bool fill)
     {
         if (fillCheck == fill) return;
@@ -26,7 +24,7 @@ public class FilledUp : MonoBehaviour
         {
             _tween =_rt.DOScaleX(1, duration).SetEase(Ease.Linear)
                 .SetUpdate(true)
-                .OnComplete(() => { });
+                .OnComplete(OnFilled);
         }
         else
         {
@@ -34,8 +32,13 @@ public class FilledUp : MonoBehaviour
                 .SetUpdate(true);
         }
         fillCheck = fill;
+    }
+
+    private void OnFilled()
+    {
 
     }
+
     public void OnDestroy()
     {
         _tween.Kill();

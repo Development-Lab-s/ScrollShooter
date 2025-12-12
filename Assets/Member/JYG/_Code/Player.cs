@@ -105,16 +105,6 @@ namespace Member.JYG._Code
             StartCoroutine(PlayerDash());
         }
 
-        private void OnEnable()
-        {
-            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
-        }
-
-        private void OnDisable()
-        {
-            SettingValueContainer.Instance.UnSubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
-        }
-
         private void OnDestroy()
         {
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
@@ -228,7 +218,7 @@ namespace Member.JYG._Code
             StartCoroutine(SpeedChange(target, duration));
         }
 
-        private void SetXSpeed(float _, float value)
+        public void SetPower(float value)
         {
             MovePower = value;
         }

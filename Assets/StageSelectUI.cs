@@ -63,7 +63,7 @@ public class StageSelectUI : MonoBehaviour, IUI
         SceneManager.LoadScene(_currentIndex + 4);
     }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void MiddleMove() { }
 
@@ -93,5 +93,5 @@ public class StageSelectUI : MonoBehaviour, IUI
         scrollbar.value = (float)_currentIndex / (_stageButtons.Count - 1);
     }
 
-    public void LeftMove(bool isPerformed) { }
+    public void RightClick(bool isPerformed) { }
 }

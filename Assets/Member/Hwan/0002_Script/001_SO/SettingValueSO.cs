@@ -6,6 +6,7 @@ public class SettingValueSO : ScriptableObject
     [field: SerializeField] public float MaxValue { get; private set; }
     [field: SerializeField] public float MinValue { get; private set; }
     [field: SerializeField] public SettingType MyType { get; private set; }
-    [field: SerializeField]  public string Text { get; private set; }
+    [field: SerializeField] public string Text { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
+    [field: SerializeField] public bool IsToggle { get; private set; }
 }
