@@ -60,7 +60,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        SceneManager.LoadScene(_currentIndex + 4);
+        SceneManager.LoadScene(_currentIndex + 3);
     }
 
     public void LeftClick() { }
