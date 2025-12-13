@@ -24,13 +24,13 @@ public class CodeDebugger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GameManager.Instance.Player.SetYSpeed(1, 2f, 1f);
+            GameManager.Instance.Player.SetYSpeed(1, 2f, GameManager.Instance.Player.OriginalSpeed);
             Debug.Log("속도 감속");
         }
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            GameManager.Instance.Player.SetYSpeed(20, 5f, 20f);
+            GameManager.Instance.Player.SetYSpeed(20, 5f, GameManager.Instance.Player.OriginalSpeed);
             Debug.Log("속도 증가");
         }
     }

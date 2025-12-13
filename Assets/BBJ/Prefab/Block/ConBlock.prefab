@@ -5001,6 +5001,7 @@ MonoBehaviour:
   lifeTime: 10
   playerCheckTime: 0.2
   _currentVelocity: 0
+  delayTime: 0.4
   OnVelocityChnged:
     m_PersistentCalls:
       m_Calls:

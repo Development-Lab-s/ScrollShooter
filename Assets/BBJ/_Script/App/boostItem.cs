@@ -1,10 +1,5 @@
-using System.Threading;
 using UnityEngine;
 
-public class boostItem : BlockBase, IUseable
+public class BoostItem : MonoBehaviour
 {
-    public void Use(UseableInfo info)
-    {
-        //info.Player.OnDash();
-    }
 }
