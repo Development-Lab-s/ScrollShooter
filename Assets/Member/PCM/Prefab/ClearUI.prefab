@@ -301,8 +301,7 @@ MonoBehaviour:
   <UIObject>k__BackingField: {fileID: 7124970150964877785}
   playTime: {fileID: 3889765556542485572}
   SkinMark: {fileID: 5946073191999492860}
-  Skin: {fileID: 11400000, guid: 1a77fe98fd5f79c44b2a180d7908de18, type: 2}
-  hiddenSkin: {fileID: 11400000, guid: 4749cdcb3a204a244baa94fa7a1ddf22, type: 2}
+  skinListSO: {fileID: 11400000, guid: 1a77fe98fd5f79c44b2a180d7908de18, type: 2}
   nullSpace: {fileID: 21300000, guid: ee44a9a80a8a8074587c539194e64b0e, type: 3}
 --- !u!114 &4696708191362591940
 MonoBehaviour:
