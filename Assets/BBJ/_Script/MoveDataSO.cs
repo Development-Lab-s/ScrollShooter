@@ -5,10 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.Rendering.DebugUI;
 
-public class TestPlayerAAAA : MonoBehaviour
-{
-    
-}
 [CreateAssetMenu(fileName = "MoveDataSO", menuName = "SO/MoveDataSO")]
 public class MoveDataSO : ScriptableObject
 {

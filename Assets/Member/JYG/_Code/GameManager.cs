@@ -47,6 +47,7 @@ namespace Member.JYG._Code
             {
                 cleared = true;
                 OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
+                player.OnClear();
                 TimeManager.Instance.StopTime();
             }
         }

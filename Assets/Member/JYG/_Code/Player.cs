@@ -32,6 +32,7 @@ namespace Member.JYG._Code
 
         [field: SerializeField] public MoveDataSO MoveData { get; private set; }
         [SerializeField] private int maxSpeedY;
+        [SerializeField] private ParticleFeedback clearFeedback;
         public int MaxSpeedY
         {
             get => Mathf.Max(maxSpeedY, MoveData.minSpeed);
@@ -176,7 +177,9 @@ namespace Member.JYG._Code
         }
         public void OnDash()
         {
+            DashColorChanger colorChanger = GetComponent<DashColorChanger>();
             PlayerInputSO.canDash = false;
+            colorChanger.DashStateIsTrue(PlayerInputSO.canDash);
 
             ParticleSystem.MainModule main = boostParticles.main;
             main.duration = DashDuration - 0.5f;
@@ -187,7 +190,11 @@ namespace Member.JYG._Code
             _dashCoroutine = SetMaxSpeed(MoveData.dashSpeed, DashDuration, () =>
             {
                 IsBoosting = false;
-                StartCoroutine(DelayCallCoroutine(DashCoolTime, () => PlayerInputSO.canDash = true));
+                StartCoroutine(DelayCallCoroutine(DashCoolTime, () =>
+                {
+                    PlayerInputSO.canDash = true;
+                    colorChanger.DashStateIsTrue(PlayerInputSO.canDash);
+                }));
             });
 
         }
@@ -298,8 +305,10 @@ namespace Member.JYG._Code
 
         public void StopXYVelocity()
         {
-            Rigidbody2D.linearVelocityY = 0;
-            XVelocity = 0;
+            MaxSpeedX = 0;
+            MaxSpeedY = 0;
+            _xVelocity = 0;
+            _currentVelocityY = 0;
         }
 
         public void OnInvincible(float invincibleTime)
@@ -383,6 +392,11 @@ namespace Member.JYG._Code
             _currentVelocityY = Rigidbody2D.linearVelocityY;
 
             SetMaxSpeed(-maxSpeedY, knockTime, () => _isKnock = false);
+        }
+
+        public void OnClear()
+        {
+            clearFeedback.StartParticle();
         }
     }
 }

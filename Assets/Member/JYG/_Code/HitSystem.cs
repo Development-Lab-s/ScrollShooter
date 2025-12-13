@@ -29,7 +29,7 @@ public class HitSystem : MonoBehaviour
                 isDead = true;
                 InputControlManager.Instance.ChangeUIInputActive(false);
 
-                if (isSecondDead && PlayerPrefs.GetInt("IsFirst", 0) == 0)
+                if (isSecondDead && PlayerPrefs.GetInt("IsFirst", 1) == 0)
                 {
                     onSecondDead?.Invoke();
                 }

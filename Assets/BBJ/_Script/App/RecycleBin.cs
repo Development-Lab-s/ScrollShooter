@@ -75,7 +75,7 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
         .SetDelay(bounceCoolTime)
         .AppendCallback(tweenCalvack);
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, transform.localScale * overlapData.size);
