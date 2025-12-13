@@ -44,4 +44,29 @@ public class PlayerDeadEvent : MonoBehaviour
         afterEffect?.Invoke();
         _player.playerInCamera = true;
     }
+
+    public void PlayerSecondDeadEvt()
+    {
+        _player.StopAllCoroutines();
+        _player.StopXYVelocity();
+        _player.PlayerInputSO.SetInputActive(false);
+        StartCoroutine(DeleteSecondPlayer());
+    }
+
+    private IEnumerator DeleteSecondPlayer()
+    {
+        foreach (GameObject hideThing in hideThings)
+        {
+            hideThing.gameObject.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.Instance.PlaySound("DeadSound");
+        yield return new WaitForSeconds(1.5f);
+        _player.playerInCamera = false;
+        CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 0.5f);
+        _player.SpriteRenderer.sprite = null;
+        yield return new WaitForSeconds(1f);
+        afterEffect?.Invoke();
+        _player.playerInCamera = true;
+    }
 }
