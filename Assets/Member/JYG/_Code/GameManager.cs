@@ -29,6 +29,11 @@ namespace Member.JYG._Code
             InGameAudio = SoundManager.Instance.PlaySound(StageSO.StageBGM);
         }
 
+        private void Start()
+        {
+            Player.InitMySkin(PlayerPrefs.GetString("userskin"));
+        }
+
         private void Update()
         {
             if (player != null && player.transform.position.y >= StageSO.MapDistance && cleared == false)
