@@ -5,6 +5,7 @@ using DG.Tweening;
 using Member.JYG.Input;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 namespace Member.JYG._Code
 {
@@ -18,27 +19,36 @@ namespace Member.JYG._Code
         [SerializeField] private GameObject trail;
 
         [field: SerializeField] public float MaxSpeedX { get; private set; }
-        [field: SerializeField] public float ReverseForce { get; private set; }
-        [field: SerializeField] public float BrakePower { get; private set; }
+        //[field: SerializeField] public float ReverseForce { get; private set; }
+        //[field: SerializeField] public float BrakePower { get; private set; }
         [field: SerializeField] public float MovePower { get; private set; } //User's acceleration power (Move Force)
         [field: SerializeField] public float DashCoolTime { get; private set; }
         [field: SerializeField] public float DashDuration { get; private set; }
 
-        [field: SerializeField] public float YSpeed { get; private set; }
-        [field: SerializeField] public float OriginYSpeed { get; private set; }
-        [field: SerializeField] public float YSpeedAddForce { get; private set; }
+        //[field: SerializeField] public float YSpeed { get; private set; }
+        //[field: SerializeField] public float OriginYSpeed { get; private set; }
+        //[field: SerializeField] public float YSpeedAddForce { get; private set; }
         [field: SerializeField] public bool IsBoosting { get; private set; }
+
+        [field: SerializeField] public MoveDataSO MoveData { get; private set; }
+        [SerializeField] private int maxSpeedY;
+        public int MaxSpeedY
+        {
+            get => Mathf.Max(maxSpeedY, MoveData.minSpeed);
+            private set => maxSpeedY = value;
+        }
 
         private CustomTween _dashCoroutine;
         [SerializeField] private ParticleSystem boostParticles;
+        [SerializeField] private float _currentVelocityY = 3f;
 
         public bool playerInCamera = true;
+        public UnityEvent<float> OnVelocityChanged;
         public UnityEvent<float> onBoost;
         public UnityEvent onStopBoost;
         public UnityEvent onBoostFailed;
-        public float OriginalSpeed { get; private set; }
+        //public float OriginalSpeed { get; private set; }
         public bool IsInvincible { get; private set; }
-
         private float _xVelocity;
 
         private float _radius;
@@ -77,10 +87,11 @@ namespace Member.JYG._Code
             _hitSystem = GetComponent<HitSystem>();
 
             Rigidbody2D.gravityScale = 0;
-            Rigidbody2D.linearVelocityY = YSpeed;
+            //Rigidbody2D.linearVelocityY = YSpeed;
 
             _radius = Collider.radius;
-            OriginalSpeed = MaxSpeedX;
+            //OriginalSpeed = MaxSpeedX;
+            maxSpeedY = MoveData.maxSpeed;
         }
 
         private void Start()
@@ -116,44 +127,25 @@ namespace Member.JYG._Code
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
         }
-        private void PlayerDash()
-        {
-            onBoost?.Invoke(DashDuration);
-            SoundManager.Instance.PlaySound("Boosting");
-            ParticleSystem.MainModule main = boostParticles.main;
-            main.duration = DashDuration + 1;
 
-            PlayerInputSO.canDash = false;
-            IsBoosting = true;
-
-            _dashCoroutine = new CustomTween(StartCoroutine(PlayerDashCoroutine()), () =>
-            {
-                IsBoosting = false;
-                SetYSpeed(OriginalSpeed);
-                StartCoroutine(PlayerDashCool(DashCoolTime));
-            });
-        }
-        private IEnumerator PlayerDashCool(float coolTime)
+        private float CalculateSpeedY()
         {
-            yield return new WaitForSeconds(DashCoolTime);
-            PlayerInputSO.canDash = true;
+            if (MaxSpeedY > _currentVelocityY)
+                _currentVelocityY += MoveData.acceleration * Time.deltaTime;
+            else if (MaxSpeedY < _currentVelocityY)
+                _currentVelocityY -= MoveData.deacceleration * Time.deltaTime;
+
+            return _currentVelocityY;
         }
 
-        private IEnumerator PlayerDashCoroutine()
+        private void MoveY()
         {
-            StartCoroutine(SetSpeedWithTime(25f, 1f));
-            yield return new WaitForSeconds(DashDuration);
-            StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
-            //StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 1.5f, OriginYSpeed));
-            //StartCoroutine(SetYSpeedWithTime(OriginYSpeed, 1f, OriginYSpeed));
+            Rigidbody2D.linearVelocityY = _currentVelocityY;
         }
-        private void FixedUpdate()
-        {
-            SetXMove(XVelocity);
-        }
-
         private void Update()
         {
+            if (_currentVelocityY != MaxSpeedY)
+                _currentVelocityY = CalculateSpeedY();
             SetVelocity(PlayerInputSO.IsBraking || _isKnock); //Setting my speed Method
             if (playerInCamera)
             {
@@ -161,6 +153,59 @@ namespace Member.JYG._Code
             }
         }
 
+        private void FixedUpdate()
+        {
+            OnVelocityChanged?.Invoke(_currentVelocityY);
+            SetXMove(XVelocity);
+            MoveY();
+        }
+        public void SetMaxSpeed(int newMaxSpeed)
+        {
+            this.maxSpeedY = newMaxSpeed;
+        }
+        public CustomTween SetMaxSpeed(int newMaxSpeed, float duration, Action callback = default)
+        {
+            this.maxSpeedY += newMaxSpeed;
+            callback += () => this.maxSpeedY -= newMaxSpeed;
+            return new CustomTween(StartCoroutine(DelayCallCoroutine(duration, callback)), callback);
+        }
+        public void PlayerDash()
+        {
+            if (_isKnock == false && IsBoosting == false)
+                OnDash();
+        }
+        public void OnDash()
+        {
+            PlayerInputSO.canDash = false;
+
+            onBoost?.Invoke(DashDuration);
+            SoundManager.Instance.PlaySound("Boosting");
+            ParticleSystem.MainModule main = boostParticles.main;
+            //main.duration = DashDuration - 0.5f;
+
+            IsBoosting = true;
+            _dashCoroutine = SetMaxSpeed(MoveData.dashSpeed, DashDuration, () =>
+            {
+                IsBoosting = false;
+                StartCoroutine(DelayCallCoroutine(DashCoolTime, () => PlayerInputSO.canDash = true));
+            });
+
+        }
+
+        private IEnumerator DelayCallCoroutine(float delayTime, Action callBack = default)
+        {
+            yield return new WaitForSeconds(delayTime);
+            callBack?.Invoke();
+        }
+
+        //private IEnumerator PlayerDashCoroutine()
+        //{
+        //    StartCoroutine(SetSpeedWithTime(25f, 1f));
+        //    yield return new WaitForSeconds(DashDuration);
+        //    StartCoroutine(SetSpeedWithTime(OriginalSpeed, 1f));
+        //    //StartCoroutine(SetYSpeedWithTime(OriginYSpeed * 2, 1.5f, OriginYSpeed));
+        //    //StartCoroutine(SetYSpeedWithTime(OriginYSpeed, 1f, OriginYSpeed));
+        //}
         private void SetVelocity(bool isBrake) //Use in Update
         {
             if (isBrake)
@@ -169,10 +214,10 @@ namespace Member.JYG._Code
                 return;
             }
             float moveDir = PlayerInputSO.XMoveDir;
-            ToMove(moveDir);
+            ToMoveX(moveDir);
         }
 
-        private void ToMove(float moveXDir)
+        private void ToMoveX(float moveXDir)
         {
             if ((XVelocity > 0.1f && moveXDir < 0.5f) || (XVelocity < -0.1f && moveXDir > 0.5f))
             {
@@ -231,7 +276,7 @@ namespace Member.JYG._Code
             }
         }
 
-        public void SetMaxSpeed(float targetMaxSpeed, float duration)
+        public void SetMaxSpeedX(float targetMaxSpeed, float duration)
         {
             float target = MaxSpeedX - targetMaxSpeed; //30, 25 -> 5
             StartCoroutine(SpeedChange(target, duration));
@@ -283,31 +328,31 @@ namespace Member.JYG._Code
             if (collision.TryGetComponent(out IUseable useable)) useable.Use(new UseableInfo(this));
         }
 
-        public void SetYSpeed(float speed)
-        {
-            YSpeed = speed;
-            Rigidbody2D.linearVelocityY = speed;
-        }
+        //public void SetYSpeed(float speed)
+        //{
+        //    YSpeed = speed;
+        //    Rigidbody2D.linearVelocityY = speed;
+        //}
 
-        private IEnumerator SetYSpeedWithTime(float speed, float duration, float originSpeed)
-        {
-            float aSpeed = YSpeed - speed;
-            OriginalSpeed = speed;
-            if (YSpeed > speed)
-                while (YSpeed >= speed)
-                {
-                    SetYSpeed(YSpeed - Time.deltaTime / duration * aSpeed);
-                    yield return null;
-                }
-            else if(YSpeed < speed)
-                while (YSpeed <= speed)
-                {
-                    SetYSpeed(YSpeed - Time.deltaTime / duration * aSpeed);
-                    yield return null;
-                }
-            SetYSpeed(speed);
-            OriginYSpeed = originSpeed;
-        }
+        //private IEnumerator SetYSpeedWithTime(float speed, float duration, float originSpeed)
+        //{
+        //    float aSpeed = YSpeed - speed;
+        //    OriginalSpeed = speed;
+        //    if (YSpeed > speed)
+        //        while (YSpeed >= speed)
+        //        {
+        //            SetYSpeed(YSpeed - Time.deltaTime / duration * aSpeed);
+        //            yield return null;
+        //        }
+        //    else if (YSpeed < speed)
+        //        while (YSpeed <= speed)
+        //        {
+        //            SetYSpeed(YSpeed - Time.deltaTime / duration * aSpeed);
+        //            yield return null;
+        //        }
+        //    SetYSpeed(speed);
+        //    OriginYSpeed = originSpeed;
+        //}
         public void InitMySkin(string skinName)
         {
             if (String.IsNullOrEmpty(skinName) && skinList.skinList[0] != null) SpriteRenderer.sprite = skinList.skinList[0].skin;
@@ -320,25 +365,24 @@ namespace Member.JYG._Code
                 }
             }
         }
+
         public void OnKnockback(float knockPower, float knockTime)
         {
-            if (_isKnock) return;
-            if (null != _dashCoroutine?.Complete())
-                StopCoroutine(_dashCoroutine.Complete());
-
+            var dash = _dashCoroutine?.Complete();
+            if (null != dash)
+            {
+                StopCoroutine(dash);
+                _dashCoroutine = null;
+            }
 
             SetVelocity(true);
-            StartCoroutine(KnockbackWaithTime(knockPower,knockTime));
-        }
-
-        private IEnumerator KnockbackWaithTime(float knockPower,float knockTime)
-        {
             _isKnock = true;
+            Rigidbody2D.linearVelocityY = 0;
             Rigidbody2D.AddForceY(-knockPower, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(knockTime);
-            SetYSpeed(Rigidbody2D.linearVelocityY);
-            StartCoroutine(SetYSpeedWithTime(OriginYSpeed, knockTime, OriginYSpeed));
-            _isKnock = false;
+
+            _currentVelocityY = Rigidbody2D.linearVelocityY;
+
+            SetMaxSpeed(-maxSpeedY, knockTime, () => _isKnock = false);
         }
     }
 }
@@ -353,7 +397,8 @@ public class CustomTween
     }
     public Coroutine Complete()
     {
-        onComplete?.Invoke();
+        if (coroutine != null)
+            onComplete?.Invoke();
         return coroutine;
     }
 }

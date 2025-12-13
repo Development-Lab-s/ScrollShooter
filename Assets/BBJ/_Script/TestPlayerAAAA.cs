@@ -16,8 +16,8 @@ public class MoveDataSO : ScriptableObject
     public float acceleration, deacceleration;
 
     [Range(0.1f, 10)]
-    public float maxSpeed;
+    public int maxSpeed, minSpeed;
 
     [Range(10f, 20)]
-    public float dashSpeed;
+    public int dashSpeed;
 }

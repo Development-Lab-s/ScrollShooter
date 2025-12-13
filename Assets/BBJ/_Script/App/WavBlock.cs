@@ -1,14 +1,16 @@
+using Member.JYG._Code;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class WavBlock : BlockBase, IContactable
+public class WavBlock : BlockBase, IUseable
 {
-    public void TryContact(ContactInfo info) => Use();
-
-    public void Use()
+    [SerializeField] string soundName;
+    public UnityEvent Used;
+    public void Use(UseableInfo info)
     {
-        // 사운드 재생
-        Debug.Log("노래 재생");
+        Used?.Invoke();
+        //GameManager.Instance.ChangeBGM("SettingBGM");
         Destroy(gameObject);
     }
 }
