@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4032100012592753729}
   - component: {fileID: 6819955140087095744}
   - component: {fileID: 8559918476706397161}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TutorialManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,10 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c0d86be98b11649be674c5a16f28c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoInfos:
-  - {fileID: 11400000, guid: 5837068a7045f0f4e9bca45fce91b3d8, type: 2}
-  - {fileID: 11400000, guid: 7d7e9bfa03a079e4f973fe6a7e1f55cf, type: 2}
-  - {fileID: 11400000, guid: 4ef85bf7e74e5e341bdd3cb691252110, type: 2}
+  LastPhase: 4
 --- !u!61 &6819955140087095744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -104,7 +101,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4332551964132864303}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

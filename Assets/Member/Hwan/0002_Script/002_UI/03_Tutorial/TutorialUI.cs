@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialUI : MonoBehaviour, IUI
 {
@@ -31,7 +32,7 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        if (GameManager.Instance.StageSO.StageNumber != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 3)
         {
             UIObject.SetActive(false);
             return;

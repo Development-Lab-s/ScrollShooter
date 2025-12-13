@@ -31,7 +31,7 @@ public class HitSystem : MonoBehaviour
 
                 if (isSecondDead)
                 {
-                    onSecondDead.Invoke();
+                    onSecondDead?.Invoke();
                 }
                 else
                 {

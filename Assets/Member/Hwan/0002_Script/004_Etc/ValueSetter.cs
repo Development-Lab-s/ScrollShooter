@@ -1,8 +1,8 @@
 using Member.JYG._Code;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ValueSetter : MonoBehaviour
 {
@@ -16,15 +16,19 @@ public class ValueSetter : MonoBehaviour
     {
         player = GameManager.Instance.Player;
         settingUI = GetComponent<SettingUI>();
-        settingUI.SliderValueSetter.OnValueChange += SetVolume;
+        settingUI.SliderValueSetter.OnValueChange += SetValue;
 
         foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
         {
-            SetVolume(type, SettingValueContainer.Instance.GetSettingValue(type));
+            if (type == SettingType.SensitivitySlider) SetValue(type, PlayerPrefs.GetInt(type.ToString(), 250));
+            else
+            {
+                SetValue(type, PlayerPrefs.GetInt(type.ToString(), 0));
+            }
         }
     }
 
-    private void SetVolume(SettingType type, float value)
+    private void SetValue(SettingType type, float value)
     {
         switch (type)
         {
@@ -41,18 +45,13 @@ public class ValueSetter : MonoBehaviour
                 audioMixer.SetFloat("Master", value);
                 break;
             case SettingType.SensitivitySlider:
-                if (GameManager.Instance.StageSO.StageNumber is 0 or 1 or 2) return;
+                if (SceneManager.GetActiveScene().buildIndex is 0 or 1 or 2) return;
                 player.SetPower(value);
                 break;
             case SettingType.SkipDeadMotionToggle:
-                if (GameManager.Instance.StageSO.StageNumber is 0 or 1 or 2) return;
+                if (SceneManager.GetActiveScene().buildIndex is 0 or 1 or 2) return;
                 hitSystem.isSecondDead = value == 1;
                 break;
         }
-    }
-
-    private void OnDestroy()
-    {
-        settingUI.SliderValueSetter.OnValueChange -= SetVolume;
     }
 }

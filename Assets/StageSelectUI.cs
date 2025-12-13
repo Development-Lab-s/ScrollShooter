@@ -69,7 +69,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        Hwan.SceneManager.Instance.OnLoadScene(_currentIndex + 3);
+        Hwan.SceneManager.Instance.OnLoadScene(_currentIndex + 4);
     }
 
     public void LeftClick() { }
