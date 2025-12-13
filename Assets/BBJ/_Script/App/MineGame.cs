@@ -8,10 +8,12 @@ public class MineGame : BlockBase, IContactable, IExplosion
 {
     [SerializeField]private OverlapDataSO dataSO;
     public UnityEvent<float> Explosioned;
+    [SerializeField]private float explosionDelayTime = 0.05f;
 
     public void OnExplosion()
     {
-        DOVirtual.DelayedCall(0.05f, () =>
+        if (tween != null) return;
+        tween = DOVirtual.DelayedCall(explosionDelayTime, () =>
         {
             Destroy();
             Explosioned?.Invoke(dataSO.size);

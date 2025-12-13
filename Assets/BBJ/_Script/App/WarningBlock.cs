@@ -82,6 +82,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
         base.Awake();
         _rbCompo = GetComponent<Rigidbody2D>();
         _lastCheckTime = Time.time;
+        OnVelocityChnged?.Invoke(_currentVelocity);
     }
     private void Update()
     {

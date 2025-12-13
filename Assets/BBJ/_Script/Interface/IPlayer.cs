@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IPlayer : IDashable, IInvincible, IDamagable { }
+public interface IPlayer : IDashable, IInvincible, IDamagable 
+{
+    //public void SetYSpeed(float speed, float duration, float originYSpeed);
+}
 public interface IDamagable
 {
     public void TakeDamage(int dmg);
