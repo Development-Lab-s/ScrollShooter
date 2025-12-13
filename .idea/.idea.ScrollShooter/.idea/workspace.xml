@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SkinList.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SkinList.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0001_Scene/02_ShopScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0001_Scene/02_ShopScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0001_Scene/02_ShopScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0001_Scene/02_ShopScene.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0001_Scene/03_StageSelectScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0001_Scene/03_StageSelectScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Skin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Prefabs/Stage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StageSelectUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StageSelectUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +22,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../ArkNights/ExportedProject/Assets/Scripts/Unity.Postprocessing.Runtime/HGPPShaderIDs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/ParticleFeedback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/StageListSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/StageSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@5342685532bb/Runtime/Impulse/CinemachineImpulseSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,7 +49,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Base",
+    "git-widget-placeholder": "PTY",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,7 +60,7 @@
 }]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -65,7 +71,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -139,6 +145,7 @@
       <workItem from="1765410346386" duration="2394000" />
       <workItem from="1765441822867" duration="2477000" />
       <workItem from="1765610549856" duration="4155000" />
+      <workItem from="1765626609034" duration="1910000" />
     </task>
     <servers />
   </component>
