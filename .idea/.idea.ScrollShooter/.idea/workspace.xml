@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="" />
+    <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/PlayerPacks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/Prefabs/PlayerPacks.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/PlayerDeadEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
