@@ -1,5 +1,7 @@
+using Member.JYG._Code;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,8 @@ public class SettingUI : MonoBehaviour, IUI
     [SerializeField] private Image iconImage;
     [SerializeField] private SettingValuesSO settingValuesSO;
     [SerializeField] private Slider slider;
+    [SerializeField] private Toggle toggle;
+
     [field: SerializeField] public GameObject UIObject { get; private set; }
     private TextChangeMove changeText;
     private FilledUp filled;
@@ -19,15 +23,16 @@ public class SettingUI : MonoBehaviour, IUI
 
     public UIType UIType => UIType.SettingUI;
 
-    public ValueSetter valueSetter;
-    private Coroutine fills;
+    public SettingUIValueSetter SliderValueSetter;
 
     public void Initialize()
     {
-        filled = GetComponentInChildren<FilledUp>();
+        filled = GetComponentInChildren<FilledUp>(true);
+        filled.SetComplete(GameManager.Instance.StageSO.StageNumber is 1 or 2);
+
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
-        valueSetter = new(settingValuesSO.SettingValues, slider);
+        SliderValueSetter = new(settingValuesSO.SettingValues, slider, toggle);
         InitializeSetting();
         UIObject.SetActive(false);
     }
@@ -51,26 +56,26 @@ public class SettingUI : MonoBehaviour, IUI
     public void BackMove()
     {
         if (changeText.IsShaking == true) return;
-        valueSetter.ChangeType(-1);
+        SliderValueSetter.ChangeType(-1);
         InitializeSetting();
     }
 
     public void ForwardMove()
     {
         if (changeText.IsShaking == true) return;
-        valueSetter.ChangeType(1);
+        SliderValueSetter.ChangeType(1);
         InitializeSetting();
     }
 
     private void InitializeSetting()
     {
-        changeText.ChangeText(valueSetter.CurrentValue.Text);
-        iconImage.sprite = valueSetter.CurrentValue.Icon;
+        changeText.ChangeText(SliderValueSetter.CurrentValue.Text);
+        iconImage.sprite = SliderValueSetter.CurrentValue.Icon;
     }
 
     public void LeftMove() { }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void MiddleMove()
     {
@@ -86,13 +91,11 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value) 
     {
-        valueSetter.ChangeSliderValue(-value);
+        SliderValueSetter.ChangeSettingValue(-value);
     }
 
-    public void LeftMove(bool isPerformed)
+    public void RightClick(bool isPerformed)
     {
-       filled.fillTrigger?.Invoke(isPerformed);        
-       Debug.Log(isPerformed);
+       filled.fillTrigger?.Invoke(isPerformed);
     }
-    
 }

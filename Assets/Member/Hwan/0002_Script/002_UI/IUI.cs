@@ -19,9 +19,9 @@ public interface IUI
 
     public void ForwardMove();
 
-    public void LeftMove(bool isPerformed);
+    public void RightClick(bool isPerformed);
 
-    public void RightMove();
+    public void LeftClick();
 
     public void MiddleMove();
 

@@ -97,12 +97,12 @@ public class ShopUI : MonoBehaviour, IUI
         SceneManager.LoadScene(2);
     }
 
-    public void LeftMove(bool _)
+    public void RightClick(bool _)
     {
 
     }
 
-    public void RightMove()
+    public void LeftClick()
     {
 
     }

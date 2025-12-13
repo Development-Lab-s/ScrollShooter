@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public class ThrowBlock : FolderBlock
 {
@@ -15,6 +16,7 @@ public class ThrowBlock : FolderBlock
 
     [SerializeField] private OverlapDataSO overlap;
     private bool _isArrival;
+    private Coroutine coroutine;
 
     public void OnDel()
     {
@@ -23,7 +25,8 @@ public class ThrowBlock : FolderBlock
     public void StartMove(Vector2 startPos, Vector2 targetPos)
     {
         transform.position = startPos;
-        StartCoroutine(MoveCoroutine(startPos, targetPos));
+        if(coroutine != null) StopCoroutine(coroutine);
+        coroutine = StartCoroutine(MoveCoroutine(startPos, targetPos));
     }
 
     private IEnumerator MoveCoroutine(Vector2 startPos, Vector2 endPos)
@@ -32,22 +35,23 @@ public class ThrowBlock : FolderBlock
         float x1 = endPos.x;
         float distance = x1 - x0;
 
-        float currentX = startPos.x;
+        float dir = Mathf.Sign(distance);   // 이동 방향 (+1 또는 -1)
+        float currentX = x0;
 
         while (true)
         {
-            currentX += speed * Time.deltaTime;
-            float nextX = currentX;
+            currentX += speed * dir * Time.deltaTime;
+            float t = (currentX - x0) / distance;
 
-            float baseY = Mathf.Lerp(startPos.y, endPos.y, (nextX - x0) / distance);
-            float arc = this.arc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
+            float baseY = Mathf.Lerp(startPos.y, endPos.y, t);
+            float arc = this.arc * (currentX - x0) * (currentX - x1) / (-0.25f * distance * distance);
 
-            Vector2 nextPosition = new Vector2(nextX, baseY + arc);
+            Vector2 nextPosition = new Vector2(currentX, baseY + arc);
 
             transform.position = nextPosition;
-            AnimationValueChanged?.Invoke(moveHash, Mathf.Clamp01((nextX - x0) / distance));
+            AnimationValueChanged?.Invoke(moveHash, Mathf.Clamp01(t));
 
-            if (nextX >= x1 && _isArrival == false)
+            if (t >= 1f && _isArrival == false)
             {
                 _isArrival = true;
                 if (TryOverlapCircle(overlap, out var collider))
@@ -67,6 +71,11 @@ public class ThrowBlock : FolderBlock
             yield return null;
         }
     }
+    public override void ResetItem()
+    {
+        base.ResetItem();
+        _isArrival = false;
+    }
 
     private bool TryOverlapCircle(OverlapDataSO overlap, out Collider2D[] collider)
     {
@@ -75,7 +84,7 @@ public class ThrowBlock : FolderBlock
     }
     protected override void Destroy()
     {
-        tween.Kill();
+        tween?.Kill();
         StopAllCoroutines();
         PoolManager.Instance.Push(this);
     }

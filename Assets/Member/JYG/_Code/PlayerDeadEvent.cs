@@ -15,7 +15,7 @@ public class PlayerDeadEvent : MonoBehaviour
 
     private void Awake()
     {
-        _player = transform.parent.root.GetComponent<Player>();
+        _player = GetComponentInParent<Player>();
     }
 
     public void PlayerDeadEvt()

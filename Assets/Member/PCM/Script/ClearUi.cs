@@ -54,7 +54,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     private void Open(int _) => Open();
 
-    public void LeftMove(bool _)
+    public void RightClick(bool _)
     {
     }
 
@@ -73,7 +73,7 @@ public class ClearUi : MonoBehaviour, IUI
         OnOpen?.Invoke(UIType);
     }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void ScrollMove(int value)
     {

@@ -61,7 +61,7 @@ public class GameOverUI : MonoBehaviour, IUI
         Open();
     }
 
-    public void LeftMove(bool _) { }
+    public void RightClick(bool _) { }
 
     public void MiddleMove() { }
 
@@ -83,7 +83,7 @@ public class GameOverUI : MonoBehaviour, IUI
         OnOpen?.Invoke(UIType);
     }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void ScrollMove(int value) { }
 }

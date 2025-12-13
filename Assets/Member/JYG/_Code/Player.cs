@@ -77,8 +77,6 @@ namespace Member.JYG._Code
 
             _radius = Collider.radius;
             OriginalSpeed = MaxSpeed;
-
-            SettingValueContainer.Instance.SubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
         }
 
         private void Start()
@@ -109,7 +107,6 @@ namespace Member.JYG._Code
 
         private void OnDestroy()
         {
-            SettingValueContainer.Instance.UnSubSettingValueEvent(SettingType.SensitivitySlider, SetXSpeed);
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
@@ -173,17 +170,18 @@ namespace Member.JYG._Code
 
         private void SetPlayerPositionInCamera()
         {
-            if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x + _radius, 0)).x > 1f)
+            float offset = 0.5f * 0.78f;
+            if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x + _radius, 0)).x > 0.5f + offset)
             {
-                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0));
+                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f + offset, 0, 0));
 
                 Vector3 playerPosition = transform.position;
                 playerPosition.x = newPosition.x - _radius;
                 transform.position = playerPosition;
             }
-            else if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x - _radius, 0)).x < 0f)
+            else if (Camera.main.WorldToViewportPoint(new Vector3(transform.position.x - _radius, 0)).x < 0.5f - offset)
             {
-                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+                Vector3 newPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f - offset, 0, 0));
 
                 Vector3 playerPosition = transform.position;
                 playerPosition.x = newPosition.x + _radius;
@@ -221,7 +219,7 @@ namespace Member.JYG._Code
             StartCoroutine(SpeedChange(target, duration));
         }
 
-        private void SetXSpeed(float _, float value)
+        public void SetPower(float value)
         {
             MovePower = value;
         }
@@ -259,7 +257,7 @@ namespace Member.JYG._Code
         public void TakeDamage(int dmg)
         {
             if(false==IsInvincible)
-            _hitSystem.Life -= dmg;
+                _hitSystem.Life -= dmg;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

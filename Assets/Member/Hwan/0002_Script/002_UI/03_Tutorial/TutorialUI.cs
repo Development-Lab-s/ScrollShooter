@@ -1,9 +1,9 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class TutorialUI : MonoBehaviour, IUI
 {
@@ -31,10 +31,16 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
+        if (GameManager.Instance.StageSO.StageNumber != 0)
+        {
+            UIObject.SetActive(false);
+            return;
+        }
+
         playerInputSO.OnBrakePressed += ForwardMove;
         playerInputSO.OnDashPressed += BackMove;
         playerInputSO.OnLeftClicked += LeftMove;
-        playerInputSO.OnRightClicked += RightMove;
+        playerInputSO.OnRightClicked += LeftClick;
         playerInputSO.OnWheelBtnClicked += MiddleMove;
         playerInputSO.OnWheeling += Scroll;
 
@@ -74,7 +80,7 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void MiddleMove() => TutorialManager.Instance.GetInput(InteractiveType.Middle);
 
-    public void RightMove() => TutorialManager.Instance.GetInput(InteractiveType.Right);
+    public void LeftClick() => TutorialManager.Instance.GetInput(InteractiveType.Right);
 
     public void ScrollMove(int value) => TutorialManager.Instance.GetInput(InteractiveType.Scroll);
 
@@ -92,12 +98,12 @@ public class TutorialUI : MonoBehaviour, IUI
         playerInputSO.OnBrakePressed -= ForwardMove;
         playerInputSO.OnDashPressed -= BackMove;
         playerInputSO.OnLeftClicked -= LeftMove;
-        playerInputSO.OnRightClicked -= RightMove;
+        playerInputSO.OnRightClicked -= LeftClick;
         playerInputSO.OnWheelBtnClicked -= MiddleMove;
         playerInputSO.OnWheeling -= Scroll;
     }
 
-    public void LeftMove(bool isPerformed)
+    public void RightClick(bool isPerformed)
     {
         throw new NotImplementedException();
     }

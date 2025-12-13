@@ -51,7 +51,7 @@ public class Minimize : MonoBehaviour
         ).OnComplete(
           () =>
           {
-              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+              Hwan.SceneManager.Instance.OnLodeScene(3);
           });
         }
     }

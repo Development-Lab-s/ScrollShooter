@@ -30,7 +30,7 @@ namespace Member.JYG._Code
 
         private void Update()
         {
-            if (player.transform.position.y >= StageSO.MapDistance && cleared == false)
+            if (player != null && player.transform.position.y >= StageSO.MapDistance && cleared == false)
             {
                 cleared = true;
                 OnClear?.Invoke(StageSO.StageNumber);
