@@ -355,7 +355,7 @@ namespace Member.JYG._Code
         //}
         public void InitMySkin(string skinName)
         {
-            if (String.IsNullOrEmpty(skinName) && skinList.skinList[0] != null) SpriteRenderer.sprite = skinList.skinList[0].skin;
+            if (String.IsNullOrEmpty(skinName) || skinList.skinList[1] == null) SpriteRenderer.sprite = skinList.skinList[0].skin;
             foreach (SkinSO skin in skinList.skinList)
             {
                 if (skinName == skin.skinName)
