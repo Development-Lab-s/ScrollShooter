@@ -2,12 +2,14 @@ using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YGPacks; 
 
 namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
+        public bool thereIsPlayer = false;
         public AudioSource InGameAudio { get; private set; }
         public event Action<int> OnClear;
         private bool cleared = false;
@@ -31,7 +33,10 @@ namespace Member.JYG._Code
 
         private void Start()
         {
-            Player.InitMySkin(PlayerPrefs.GetString("userskin"));
+            if (thereIsPlayer)
+            {
+                Player.InitMySkin(PlayerPrefs.GetString("userskin"));
+            }
         }
 
         private void Update()
@@ -39,7 +44,7 @@ namespace Member.JYG._Code
             if (player != null && player.transform.position.y >= StageSO.MapDistance && cleared == false)
             {
                 cleared = true;
-                OnClear?.Invoke(StageSO.StageNumber);
+                OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
                 TimeManager.Instance.StopTime();
             }
         }

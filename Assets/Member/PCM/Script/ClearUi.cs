@@ -1,4 +1,6 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
+using Member.PTY.Scripts.SO;
 using System;
 using TMPro;
 using UnityEngine;
@@ -12,8 +14,8 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private Image SkinMark;
 
-    [SerializeField] private SkinListSO Skin;
-    [SerializeField] private SkinListSO hiddenSkin;
+    [SerializeField]private SkinListSO skinListSO;
+    [SerializeField] private SkinListSO HiddenskinListSO;
     [SerializeField] private Sprite nullSpace;
     private float StartTime;
     public UIType UIType => UIType.ClearUI;
@@ -64,6 +66,8 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void Open()
     {
+        SoundManager.Instance.PlaySound("ClearSFX");
+
         countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
@@ -80,10 +84,10 @@ public class ClearUi : MonoBehaviour, IUI
     }
     public void ClearShow(int stage)
     {
-        if (Skin.Skin[stage] != null)
-            SkinMark.sprite = Skin.Skin[stage];
-        else if (hiddenSkin.Skin[stage] != null)
-            SkinMark.sprite = hiddenSkin.Skin[stage];
+        if (skinListSO.Skin[stage] != null)
+            SkinMark.sprite = skinListSO.Skin[stage].skin;
+        else if (skinListSO.Skin[stage] == null)
+            SkinMark.sprite = HiddenskinListSO.Skin[stage+5].skin; //얘가 히든임
         else
             SkinMark.sprite = nullSpace;
         //스킨을 가지고 있는애를 만들함

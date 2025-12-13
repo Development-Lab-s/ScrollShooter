@@ -974,25 +974,25 @@ MonoBehaviour:
       <iconType>k__BackingField: 1
       rightSprite: {fileID: 0}
       leftSprite: {fileID: 0}
-      rightText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
-      leftText: "\uB2E4\uC2DC \uC2DC\uC791"
+      rightText: "\uB2E4\uC2DC \uC2DC\uC791"
+      leftText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
   - <UIType>k__BackingField: 3
     <Icon>k__BackingField:
       <iconType>k__BackingField: 1
       rightSprite: {fileID: 0}
       leftSprite: {fileID: 0}
-      rightText: "\uC801\uC6A9"
-      leftText: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD"
+      rightText: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD"
+      leftText: "\uC801\uC6A9"
   - <UIType>k__BackingField: 4
     <Icon>k__BackingField:
       <iconType>k__BackingField: 1
       rightSprite: {fileID: 0}
       leftSprite: {fileID: 0}
-      rightText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
-      leftText: "\uC2A4\uD14C\uC774\uC9C0 \uC9C4\uC785"
+      rightText: "\uC2A4\uD14C\uC774\uC9C0 \uC9C4\uC785"
+      leftText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
   - <UIType>k__BackingField: 5
     <Icon>k__BackingField:
-      <iconType>k__BackingField: 0
+      <iconType>k__BackingField: 1
       rightSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
       leftSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
       rightText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour, IUI
@@ -25,26 +24,37 @@ public class StageSelectUI : MonoBehaviour, IUI
     public UIType UIType => UIType.StageSelectUI;
     public InteractiveType OpenInput => InteractiveType.None;
 
+    public StageListSO stageList;
+    
     public void Initialize()
     {
-        for (int i = 0; i < buttonAmount; i++)
-        {
-            var button = Instantiate(buttonPrefab, transform);
-            button.transform.SetParent(buttonsParent.transform);
-            button.name = "stage" + i;
-            button.GetComponentInChildren<TextMeshProUGUI>().text = "스테이지" + i;
-            _stageButtons.Add(button.GetComponentInChildren<SkinButton>());
-        }
-
-        Highlight(0);
-        ScrollTo();
-        
         Open();
     }
 
     public void Open()
     {
         OnOpen?.Invoke(UIType);
+        PlayerPrefs.SetInt("IsFirst", 1);
+        for (int i = 0; i < buttonAmount; i++)
+        {
+            var button = Instantiate(buttonPrefab, transform);
+            button.transform.SetParent(buttonsParent.transform);
+            button.name = "stage" + (i + 1);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = stageList.stageList[i].stageName;
+            _stageButtons.Add(button.GetComponentInChildren<SkinButton>());
+            
+            if (PlayerPrefs.GetInt("clearedstage") > stageList.stageList[i].stageIndex || (PlayerPrefs.GetInt("clearedstage") == 0 && i == 0))
+            {
+                _stageButtons[i].transform.GetChild(2).GetComponent<Image>().enabled = false;
+            }
+            else
+            {
+                _stageButtons[i].transform.GetChild(2).GetComponent<Image>().enabled = true;
+            }
+        }
+
+        Highlight(0);
+        ScrollTo();
     }
 
     public void Close()
@@ -59,7 +69,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        Hwan.SceneManager.Instance.OnLoadScene(_currentIndex + 3);
+        Hwan.SceneManager.Instance.OnLoadScene(_currentIndex + 4);
     }
 
     public void LeftClick() { }
@@ -75,6 +85,12 @@ public class StageSelectUI : MonoBehaviour, IUI
 
         if (next == _currentIndex) return;
 
+        if (stageList.stageList[next].stageIndex >= PlayerPrefs.GetInt("clearedstage"))
+        {
+            Debug.LogError($"스테이지 {stageList.stageList[next].stageIndex + 1}을/를 클리어하지 않아 스킨을 선택할 수 없습니다.");
+            return;
+        }
+        
         _currentIndex = next;
 
         Highlight(_currentIndex);

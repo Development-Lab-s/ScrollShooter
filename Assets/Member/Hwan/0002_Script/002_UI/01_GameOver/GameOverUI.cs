@@ -68,6 +68,8 @@ public class GameOverUI : MonoBehaviour, IUI
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
+
+        PlayerPrefs.SetInt("IsFirst", 0);
         UIManager.Instance.CloseAllUI();
 
         InputControlManager.Instance.ChangeUIInputActive(false);

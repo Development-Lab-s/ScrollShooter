@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class FilledUp : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    private RectTransform _rt;
+    [SerializeField]private RectTransform _rt;
     public Action<bool> fillTrigger;
     public float duration = 10;
     private bool fillCheck;
@@ -25,12 +25,17 @@ public class FilledUp : MonoBehaviour
         if (fillCheck == fill) return;
         if (fill)
         {
-            _tween =_rt.DOScaleX(1, duration).SetEase(Ease.Linear)
+            _tween.Kill();
+            _tween = _rt.DOScaleX(1, duration).SetEase(Ease.Linear)
                 .SetUpdate(true)
-                .OnComplete(OnFilled);
+                .OnComplete(() =>
+                {
+                        OnFilled();
+                });
         }
         else
         {
+            _tween.Kill();
             _tween = _rt.DOScaleX(0, duration).SetEase(Ease.Linear)
                 .SetUpdate(true);
         }
@@ -39,13 +44,17 @@ public class FilledUp : MonoBehaviour
 
     private void OnFilled()
     {
-        if (isGameQuit == true)
+        if (_rt.localScale.x >= 1)
         {
-            Application.Quit();
-        }
-        else
-        {
-            Hwan.SceneManager.Instance.OnLoadScene(1);
+            Debug.Log(_rt.localScale.x);
+            if (isGameQuit == true)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                Hwan.SceneManager.Instance.OnLoadScene(1);
+            }
         }
     }
 

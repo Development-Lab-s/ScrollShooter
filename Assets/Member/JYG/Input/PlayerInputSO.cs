@@ -46,6 +46,7 @@ namespace Member.JYG.Input
             {
                 inputActiveDictionary.Add(type, true);
             }
+            
         }
 
         private void OnDisable()
