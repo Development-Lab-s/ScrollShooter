@@ -60,6 +60,8 @@ namespace Member.JYG._Code
             }
         }
 
+        public PTY.Scripts.SO.SkinListSO skinList;
+
         public void Nyan()
         {
             trail.SetActive(true);
@@ -295,6 +297,19 @@ namespace Member.JYG._Code
             YSpeed = speed;
             Rigidbody2D.linearVelocityY = YSpeed;
             OriginYSpeed = originSpeed;
+        }
+
+        public void InitMySkin(string skinName)
+        {
+            if(String.IsNullOrEmpty(skinName) && skinList.skinList[0] != null) SpriteRenderer.sprite = skinList.skinList[0].skin;
+            foreach (SkinSO skin in skinList.skinList)
+            {
+                if (skinName == skin.skinName)
+                {
+                    SpriteRenderer.sprite = skin.skin;
+                    break;
+                }
+            }
         }
     }
 }

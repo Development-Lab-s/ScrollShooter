@@ -44385,6 +44385,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  skinList: {fileID: 11400000, guid: 2045e6f39005c7e448a1658902daf9ee, type: 2}
 --- !u!50 &3669563048864094653
 Rigidbody2D:
   serializedVersion: 5
@@ -44537,10 +44538,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSecondDead:
+    m_PersistentCalls:
+      m_Calls: []
   onHit:
     m_PersistentCalls:
       m_Calls: []
   maxLife: 5
+  isSecondDead: 0
 --- !u!1 &8083794560705386664
 GameObject:
   m_ObjectHideFlags: 0

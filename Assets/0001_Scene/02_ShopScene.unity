@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinList: {fileID: 11400000, guid: 2045e6f39005c7e448a1658902daf9ee, type: 2}
   player: {fileID: 2223606204839603023}
-  clearedStage: 5
+  clearedStage: 0
 --- !u!4 &979440609
 Transform:
   m_ObjectHideFlags: 0
@@ -6028,6 +6028,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  skinList: {fileID: 0}
 --- !u!114 &8785974291697294953
 MonoBehaviour:
   m_ObjectHideFlags: 0
