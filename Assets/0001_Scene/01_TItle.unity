@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2082094341}
         m_TargetAssemblyTypeName: Minimize, Assembly-CSharp
-        m_MethodName: Normal
+        m_MethodName: Starts
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 18976420}
@@ -2378,6 +2378,7 @@ MonoBehaviour:
   window: {fileID: 2082094341}
   btA: {fileID: 3815921511917536772}
   btB: {fileID: 5276103664265008430}
+  isOpen: 0
 --- !u!224 &1923539358 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6380704436493414136, guid: 8288cdf9614c75b48aa33592fbd3a03b, type: 3}
@@ -2510,7 +2511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Screen1: {fileID: 578880627}
-  Screen2: {fileID: 0}
+  ScreenButton: {fileID: 1865989513}
   slider: {fileID: 1118777272}
 --- !u!1 &2086334506
 GameObject:

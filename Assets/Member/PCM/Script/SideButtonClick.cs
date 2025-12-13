@@ -7,15 +7,23 @@ public class SideButtonClick : MonoBehaviour
     [SerializeField] private Minimize window;
     [SerializeField] private GameObject btA;
     [SerializeField] private GameObject btB;
+    public bool isOpen;
+    private void Start()
+    {
+        isOpen = false;
+    }
     private void Update()
     {
-        if (Mouse.current.backButton.wasPressedThisFrame)
+        if (isOpen)
         {
-            GetOut();
-        }
-        if (Mouse.current.forwardButton.wasPressedThisFrame)
-        {
-            StageGo();
+            if (Mouse.current.backButton.wasPressedThisFrame)
+            {
+                GetOut();
+            }
+            if (Mouse.current.forwardButton.wasPressedThisFrame)
+            {
+                StageGo();
+            }
         }
     }
     public void StageGo()

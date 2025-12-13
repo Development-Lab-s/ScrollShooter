@@ -8,7 +8,7 @@ public class Minimize : MonoBehaviour
 {
     private RectTransform rt;
     [SerializeField] private GameObject Screen1;
-    [SerializeField] private GameObject Screen2;
+    [SerializeField] private SideButtonClick ScreenButton;
     [SerializeField] private Slider slider;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class Minimize : MonoBehaviour
         Screen1.SetActive(false);
         rt.offsetMax = new Vector2(-2000, -1200);
     }
-    public void Normal(GameObject gameObject)
+    public void Starts(GameObject gameObject)
     {
         Screen1.SetActive(true);
         gameObject.GetComponent<Button>().enabled = false;
@@ -29,7 +29,11 @@ public class Minimize : MonoBehaviour
            x => rt.offsetMax = x,
            new Vector2(0, 0),
            0.2f
-       );
+       ).OnComplete(() =>
+       {
+           ScreenButton.isOpen = true;
+       });
+
     }
     public void Exit()
     {
