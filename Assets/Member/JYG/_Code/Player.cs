@@ -16,7 +16,6 @@ namespace Member.JYG._Code
         public Rigidbody2D Rigidbody2D { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
         public CircleCollider2D Collider { get; private set; }
-        public DashColorChanger ColorChanger { get; private set; }
         [SerializeField] private GameObject trail;
 
         [field: SerializeField] public float MaxSpeedX { get; private set; }
@@ -48,7 +47,6 @@ namespace Member.JYG._Code
         public UnityEvent<float> onBoost;
         public UnityEvent onStopBoost;
         public UnityEvent onBoostFailed;
-        public UnityEvent onClear;
         //public float OriginalSpeed { get; private set; }
         public bool IsInvincible { get; private set; }
         private float _xVelocity;
@@ -87,7 +85,6 @@ namespace Member.JYG._Code
             Collider = GetComponent<CircleCollider2D>();
             SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _hitSystem = GetComponent<HitSystem>();
-            ColorChanger = GetComponent<DashColorChanger>();
 
             Rigidbody2D.gravityScale = 0;
             //Rigidbody2D.linearVelocityY = YSpeed;
@@ -102,15 +99,7 @@ namespace Member.JYG._Code
             PlayerInputSO.OnDashPressed += HandleDashPressed;
             PlayerInputSO.OnDashBlocked += HandleDashBlocked;
             PlayerInputSO.OnBrakePressed += HandleBraked;
-
-            GameManager.Instance.OnClear += HandlePlayerClear;
         }
-
-        private void HandlePlayerClear(int obj)
-        {
-            onClear?.Invoke();
-        }
-
         private void HandleBraked()
         {
             SoundManager.Instance.PlaySound("Braking");
@@ -137,8 +126,6 @@ namespace Member.JYG._Code
             PlayerInputSO.OnDashPressed -= HandleDashPressed;
             PlayerInputSO.OnDashBlocked -= HandleDashBlocked;
             PlayerInputSO.OnBrakePressed -= HandleBraked;
-            
-            GameManager.Instance.OnClear -= HandlePlayerClear;
         }
 
         private float CalculateSpeedY()
@@ -191,21 +178,16 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.canDash = false;
 
-            ColorChanger.DashStateIsTrue(false);
+            ParticleSystem.MainModule main = boostParticles.main;
+            main.duration = DashDuration - 0.5f;
             onBoost?.Invoke(DashDuration);
             SoundManager.Instance.PlaySound("Boosting");
-            ParticleSystem.MainModule main = boostParticles.main;
-            //main.duration = DashDuration - 0.5f;
 
             IsBoosting = true;
             _dashCoroutine = SetMaxSpeed(MoveData.dashSpeed, DashDuration, () =>
             {
                 IsBoosting = false;
-                StartCoroutine(DelayCallCoroutine(DashCoolTime, () =>
-                {
-                    PlayerInputSO.canDash = true;
-                    ColorChanger.DashStateIsTrue(true);
-                }));
+                StartCoroutine(DelayCallCoroutine(DashCoolTime, () => PlayerInputSO.canDash = true));
             });
 
         }

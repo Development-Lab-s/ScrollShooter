@@ -26,14 +26,9 @@ public class SettingUI : MonoBehaviour, IUI
     public UIType UIType => UIType.SettingUI;
 
     public SettingUIValueSetter SliderValueSetter;
-    private AudioSource settingAudio;
-    private AudioSource inGameAudio;
 
     public void Initialize()
     {
-        settingAudio = SoundManager.Instance.PlaySound("SettingBGM");
-        settingAudio.Stop();
-
         filled = GetComponentInChildren<FilledUp>(true);
         filled.SetComplete(SceneManager.GetActiveScene().buildIndex is 1 or 2);
 
@@ -44,15 +39,9 @@ public class SettingUI : MonoBehaviour, IUI
         UIObject.SetActive(false);
     }
 
-    private void Start()
-    {
-        inGameAudio = GameManager.Instance.InGameAudio;
-    }
-
     public void Open()
     {
-        inGameAudio.Pause();
-        settingAudio.Play();
+        GameManager.Instance.ChangeBGM("SettingBGM");
 
         filled.fillTrigger += filled.FillUp;
         TimeManager.Instance.StopTime();
@@ -62,8 +51,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Close()
     {
-        inGameAudio.UnPause();
-        settingAudio.Stop();
+        GameManager.Instance.ChangeInGameBGM();
 
         filled.fillTrigger -= filled.FillUp;
         TimeManager.Instance.UnStopTime();
