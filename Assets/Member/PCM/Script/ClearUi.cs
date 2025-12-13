@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using System;
 using TMPro;
@@ -64,6 +65,8 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void Open()
     {
+        SoundManager.Instance.PlaySound("ClearSFX");
+
         countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();

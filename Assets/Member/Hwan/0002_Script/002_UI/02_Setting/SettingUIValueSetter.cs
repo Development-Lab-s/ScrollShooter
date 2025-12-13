@@ -12,11 +12,17 @@ public class SettingUIValueSetter
     private Slider slider;
     private Toggle toggle;
 
+    private bool isLengthSetting = false;
+
     public SettingUIValueSetter(SettingValueSO[] settingValueSOs, Slider slider, Toggle toggle)
     {
         this.settingValueSOs = settingValueSOs;
         this.slider = slider;
-        slider.onValueChanged.AddListener(SaveValue);
+        slider.onValueChanged.AddListener((value) =>
+        {
+            if (isLengthSetting == true) return;
+            SaveValue(Mathf.RoundToInt(value));
+        });
         CurrentValue = settingValueSOs[0];
 
         this.toggle = toggle;
@@ -39,17 +45,23 @@ public class SettingUIValueSetter
             toggle.gameObject.SetActive(false);
 
             slider.gameObject.SetActive(true);
+
+            isLengthSetting = true;
             slider.maxValue = CurrentValue.MaxValue;
             slider.minValue = CurrentValue.MinValue;
-            slider.wholeNumbers = true;
-            slider.value = SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType);
+            isLengthSetting = false;
+            if (CurrentValue.MyType == SettingType.SensitivitySlider) slider.value = PlayerPrefs.GetInt(CurrentValue.MyType.ToString(), 250);
+            else
+            {
+                slider.value = PlayerPrefs.GetInt(CurrentValue.MyType.ToString(), 0);
+            }
         }
         else
         {
             slider.gameObject.SetActive(false);
 
             toggle.gameObject.SetActive(true);
-            toggle.isOn = SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType) == 0 ? false : true;
+            toggle.isOn = PlayerPrefs.GetInt(CurrentValue.MyType.ToString(), 0) == 0 ? false : true;
         }
     }
 
@@ -65,15 +77,17 @@ public class SettingUIValueSetter
         }
     }
 
-    private void SaveValue(float changeValue)
+    private void SaveValue(int changeValue)
     {
-        SettingValueContainer.Instance.SetSettingValue(CurrentValue, changeValue);
-        OnValueChange?.Invoke(CurrentValue.MyType, SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType));
+        PlayerPrefs.SetInt(CurrentValue.MyType.ToString(), changeValue);
+        PlayerPrefs.Save();
+        OnValueChange?.Invoke(CurrentValue.MyType, changeValue);
     }
 
     private void SaveValue(bool changeValue)
     {
-        SettingValueContainer.Instance.SetSettingValue(CurrentValue, changeValue == true ? 1 : 0);
-        OnValueChange?.Invoke(CurrentValue.MyType, SettingValueContainer.Instance.GetSettingValue(CurrentValue.MyType));
+        PlayerPrefs.SetInt(CurrentValue.MyType.ToString(), changeValue == true ? 1 : 0);
+        PlayerPrefs.Save();
+        OnValueChange?.Invoke(CurrentValue.MyType, changeValue ? 1 : 0);
     }
 }

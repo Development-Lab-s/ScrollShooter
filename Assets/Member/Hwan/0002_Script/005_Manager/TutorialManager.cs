@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YGPacks;
 
 public class TutorialManager : Singleton<TutorialManager>
@@ -23,7 +24,7 @@ public class TutorialManager : Singleton<TutorialManager>
         base.Awake();
         BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.enabled = false;
-        if (GameManager.Instance.StageSO.StageNumber == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             col.enabled = true;
             StartTuto();
@@ -39,10 +40,7 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         if (collision.TryGetComponent(out TutoTypeHolder block))
         {
-            usedBlocks.ForEach((holder) =>
-            {
-                if (holder == block) return;
-            });
+            if (usedBlocks.Contains(block)) return;
 
             usedBlocks.Add(block);
             PlayTuto(block.tutoSO);
@@ -75,11 +73,11 @@ public class TutorialManager : Singleton<TutorialManager>
     private void StartTuto()
     {
         InputControlManager.Instance.ChangeAllPlayerActiveType(false);
-        InputControlManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
     }
 
     private void EndTuto()
     {
+        PlayerPrefs.SetInt("didTutorial", 1);
         InputControlManager.Instance.ChangeAllPlayerActiveType(true);
     }
 }
