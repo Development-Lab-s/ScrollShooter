@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3402690915843832231, guid: 345a1698b2ebc3f43be93cf5f47367ad, type: 3}
+      propertyPath: stageList
+      value: 
+      objectReference: {fileID: 11400000, guid: 3eddec45a2ac0244597d5f5e39df58df, type: 2}
     - target: {fileID: 4298557428228013319, guid: 345a1698b2ebc3f43be93cf5f47367ad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000061035156
@@ -319,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 18dbd229627698846934e4865f1760c3, type: 2}
   hitSystem: {fileID: 0}
+  zeroVolume: 0
 --- !u!1001 &1472854224
 PrefabInstance:
   m_ObjectHideFlags: 0
