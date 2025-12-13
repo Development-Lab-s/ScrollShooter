@@ -46,7 +46,7 @@ public class ValueSetter : MonoBehaviour
                 break;
             case SettingType.SkipDeadMotionToggle:
                 if (GameManager.Instance.StageSO.StageNumber is 0 or 1 or 2) return;
-                hitSystem.isSecondDead = value == 0;
+                hitSystem.isSecondDead = value == 1;
                 break;
         }
     }

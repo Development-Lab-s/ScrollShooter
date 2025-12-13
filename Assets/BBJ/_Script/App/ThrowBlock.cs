@@ -20,7 +20,6 @@ public class ThrowBlock : FolderBlock
 
     public void OnDel()
     {
-        Debug.Log("delAnima");
         AnimationTriggered?.Invoke(delHash, OnBreak);
     }
     public void StartMove(Vector2 startPos, Vector2 targetPos)
@@ -63,12 +62,10 @@ public class ThrowBlock : FolderBlock
                         {
                             recipient.GotIt();
                             Destroy();
-                            Debug.Log("destroy");
                             yield break;
                         }
                     }
                 }
-                Debug.Log("del");
                 OnDel();
             }
             yield return null;
