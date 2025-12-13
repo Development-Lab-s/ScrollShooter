@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class ScreenFader : MonoBehaviour
     public Action EndFadeOut;
 
     public bool IsSceneFading { get; private set; }
-    [SerializeField] private Material _material;
-    private readonly int _fadeID = Shader.PropertyToID("_HalftoneFade");
+    [SerializeField] private CanvasGroup cG;
 
     public void StartFadeIn(float fadeTime)
     {
@@ -32,9 +32,9 @@ public class ScreenFader : MonoBehaviour
             elapseTime += Time.unscaledDeltaTime;
             elapseTime = Mathf.Clamp(elapseTime, 0, fadeTime);
 
-            float p = Mathf.Lerp(-10f, 10f, elapseTime / fadeTime);
+            float p = Mathf.Lerp(0, 1, elapseTime / fadeTime);
 
-            _material.SetFloat(_fadeID, p);
+            cG.alpha = p;
 
             if (elapseTime >= fadeTime)
             {
@@ -53,9 +53,9 @@ public class ScreenFader : MonoBehaviour
             elapseTime += Time.deltaTime;
             elapseTime = Mathf.Clamp(elapseTime, 0, fadeTime);
 
-            float p = Mathf.Lerp(10f, -10f, elapseTime / fadeTime);
+            float p = Mathf.Lerp(1, 0, elapseTime / fadeTime);
 
-            _material.SetFloat(_fadeID, p);
+            cG.alpha = p;
 
             if (elapseTime >= fadeTime)
             {

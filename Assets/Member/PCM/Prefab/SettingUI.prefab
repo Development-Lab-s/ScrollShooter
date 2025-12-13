@@ -1065,7 +1065,6 @@ MonoBehaviour:
   settingValuesSO: {fileID: 11400000, guid: edbb61b09493eaa488eb734aa808a197, type: 2}
   slider: {fileID: 984583577935381256}
   toggle: {fileID: 7288529859832580176}
-  rightClickText: {fileID: 0}
   <UIObject>k__BackingField: {fileID: 700771297211809480}
 --- !u!114 &5506759118117651781
 MonoBehaviour:
@@ -1081,6 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 18dbd229627698846934e4865f1760c3, type: 2}
   hitSystem: {fileID: 0}
+  zeroVolume: -20
 --- !u!1 &5005428226066550878
 GameObject:
   m_ObjectHideFlags: 0

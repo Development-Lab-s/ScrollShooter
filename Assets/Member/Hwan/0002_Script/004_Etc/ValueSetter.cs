@@ -41,11 +41,11 @@ public class ValueSetter : MonoBehaviour
                 audioMixer.SetFloat("Master", value);
                 break;
             case SettingType.SensitivitySlider:
-                if (player == null) return;
+                if (GameManager.Instance.StageSO.StageNumber is 0 or 1 or 2) return;
                 player.SetPower(value);
                 break;
             case SettingType.SkipDeadMotionToggle:
-                if (hitSystem == null) return;
+                if (GameManager.Instance.StageSO.StageNumber is 0 or 1 or 2) return;
                 hitSystem.isSecondDead = value == 0;
                 break;
         }
