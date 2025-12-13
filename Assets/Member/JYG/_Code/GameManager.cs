@@ -8,6 +8,7 @@ namespace Member.JYG._Code
 {
     public class GameManager : Singleton<GameManager>
     {
+        public bool thereIsPlayer = false;
         public AudioSource InGameAudio { get; private set; }
         public event Action<int> OnClear;
         private bool cleared = false;
@@ -31,7 +32,10 @@ namespace Member.JYG._Code
 
         private void Start()
         {
-            Player.InitMySkin(PlayerPrefs.GetString("userskin"));
+            if (thereIsPlayer)
+            {
+                Player.InitMySkin(PlayerPrefs.GetString("userskin"));
+            }
         }
 
         private void Update()
