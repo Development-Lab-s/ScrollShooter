@@ -45,7 +45,7 @@ public class FilledUp : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(1);
+            Hwan.SceneManager.Instance.OnLoadScene(1);
         }
     }
 

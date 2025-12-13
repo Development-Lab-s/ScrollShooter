@@ -27,14 +27,14 @@ public class HitSystem : MonoBehaviour
             {
                 _life = 0;
                 isDead = true;
+                InputControlManager.Instance.ChangeUIInputActive(false);
+
                 if (isSecondDead)
                 {
-                    Debug.Log("Sec");
                     onSecondDead.Invoke();
                 }
                 else
                 {
-                    Debug.Log("No");
                     onDead?.Invoke();
                 }
                 return;

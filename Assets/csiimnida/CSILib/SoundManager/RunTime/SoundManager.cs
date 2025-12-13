@@ -22,7 +22,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
                 Debug.LogError("AudioMixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
             }
         }
-        public void PlaySound(string soundName)
+        public AudioSource PlaySound(string soundName)
         {
             GameObject obj = new GameObject();
             obj.name = soundName + " Sound";
@@ -32,7 +32,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
             {
                 Debug.LogWarning("Mixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
                 SetAudio(source,so);
-                return;
+                return source;
             }
             if(so.soundType == SoundType.SFX)
                 source.outputAudioMixerGroup = _mixer.FindMatchingGroups("SFX")[0];
@@ -47,7 +47,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
 
             }
             SetAudio(source,so);
-        
+            return source;
         }
 
         private void SetAudio(AudioSource source,SoundSo sounds)

@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
 using System;
 using System.Collections;
@@ -24,9 +25,14 @@ public class SettingUI : MonoBehaviour, IUI
     public UIType UIType => UIType.SettingUI;
 
     public SettingUIValueSetter SliderValueSetter;
+    private AudioSource settingAudio;
+    private AudioSource inGameAudio;
 
     public void Initialize()
     {
+        settingAudio = SoundManager.Instance.PlaySound("SettingBGM");
+        settingAudio.Stop();
+
         filled = GetComponentInChildren<FilledUp>(true);
         filled.SetComplete(GameManager.Instance.StageSO.StageNumber is 1 or 2);
 
@@ -37,8 +43,16 @@ public class SettingUI : MonoBehaviour, IUI
         UIObject.SetActive(false);
     }
 
+    private void Start()
+    {
+        inGameAudio = GameManager.Instance.InGameAudio;
+    }
+
     public void Open()
     {
+        inGameAudio.Stop();
+        settingAudio.Play();
+
         filled.fillTrigger += filled.FillUp;
         TimeManager.Instance.StopTime();
         UIObject.SetActive(true);
@@ -47,6 +61,9 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Close()
     {
+        inGameAudio.Play();
+        settingAudio.Stop();
+
         filled.fillTrigger -= filled.FillUp;
         TimeManager.Instance.UnStopTime();
         UIObject.SetActive(false);

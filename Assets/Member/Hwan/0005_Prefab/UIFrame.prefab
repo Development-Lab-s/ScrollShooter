@@ -997,6 +997,13 @@ MonoBehaviour:
       leftSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
       rightText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
       leftText: "\uC2A4\uD14C\uC774\uC9C0 \uC9C4\uC785"
+  - <UIType>k__BackingField: 6
+    <Icon>k__BackingField:
+      <iconType>k__BackingField: 1
+      rightSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
+      leftSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
+      rightText: "\uB2E4\uC74C \uC2A4\uD14C\uC774\uC9C0"
+      leftText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
   RightImage: {fileID: 3999412842813420109}
   LeftImage: {fileID: 1723742886726802612}
   RightText: {fileID: 4673363600586439917}

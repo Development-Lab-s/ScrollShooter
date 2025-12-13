@@ -11,6 +11,7 @@ namespace Member.JYG._Code
         [SerializeField] private int effectApplySpeed;
         [SerializeField] private float effectCloseTime;
         [SerializeField] private float startDelay;
+            
         public void PlayPostProcessing(float duration) // Play with UnityEvent
         {
             StopAllCoroutines();

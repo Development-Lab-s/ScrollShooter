@@ -14,7 +14,7 @@ namespace PCM
         void Update()
         {
             float t = Time.time - StartTime;
-            time.text = t.ToString("F2");
+            time.text = t.ToString("F2") + 's';
         }
     }
 }
