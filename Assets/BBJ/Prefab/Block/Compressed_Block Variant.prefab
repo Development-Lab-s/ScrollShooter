@@ -150,6 +150,8 @@ MonoBehaviour:
           m_StringArgument: Collition
           m_BoolArgument: 0
         m_CallState: 2
+  knockbackPower: 50
+  knockbackTime: 1
 --- !u!114 &4773709445461804246
 MonoBehaviour:
   m_ObjectHideFlags: 0

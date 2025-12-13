@@ -1,29 +1,23 @@
 using DG.Tweening;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using static UnityEngine.Rendering.DebugUI;
 
-public class TestPlayerAAAA : MonoBehaviour, IPlayer, IDamagable
+public class TestPlayerAAAA : MonoBehaviour
 {
-    public float Health { get; private set; }
-    public bool IsInvincible => isInvincible;
-    public bool isInvincible;
-    public bool isDash;
-    public bool IsDash => isDash;
+    
+}
+[CreateAssetMenu(fileName = "MoveDataSO", menuName = "SO/MoveDataSO")]
+public class MoveDataSO : ScriptableObject
+{
+    [Range(0, 100)]
+    public float acceleration, deacceleration;
 
-    public void TakeDamage(int dmg)
-    {
-        dmg = Mathf.Max(0, dmg);
-        Health -= dmg;
-    }
+    [Range(0.1f, 10)]
+    public float maxSpeed;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IContactable block)) block.TryContact(new ContactInfo(this));
-        if (collision.TryGetComponent(out IUseable useable)) useable.Use(new UseableInfo(this));
-    }
-
-    public void OnInvincible(float invincibleTime)
-    {
-        isInvincible = true;
-        DOVirtual.DelayedCall(2, () => isInvincible = false, true);
-    }
+    [Range(10f, 20)]
+    public float dashSpeed;
 }

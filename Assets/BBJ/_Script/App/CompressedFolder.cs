@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class CompressedFolder : BlockBase, IBreakable, IContactable
 {
     public UnityEvent Collitioned;
+    [SerializeField] float knockbackPower;
+    [SerializeField] float knockbackTime;
     public void OnBreak()
     {
         tween=BreakTween(() =>
@@ -27,9 +29,6 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
     {
         if (info.player.IsInvincible) OnBreak();
         Collitioned?.Invoke();
-        Debug.Log("튕겨져 나간다");
-        Debug.Log("정면을 본다");
-        Debug.Log("잠시 대쉬를 못한다");
-        Debug.Log("감속된다.");
+        info.player.OnKnockback(knockbackPower,knockbackTime);
     }
 }

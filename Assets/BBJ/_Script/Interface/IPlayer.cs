@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IPlayer : IDashable, IInvincible, IDamagable 
+public interface IPlayer : IDashable, IInvincible, IDamagable , IKnockbackable
 {
     //public void SetYSpeed(float speed, float duration, float originYSpeed);
 }
@@ -17,5 +17,9 @@ public interface IInvincible
 {
     public bool IsInvincible { get; }
     public void OnInvincible(float invincibleTime);
+}
+public interface IKnockbackable
+{
+    public void OnKnockback(float knockPower, float knockTime);
 }
 

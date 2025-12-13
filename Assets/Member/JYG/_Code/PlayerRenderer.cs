@@ -26,7 +26,7 @@ namespace Member.JYG._Code
     
         private void SetRotation(GameObject target, float velocity)
         {
-            float zValue = Mathf.Lerp(-MaxDegree, MaxDegree, 0.5f + velocity / _player.MaxSpeed * 0.5f) * -1;
+            float zValue = Mathf.Lerp(-MaxDegree, MaxDegree, 0.5f + velocity / _player.MaxSpeedX * 0.5f) * -1;
             zValue = Mathf.MoveTowardsAngle(transform.eulerAngles.z, zValue, Time.deltaTime * 450f);
             transform.rotation = Quaternion.Euler(0, 0, zValue);
         }

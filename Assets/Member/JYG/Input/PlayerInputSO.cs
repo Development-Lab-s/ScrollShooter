@@ -96,7 +96,6 @@ namespace Member.JYG.Input
             if (canDash == true)
             {
                 OnDashPressed?.Invoke();
-                canDash = false;
             }
             else
             {
