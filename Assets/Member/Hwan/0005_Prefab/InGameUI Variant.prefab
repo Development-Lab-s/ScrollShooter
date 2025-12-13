@@ -902,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3682923476430400438, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438706842076294976, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1006,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7361207197698796975, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8267111684443621128, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1015,6 +1015,23 @@ PrefabInstance:
     - target: {fileID: 8642676207065793442, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_Name
       value: Suyem
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058092265351502861, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_text
+      value: "\uC2A4\uD14C\uC774\uC9C0 \uC138\uC158 \uB3D9\uC548\\n\uC0AC\uB9DD \uBAA8\uC158\\n
+        <size=75%>1</size>\uD68C\uB9CC \uC2E4\uD589"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058092265351502861, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_fontSize
+      value: 22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058092265351502861, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_margin.x
+      value: 15.518311
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058092265351502861, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_margin.z
+      value: 23.429123
       objectReference: {fileID: 0}
     - target: {fileID: 9134434180716803818, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

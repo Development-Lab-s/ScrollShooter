@@ -178,10 +178,10 @@ namespace Member.JYG._Code
         {
             PlayerInputSO.canDash = false;
 
+            ParticleSystem.MainModule main = boostParticles.main;
+            main.duration = DashDuration - 0.5f;
             onBoost?.Invoke(DashDuration);
             SoundManager.Instance.PlaySound("Boosting");
-            ParticleSystem.MainModule main = boostParticles.main;
-            //main.duration = DashDuration - 0.5f;
 
             IsBoosting = true;
             _dashCoroutine = SetMaxSpeed(MoveData.dashSpeed, DashDuration, () =>

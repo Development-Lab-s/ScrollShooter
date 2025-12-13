@@ -13310,27 +13310,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 470336141019149006, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097116291380183916, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_text
-      value: "\uC2A4\uD14C\uC774\uC9C0 \uC138\uC158 \uB3D9\uC548\\n\uC0AC\uB9DD \uBAA8\uC158\\n
-        <size=75%>1</size>\uD68C\uB9CC \uC2E4\uD589"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097116291380183916, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_fontSize
-      value: 22.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097116291380183916, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_margin.x
-      value: 15.518311
-      objectReference: {fileID: 0}
-    - target: {fileID: 2097116291380183916, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_margin.z
-      value: 23.429123
-      objectReference: {fileID: 0}
     - target: {fileID: 2175370174316388168, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
       propertyPath: m_Name
       value: InGameUI
@@ -13339,14 +13318,6 @@ PrefabInstance:
       propertyPath: hitSystem
       value: 
       objectReference: {fileID: 1442086662}
-    - target: {fileID: 6031135361006007511, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572548802167611817, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
