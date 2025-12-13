@@ -1,5 +1,7 @@
+using Member.JYG._Code;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +11,7 @@ public class SettingUI : MonoBehaviour, IUI
     [SerializeField] private SettingValuesSO settingValuesSO;
     [SerializeField] private Slider slider;
     [SerializeField] private Toggle toggle;
+
     [field: SerializeField] public GameObject UIObject { get; private set; }
     private TextChangeMove changeText;
     private FilledUp filled;
@@ -25,6 +28,8 @@ public class SettingUI : MonoBehaviour, IUI
     public void Initialize()
     {
         filled = GetComponentInChildren<FilledUp>(true);
+        filled.SetComplete(GameManager.Instance.StageSO.StageNumber is 1 or 2);
+
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
         SliderValueSetter = new(settingValuesSO.SettingValues, slider, toggle);

@@ -225,10 +225,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2710585948561332808, guid: 1faad067783c92a4bae99bb63e7c04d0, type: 3}
-      propertyPath: playerInputSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 167598a8d9fb04a4ab63c84659d6a706, type: 2}
     - target: {fileID: 3584445340601984568, guid: 1faad067783c92a4bae99bb63e7c04d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -339,6 +335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4720254314046971390, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5270074886365860320, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -426,31 +426,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4720254314046971390, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3386795633332519611}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
---- !u!1 &2391143678515970719 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4720254314046971390, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
-  m_PrefabInstance: {fileID: 6966711057223769953}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3386795633332519611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2391143678515970719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41354f588980a94bb354a157a0b7cc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxVolume: 50
-  MaxSensitivity: 500
-  audioMixer: {fileID: 24100000, guid: 18dbd229627698846934e4865f1760c3, type: 2}
 --- !u!224 &2994238325143932545 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5270074886365860320, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
