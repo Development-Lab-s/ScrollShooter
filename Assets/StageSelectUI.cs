@@ -54,13 +54,12 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        SceneManager.LoadScene(1);
-        Close();
+        Hwan.SceneManager.Instance.OnLoadScene(1);
     }
 
     public void ForwardMove()
     {
-        SceneManager.LoadScene(_currentIndex + 3);
+        Hwan.SceneManager.Instance.OnLoadScene(_currentIndex + 3);
     }
 
     public void LeftClick() { }

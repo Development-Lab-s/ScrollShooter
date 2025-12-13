@@ -22,7 +22,7 @@ public class GameOverUI : MonoBehaviour, IUI
         InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
         nestingOpener.StartDeNesting(() => {
-            SceneManager.LoadScene(1);
+            Hwan.SceneManager.Instance.OnLoadScene(1);
             InputControlManager.Instance.ChangeUIInputActive(true);
         });
     }

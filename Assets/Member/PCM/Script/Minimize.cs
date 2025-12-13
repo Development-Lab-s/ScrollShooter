@@ -39,6 +39,10 @@ public class Minimize : MonoBehaviour
     {
         Application.Quit();
     }
+    public void RemoveData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     public void minimize()
     {
         if (slider.value >= 1)
@@ -51,7 +55,7 @@ public class Minimize : MonoBehaviour
         ).OnComplete(
           () =>
           {
-              Hwan.SceneManager.Instance.OnLodeScene(3);
+              Hwan.SceneManager.Instance.OnLoadScene(3);
           });
         }
     }

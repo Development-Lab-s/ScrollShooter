@@ -26,7 +26,7 @@ namespace Hwan
         [SerializeField] float faidIn = 0.5f, faidOut = 0.5f;
         private int _sceneIndex;
         public Action SceneLoadEnded;
-        public void OnLodeScene(int sceneIndex)
+        public void OnLoadScene(int sceneIndex)
         {
             if (_screenFader.IsSceneFading) return;
             _sceneIndex = sceneIndex;
@@ -36,9 +36,9 @@ namespace Hwan
         private void OnFadeInEnded()
         {
             _screenFader.FadeInEnded -= OnFadeInEnded;
-            LodeScene(_sceneIndex);
+            LoadScene(_sceneIndex);
         }
-        private void LodeScene(int sceneIndex)
+        private void LoadScene(int sceneIndex)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
             UnityEngine.SceneManagement.SceneManager.sceneUnloaded += (_) => {
