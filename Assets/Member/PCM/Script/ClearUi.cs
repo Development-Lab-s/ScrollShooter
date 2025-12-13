@@ -27,7 +27,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        SceneManager.LoadScene(1); 
+        Hwan.SceneManager.Instance.OnLoadScene(1); 
         Close();
     }
 
@@ -40,7 +40,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        Hwan.SceneManager.Instance.OnLoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         Close();
     }
 
@@ -64,7 +64,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void Open()
     {
-        countdouwn.StartCount(() => SceneManager.LoadScene(1));
+        countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         float t = Time.time - StartTime;

@@ -114,6 +114,7 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void ScrollMove(int value)
     {
+        value = -value;
         //스킨 둘러보기
         if (value == 0) return;
 

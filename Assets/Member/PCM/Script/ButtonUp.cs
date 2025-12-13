@@ -51,13 +51,11 @@ public class ButtonUp : MonoBehaviour
         IsBool = (value >= 1f);
         if (isBool)
         {
-            Debug.Log("aa");
             desc.ChangeText(true);
             pAni?.isTrigger.Invoke(true);
         }
         if (!isBool)
         {
-            Debug.Log("DD");
             desc.ChangeText(false);
             pAni?.isTrigger.Invoke(false);
         }
