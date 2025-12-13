@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour, IUI
@@ -34,7 +35,7 @@ public class SettingUI : MonoBehaviour, IUI
         settingAudio.Stop();
 
         filled = GetComponentInChildren<FilledUp>(true);
-        filled.SetComplete(GameManager.Instance.StageSO.StageNumber is 1 or 2);
+        filled.SetComplete(SceneManager.GetActiveScene().buildIndex is 1 or 2);
 
         changeText = GetComponentInChildren<TextChangeMove>(true);
         changeText.Initialize();
@@ -50,7 +51,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Open()
     {
-        inGameAudio.Stop();
+        inGameAudio.Pause();
         settingAudio.Play();
 
         filled.fillTrigger += filled.FillUp;
@@ -61,7 +62,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Close()
     {
-        inGameAudio.Play();
+        inGameAudio.UnPause();
         settingAudio.Stop();
 
         filled.fillTrigger -= filled.FillUp;

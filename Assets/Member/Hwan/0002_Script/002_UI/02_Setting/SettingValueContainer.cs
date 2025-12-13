@@ -5,35 +5,35 @@ using UnityEngine;
 
 public class SettingValueContainer : YGPacks.Singleton<SettingValueContainer>
 {
-    private Dictionary<SettingType, NotifyValue<float>> settingValueDictionary;
+    //private Dictionary<SettingType, float> settingValueDictionary;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-    }
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
-    private void Init()
-    {
-        settingValueDictionary = new();
+    //private void Init()
+    //{
+    //    settingValueDictionary = new();
 
-        foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
-        {
-            settingValueDictionary.Add(type, new());
-            settingValueDictionary[type].Value = PlayerPrefs.GetFloat(type.ToString(), 0.5f);
-            settingValueDictionary[type].OnValueChanged += (_, value) => PlayerPrefs.SetFloat(type.ToString(), value);
-        }
-    }
+    //    foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
+    //    {
+    //        settingValueDictionary.Add(type, new());
+    //        settingValueDictionary[type] = PlayerPrefs.GetFloat(type.ToString(), 0.5f);
+    //    }
+    //}
 
-    public float GetSettingValue(SettingType type)
-    {
-        if (settingValueDictionary == null) Init();
-        return settingValueDictionary[type].Value;
-    }
+    //public float GetSettingValue(SettingType type)
+    //{
+    //    if (settingValueDictionary == null) Init();
+    //    return settingValueDictionary[type].Value;
+    //}
 
-    public void SetSettingValue(SettingValueSO settingValueSO, float value)
-    {
-        if (settingValueDictionary == null) Init();
-        settingValueDictionary[settingValueSO.MyType].Value = value;
-    }
+    //public void SetSettingValue(SettingValueSO settingValueSO, float value)
+    //{
+    //    if (settingValueDictionary == null) Init();
+    //    settingValueDictionary[settingValueSO.MyType].Value = value;
+    //    PlayerPrefs.SetFloat(settingValueSO.MyType.ToString(), value);
+    //}
 }

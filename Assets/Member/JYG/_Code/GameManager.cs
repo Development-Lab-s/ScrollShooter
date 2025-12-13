@@ -2,6 +2,7 @@ using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YGPacks; 
 
 namespace Member.JYG._Code
@@ -43,7 +44,7 @@ namespace Member.JYG._Code
             if (player != null && player.transform.position.y >= StageSO.MapDistance && cleared == false)
             {
                 cleared = true;
-                OnClear?.Invoke(StageSO.StageNumber);
+                OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
                 TimeManager.Instance.StopTime();
             }
         }

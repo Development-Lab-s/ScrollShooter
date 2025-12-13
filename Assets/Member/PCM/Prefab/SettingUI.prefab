@@ -899,7 +899,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 140, y: -5}
-  m_SizeDelta: {x: 547.57, y: 120.20001}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7664890656589937465
 CanvasRenderer:
@@ -931,7 +931,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -5421709028232957321, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 18dbd229627698846934e4865f1760c3, type: 2}
   hitSystem: {fileID: 0}
-  zeroVolume: -20
+  zeroVolume: -80
 --- !u!1 &5005428226066550878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2168,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -140, y: 5}
-  m_SizeDelta: {x: 547.57, y: 120.20001}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7857301249746358693
 CanvasRenderer:
@@ -2200,7 +2200,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -265213787064888513, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

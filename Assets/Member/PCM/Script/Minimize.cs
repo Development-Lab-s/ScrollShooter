@@ -55,7 +55,14 @@ public class Minimize : MonoBehaviour
         ).OnComplete(
           () =>
           {
-              Hwan.SceneManager.Instance.OnLoadScene(3);
+              if (PlayerPrefs.GetInt("didTutorial", 0) == 0)
+              {
+                  Hwan.SceneManager.Instance.OnLoadScene(3);
+              }
+              else
+              {
+                  Hwan.SceneManager.Instance.OnLoadScene(1);
+              }
           });
         }
     }
