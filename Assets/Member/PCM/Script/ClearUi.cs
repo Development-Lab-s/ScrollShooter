@@ -60,7 +60,7 @@ public class ClearUi : MonoBehaviour, IUI
     {
     }
 
-    public void MiddleMove()
+    public void MiddleMove(bool _)
     {
     }
 

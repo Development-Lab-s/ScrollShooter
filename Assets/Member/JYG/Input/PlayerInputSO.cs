@@ -29,6 +29,7 @@ namespace Member.JYG.Input
         public bool canDash = true;
         public bool isUIInput = false;
         public bool rigthPerformed;
+        public bool wheelPerformed;
 
         private Dictionary<InteractiveType, bool> inputActiveDictionary = new();
 
@@ -141,8 +142,12 @@ namespace Member.JYG.Input
         public void OnWheelClick(InputAction.CallbackContext context)
         {
             if (inputActiveDictionary[InteractiveType.Middle] == false) return;
-            if(context.performed)
-                OnWheelBtnClicked?.Invoke();
+
+            if (context.performed || context.canceled)
+            {
+                wheelPerformed = context.performed;
+            }
+            OnWheelBtnClicked?.Invoke();
         }
         
         public void SetInputTypeActive(InteractiveType type, bool active)

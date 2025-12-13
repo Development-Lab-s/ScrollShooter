@@ -63,7 +63,7 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void RightClick(bool _) { }
 
-    public void MiddleMove() { }
+    public void MiddleMove(bool _) { }
 
     public void Open()
     {

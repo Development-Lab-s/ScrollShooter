@@ -107,7 +107,7 @@ public class ShopUI : MonoBehaviour, IUI
 
     }
 
-    public void MiddleMove()
+    public void MiddleMove(bool _)
     {
 
     }
