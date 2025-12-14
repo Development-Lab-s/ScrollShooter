@@ -15,12 +15,13 @@ public class ValueSetter : MonoBehaviour
     private void Start()
     {
         player = GameManager.Instance.Player;
-        settingUI = GetComponent<SettingUI>();
+        settingUI = GetComponentInChildren<SettingUI>();
         settingUI.SliderValueSetter.OnValueChange += SetValue;
 
         foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
         {
             if (type == SettingType.SensitivitySlider) SetValue(type, PlayerPrefs.GetInt(type.ToString(), 250));
+            else if (type == SettingType.SkipDeadMotionToggle) SetValue(type, PlayerPrefs.GetInt(type.ToString(), 1));
             else
             {
                 SetValue(type, PlayerPrefs.GetInt(type.ToString(), 0));

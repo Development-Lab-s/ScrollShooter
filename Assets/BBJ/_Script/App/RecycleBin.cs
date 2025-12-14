@@ -80,7 +80,7 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
         .Append(transform.DOScale(1, bounceComebackDuration)).Join(renderCompo.SrCompo.DOColor(Color.white, bounceComebackDuration))
         .OnComplete(tweenCalvack);
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, transform.localScale * overlapData.size);

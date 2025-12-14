@@ -63,12 +63,11 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void RightClick(bool _) { }
 
-    public void MiddleMove() { }
+    public void MiddleMove(bool _) { }
 
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
-
         PlayerPrefs.SetInt("IsFirst", 0);
         UIManager.Instance.CloseAllUI();
 

@@ -91,7 +91,7 @@ public class UIController : MonoBehaviour
             case InteractiveType.Back: inputUI.BackMove(); break;
             case InteractiveType.Right: inputUI.RightClick(inputSO.rigthPerformed); break;
             case InteractiveType.Left: inputUI.LeftClick(); break;
-            case InteractiveType.Middle: inputUI.MiddleMove(); break;
+            case InteractiveType.Middle: inputUI.MiddleMove(inputSO.wheelPerformed); break;
             case InteractiveType.Scroll: inputUI.ScrollMove(-inputSO.XMoveDir); break;
         }
     }

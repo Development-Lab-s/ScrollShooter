@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using System;
 using TMPro;
@@ -15,6 +16,8 @@ public class MineGame : BlockBase, IContactable, IExplosion
         if (tween != null) return;
         tween = DOVirtual.DelayedCall(explosionDelayTime, () =>
         {
+            SoundManager.Instance.PlaySound("Boom");
+
             Destroy();
             Explosioned?.Invoke(dataSO.size);
             var targets = Physics2D.OverlapCircleAll(transform.position, dataSO.size, dataSO.whatIsTarget);

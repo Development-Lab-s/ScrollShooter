@@ -27,6 +27,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public SettingUIValueSetter SliderValueSetter;
 
+    private Coroutine pressCoroutine;
     public void Initialize()
     {
         filled = GetComponentInChildren<FilledUp>(true);
@@ -83,16 +84,27 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void LeftClick() { }
 
-    public void MiddleMove()
+    public void MiddleMove(bool isPerformed)
     {
         if (UIObject.activeSelf == true)
         {
-            Close();
+            if (isPerformed == true) Close();
         }
         else
         {
-            Open();
+            if (pressCoroutine != null) StopCoroutine(pressCoroutine);
+
+            if (isPerformed == true)
+            {
+                pressCoroutine = StartCoroutine(Press());
+            }
         }
+    }
+
+    private IEnumerator Press()
+    {
+        yield return new WaitForSecondsRealtime(0.75f);
+        Open();
     }
 
     public void ScrollMove(int value) 

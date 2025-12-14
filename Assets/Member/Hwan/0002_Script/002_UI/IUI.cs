@@ -23,7 +23,7 @@ public interface IUI
 
     public void LeftClick();
 
-    public void MiddleMove();
+    public void MiddleMove(bool isPreformed);
 
     public void ScrollMove(int value);
 }

@@ -905,20 +905,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1742643671527723751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105}
---- !u!114 &716999984161486022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223606204839603023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e075f548c0087a4a8fcec9afd95ee80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Offset>k__BackingField: 0
-  <MaxDegree>k__BackingField: 60
 --- !u!4 &1742643671527723751
 Transform:
   m_ObjectHideFlags: 0
@@ -945,11 +931,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1742643671527723751}
-  - component: {fileID: 8772758903660579205}
-  - component: {fileID: 4799138743912557388}
-  - component: {fileID: 3576350526666135131}
-  - component: {fileID: 716999984161486022}
-  - component: {fileID: 8785974291697294953}
   m_Layer: 6
   m_Name: PreviewPlayer
   m_TagString: Untagged
@@ -979,42 +960,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &3576350526666135131
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223606204839603023}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.8
 --- !u!4 &4115790586992278670
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,33 +975,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1742643671527723751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4799138743912557388
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223606204839603023}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!198 &5068590123246999162
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5948,158 +5866,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8772758903660579205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223606204839603023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6da99d725fba3408a161a9dc125d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <PlayerInputSO>k__BackingField: {fileID: 11400000, guid: 167598a8d9fb04a4ab63c84659d6a706, type: 2}
-  trail: {fileID: 0}
-  <MaxSpeed>k__BackingField: 15
-  <ReverseForce>k__BackingField: 8
-  <BrakePower>k__BackingField: 10
-  <MovePower>k__BackingField: 0
-  <DashCoolTime>k__BackingField: 3
-  <DashDuration>k__BackingField: 5
-  <YSpeed>k__BackingField: 0
-  <OriginYSpeed>k__BackingField: 0
-  <YSpeedAddForce>k__BackingField: 0
-  <IsBoosting>k__BackingField: 0
-  boostParticles: {fileID: 0}
-  playerInCamera: 1
-  onBoost:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Member.JYG._Code.AfterEffector, Assembly-CSharp
-        m_MethodName: PlayPostProcessing
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleFeedback, Assembly-CSharp
-        m_MethodName: StartParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleFeedback, Assembly-CSharp
-        m_MethodName: StartParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onBoostFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleFeedback, Assembly-CSharp
-        m_MethodName: StartParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  skinList: {fileID: 0}
---- !u!114 &8785974291697294953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223606204839603023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51c8adf4d7b8cf4187a9ad0cbf52c31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDead:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleFeedback, Assembly-CSharp
-        m_MethodName: StartParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerDeadEvent, Assembly-CSharp
-        m_MethodName: PlayerDeadEvt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Member.JYG._Code.AfterEffector, Assembly-CSharp
-        m_MethodName: PlayPostProcessing
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 999999
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Member.JYG._Code.AfterEffector, Assembly-CSharp
-        m_MethodName: VignettePosChangeToPlayer
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.Volume, Unity.RenderPipelines.Core.Runtime
-          m_IntArgument: 0
-          m_FloatArgument: 999999
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSecondDead:
-    m_PersistentCalls:
-      m_Calls: []
-  onHit:
-    m_PersistentCalls:
-      m_Calls: []
-  maxLife: 5
-  isSecondDead: 0
 --- !u!1 &8994179707820067326
 GameObject:
   m_ObjectHideFlags: 0

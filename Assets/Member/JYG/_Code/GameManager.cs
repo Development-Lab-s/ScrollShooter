@@ -18,6 +18,9 @@ namespace Member.JYG._Code
 
         [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
+        
+        [field:SerializeField] public SkinSO ClearSkin { get; private set; }
+        [field:SerializeField] public SkinSO TimeSkin { get; private set; }
         public Player Player 
         { 
             get
@@ -47,7 +50,20 @@ namespace Member.JYG._Code
             {
                 cleared = true;
                 OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
+                player.OnClear();
                 TimeManager.Instance.StopTime();
+                if (PlayerPrefs.GetInt(ClearSkin.prefsName, 0) == 0)
+                {
+                    PlayerPrefs.SetInt(ClearSkin.prefsName, 1);
+                }
+                else if (TimeSkin != null)
+                {
+                    if (PlayerPrefs.GetInt(TimeSkin.prefsName, 0) == 0 && TimeSkin.targetTime >= Time.time)
+                    {
+                        PlayerPrefs.SetInt(TimeSkin.prefsName, 1);
+                    }
+                }
+                
             }
         }
 

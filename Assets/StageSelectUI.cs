@@ -74,7 +74,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void LeftClick() { }
 
-    public void MiddleMove() { }
+    public void MiddleMove(bool _) { }
 
     public void ScrollMove(int value)
     {
