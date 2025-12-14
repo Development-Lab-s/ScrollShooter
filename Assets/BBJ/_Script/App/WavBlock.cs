@@ -10,7 +10,7 @@ public class WavBlock : BlockBase, IUseable
     public void Use(UseableInfo info)
     {
         Used?.Invoke();
-        //GameManager.Instance.ChangeBGM("SettingBGM");
+        GameManager.Instance.ChangeBGM(soundName);
         Destroy(gameObject);
     }
 }
