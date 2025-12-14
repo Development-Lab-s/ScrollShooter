@@ -368,7 +368,7 @@ namespace Member.JYG._Code
             if (String.IsNullOrEmpty(skinName) || skinList.skinList[1] == null) SpriteRenderer.sprite = skinList.skinList[0].skin;
             foreach (SkinSO skin in skinList.skinList)
             {
-                if (skinName == skin.skinName)
+                if (skinName == skin.prefsName)
                 {
                     SpriteRenderer.sprite = skin.skin;
                     break;
