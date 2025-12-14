@@ -32,13 +32,6 @@ public class ShopUI : MonoBehaviour, IUI
     public UIType UIType => UIType.ShopUI;
     public InteractiveType OpenInput => InteractiveType.None;
 
-    private void Start()
-    {
-        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
-        PlayerPrefs.SetInt(_skinList.skinList[1].prefsName, 1);
-        PlayerPrefs.SetInt(_skinList.skinList[4].prefsName, 1);
-    }
-
     public void Initialize()
     {
         if (ShopManager.Instance.skinList != null)
@@ -132,10 +125,6 @@ public class ShopUI : MonoBehaviour, IUI
             _skinButtons[_currentIndex].name = _skinButtons[_currentIndex].skinSO.name;
             previewSkinName.text = _skinButtons[_currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
         }
-        else
-        {
-            Debug.LogError($"스테이지 {_skinList.skinList[_currentIndex].unlockStage}을/를 클리어하지 않아 스킨을 사용할 수 없습니다.");
-        }
     }
 
     public void ForwardMove()
@@ -170,7 +159,6 @@ public class ShopUI : MonoBehaviour, IUI
 
         if (PlayerPrefs.GetInt(_skinButtons[next].skinSO.prefsName) == 0)
         {
-            Debug.LogError($"{_skinButtons[next].skinSO.prefsName} Is Not Activated");
             return;
         }
 

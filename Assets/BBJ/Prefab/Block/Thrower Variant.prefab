@@ -155,9 +155,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3516744427891157864}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: SoundPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: paper
+          m_BoolArgument: 0
+        m_CallState: 2
   hash: {fileID: 11400000, guid: d34b58aabe900f242839a9331b403924, type: 2}
   throwDelayTime: 3
   throwPos: {fileID: 2049282093603529110}
+--- !u!114 &3516744427891157864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8437076894825978475, guid: 98b281bf4a247e244be9e73d9ab95f35, type: 3}
+  m_PrefabInstance: {fileID: 5033749874614169859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184350247989349251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a3eaccac56cc7448f7048e8058856c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8006734375066979624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3082391415713283115, guid: 98b281bf4a247e244be9e73d9ab95f35, type: 3}

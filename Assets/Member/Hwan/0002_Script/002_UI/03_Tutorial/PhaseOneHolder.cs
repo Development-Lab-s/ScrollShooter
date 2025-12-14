@@ -28,7 +28,7 @@ public class PhaseOneHolder : TutoTypeHolder
 
     private IEnumerator WaitForStopFollow()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(2.5f);
         doMove = false;
     }
 }

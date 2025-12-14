@@ -36,10 +36,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 8798590900699708655, guid: a9fb72713462bd34a99acbf23a40dd74, type: 2}
-    - target: {fileID: 6207088188661553763, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.62
-      objectReference: {fileID: 0}
     - target: {fileID: 6600949049580740926, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: fileName
       value: Mine
@@ -58,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 6a174dbb1cec0a24fac80c32552babd6, type: 3}
     - target: {fileID: 7698756077203346471, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: m_text
-      value: Mine
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 7698756077203346471, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
       propertyPath: m_fontAsset
