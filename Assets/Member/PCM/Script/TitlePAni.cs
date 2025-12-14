@@ -9,12 +9,16 @@ public class TitlePAni : MonoBehaviour
     
     private Animator _aniCompo;
 
+    [SerializeField]private SideButtonClick click;
+
     private void Awake()
     {
         _aniCompo = GetComponent<Animator>();
+        click = FindAnyObjectByType<SideButtonClick>();
     }
     public void ConverSion(bool istrigger)
     {
+        click.isOpen = istrigger;
         _aniCompo.SetBool(IsState,istrigger);
     }
 }

@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399fe43c70c3fea49b1efdfd7869b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
 --- !u!1 &286672133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,8 +2570,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8770859369656499186}
   - {fileID: 3891327830538318072}
+  - {fileID: 8770859369656499186}
   m_Father: {fileID: 4889112760470986257}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -2726,7 +2727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Screen1: {fileID: 578880627}
-  ScreenButton: {fileID: 1865989513}
   slider: {fileID: 1118777272}
   _skinList: {fileID: 11400000, guid: 2045e6f39005c7e448a1658902daf9ee, type: 2}
 --- !u!1 &2086334506
