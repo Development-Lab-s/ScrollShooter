@@ -42,15 +42,6 @@ public class StageSelectUI : MonoBehaviour, IUI
             button.name = "stage" + (i + 1);
             button.GetComponentInChildren<TextMeshProUGUI>().text = stageList.stageList[i].stageName;
             _stageButtons.Add(button.GetComponentInChildren<SkinButton>());
-            
-            if (PlayerPrefs.GetInt("clearedstage") > stageList.stageList[i].stageIndex || (PlayerPrefs.GetInt("clearedstage") == 0 && i == 0))
-            {
-                _stageButtons[i].transform.GetChild(2).GetComponent<Image>().enabled = false;
-            }
-            else
-            {
-                _stageButtons[i].transform.GetChild(2).GetComponent<Image>().enabled = true;
-            }
         }
 
         Highlight(0);
@@ -84,12 +75,6 @@ public class StageSelectUI : MonoBehaviour, IUI
         int next = Mathf.Clamp(_currentIndex + value, 0, _stageButtons.Count - 1);
 
         if (next == _currentIndex) return;
-
-        if (stageList.stageList[next].stageIndex >= PlayerPrefs.GetInt("clearedstage"))
-        {
-            Debug.LogError($"스테이지 {stageList.stageList[next].stageIndex + 1}을/를 클리어하지 않아 스킨을 선택할 수 없습니다.");
-            return;
-        }
         
         _currentIndex = next;
 
