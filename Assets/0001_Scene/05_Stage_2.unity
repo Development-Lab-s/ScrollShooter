@@ -5756,6 +5756,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3536126380179355793, guid: fc379f39e05cb764e9db45819e5ea9ca, type: 3}
   m_PrefabInstance: {fileID: 1442086661}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1442086664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5706689183675177556, guid: fc379f39e05cb764e9db45819e5ea9ca, type: 3}
+  m_PrefabInstance: {fileID: 1442086661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1442086665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2744741808015551120, guid: fc379f39e05cb764e9db45819e5ea9ca, type: 3}
+  m_PrefabInstance: {fileID: 1442086661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1457181875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10520,6 +10530,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 359119291108121922, guid: c02f2b411666bee418b9733c4a0deb18, type: 3}
+      propertyPath: audioPosUp
+      value: 
+      objectReference: {fileID: 1442086664}
+    - target: {fileID: 359119291108121922, guid: c02f2b411666bee418b9733c4a0deb18, type: 3}
+      propertyPath: audioPosDown
+      value: 
+      objectReference: {fileID: 1442086665}
     - target: {fileID: 4178556486153409899, guid: c02f2b411666bee418b9733c4a0deb18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10729,11 +10747,15 @@ PrefabInstance:
     - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
       propertyPath: <TimeSkin>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: ed95df42ad909a6419bffe84cad05e28, type: 2}
+      objectReference: {fileID: 11400000, guid: b1051a01379a3f44fbe1099bf0abd9f8, type: 2}
     - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
       propertyPath: <ClearSkin>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 3237bb5c22e328b42b968bfb934c365b, type: 2}
+      objectReference: {fileID: 11400000, guid: 76fcbcb4bfc091844bd5b359e99ce0c1, type: 2}
+    - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
+      propertyPath: <HiddenSkinTime>k__BackingField
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

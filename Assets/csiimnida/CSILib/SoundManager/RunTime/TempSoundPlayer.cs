@@ -7,7 +7,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
         [SerializeField] private string soundName;
         private void Start()
         {
-            csiimnida.CSILib.SoundManager.RunTime.SoundManager.Instance.PlaySound(soundName);
+            //csiimnida.CSILib.SoundManager.RunTime.SoundManager.Instance.PlaySound(soundName);
         }
 
     }

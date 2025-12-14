@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using csiimnida.CSILib.SoundManager.RunTime;
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class ThrowBlock : FolderBlock
 
     public void OnDel()
     {
+        SoundManager.Instance.PlaySound("Paper", transform.position.y);
         AnimationTriggered?.Invoke(delHash, OnBreak);
     }
     public void StartMove(Vector2 startPos, Vector2 targetPos)
