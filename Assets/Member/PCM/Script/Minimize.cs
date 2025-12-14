@@ -29,11 +29,7 @@ public class Minimize : MonoBehaviour
            x => rt.offsetMax = x,
            new Vector2(0, 0),
            0.2f
-       ).OnComplete(() =>
-       {
-           ScreenButton.isOpen = true;
-       });
-
+       );
     }
     public void Exit()
     {
@@ -63,6 +59,7 @@ public class Minimize : MonoBehaviour
               {
                   Hwan.SceneManager.Instance.OnLoadScene(1);
               }
+              ScreenButton.isOpen = true;
           });
         }
     }
