@@ -6,7 +6,7 @@ public class GizmoRenderer : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        float camRange = Camera.main.orthographicSize * 16 / 9 * 0.78f;
+        float camRange = Camera.main.orthographicSize * 16 / 9 * 0.74f;
         Gizmos.DrawLine(new Vector3(-camRange, 0), new Vector3(-camRange, stageSO.MapDistance));
         Gizmos.DrawLine(new Vector3(camRange, 0), new Vector3(camRange, stageSO.MapDistance));
     }
