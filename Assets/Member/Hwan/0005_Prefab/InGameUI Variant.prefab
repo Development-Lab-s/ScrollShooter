@@ -943,6 +943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4837530804383790024, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
+      propertyPath: m_text
+      value: "\uD720 \uAFB9 \uD074\uB9AD"
+      objectReference: {fileID: 0}
     - target: {fileID: 5005428226066550878, guid: f76371f379b8c114e8b45339ecf6f74f, type: 3}
       propertyPath: m_IsActive
       value: 1

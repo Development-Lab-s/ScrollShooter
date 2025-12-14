@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,6 +29,7 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
     public void TryContact(ContactInfo info)
     {
         if (info.player.IsInvincible) OnBreak();
+        SoundManager.Instance.PlaySound("ZIFSFX");
         Collitioned?.Invoke();
         info.player.OnKnockback(knockbackPower,knockbackTime);
     }
