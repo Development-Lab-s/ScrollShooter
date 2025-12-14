@@ -1,4 +1,5 @@
 using Member.JYG._Code;
+using System.Collections;
 using UnityEngine;
 
 public class PhaseOneHolder : TutoTypeHolder
@@ -19,9 +20,15 @@ public class PhaseOneHolder : TutoTypeHolder
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<TutorialManager>(out TutorialManager tutorialManager))
+        if (doMove == true && collision.TryGetComponent<TutorialManager>(out TutorialManager tutorialManager))
         {
-            doMove = false;
+            StartCoroutine(WaitForStopFollow());
         }
+    }
+
+    private IEnumerator WaitForStopFollow()
+    {
+        yield return new WaitForSecondsRealtime(2.5f);
+        doMove = false;
     }
 }
