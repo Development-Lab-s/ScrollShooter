@@ -55,11 +55,11 @@ public class TutorialUI : MonoBehaviour, IUI
 
     private void Open(TutorialInfoSO tutoInfo)
     {
-        GameManager.Instance.Player.SetMaxSpeed(-15, 1.5f);
+        GameManager.Instance.Player.SetMaxSpeed(-15, 2.5f);
         SetPopUp(tutoInfo);
 
-        StartCoroutine(WaitForInputCor());
         InputControlManager.Instance.ChangeUIInputActive(false);
+        StartCoroutine(WaitForInputCor());
         Open();
     }
 

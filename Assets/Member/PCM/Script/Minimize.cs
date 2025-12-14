@@ -10,6 +10,7 @@ public class Minimize : MonoBehaviour
     [SerializeField] private GameObject Screen1;
     [SerializeField] private SideButtonClick ScreenButton;
     [SerializeField] private Slider slider;
+    [SerializeField] private Member.PTY.Scripts.SO.SkinListSO _skinList;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Minimize : MonoBehaviour
     }
     public void Starts(GameObject gameObject)
     {
+        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
         Screen1.SetActive(true);
         gameObject.GetComponent<Button>().enabled = false;
         DOTween.To(
@@ -38,6 +40,7 @@ public class Minimize : MonoBehaviour
     public void RemoveData()
     {
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
     }
     public void minimize()
     {

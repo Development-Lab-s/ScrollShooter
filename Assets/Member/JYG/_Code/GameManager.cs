@@ -1,5 +1,6 @@
 using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
+using PCM;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,10 +16,11 @@ namespace Member.JYG._Code
 
         public event Action<int> OnClear;
         private bool cleared = false;
+        public SkinSO GotSkin { get; private set; } = null;
 
         [field: SerializeField] public StageSO StageSO { get; private set; }
         private Player player;
-        
+
         [field:SerializeField] public SkinSO ClearSkin { get; private set; }
         [field:SerializeField] public SkinSO TimeSkin { get; private set; }
         public Player Player 
@@ -49,21 +51,22 @@ namespace Member.JYG._Code
             if (player != null && player.transform.position.y >= StageSO.MapDistance && cleared == false)
             {
                 cleared = true;
-                OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
-                player.OnClear();
                 TimeManager.Instance.StopTime();
                 if (PlayerPrefs.GetInt(ClearSkin.prefsName, 0) == 0)
                 {
+                    GotSkin = ClearSkin;
                     PlayerPrefs.SetInt(ClearSkin.prefsName, 1);
                 }
                 else if (TimeSkin != null)
                 {
-                    if (PlayerPrefs.GetInt(TimeSkin.prefsName, 0) == 0 && TimeSkin.targetTime >= Time.time)
+                    if (PlayerPrefs.GetInt(TimeSkin.prefsName, 0) == 0 && TimeSkin.targetTime >= PlayTime.Instance.CurrentTime)
                     {
+                        GotSkin = TimeSkin;
                         PlayerPrefs.SetInt(TimeSkin.prefsName, 1);
                     }
                 }
-                
+                OnClear?.Invoke(SceneManager.GetActiveScene().buildIndex);
+                player.OnClear();
             }
         }
 

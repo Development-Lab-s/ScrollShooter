@@ -2728,6 +2728,7 @@ MonoBehaviour:
   Screen1: {fileID: 578880627}
   ScreenButton: {fileID: 1865989513}
   slider: {fileID: 1118777272}
+  _skinList: {fileID: 11400000, guid: 2045e6f39005c7e448a1658902daf9ee, type: 2}
 --- !u!1 &2086334506
 GameObject:
   m_ObjectHideFlags: 0
