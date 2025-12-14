@@ -42,7 +42,7 @@ namespace Member.JYG._Code
         private CustomTween _dashCoroutine;
         [SerializeField] private ParticleSystem boostParticles;
         [SerializeField] private float _currentVelocityY = 3f;
-
+        private bool _isdie;
         public bool playerInCamera = true;
         public UnityEvent<float> OnVelocityChanged;
         public UnityEvent<float> onBoost;
@@ -156,6 +156,7 @@ namespace Member.JYG._Code
 
         private void FixedUpdate()
         {
+            if (_isdie) return;
             OnVelocityChanged?.Invoke(_currentVelocityY);
             SetXMove(XVelocity);
             MoveY();
@@ -177,6 +178,11 @@ namespace Member.JYG._Code
         }
         public void OnDash()
         {
+            var dash = _dashCoroutine?.Complete();
+            if (null != dash)
+            {
+                StopCoroutine(dash);
+            }
             DashColorChanger colorChanger = GetComponent<DashColorChanger>();
             PlayerInputSO.canDash = false;
             colorChanger.DashStateIsTrue(PlayerInputSO.canDash);
@@ -196,6 +202,7 @@ namespace Member.JYG._Code
                     PlayerInputSO.canDash = true;
                     colorChanger.DashStateIsTrue(PlayerInputSO.canDash);
                 }));
+                _dashCoroutine = null;
             });
 
         }
@@ -310,6 +317,7 @@ namespace Member.JYG._Code
             MaxSpeedY = 0;
             _xVelocity = 0;
             _currentVelocityY = 0;
+            _isdie = true ;
         }
 
         public void OnInvincible(float invincibleTime)
@@ -382,7 +390,6 @@ namespace Member.JYG._Code
             if (null != dash)
             {
                 StopCoroutine(dash);
-                _dashCoroutine = null;
             }
 
             SetVelocity(true);
@@ -391,8 +398,7 @@ namespace Member.JYG._Code
             Rigidbody2D.AddForceY(-knockPower, ForceMode2D.Impulse);
 
             _currentVelocityY = Rigidbody2D.linearVelocityY;
-
-            SetMaxSpeed(-maxSpeedY, knockTime, () => _isKnock = false);
+            StartCoroutine(DelayCallCoroutine(knockTime, () => _isKnock = false));
         }
 
         public void OnClear()

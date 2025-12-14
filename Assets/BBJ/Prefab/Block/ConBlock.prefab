@@ -4878,7 +4878,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.8, y: 8.8, z: 8.8}
+  m_LocalScale: {x: 28, y: 28, z: 28}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5967875683474951916}
@@ -5097,6 +5097,7 @@ MonoBehaviour:
   playerCheckTime: 0.2
   _currentVelocity: 0
   delayTime: 0.4
+  overlapRender: {fileID: 7804900892421700957}
   OnVelocityChnged:
     m_PersistentCalls:
       m_Calls:

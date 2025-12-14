@@ -21,6 +21,9 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     [SerializeField] private float _currentVelocity = 3f;
     [SerializeField] private float delayTime = 0.4f;
 
+    [Space]
+    [SerializeField] private SpriteRenderer overlapRender;
+
     public UnityEvent<float> OnVelocityChnged;
     public UnityEvent<float> Explosioned;
 
@@ -29,6 +32,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     private bool _isTween;
     private bool _isFindTarget;
     private float _lastCheckTime;
+
 
     public void TryContact(ContactInfo info) => OnExplosion();
     private Collider2D ChackForTarget(OverlapDataSO data)
@@ -104,6 +108,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
         var target = ChackForTarget(chackPlayerOverlap);
         if (target)
         {
+            overlapRender.gameObject.SetActive(false);
             _isFindTarget = true;
             _isTween = true;
             OnCollisionSet();
@@ -149,5 +154,9 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
         Gizmos.DrawWireSphere(transform.position, chackPlayerOverlap.size);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explostionOverlap.size);
+    }
+    private void OnValidate()
+    {
+        overlapRender.transform.localScale = transform.localScale * chackPlayerOverlap.size*2;
     }
 }
