@@ -181,6 +181,7 @@ namespace Member.JYG._Code
             PlayerInputSO.canDash = false;
             colorChanger.DashStateIsTrue(PlayerInputSO.canDash);
 
+            boostParticles.Stop();
             ParticleSystem.MainModule main = boostParticles.main;
             main.duration = DashDuration - 0.5f;
             onBoost?.Invoke(DashDuration);

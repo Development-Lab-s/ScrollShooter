@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderCompo: {fileID: 0}
   colliderCompo: {fileID: 0}
-  speedValue: 10
+  speedValue: -10
   changeTime: 10
   Used:
     m_PersistentCalls:
