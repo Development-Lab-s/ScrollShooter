@@ -67,7 +67,8 @@ public class ClearUi : MonoBehaviour, IUI
         SoundManager.Instance.PlaySound("ClearSFX");
 
         countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
-        ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
+        SkinMark.sprite = GameManager.Instance.GotSkin == null ? nullSpace : GameManager.Instance.GotSkin.skin;
+        //ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         float t = PCM.PlayTime.Instance.CurrentTime;
         playTime.text = $"ClearTime:{t.ToString("F2")}";

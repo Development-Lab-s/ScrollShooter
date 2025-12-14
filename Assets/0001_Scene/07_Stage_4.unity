@@ -1442,6 +1442,14 @@ PrefabInstance:
       propertyPath: <StageSO>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: a3909fc7098c24045b777d8b78ac2b6a, type: 2}
+    - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
+      propertyPath: <TimeSkin>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f35caa31df521e4181640bc677e74aa, type: 2}
+    - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
+      propertyPath: <ClearSkin>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: bab19424eff7823448af1a79a5c48bdd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
