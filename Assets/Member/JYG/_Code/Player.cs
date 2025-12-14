@@ -103,7 +103,7 @@ namespace Member.JYG._Code
         }
         private void HandleBraked()
         {
-            SoundManager.Instance.PlaySound("Braking");
+
         }
 
         private void HandleDashBlocked()
