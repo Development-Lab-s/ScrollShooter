@@ -2,15 +2,19 @@ using TMPro;
 using UnityEngine;
 namespace PCM
 {
-    public class PlayTime : MonoBehaviour
+    public class PlayTime : YGPacks.Singleton<PlayTime>
     {
-        private TextMeshProUGUI time;
+        public float CurrentTime => Time.time - StartTime;
+
         private float StartTime;
+        private TextMeshProUGUI time;
+
         private void Start()
         {
             time = GetComponent<TextMeshProUGUI>();
             StartTime = Time.time;
         }
+
         void Update()
         {
             float t = Time.time - StartTime;

@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpPro: {fileID: 6194135386786423297}
-  count: 5
+  count: 10
 --- !u!1 &2499487248234977295
 GameObject:
   m_ObjectHideFlags: 0

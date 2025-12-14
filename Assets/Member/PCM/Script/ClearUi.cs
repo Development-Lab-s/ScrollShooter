@@ -17,7 +17,6 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField]private SkinListSO skinListSO;
     [SerializeField] private SkinListSO HiddenskinListSO;
     [SerializeField] private Sprite nullSpace;
-    private float StartTime;
     public UIType UIType => UIType.ClearUI;
 
     public InteractiveType OpenInput => InteractiveType.None;
@@ -50,7 +49,6 @@ public class ClearUi : MonoBehaviour, IUI
     {
         GameManager.Instance.OnClear += Open;
         countdouwn = GetComponent<CountdouwnTmp>();
-        StartTime = Time.time;
         Close();
     }
 
@@ -60,7 +58,7 @@ public class ClearUi : MonoBehaviour, IUI
     {
     }
 
-    public void MiddleMove()
+    public void MiddleMove(bool _)
     {
     }
 
@@ -71,7 +69,7 @@ public class ClearUi : MonoBehaviour, IUI
         countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
         ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
-        float t = Time.time - StartTime;
+        float t = PCM.PlayTime.Instance.CurrentTime;
         playTime.text = $"ClearTime:{t.ToString("F2")}";
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);

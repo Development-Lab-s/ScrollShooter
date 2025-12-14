@@ -61,7 +61,7 @@ public class SettingUIValueSetter
             slider.gameObject.SetActive(false);
 
             toggle.gameObject.SetActive(true);
-            toggle.isOn = PlayerPrefs.GetInt(CurrentValue.MyType.ToString(), 0) == 0 ? false : true;
+            toggle.isOn = PlayerPrefs.GetInt(CurrentValue.MyType.ToString(), 1) == 0 ? false : true;
         }
     }
 

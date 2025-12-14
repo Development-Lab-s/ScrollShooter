@@ -41,7 +41,7 @@ public class TutorialUI : MonoBehaviour, IUI
         playerInputSO.OnBrakePressed += ForwardMove;
         playerInputSO.OnDashPressed += BackMove;
         playerInputSO.OnLeftClicked += LeftMove;
-        playerInputSO.OnRightClicked += LeftClick;
+        playerInputSO.OnRightClicked += RightClick;
         playerInputSO.OnWheelBtnClicked += MiddleMove;
         playerInputSO.OnWheeling += Scroll;
 
@@ -55,7 +55,7 @@ public class TutorialUI : MonoBehaviour, IUI
 
     private void Open(TutorialInfoSO tutoInfo)
     {
-        TimeManager.Instance.StopTime();
+        GameManager.Instance.Player.SetMaxSpeed(-15, 1.5f);
         SetPopUp(tutoInfo);
 
         StartCoroutine(WaitForInputCor());
@@ -79,6 +79,7 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void LeftMove() => TutorialManager.Instance.GetInput(InteractiveType.Left);
 
+    public void MiddleMove(bool _) { }
     public void MiddleMove() => TutorialManager.Instance.GetInput(InteractiveType.Middle);
 
     public void LeftClick() => TutorialManager.Instance.GetInput(InteractiveType.Right);
@@ -99,13 +100,11 @@ public class TutorialUI : MonoBehaviour, IUI
         playerInputSO.OnBrakePressed -= ForwardMove;
         playerInputSO.OnDashPressed -= BackMove;
         playerInputSO.OnLeftClicked -= LeftMove;
-        playerInputSO.OnRightClicked -= LeftClick;
+        playerInputSO.OnRightClicked -= RightClick;
         playerInputSO.OnWheelBtnClicked -= MiddleMove;
         playerInputSO.OnWheeling -= Scroll;
     }
 
-    public void RightClick(bool isPerformed)
-    {
-        throw new NotImplementedException();
-    }
+    public void RightClick(bool isPerformed) { }
+    public void RightClick() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 }

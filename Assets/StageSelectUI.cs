@@ -34,7 +34,7 @@ public class StageSelectUI : MonoBehaviour, IUI
     public void Open()
     {
         OnOpen?.Invoke(UIType);
-        
+        PlayerPrefs.SetInt("IsFirst", 1);
         for (int i = 0; i < buttonAmount; i++)
         {
             var button = Instantiate(buttonPrefab, transform);
@@ -74,7 +74,7 @@ public class StageSelectUI : MonoBehaviour, IUI
 
     public void LeftClick() { }
 
-    public void MiddleMove() { }
+    public void MiddleMove(bool _) { }
 
     public void ScrollMove(int value)
     {

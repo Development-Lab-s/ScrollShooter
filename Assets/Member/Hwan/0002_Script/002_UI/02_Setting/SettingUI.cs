@@ -26,14 +26,10 @@ public class SettingUI : MonoBehaviour, IUI
     public UIType UIType => UIType.SettingUI;
 
     public SettingUIValueSetter SliderValueSetter;
-    private AudioSource settingAudio;
-    private AudioSource inGameAudio;
 
+    private Coroutine pressCoroutine;
     public void Initialize()
     {
-        settingAudio = SoundManager.Instance.PlaySound("SettingBGM");
-        settingAudio.Stop();
-
         filled = GetComponentInChildren<FilledUp>(true);
         filled.SetComplete(SceneManager.GetActiveScene().buildIndex is 1 or 2);
 
@@ -44,15 +40,9 @@ public class SettingUI : MonoBehaviour, IUI
         UIObject.SetActive(false);
     }
 
-    private void Start()
-    {
-        inGameAudio = GameManager.Instance.InGameAudio;
-    }
-
     public void Open()
     {
-        inGameAudio.Pause();
-        settingAudio.Play();
+        GameManager.Instance.ChangeBGM("SettingBGM");
 
         filled.fillTrigger += filled.FillUp;
         TimeManager.Instance.StopTime();
@@ -62,8 +52,7 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void Close()
     {
-        inGameAudio.UnPause();
-        settingAudio.Stop();
+        GameManager.Instance.ChangeInGameBGM();
 
         filled.fillTrigger -= filled.FillUp;
         TimeManager.Instance.UnStopTime();
@@ -95,16 +84,27 @@ public class SettingUI : MonoBehaviour, IUI
 
     public void LeftClick() { }
 
-    public void MiddleMove()
+    public void MiddleMove(bool isPerformed)
     {
         if (UIObject.activeSelf == true)
         {
-            Close();
+            if (isPerformed == true) Close();
         }
         else
         {
-            Open();
+            if (pressCoroutine != null) StopCoroutine(pressCoroutine);
+
+            if (isPerformed == true)
+            {
+                pressCoroutine = StartCoroutine(Press());
+            }
         }
+    }
+
+    private IEnumerator Press()
+    {
+        yield return new WaitForSecondsRealtime(0.75f);
+        Open();
     }
 
     public void ScrollMove(int value) 

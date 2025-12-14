@@ -189,8 +189,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8536754680987497109}
   - {fileID: 4231273795926548929}
+  - {fileID: 8536754680987497109}
   m_Father: {fileID: 3724015073909348241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -992,11 +992,11 @@ MonoBehaviour:
       leftText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
   - <UIType>k__BackingField: 5
     <Icon>k__BackingField:
-      <iconType>k__BackingField: 0
+      <iconType>k__BackingField: 1
       rightSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
       leftSprite: {fileID: -1517310344781111415, guid: 28711b3c5809f9849992b7b1da8c6115, type: 3}
-      rightText: "\uBA54\uC778 \uD654\uBA74\uC73C\uB85C"
-      leftText: "\uC2A4\uD14C\uC774\uC9C0 \uC9C4\uC785"
+      rightText: "\uBC29\uD5A5 \uC815"
+      leftText: "\uBD80\uC2A4\uD130"
   - <UIType>k__BackingField: 6
     <Icon>k__BackingField:
       <iconType>k__BackingField: 1

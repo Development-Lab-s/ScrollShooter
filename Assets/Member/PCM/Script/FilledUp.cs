@@ -19,10 +19,6 @@ public class FilledUp : MonoBehaviour
     {
         _rt = GetComponent<RectTransform>();
     }
-    private void Update()
-    {
-        Debug.Log(_rt.localScale.x);
-    }
 
     public void FillUp(bool fill)
     {

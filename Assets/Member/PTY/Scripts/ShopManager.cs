@@ -32,6 +32,7 @@ public class ShopManager : Singleton<ShopManager>
     
     public void ChangeSkin(SkinSO skin)
     {
+        if(skin == null) Debug.LogWarning("Skin is Null");
         PlayerPrefs.SetString("userskin", skin.prefsName);
         Debug.Log(PlayerPrefs.GetString("userskin"));
         _playerSR.sprite = skin.skin;

@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using YGPacks;
 
-[DefaultExecutionOrder(-1)]
+[DefaultExecutionOrder(-100)]
 public class InputControlManager : Singleton<InputControlManager>
 {
     [SerializeField] private PlayerInputSO playerInputSO;
@@ -15,6 +15,11 @@ public class InputControlManager : Singleton<InputControlManager>
 
     protected override void Awake()
     {
+        ChangeAllPlayerActiveType(true);
+        ChangePlayerInputActive(true);
+        ChangeUIInputActive(true);
+        playerInputSO.canDash = true;
+
         UIController uiContoroller = GetComponent<UIController>();
         uiContoroller.OnUIChange += OnUIChange;
 

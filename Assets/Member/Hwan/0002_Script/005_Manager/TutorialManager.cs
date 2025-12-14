@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Member.JYG._Code;
 using System;
 using System.Collections;
@@ -29,6 +30,9 @@ public class TutorialManager : Singleton<TutorialManager>
             col.enabled = true;
             StartTuto();
         }
+
+        GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(() => col.enabled = false);
+        GameManager.Instance.Player.GetComponent<HitSystem>().onSecondDead.AddListener(() => col.enabled = false);
     }
 
     private void Update()

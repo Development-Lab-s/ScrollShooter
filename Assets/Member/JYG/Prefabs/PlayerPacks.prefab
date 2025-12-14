@@ -230,7 +230,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 0
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -348,8 +348,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 2
+      scalar: 20
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -402,7 +402,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.03983879, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -466,7 +466,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
+      scalar: 1
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -10061,7 +10061,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 0
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -10179,8 +10179,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 2
+      scalar: 20
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10233,7 +10233,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.03983879, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10297,7 +10297,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
+      scalar: 1
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -19982,6 +19982,38 @@ PrefabInstance:
     - target: {fileID: 692167262871596184, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
       propertyPath: onSecondDead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: clearFeedback
+      value: 
+      objectReference: {fileID: 6960306284673603059}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: <MoveData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d138e50e924d7f449d42805f9a03240, type: 2}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: <MaxSpeedX>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: <MovePower>k__BackingField
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 705383825179212660, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: <DashDuration>k__BackingField
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 872911826469678753, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: dashColor.key1.b
+      value: 0.645283
+      objectReference: {fileID: 0}
+    - target: {fileID: 872911826469678753, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: dashColor.key1.g
+      value: 0.645283
+      objectReference: {fileID: 0}
+    - target: {fileID: 872911826469678753, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
+      propertyPath: dashColor.key1.r
+      value: 0.645283
       objectReference: {fileID: 0}
     - target: {fileID: 6966218555749179076, guid: e278eb0e510c4bc44a383f46c4bfba69, type: 3}
       propertyPath: changeVolume

@@ -318,8 +318,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Original: "\uB9C8\uC6B0\uC2A4\uB97C \uC4F0\uB2E4\uB4EC\uC5B4\uC8FC\uC138\uC694"
-  Change: "\uC0AC\uC774\uB4DC\uBC84\uD2BC\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694"
+  Change: "\uC0AC\uC774\uB4DC\uBC84\uD2BC \uB610\uB294 z, x \uBC84\uD2BC\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694"
 --- !u!1001 &571118988
 PrefabInstance:
   m_ObjectHideFlags: 0

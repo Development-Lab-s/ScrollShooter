@@ -59,7 +59,6 @@ public class ButtonUp : MonoBehaviour
             desc.ChangeText(false);
             pAni?.isTrigger.Invoke(false);
         }
-        Debug.Log(isBool);
     }
 }
 
