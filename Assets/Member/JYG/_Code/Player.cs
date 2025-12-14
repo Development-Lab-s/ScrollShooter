@@ -145,6 +145,7 @@ namespace Member.JYG._Code
         }
         private void Update()
         {
+            if (_isdie) return;
             if (_currentVelocityY != MaxSpeedY)
                 _currentVelocityY = CalculateSpeedY();
             SetVelocity(PlayerInputSO.IsBraking || _isKnock); //Setting my speed Method
@@ -156,7 +157,6 @@ namespace Member.JYG._Code
 
         private void FixedUpdate()
         {
-            if (_isdie) return;
             OnVelocityChanged?.Invoke(_currentVelocityY);
             SetXMove(XVelocity);
             MoveY();
@@ -313,11 +313,11 @@ namespace Member.JYG._Code
 
         public void StopXYVelocity()
         {
+            _isdie = true ;
             MaxSpeedX = 0;
             MaxSpeedY = 0;
             _xVelocity = 0;
             _currentVelocityY = 0;
-            _isdie = true ;
         }
 
         public void OnInvincible(float invincibleTime)
