@@ -8,7 +8,6 @@ public class Minimize : MonoBehaviour
 {
     private RectTransform rt;
     [SerializeField] private GameObject Screen1;
-    [SerializeField] private SideButtonClick ScreenButton;
     [SerializeField] private Slider slider;
     [SerializeField] private Member.PTY.Scripts.SO.SkinListSO _skinList;
 
@@ -62,7 +61,7 @@ public class Minimize : MonoBehaviour
               {
                   Hwan.SceneManager.Instance.OnLoadScene(1);
               }
-              ScreenButton.isOpen = true;
+   
           });
         }
     }
