@@ -85,11 +85,17 @@ public class ClearUi : MonoBehaviour, IUI
     public void ClearShow(int stage)
     {
         if (skinListSO.Skin[stage] != null)
+        {
             SkinMark.sprite = skinListSO.Skin[stage].skin;
-        else if (skinListSO.Skin[stage] == null)
-            SkinMark.sprite = HiddenskinListSO.Skin[stage+5].skin; //얘가 히든임
+        }
+        else if (HiddenskinListSO.Skin[stage] != null)
+        {
+            SkinMark.sprite = HiddenskinListSO.Skin[stage].skin;
+        } //얘가 히든임
         else
+        {
             SkinMark.sprite = nullSpace;
+        }
         //스킨을 가지고 있는애를 만들함
     }
 }
