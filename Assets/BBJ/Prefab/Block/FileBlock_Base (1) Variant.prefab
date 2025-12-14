@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderCompo: {fileID: 0}
   colliderCompo: {fileID: 0}
-  speedValue: 10
+  speedValue: -10
   changeTime: 10
   Used:
     m_PersistentCalls:
@@ -117,6 +117,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Use
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6424239444850484895}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: SoundPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3920343458637068220
@@ -137,3 +149,14 @@ MonoBehaviour:
       Value:
         obj:
         - {fileID: 11400000, guid: 2af0a9adb585f734e870a336457e69d7, type: 2}
+--- !u!114 &6424239444850484895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6637178670368455684, guid: 382e7c53400d57f4b92cf1cc9a6f7336, type: 3}
+  m_PrefabInstance: {fileID: 377323155619961499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5033778076295743092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a3eaccac56cc7448f7048e8058856c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

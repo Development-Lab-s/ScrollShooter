@@ -16,6 +16,8 @@ Material:
   - _ENABLEINNEROUTLINE_ON
   - _INNEROUTLINEDISTORTIONTOGGLE_ON
   - _INNEROUTLINEOUTLINEONLYTOGGLE_ON
+  - _OUTEROUTLINEOUTLINEONLYTOGGLE_ON
+  - _PIXELOUTLINEOUTLINEONLYTOGGLE_ON
   - _SHADERFADING_NONE
   - _SHADERSPACE_OBJECT
   - _TEXTURELAYER1SHEETTOGGLE_ON
@@ -318,10 +320,10 @@ Material:
     - _InkSpreadNoiseFactor: 0.5
     - _InkSpreadWidth: 0.2
     - _InnerOutlineDistortionToggle: 1
-    - _InnerOutlineFade: 0.35
+    - _InnerOutlineFade: 0.07
     - _InnerOutlineOutlineOnlyToggle: 1
     - _InnerOutlineTextureToggle: 0
-    - _InnerOutlineWidth: 0.005
+    - _InnerOutlineWidth: 0.006
     - _MetalContrast: 2
     - _MetalFade: 1
     - _MetalHighlightContrast: 2
@@ -331,16 +333,16 @@ Material:
     - _NormalIntensity: 1
     - _OuterOutlineDistortionToggle: 0
     - _OuterOutlineFade: 1
-    - _OuterOutlineOutlineOnlyToggle: 0
+    - _OuterOutlineOutlineOnlyToggle: 1
     - _OuterOutlineTextureToggle: 0
-    - _OuterOutlineWidth: 4.14
+    - _OuterOutlineWidth: 2.67
     - _PingPongGlowContrast: 1
     - _PingPongGlowFade: 1
     - _PingPongGlowFrequency: 3
     - _PixelOutlineFade: 1
-    - _PixelOutlineOutlineOnlyToggle: 0
+    - _PixelOutlineOutlineOnlyToggle: 1
     - _PixelOutlineTextureToggle: 0
-    - _PixelOutlineWidth: 1
+    - _PixelOutlineWidth: 2.52
     - _PixelPerfectSpace: 0
     - _PixelPerfectUV: 0
     - _PixelateFade: 1
@@ -555,10 +557,10 @@ Material:
     - _InkSpreadColor: {r: 8.47419, g: 5.013525, b: 0.08873497, a: 0}
     - _InkSpreadNoiseScale: {r: 0.4, g: 0.4, b: 0, a: 0}
     - _InkSpreadPosition: {r: 0.5, g: -1, b: 0, a: 0}
-    - _InnerOutlineColor: {r: 6.4815755, g: 6.4815755, b: 6.4815755, a: 1}
-    - _InnerOutlineDistortionIntensity: {r: 0.01, g: 0.01, b: 0, a: 0}
-    - _InnerOutlineNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _InnerOutlineNoiseSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _InnerOutlineColor: {r: 12.963149, g: 12.963149, b: 12.963149, a: 1}
+    - _InnerOutlineDistortionIntensity: {r: -0.01, g: -0.03, b: 0, a: 0}
+    - _InnerOutlineNoiseScale: {r: 0.01, g: 0.1, b: 0, a: 0}
+    - _InnerOutlineNoiseSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _InnerOutlineTextureSpeed: {r: 1, g: 1, b: 0, a: 0}
     - _MetalColor: {r: 5.992157, g: 3.639216, b: 0.3137255, a: 1}
     - _MetalHighlightColor: {r: 5.992157, g: 3.796078, b: 0.6588235, a: 1}
@@ -628,7 +630,7 @@ Material:
     - _UVDistortTo: {r: 0.02, g: 0.02, b: 0, a: 0}
     - _UVRotatePivot: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _UVScalePivot: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _UVScaleScale: {r: 1, g: 1, b: 0, a: 0}
+    - _UVScaleScale: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _UVScrollSpeed: {r: 0.2, g: 0, b: 0, a: 0}
     - _WorldTilingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _WorldTilingScale: {r: 1, g: 1, b: 0, a: 0}

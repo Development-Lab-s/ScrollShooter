@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,9 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
     [SerializeField] private float bounceComebackDuration = 0.4f;
     [SerializeField] private float bounceCoolTime = 1f;
 
+    [Space]
+    [SerializeField] private SpriteRenderer overlapRender;
+
     private bool _isBounceCool;
 
     public UnityEvent Breaked;
@@ -34,17 +38,18 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
     }
     private void Update()
     {
-        if (_isBounceCool == false && CheckForTarget(overlapData))
+        if (_isBounceCool == false && CheckForTarget(overlapData) != null)
         {
             _isBounceCool = true;
             tween?.Complete();
+            overlapRender.gameObject.SetActive(false);
             tween = DOBounce(() =>
             {
-                _isBounceCool = false;
+                overlapRender.gameObject.SetActive(true);
+                DOVirtual.DelayedCall(bounceCoolTime, () => _isBounceCool = false, false);
                 tween = DODefaultBounce()
                         .SetLoops(-1);
             });
-
         }
     }
     protected override void Awake()
@@ -56,14 +61,15 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
     private Tween DODefaultBounce()
     {
         return DOTween.Sequence()
-        .Append(renderCompo.transform.DOScale(1.1f, defaultTweenDuration)).Join(renderCompo.SrCompo.DOColor(Color.red, defaultTweenDuration)).Join(renderCompo.transform.DOShakePosition(defaultTweenDuration, 0.2f, 20))
-        .Append(renderCompo.transform.DOScale(1f, defaultTweenComebackDuration)).Join(renderCompo.SrCompo.DOColor(new Color(1f, 0.5f, 0.5f, 1f), defaultTweenComebackDuration))
+        .Append(renderCompo.transform.DOScale(1.1f, defaultTweenDuration))/*.Join(renderCompo.SrCompo.DOColor(Color.red, defaultTweenDuration)).Join(renderCompo.transform.DOShakePosition(defaultTweenDuration, 0.2f, 20))*/
+        .Append(renderCompo.transform.DOScale(1f, defaultTweenComebackDuration))/*.Join(renderCompo.SrCompo.DOColor(new Color(1f, 0.5f, 0.5f, 1f), defaultTweenComebackDuration))*/
         .SetEase(Ease.OutQuad);
     }
 
     private Collider2D CheckForTarget(OverlapDataSO overlapData)
     {
-        return Physics2D.OverlapBox(transform.position, transform.localScale, overlapData.whatIsTarget);
+        var player = Physics2D.OverlapBox(transform.position, transform.localScale * overlapData.size, 360f, overlapData.whatIsTarget);
+        return player;
     }
 
     public Sequence DOBounce(TweenCallback tweenCalvack)
@@ -72,12 +78,15 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
         .SetDelay(bounceDelayTime)
         .Append(transform.DOScale(overlapData.size, bounceDuration)).Join(renderCompo.SrCompo.DOColor(Color.red, bounceDuration))
         .Append(transform.DOScale(1, bounceComebackDuration)).Join(renderCompo.SrCompo.DOColor(Color.white, bounceComebackDuration))
-        .SetDelay(bounceCoolTime)
-        .AppendCallback(tweenCalvack);
+        .OnComplete(tweenCalvack);
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, transform.localScale * overlapData.size);
+    }
+    private void OnValidate()
+    {
+        overlapRender.transform.localScale = transform.localScale * overlapData.size;
     }
 }
