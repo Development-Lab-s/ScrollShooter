@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,7 +31,14 @@ public class ShopUI : MonoBehaviour, IUI
     public GameObject UIObject { get; }
     public UIType UIType => UIType.ShopUI;
     public InteractiveType OpenInput => InteractiveType.None;
-    
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
+        PlayerPrefs.SetInt(_skinList.skinList[1].prefsName, 1);
+        PlayerPrefs.SetInt(_skinList.skinList[4].prefsName, 1);
+    }
+
     public void Initialize()
     {
         if (ShopManager.Instance.skinList != null)
@@ -47,28 +56,65 @@ public class ShopUI : MonoBehaviour, IUI
     public void Open()
     {
         OnOpen?.Invoke(UIType);
-        
+        List<SkinSO> lockSkinList = new List<SkinSO>();
+        int index = 0;
         for (int i = 0; i < _skinList.skinList.Count; i++)
         {
-            var button = Instantiate(buttonPrefab, transform);
-            button.name = _skinList.skinList[i].skinName;
-            button.transform.SetParent(buttonsParent.transform);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = _skinList.skinList[i].skinName;
-            button.transform.GetChild(1).GetComponent<Image>().sprite = _skinList.skinList[i].skin;
-            _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
-
-            if (PlayerPrefs.GetInt("clearedstage") >= _skinList.skinList[i].unlockStage)
+            if (PlayerPrefs.GetInt(_skinList.skinList[i].prefsName, 0) == 1)
             {
-                _skinButtons[i].transform.GetChild(3).GetComponent<Image>().enabled = false;
+                Debug.Log(_skinList.skinList[i].prefsName + "Is Activated");
+                var button = Instantiate(buttonPrefab, transform);
+                button.name = _skinList.skinList[i].skinName;
+                button.transform.SetParent(buttonsParent.transform);
+                button.GetComponentInChildren<TextMeshProUGUI>().text = _skinList.skinList[i].skinName;
+                button.transform.GetChild(1).GetComponent<Image>().sprite = _skinList.skinList[i].skin;
+                _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
+                _skinButtons[_skinButtons.Count - 1].skinSO = _skinList.skinList[i];
+
+                _skinButtons[_skinButtons.Count - 1].transform.GetChild(3).GetComponent<Image>().enabled = false;
+                Debug.Log(_skinButtons[_skinButtons.Count - 1].transform.GetChild(3).GetComponent<Image>().gameObject.name);
+                index++;
             }
             else
             {
-                _skinButtons[i].transform.GetChild(3).GetComponent<Image>().enabled = true;
+                Debug.Log(_skinList.skinList[i].prefsName + "Is Not Activated");
+                lockSkinList.Add(_skinList.skinList[i]);
+            }
+        }
+
+        for (int i = 0; i < lockSkinList.Count; i++)
+        {
+            Debug.Log(lockSkinList[i] + "Is Lock Item");
+            var button = Instantiate(buttonPrefab, transform);
+            button.name = lockSkinList[i].skinName;
+            button.transform.SetParent(buttonsParent.transform);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = lockSkinList[i].skinName;
+            button.transform.GetChild(1).GetComponent<Image>().sprite = lockSkinList[i].skin;
+            _skinButtons.Add(button.GetComponentInChildren<SkinButton>());
+            _skinButtons[_skinButtons.Count - 1].skinSO = lockSkinList[i];
+
+            _skinButtons[i + index].transform.GetChild(3).GetComponent<Image>().enabled = true;
+        }
+
+        string userskin = PlayerPrefs.GetString("userskin");
+        foreach (var skin in _skinButtons)
+        {
+            if (skin.skinSO.prefsName == userskin)
+            {
+                _currentIndex = _skinButtons.IndexOf(skin);
+                Debug.Log($"Current Index is {_currentIndex}");
             }
         }
         
-        Highlight(0);
+        Highlight(_currentIndex);
         ScrollTo();
+        StartCoroutine(WaitLoad());
+    }
+
+    private IEnumerator WaitLoad()
+    {
+        yield return null;
+        BackMove();
     }
 
     public void Close()
@@ -79,11 +125,11 @@ public class ShopUI : MonoBehaviour, IUI
     public void BackMove()
     {
         //스킨 적용하기
-        if (PlayerPrefs.GetInt("clearedstage") >= _skinList.skinList[_currentIndex].unlockStage)
+        if (PlayerPrefs.GetInt(_skinButtons[_currentIndex].skinSO.prefsName) != 0)
         {
             _skinButtons[_currentIndex].OnClick();
-            ShopManager.Instance.ChangeSkin(_skinList.skinList[_currentIndex]);
-            _skinButtons[_currentIndex].name = _skinList.skinList[_currentIndex].name;
+            ShopManager.Instance.ChangeSkin(_skinButtons[_currentIndex].skinSO);
+            _skinButtons[_currentIndex].name = _skinButtons[_currentIndex].skinSO.name;
             previewSkinName.text = _skinButtons[_currentIndex].GetComponentInChildren<TextMeshProUGUI>().text;
         }
         else
@@ -122,9 +168,9 @@ public class ShopUI : MonoBehaviour, IUI
 
         if (next == _currentIndex) return;
 
-        if (_skinList.skinList[next].unlockStage > PlayerPrefs.GetInt("clearedstage"))
+        if (PlayerPrefs.GetInt(_skinButtons[next].skinSO.prefsName) == 0)
         {
-            Debug.LogError($"스테이지 {_skinList.skinList[next].unlockStage}을/를 클리어하지 않아 스킨을 선택할 수 없습니다.");
+            Debug.LogError($"{_skinButtons[next].skinSO.prefsName} Is Not Activated");
             return;
         }
 
