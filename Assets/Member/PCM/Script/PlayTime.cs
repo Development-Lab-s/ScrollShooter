@@ -9,6 +9,8 @@ namespace PCM
         private float StartTime;
         private TextMeshProUGUI time;
 
+        public bool doCount { get; set; } = true;
+
         private void Start()
         {
             time = GetComponent<TextMeshProUGUI>();
@@ -17,6 +19,7 @@ namespace PCM
 
         void Update()
         {
+            if (doCount == false) return;
             float t = Time.time - StartTime;
             time.text = t.ToString("F2") + 's';
         }

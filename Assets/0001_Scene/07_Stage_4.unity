@@ -3267,6 +3267,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3861293686792352713, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 880.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001781630593224473, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988136750283226241, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988136750283226241, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052382690498127263, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485776797308273283, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: iconForUIs.Array.data[5].<Icon>k__BackingField.rightText
+      value: '-'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3512,7 +3536,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ed64dea05d9d1dc458b2fa1fd4dcc7f1, type: 2}
     - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
       propertyPath: <HiddenSkinTime>k__BackingField
-      value: 55
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
