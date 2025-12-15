@@ -60,7 +60,6 @@ public class PlayerDeadEvent : MonoBehaviour
         {
             hideThing.gameObject.SetActive(false);
         }
-        yield return new WaitForSeconds(0.5f);
         _player.SpriteRenderer.sprite = null;
         _player.playerInCamera = false;
         CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 0.5f);

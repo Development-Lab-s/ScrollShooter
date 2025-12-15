@@ -64,11 +64,11 @@ public class FilledUp : MonoBehaviour
 
         if (gameQuitStage == true)
         {
-            text.text = "좌 클릭을 길게 눌러 게임 종료하기";
+            text.text = "우 클릭을 길게 눌러 게임 종료하기";
         }
         else
         {
-            text.text = "좌 클릭을 길게 눌러 메인 화면으로";
+            text.text = "우 클릭을 길게 눌러 메인 화면으로";
         }
     }
 

@@ -5,6 +5,6 @@ public class SoundPlayer : MonoBehaviour
 {
     public void SoundPlay(string soundName)
     {
-        SoundManager.Instance.PlaySound(soundName);
+        SoundManager.Instance.PlaySound(soundName,transform.position.y);
     }
 }
