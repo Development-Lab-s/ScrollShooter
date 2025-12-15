@@ -1,5 +1,6 @@
 using Member.JYG._Code;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +22,7 @@ public class GameOverUI : MonoBehaviour, IUI
         InputControlManager.Instance.ChangeUIInputActive(false);
         Close();
         nestingOpener.StartDeNesting(() => {
-            SceneManager.LoadScene(1);
+            Hwan.SceneManager.Instance.OnLoadScene(1);
             InputControlManager.Instance.ChangeUIInputActive(true);
         });
     }
@@ -45,20 +46,29 @@ public class GameOverUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
-        GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(Open);
+        GameManager.Instance.Player.GetComponentInChildren<PlayerDeadEvent>().afterEffect.AddListener(WaitForOpen);
         nestingOpener = GetComponent<NestingOpener>();
         nestingOpener.Initialize();
         countdouwn = GetComponent<CountdouwnTmp>();
         UIObject.SetActive(false);
     }
 
-    public void LeftMove() { }
+    private void WaitForOpen() => StartCoroutine(WaitForOpenCor());
 
-    public void MiddleMove() { }
+    private IEnumerator WaitForOpenCor()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Open();
+    }
+
+    public void RightClick(bool _) { }
+
+    public void MiddleMove(bool _) { }
 
     public void Open()
     {
         if (UIObject.activeSelf == true) return;
+        PlayerPrefs.SetInt("IsFirst", 0);
         UIManager.Instance.CloseAllUI();
 
         InputControlManager.Instance.ChangeUIInputActive(false);
@@ -74,7 +84,7 @@ public class GameOverUI : MonoBehaviour, IUI
         OnOpen?.Invoke(UIType);
     }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void ScrollMove(int value) { }
 }

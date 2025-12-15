@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <UIObject>k__BackingField: {fileID: 5783374245443634026}
+  playerInputSO: {fileID: 11400000, guid: 167598a8d9fb04a4ab63c84659d6a706, type: 2}
   tmp: {fileID: 8083802384420798748}
 --- !u!1 &928972787988808604
 GameObject:

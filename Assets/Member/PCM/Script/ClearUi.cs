@@ -1,4 +1,6 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using Member.JYG._Code;
+using Member.PTY.Scripts.SO;
 using System;
 using TMPro;
 using UnityEngine;
@@ -12,10 +14,10 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private Image SkinMark;
 
-    [SerializeField] private SkinListSO Skin;
-    [SerializeField] private SkinListSO hiddenSkin;
+    [SerializeField]private SkinListSO skinListSO;
+    [SerializeField] private SkinListSO HiddenskinListSO;
     [SerializeField] private Sprite nullSpace;
-    private float StartTime;
+    [SerializeField] private TextMeshProUGUI hidden;
     public UIType UIType => UIType.ClearUI;
 
     public InteractiveType OpenInput => InteractiveType.None;
@@ -27,7 +29,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void BackMove()
     {
-        SceneManager.LoadScene(1); 
+        Hwan.SceneManager.Instance.OnLoadScene(1); 
         Close();
     }
 
@@ -40,7 +42,8 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        if (SceneManager.GetActiveScene().buildIndex == 8) return;
+        Hwan.SceneManager.Instance.OnLoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         Close();
     }
 
@@ -48,44 +51,37 @@ public class ClearUi : MonoBehaviour, IUI
     {
         GameManager.Instance.OnClear += Open;
         countdouwn = GetComponent<CountdouwnTmp>();
-        StartTime = Time.time;
         Close();
     }
 
     private void Open(int _) => Open();
 
-    public void LeftMove()
+    public void RightClick(bool _)
     {
     }
 
-    public void MiddleMove()
+    public void MiddleMove(bool _)
     {
     }
 
     public void Open()
     {
-        countdouwn.StartCount(() => SceneManager.LoadScene(1));
-        ClearShow(SceneManager.GetActiveScene().buildIndex); //아마도 1스테이지가 Buildindex가 2겠지?
+        SoundManager.Instance.PlaySound("ClearSFX");
+
+        countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
+        SkinMark.sprite = GameManager.Instance.GotSkin == null ? nullSpace : GameManager.Instance.GotSkin.skin;
+        hidden.text = "Hidden Skin Time: " + GameManager.Instance.HiddenSkinTime;
+        //ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
-        float t = Time.time - StartTime;
+        float t = PCM.PlayTime.Instance.CurrentTime;
         playTime.text = $"ClearTime:{t.ToString("F2")}";
         UIObject.SetActive(true);
         OnOpen?.Invoke(UIType);
     }
 
-    public void RightMove() { }
+    public void LeftClick() { }
 
     public void ScrollMove(int value)
     {
-    }
-    public void ClearShow(int stage)
-    {
-        if (Skin.Skin[stage] != null)
-            SkinMark.sprite = Skin.Skin[stage];
-        else if (hiddenSkin.Skin[stage] != null)
-            SkinMark.sprite = hiddenSkin.Skin[stage];
-        else
-            SkinMark.sprite = nullSpace;
-        //스킨을 가지고 있는애를 만들함
     }
 }

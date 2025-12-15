@@ -6,10 +6,11 @@ using UnityEngine.Audio;
 namespace csiimnida.CSILib.SoundManager.RunTime
 {
     public class SoundManager : MonoSingleton<SoundManager>
-    {
-    
+    {    
         [SerializeField] private SoundListSo _soundListSo;
         [SerializeField] private AudioMixer _mixer;
+        [SerializeField] private Transform audioPosDown;
+        [SerializeField] private Transform audioPosUp;
 
         private void Awake()
         {
@@ -22,9 +23,10 @@ namespace csiimnida.CSILib.SoundManager.RunTime
                 Debug.LogError("AudioMixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
             }
         }
-        public void PlaySound(string soundName)
+        public AudioSource PlaySound(string soundName, float yPos)
         {
             GameObject obj = new GameObject();
+
             obj.name = soundName + " Sound";
             AudioSource source = obj.AddComponent<AudioSource>();
             SoundSo so = _soundListSo.SoundsDictionary[soundName];
@@ -32,7 +34,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
             {
                 Debug.LogWarning("Mixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
                 SetAudio(source,so);
-                return;
+                return source;
             }
             if(so.soundType == SoundType.SFX)
                 source.outputAudioMixerGroup = _mixer.FindMatchingGroups("SFX")[0];
@@ -44,10 +46,43 @@ namespace csiimnida.CSILib.SoundManager.RunTime
             {
                 Debug.LogWarning("Type이 없습니다");
                 source.outputAudioMixerGroup = _mixer.FindMatchingGroups("Master")[0];
+            }
+
+            if (audioPosUp.position.y < yPos || yPos < audioPosDown.position.y) return source;
+
+            SetAudio(source,so);
+            return source;
+        }
+
+        public AudioSource PlaySound(string soundName)
+        {
+            GameObject obj = new GameObject();
+
+            obj.name = soundName + " Sound";
+            AudioSource source = obj.AddComponent<AudioSource>();
+            SoundSo so = _soundListSo.SoundsDictionary[soundName];
+            if (_mixer == null)
+            {
+                Debug.LogWarning("Mixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
+                SetAudio(source, so);
+                return source;
+            }
+            if (so.soundType == SoundType.SFX)
+                source.outputAudioMixerGroup = _mixer.FindMatchingGroups("SFX")[0];
+            else if (so.soundType == SoundType.BGM)
+            {
+                source.outputAudioMixerGroup = _mixer.FindMatchingGroups("BGM")[0];
+            }
+            else
+            {
+                Debug.LogWarning("Type이 없습니다");
+                source.outputAudioMixerGroup = _mixer.FindMatchingGroups("Master")[0];
 
             }
-            SetAudio(source,so);
-        
+
+
+            SetAudio(source, so);
+            return source;
         }
 
         private void SetAudio(AudioSource source,SoundSo sounds)

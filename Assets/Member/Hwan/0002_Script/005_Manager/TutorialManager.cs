@@ -1,18 +1,21 @@
+using JetBrains.Annotations;
 using Member.JYG._Code;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YGPacks;
 
 public class TutorialManager : Singleton<TutorialManager>
 {
-    [SerializeField] private TutorialInfoSO[] tutoInfos; 
+    [SerializeField] private int LastPhase; 
     public event Action<TutorialInfoSO> OnPlayerNearObstacle;
     public event Action OnSkipPhaze;
 
     private int currentPhase = 0;
-    private InteractiveType currentNeedInput;
+    private InteractiveType[] currentNeedInputs;
     private List<TutoTypeHolder> usedBlocks = new();
 
     private bool getInput = false;
@@ -22,11 +25,14 @@ public class TutorialManager : Singleton<TutorialManager>
         base.Awake();
         BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.enabled = false;
-        if (GameManager.Instance.StageSO.StageNumber == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             col.enabled = true;
             StartTuto();
         }
+
+        GameManager.Instance.Player.GetComponent<HitSystem>().onDead.AddListener(() => col.enabled = false);
+        GameManager.Instance.Player.GetComponent<HitSystem>().onSecondDead.AddListener(() => col.enabled = false);
     }
 
     private void Update()
@@ -38,78 +44,44 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         if (collision.TryGetComponent(out TutoTypeHolder block))
         {
-            usedBlocks.ForEach((holder) =>
-            {
-                if (holder.TutoNumber == block.TutoNumber) return;
-            });
+            if (usedBlocks.Contains(block)) return;
 
             usedBlocks.Add(block);
-            PlayTuto();
+            PlayTuto(block.tutoSO);
         }
     }
 
-    private void PlayTuto()
+    private void PlayTuto(TutorialInfoSO tutoInfoSO)
     {
-        TutorialInfoSO currentTutoInfo = GetCurrentTuto();
+        TutorialInfoSO currentTutoInfo = tutoInfoSO;
 
         getInput = true;
         OnPlayerNearObstacle?.Invoke(currentTutoInfo);
-        currentNeedInput = currentTutoInfo.NeedInput; 
-        InputControlManager.Instance.ChangePlayerInputActiveType(currentNeedInput, true);
+        currentNeedInputs = currentTutoInfo.NeedInput; 
+        foreach (InteractiveType type in currentNeedInputs)
+        {
+            InputControlManager.Instance.ChangePlayerInputActiveType(type, true);
+        }
         currentPhase++;
-
-        if (currentNeedInput == InteractiveType.None) StartCoroutine(EndCoroutine());
-    }
-
-    private IEnumerator EndCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(1);
-        getInput = false;
-        OnSkipPhaze?.Invoke();
-        EndTuto();
     }
 
     public void GetInput(InteractiveType type)
     {
-        if (getInput == false || type != currentNeedInput) return;
+        if (getInput == false || currentNeedInputs.Contains(type) == false) return;
 
         getInput = false;
         OnSkipPhaze?.Invoke();
-
-        if (currentPhase == tutoInfos.Length - 1) StartCoroutine(WaitLastTuto());
-    }
-
-    private TutorialInfoSO GetCurrentTuto()
-    {
-        TutorialInfoSO currentTutoInfo = null;
-
-        foreach (TutorialInfoSO tutoInfo in tutoInfos)
-        {
-            if (tutoInfo.Phase == currentPhase)
-            {
-                currentTutoInfo = tutoInfo;
-
-                break;
-            }
-        }
-
-        return currentTutoInfo;
+        if (currentPhase == LastPhase) EndTuto();
     }
 
     private void StartTuto()
     {
         InputControlManager.Instance.ChangeAllPlayerActiveType(false);
-        InputControlManager.Instance.ChangePlayerInputActiveType(InteractiveType.Middle, true);
     }
 
     private void EndTuto()
     {
+        PlayerPrefs.SetInt("didTutorial", 1);
         InputControlManager.Instance.ChangeAllPlayerActiveType(true);
-    }
-
-    private IEnumerator WaitLastTuto()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        PlayTuto();
     }
 }

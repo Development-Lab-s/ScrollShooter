@@ -19,11 +19,11 @@ public interface IUI
 
     public void ForwardMove();
 
-    public void LeftMove();
+    public void RightClick(bool isPerformed);
 
-    public void RightMove();
+    public void LeftClick();
 
-    public void MiddleMove();
+    public void MiddleMove(bool isPreformed);
 
     public void ScrollMove(int value);
 }

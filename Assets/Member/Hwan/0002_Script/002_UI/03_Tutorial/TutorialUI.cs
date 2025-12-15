@@ -1,9 +1,10 @@
+using Member.JYG._Code;
 using Member.JYG.Input;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class TutorialUI : MonoBehaviour, IUI
 {
@@ -31,10 +32,16 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void Initialize()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 3)
+        {
+            UIObject.SetActive(false);
+            return;
+        }
+
         playerInputSO.OnBrakePressed += ForwardMove;
         playerInputSO.OnDashPressed += BackMove;
         playerInputSO.OnLeftClicked += LeftMove;
-        playerInputSO.OnRightClicked += RightMove;
+        playerInputSO.OnRightClicked += RightClick;
         playerInputSO.OnWheelBtnClicked += MiddleMove;
         playerInputSO.OnWheeling += Scroll;
 
@@ -48,11 +55,11 @@ public class TutorialUI : MonoBehaviour, IUI
 
     private void Open(TutorialInfoSO tutoInfo)
     {
-        TimeManager.Instance.StopTime();
+        GameManager.Instance.Player.SetMaxSpeed(-15, 2.5f);
         SetPopUp(tutoInfo);
 
-        StartCoroutine(WaitForInputCor());
         InputControlManager.Instance.ChangeUIInputActive(false);
+        StartCoroutine(WaitForInputCor());
         Open();
     }
 
@@ -72,9 +79,10 @@ public class TutorialUI : MonoBehaviour, IUI
 
     public void LeftMove() => TutorialManager.Instance.GetInput(InteractiveType.Left);
 
+    public void MiddleMove(bool _) { }
     public void MiddleMove() => TutorialManager.Instance.GetInput(InteractiveType.Middle);
 
-    public void RightMove() => TutorialManager.Instance.GetInput(InteractiveType.Right);
+    public void LeftClick() => TutorialManager.Instance.GetInput(InteractiveType.Right);
 
     public void ScrollMove(int value) => TutorialManager.Instance.GetInput(InteractiveType.Scroll);
 
@@ -92,8 +100,11 @@ public class TutorialUI : MonoBehaviour, IUI
         playerInputSO.OnBrakePressed -= ForwardMove;
         playerInputSO.OnDashPressed -= BackMove;
         playerInputSO.OnLeftClicked -= LeftMove;
-        playerInputSO.OnRightClicked -= RightMove;
+        playerInputSO.OnRightClicked -= RightClick;
         playerInputSO.OnWheelBtnClicked -= MiddleMove;
         playerInputSO.OnWheeling -= Scroll;
     }
+
+    public void RightClick(bool isPerformed) { }
+    public void RightClick() => TutorialManager.Instance.GetInput(InteractiveType.Back);
 }

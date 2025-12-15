@@ -5,46 +5,35 @@ using UnityEngine;
 
 public class SettingValueContainer : YGPacks.Singleton<SettingValueContainer>
 {
-    private Dictionary<SettingType, NotifyValue<float>> settingValueDictionary;
+    //private Dictionary<SettingType, float> settingValueDictionary;
 
-    private void Init()
-    {
-        settingValueDictionary = new()
-        {
-            { SettingType.BGMVolumeSlider, new() },
-            { SettingType.SFXVolumeSlider, new() },
-            { SettingType.SensitivitySlider, new() },
-            { SettingType.MasterVolumeSlider, new() }
-        };
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
-        foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
-        {
-            settingValueDictionary[type].Value = PlayerPrefs.GetFloat(type.ToString(), 0.5f);
-            settingValueDictionary[type].OnValueCanged += (_, value) => PlayerPrefs.SetFloat(type.ToString(), value);
-        }
-    }
+    //private void Init()
+    //{
+    //    settingValueDictionary = new();
 
-    public float GetSettingValue(SettingValueSO settingValueSO)
-    {
-        if (settingValueDictionary == null) Init();
-        return Mathf.Lerp(settingValueSO.MinValue, settingValueSO.MaxValue, settingValueDictionary[settingValueSO.MyType].Value);
-    }
+    //    foreach (SettingType type in Enum.GetValues(typeof(SettingType)))
+    //    {
+    //        settingValueDictionary.Add(type, new());
+    //        settingValueDictionary[type] = PlayerPrefs.GetFloat(type.ToString(), 0.5f);
+    //    }
+    //}
 
-    public void SetSettingValue(SettingValueSO settingValueSO, float value)
-    {
-        if (settingValueDictionary == null) Init();
-        settingValueDictionary[settingValueSO.MyType].Value = (value - settingValueSO.MinValue) / (settingValueSO.MaxValue - settingValueSO.MinValue);
-    }
+    //public float GetSettingValue(SettingType type)
+    //{
+    //    if (settingValueDictionary == null) Init();
+    //    return settingValueDictionary[type].Value;
+    //}
 
-    public void SubSettingValueEvent(SettingType type, Action<float, float> action)
-    {
-        if (settingValueDictionary == null) Init();
-        settingValueDictionary[type].OnValueCanged += action;
-    }
-
-    public void UnSubSettingValueEvent(SettingType type, Action<float, float> action)
-    {
-        if (settingValueDictionary == null) Init();
-        settingValueDictionary[type].OnValueCanged -= action;
-    }
+    //public void SetSettingValue(SettingValueSO settingValueSO, float value)
+    //{
+    //    if (settingValueDictionary == null) Init();
+    //    settingValueDictionary[settingValueSO.MyType].Value = value;
+    //    PlayerPrefs.SetFloat(settingValueSO.MyType.ToString(), value);
+    //}
 }

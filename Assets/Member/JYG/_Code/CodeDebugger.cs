@@ -21,5 +21,17 @@ public class CodeDebugger : MonoBehaviour
         {
             CameraShaker.Instance.ImpulseCamera(ImpulseType.SHAKE, 1f);
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //GameManager.Instance.Player.SetYSpeed(1, 2f, GameManager.Instance.Player.OriginalSpeed);
+            Debug.Log("속도 감속");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            //GameManager.Instance.Player.SetYSpeed(20, 5f, GameManager.Instance.Player.OriginalSpeed);
+            Debug.Log("속도 증가");
+        }
     }
 }

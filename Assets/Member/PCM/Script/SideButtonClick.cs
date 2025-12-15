@@ -1,21 +1,28 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class SideButtonClick : MonoBehaviour
 {
     [SerializeField] private Minimize window;
     [SerializeField] private GameObject btA;
     [SerializeField] private GameObject btB;
+    public bool isOpen;
+    private void Start()
+    {
+        isOpen = false;
+    }
     private void Update()
     {
-        if (Mouse.current.backButton.wasPressedThisFrame)
+        if (isOpen)
         {
-            GetOut();
-        }
-        if (Mouse.current.forwardButton.wasPressedThisFrame)
-        {
-            StageGo();
+            if (Mouse.current.backButton.wasPressedThisFrame || Keyboard.current.zKey.wasPressedThisFrame)
+            {
+                GetOut();
+            }
+            if (Mouse.current.forwardButton.wasPressedThisFrame || Keyboard.current.xKey.wasPressedThisFrame)
+            {
+                StageGo();
+            }
         }
     }
     public void StageGo()

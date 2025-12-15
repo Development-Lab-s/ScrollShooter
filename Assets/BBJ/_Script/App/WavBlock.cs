@@ -1,14 +1,21 @@
+using csiimnida.CSILib.SoundManager.RunTime;
+using Member.JYG._Code;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class WavBlock : BlockBase, IContactable
+public class WavBlock : BlockBase, IUseable
 {
-    public void TryContact(ContactInfo info) => Use();
+    [SerializeField] string soundName;
+    public UnityEvent Used;
+    private string[] eggSounds = { "WOWEgg", "BabyEgg", "ClassicEgg" };
 
-    public void Use()
+    public void Use(UseableInfo info)
     {
-        // 사운드 재생
-        Debug.Log("노래 재생");
+        Used?.Invoke();
+        SoundManager.Instance.PlaySound("DefaultItem", transform.position.y);
+        GameManager.Instance.ChangeBGM(eggSounds[Random.Range(0, eggSounds.Length)]);
+
         Destroy(gameObject);
     }
 }

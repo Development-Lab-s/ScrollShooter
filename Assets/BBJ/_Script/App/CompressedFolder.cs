@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,6 +6,8 @@ using UnityEngine.Events;
 public class CompressedFolder : BlockBase, IBreakable, IContactable
 {
     public UnityEvent Collitioned;
+    [SerializeField] float knockbackPower;
+    [SerializeField] float knockbackTime;
     public void OnBreak()
     {
         tween=BreakTween(() =>
@@ -16,6 +19,7 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
 
     private Sequence BreakTween(TweenCallback callback)
     {
+        SoundManager.Instance.PlaySound("Break", transform.position.y);
         return DOTween.Sequence()
             .Append(transform.DOScale(2, 0.05f)
             .SetLoops(2, LoopType.Yoyo)
@@ -26,9 +30,8 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
     public void TryContact(ContactInfo info)
     {
         if (info.player.IsInvincible) OnBreak();
+        SoundManager.Instance.PlaySound("ZIFSFX", transform.position.y);
         Collitioned?.Invoke();
-        Debug.Log("튕겨져 나간다");
-        Debug.Log("잠시 대쉬를 못한다");
-        Debug.Log("감속된다.");
+        info.player.OnKnockback(knockbackPower,knockbackTime);
     }
 }

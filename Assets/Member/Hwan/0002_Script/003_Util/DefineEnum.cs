@@ -8,7 +8,8 @@ public enum UIType
     ShopUI,
     StageSelectUI,
     TurorialUI,
-    ClearUI
+    ClearUI,
+    ImageFilledUI
 }
 
 public enum InteractiveType
@@ -27,7 +28,8 @@ public enum SettingType
     BGMVolumeSlider,
     SFXVolumeSlider,
     SensitivitySlider,
-    MasterVolumeSlider
+    MasterVolumeSlider,
+    SkipDeadMotionToggle
 }
 
 public enum GoButtonIconType

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class SkinButton : MonoBehaviour
 {
     [SerializeField] private Image highlightImage;
+    public SkinSO skinSO;
 
     public void OnClick()
     {

@@ -28,6 +28,8 @@ namespace Member.JYG.Input
         private float _prevDashTime;
         public bool canDash = true;
         public bool isUIInput = false;
+        public bool rigthPerformed;
+        public bool wheelPerformed;
 
         private Dictionary<InteractiveType, bool> inputActiveDictionary = new();
 
@@ -45,6 +47,7 @@ namespace Member.JYG.Input
             {
                 inputActiveDictionary.Add(type, true);
             }
+            
         }
 
         private void OnDisable()
@@ -95,7 +98,6 @@ namespace Member.JYG.Input
             if (canDash == true)
             {
                 OnDashPressed?.Invoke();
-                canDash = false;
             }
             else
             {
@@ -106,22 +108,46 @@ namespace Member.JYG.Input
         public void OnLeftClick(InputAction.CallbackContext context)  
         {
             if (inputActiveDictionary[InteractiveType.Left] == false) return;
-            if(context.performed)
-                OnLeftClicked?.Invoke();
+
+            OnLeftClicked?.Invoke();
+            #region
+            //if (context.performed)
+            //{
+            //    Debug.Log("tlqkf");
+            //    OnLeftClicked?.Invoke();
+            //    leftPerformed = context.performed;
+
+            //}
+            //else if(context.canceled)
+            //{
+            //    Debug.Log("µé¾î");
+            //    leftPerformed = context.performed;
+            //    Debug.Log(leftPerformed);
+            //}
+            #endregion
+
         }
 
         public void OnRightClick(InputAction.CallbackContext context)
         {
             if (inputActiveDictionary[InteractiveType.Right] == false) return;
-            if(context.performed)
-                OnRightClicked?.Invoke();
+
+            if (context.performed || context.canceled)
+            {
+                rigthPerformed = context.performed;
+            }
+            OnRightClicked?.Invoke();
         }
 
         public void OnWheelClick(InputAction.CallbackContext context)
         {
             if (inputActiveDictionary[InteractiveType.Middle] == false) return;
-            if(context.performed)
-                OnWheelBtnClicked?.Invoke();
+
+            if (context.performed || context.canceled)
+            {
+                wheelPerformed = context.performed;
+            }
+            OnWheelBtnClicked?.Invoke();
         }
         
         public void SetInputTypeActive(InteractiveType type, bool active)

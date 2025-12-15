@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine.Events;
 
@@ -18,11 +19,12 @@ public class FolderBlock : BlockBase, IBreakable, IContactable
         if (info.player.IsDash || info.player.IsInvincible)
             OnBreak();
         else
-            info.player.TakeDamage(1f);
+            info.player.TakeDamage(1);
     }
 
     private Sequence DoBreak(TweenCallback callback)
     {
+        SoundManager.Instance.PlaySound("Break", transform.position.y);
         return DOTween.Sequence()
             .Append(transform.DOScale(2, 0.05f)
             .SetLoops(2, LoopType.Yoyo)

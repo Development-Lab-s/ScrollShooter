@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public interface IBreakable
+public interface IBreakable: IContactable
 {
     public void OnBreak();
 }

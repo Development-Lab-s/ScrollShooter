@@ -5,5 +5,5 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "SkinList", menuName = "Scriptable Objects/SkinList")]
 public class SkinListSO : ScriptableObject
 {
-    [field:SerializeField]public List<Sprite> Skin = new();
+    [field:SerializeField]public List<SkinSO> Skin = new();
 }

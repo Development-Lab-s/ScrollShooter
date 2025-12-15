@@ -1,18 +1,17 @@
 using System;
+using UnityEngine.Events;
 
 public interface IReadOnlyNotifyValue<T>
 {
     public T Value { get; }
 
-    public Action<T, T> OnValueCanged { get; }
+    public Action<T, T> OnValueChanged { get; }
 }
 
 public class NotifyValue<T> : IReadOnlyNotifyValue<T>
 {
-    public event Action<T, T> OnValueCanged;
-
     private T _value;
-    Action<T, T> IReadOnlyNotifyValue<T>.OnValueCanged => OnValueCanged;
+    public Action<T, T> OnValueChanged { get; set; }
 
     public T Value
     {
@@ -25,7 +24,7 @@ public class NotifyValue<T> : IReadOnlyNotifyValue<T>
             T before = _value;
             _value = value;
             if ((before == null && _value != null) || before.Equals(_value) == false)
-                OnValueCanged?.Invoke(before, _value);
+                OnValueChanged?.Invoke(before, _value);
         }
     }
 
@@ -38,5 +37,4 @@ public class NotifyValue<T> : IReadOnlyNotifyValue<T>
     {
         _value = value;
     }
-
 }

@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="2a1a2d5e-30e9-479c-b941-30536124075c" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScrollShooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0001_Scene/04_TutorialStage_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0001_Scene/04_TutorialStage_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/04_TutorialStage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/04_TutorialStage.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SwordSkin.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/SO/Skin/SwordSkin.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/SkinSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/SkinSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/ShopUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/SkinButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Member/PTY/Scripts/SkinButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +25,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d35f3fd492a14898b9e7cb0372b7ba3d1e0200/45/3ed3e31a/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d35f3fd492a14898b9e7cb0372b7ba3d1e0200/69/5f2ddc23/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../ArkNights/ExportedProject/Assets/Scripts/Unity.Postprocessing.Runtime/HGPPShaderIDs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/CodeDebugger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/DashColorChanger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/HitSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/ParticleFeedback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Member/JYG/_Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/StageListSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Member/PTY/Scripts/SO/StageSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@5342685532bb/Runtime/Impulse/CinemachineImpulseSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
@@ -54,7 +69,7 @@
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -65,7 +80,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\JoYK\Documents\GitHub\GTS\ScrollShooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -134,6 +149,12 @@
       <workItem from="1765191965965" duration="962000" />
       <workItem from="1765289856033" duration="2824000" />
       <workItem from="1765337088899" duration="470000" />
+      <workItem from="1765354365814" duration="1825000" />
+      <workItem from="1765374912132" duration="3130000" />
+      <workItem from="1765410346386" duration="2394000" />
+      <workItem from="1765441822867" duration="2477000" />
+      <workItem from="1765610549856" duration="4155000" />
+      <workItem from="1765626609034" duration="1910000" />
     </task>
     <servers />
   </component>

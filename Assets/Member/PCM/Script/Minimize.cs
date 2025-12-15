@@ -8,8 +8,8 @@ public class Minimize : MonoBehaviour
 {
     private RectTransform rt;
     [SerializeField] private GameObject Screen1;
-    [SerializeField] private GameObject Screen2;
     [SerializeField] private Slider slider;
+    [SerializeField] private Member.PTY.Scripts.SO.SkinListSO _skinList;
 
     private void Awake()
     {
@@ -20,8 +20,9 @@ public class Minimize : MonoBehaviour
         Screen1.SetActive(false);
         rt.offsetMax = new Vector2(-2000, -1200);
     }
-    public void Normal(GameObject gameObject)
+    public void Starts(GameObject gameObject)
     {
+        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
         Screen1.SetActive(true);
         gameObject.GetComponent<Button>().enabled = false;
         DOTween.To(
@@ -35,6 +36,11 @@ public class Minimize : MonoBehaviour
     {
         Application.Quit();
     }
+    public void RemoveData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt(_skinList.skinList[0].prefsName, 1);
+    }
     public void minimize()
     {
         if (slider.value >= 1)
@@ -47,7 +53,15 @@ public class Minimize : MonoBehaviour
         ).OnComplete(
           () =>
           {
-              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+              if (PlayerPrefs.GetInt("didTutorial", 0) == 0)
+              {
+                  Hwan.SceneManager.Instance.OnLoadScene(3);
+              }
+              else
+              {
+                  Hwan.SceneManager.Instance.OnLoadScene(1);
+              }
+   
           });
         }
     }

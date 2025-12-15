@@ -57,7 +57,6 @@ public class UIController : MonoBehaviour
     private void GetInputForward() => UIInteractive(InteractiveType.Forward);
     private void GetInputLeft() => UIInteractive(InteractiveType.Left);
     private void GetInputRight() => UIInteractive(InteractiveType.Right);
-
     private void UIInteractive(InteractiveType interactiveType)
     {
         foreach (IUI ui in uiDictionary.Values)
@@ -90,9 +89,9 @@ public class UIController : MonoBehaviour
         {
             case InteractiveType.Forward: inputUI.ForwardMove(); break;
             case InteractiveType.Back: inputUI.BackMove(); break;
-            case InteractiveType.Left: inputUI.LeftMove(); break;
-            case InteractiveType.Right: inputUI.RightMove(); break;
-            case InteractiveType.Middle: inputUI.MiddleMove(); break;
+            case InteractiveType.Right: inputUI.RightClick(inputSO.rigthPerformed); break;
+            case InteractiveType.Left: inputUI.LeftClick(); break;
+            case InteractiveType.Middle: inputUI.MiddleMove(inputSO.wheelPerformed); break;
             case InteractiveType.Scroll: inputUI.ScrollMove(-inputSO.XMoveDir); break;
         }
     }

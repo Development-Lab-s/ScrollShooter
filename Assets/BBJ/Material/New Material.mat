@@ -14,7 +14,6 @@ Material:
   m_ValidKeywords:
   - PIXELSNAP_ON
   - _ENABLECONTRAST_ON
-  - _ENABLEPIXELOUTLINE_ON
   - _ENABLESATURATION_ON
   - _ENABLESHADOW_ON
   - _SHADERFADING_FULL
@@ -228,7 +227,7 @@ Material:
     - _EnableNegative: 0
     - _EnableOuterOutline: 0
     - _EnablePingPongGlow: 0
-    - _EnablePixelOutline: 1.1
+    - _EnablePixelOutline: 0
     - _EnablePixelate: 0
     - _EnablePoison: 0
     - _EnableRainbow: 0
@@ -294,7 +293,7 @@ Material:
     - _GaussianBlurFade: 1
     - _GaussianBlurOffset: 0.5
     - _GlitchBrightness: 4
-    - _GlitchFade: 1
+    - _GlitchFade: 0.15
     - _GlitchHueSpeed: 1
     - _GlitchMaskMin: 0.4
     - _HalftoneFade: 1
@@ -306,7 +305,7 @@ Material:
     - _HologramDistortionOffset: 0.5
     - _HologramDistortionScale: 10
     - _HologramDistortionSpeed: 2
-    - _HologramFade: 1
+    - _HologramFade: 0.08
     - _HologramLineFrequency: 500
     - _HologramLineGap: 3
     - _HologramLineSpeed: 0.01
@@ -551,7 +550,7 @@ Material:
     - _GlitchNoiseScale: {r: 0, g: 3, b: 0, a: 0}
     - _GlitchNoiseSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _HalftonePosition: {r: 0, g: 0, b: 0, a: 0}
-    - _HologramTint: {r: 0.3137255, g: 1.662745, b: 2.996078, a: 1}
+    - _HologramTint: {r: 0, g: 1.2627237, b: 2.4819052, a: 1}
     - _InkSpreadColor: {r: 8.47419, g: 5.013525, b: 0.08873497, a: 0}
     - _InkSpreadNoiseScale: {r: 0.4, g: 0.4, b: 0, a: 0}
     - _InkSpreadPosition: {r: 0.5, g: -1, b: 0, a: 0}

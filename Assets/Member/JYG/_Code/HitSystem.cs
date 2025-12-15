@@ -1,12 +1,16 @@
+using PCM;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class HitSystem : MonoBehaviour
 {
     public UnityEvent onDead;
+    public UnityEvent onSecondDead;
     public UnityEvent onHit;
 
     [SerializeField] private int maxLife;
+    public bool isSecondDead = false;
+    private bool isDead;
 
     private int _life;
     public int Life
@@ -14,6 +18,8 @@ public class HitSystem : MonoBehaviour
         get => _life;
         set
         {
+            if (isDead == true) return;
+
             if (value > maxLife)
             {
                 _life = maxLife;
@@ -21,7 +27,18 @@ public class HitSystem : MonoBehaviour
             else if(value <= 0)
             {
                 _life = 0;
-                onDead?.Invoke();
+                isDead = true;
+                InputControlManager.Instance.ChangeUIInputActive(false);
+                PlayTime.Instance.doCount = false;
+                if (isSecondDead && PlayerPrefs.GetInt("IsFirst", 1) == 0)
+                {
+                    onSecondDead?.Invoke();
+                }
+                else
+                {
+                    onDead?.Invoke();
+                }
+                return;
             }
             else
             {
