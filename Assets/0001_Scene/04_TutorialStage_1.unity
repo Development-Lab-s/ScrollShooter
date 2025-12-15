@@ -13556,7 +13556,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 4b903fb51167c694e86683c7e3fbdb65, type: 2}
     - target: {fileID: 4284242275207540931, guid: f77695eb324c84a4ea30c7a6fee5b583, type: 3}
       propertyPath: <HiddenSkinTime>k__BackingField
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
