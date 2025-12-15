@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using System;
 using UnityEngine;
@@ -63,6 +64,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
     {
         DOVirtual.DelayedCall(0.05f, () =>
         {
+            SoundManager.Instance.PlaySound("Boom", transform.position.y);
             tween.Kill();
             var data = explostionOverlap;
             Explosioned?.Invoke(data.size);
@@ -108,6 +110,7 @@ public class WarningBlock : BlockBase, IExplosion, IContactable
         var target = ChackForTarget(chackPlayerOverlap);
         if (target)
         {
+            SoundManager.Instance.PlaySound("bibik", transform.position.y);
             overlapRender.gameObject.SetActive(false);
             _isFindTarget = true;
             _isTween = true;

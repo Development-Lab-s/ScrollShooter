@@ -129,7 +129,7 @@ public class ShopUI : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
-        SceneManager.LoadScene(2);
+        Hwan.SceneManager.Instance.OnLoadScene(2);
     }
 
     public void RightClick(bool _)

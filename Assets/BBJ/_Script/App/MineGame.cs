@@ -16,7 +16,7 @@ public class MineGame : BlockBase, IContactable, IExplosion
         if (tween != null) return;
         tween = DOVirtual.DelayedCall(explosionDelayTime, () =>
         {
-            SoundManager.Instance.PlaySound("Boom");
+            SoundManager.Instance.PlaySound("Boom", transform.position.y);
 
             Destroy();
             Explosioned?.Invoke(dataSO.size);

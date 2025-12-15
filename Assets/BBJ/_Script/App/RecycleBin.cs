@@ -1,3 +1,4 @@
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using Unity.XR.OpenVR;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class RecycleBin : BlockBase, IBreakable, IContactable
     public UnityEvent Breaked;
     public void OnBreak()
     {
+        SoundManager.Instance.PlaySound("Break", transform.position.y);
         Breaked?.Invoke();
         Destroy();
     }

@@ -23,6 +23,7 @@ namespace Member.JYG._Code
 
         [field:SerializeField] public SkinSO ClearSkin { get; private set; }
         [field:SerializeField] public SkinSO TimeSkin { get; private set; }
+        [field:SerializeField] public float HiddenSkinTime{ get; private set; }
         public Player Player 
         { 
             get
@@ -52,14 +53,14 @@ namespace Member.JYG._Code
             {
                 cleared = true;
                 TimeManager.Instance.StopTime();
-                if (PlayerPrefs.GetInt(ClearSkin.prefsName, 0) == 0)
+                if (PlayerPrefs.GetInt(ClearSkin.prefsName, 0) == 0 && StageSO.StageBGM != "Tutorial")
                 {
                     GotSkin = ClearSkin;
                     PlayerPrefs.SetInt(ClearSkin.prefsName, 1);
                 }
                 else if (TimeSkin != null)
                 {
-                    if (PlayerPrefs.GetInt(TimeSkin.prefsName, 0) == 0 && TimeSkin.targetTime >= PlayTime.Instance.CurrentTime)
+                    if (PlayerPrefs.GetInt(TimeSkin.prefsName, 0) == 0 && HiddenSkinTime >= PlayTime.Instance.CurrentTime)
                     {
                         GotSkin = TimeSkin;
                         PlayerPrefs.SetInt(TimeSkin.prefsName, 1);

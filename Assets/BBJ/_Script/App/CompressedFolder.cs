@@ -19,6 +19,7 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
 
     private Sequence BreakTween(TweenCallback callback)
     {
+        SoundManager.Instance.PlaySound("Break", transform.position.y);
         return DOTween.Sequence()
             .Append(transform.DOScale(2, 0.05f)
             .SetLoops(2, LoopType.Yoyo)
@@ -29,7 +30,7 @@ public class CompressedFolder : BlockBase, IBreakable, IContactable
     public void TryContact(ContactInfo info)
     {
         if (info.player.IsInvincible) OnBreak();
-        SoundManager.Instance.PlaySound("ZIFSFX");
+        SoundManager.Instance.PlaySound("ZIFSFX", transform.position.y);
         Collitioned?.Invoke();
         info.player.OnKnockback(knockbackPower,knockbackTime);
     }
