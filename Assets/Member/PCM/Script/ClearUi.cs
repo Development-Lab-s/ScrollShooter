@@ -17,6 +17,7 @@ public class ClearUi : MonoBehaviour, IUI
     [SerializeField]private SkinListSO skinListSO;
     [SerializeField] private SkinListSO HiddenskinListSO;
     [SerializeField] private Sprite nullSpace;
+    [SerializeField] private TextMeshProUGUI hidden;
     public UIType UIType => UIType.ClearUI;
 
     public InteractiveType OpenInput => InteractiveType.None;
@@ -68,6 +69,7 @@ public class ClearUi : MonoBehaviour, IUI
 
         countdouwn.StartCount(() => Hwan.SceneManager.Instance.OnLoadScene(1));
         SkinMark.sprite = GameManager.Instance.GotSkin == null ? nullSpace : GameManager.Instance.GotSkin.skin;
+        hidden.text = "Hidden Skin Time: " + GameManager.Instance.HiddenSkinTime;
         //ClearShow(SceneManager.GetActiveScene().buildIndex-2); //아마도 1스테이지가 Buildindex가 2겠지?
         TimeManager.Instance.StopTime();
         float t = PCM.PlayTime.Instance.CurrentTime;

@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: overlap
       value: 
       objectReference: {fileID: 11400000, guid: 8a3acb0a649aa3548936ab7ef0de8e72, type: 2}
+    - target: {fileID: 8108554483007729765, guid: 7e48d804c6bd088439ce76a658b90963, type: 3}
+      propertyPath: Breaked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
