@@ -424,6 +424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1182905964812437538, guid: c53728872a5f23142ba088a13b30781f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1773435478099431030, guid: c53728872a5f23142ba088a13b30781f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -504,6 +508,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4998603229443919419, guid: c53728872a5f23142ba088a13b30781f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5318274121961107243, guid: c53728872a5f23142ba088a13b30781f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -522,6 +530,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147110367644958552, guid: c53728872a5f23142ba088a13b30781f, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222078516935121733, guid: c53728872a5f23142ba088a13b30781f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -753,6 +765,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 803298447847875914, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1979245810424608701, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
       propertyPath: m_Name
       value: Fader

@@ -56,7 +56,7 @@ namespace Hwan
             }
             else if (_instance != this)
             {
-                GameObject.Destroy(this);
+                Destroy(this);
             }
         }
         private void OnDestroy()
