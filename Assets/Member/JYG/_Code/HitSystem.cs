@@ -1,3 +1,4 @@
+using PCM;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,7 +29,7 @@ public class HitSystem : MonoBehaviour
                 _life = 0;
                 isDead = true;
                 InputControlManager.Instance.ChangeUIInputActive(false);
-
+                PlayTime.Instance.doCount = false;
                 if (isSecondDead && PlayerPrefs.GetInt("IsFirst", 1) == 0)
                 {
                     onSecondDead?.Invoke();

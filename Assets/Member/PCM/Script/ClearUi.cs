@@ -42,6 +42,7 @@ public class ClearUi : MonoBehaviour, IUI
 
     public void ForwardMove()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 8) return;
         Hwan.SceneManager.Instance.OnLoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         Close();
     }
