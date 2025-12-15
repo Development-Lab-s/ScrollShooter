@@ -128,7 +128,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979245810424608701}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -248,15 +248,15 @@ RectTransform:
   m_GameObject: {fileID: 4793457083295560999}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3881821031779464211}
   m_Father: {fileID: 4156874087942573660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.30023, y: 126.06746}
+  m_AnchoredPosition: {x: 145.5, y: 215.46}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6886504063272079469
@@ -406,7 +406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 181.2, y: -168.0675}
+  m_AnchoredPosition: {x: -79.9, y: -216.9}
   m_SizeDelta: {x: 1130, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6247634000324573231
@@ -437,9 +437,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD301 1: \uB9C8\uC6B0\uC2A4\uB97C \uB0B4\uB824\uB193\uC544\uC57C \uD560
-    \uC77C\uC740 \uC5C6\uC2B5\uB2C8\uB2E4\n\n\uD3012: \uD574\uC0C1\uB3C4\uB97C 1920/1080\uC73C\uB85C
-    \uB9DE\uCDB0\uC8FC\uC138\uC694. (Please)"
+  m_text: "\uD301 1: \uBAA8\uB4E0 UI\uB294 \uD074\uB9AD\uC73C\uB85C\uB3C4 \uC791\uB3D9\uD558\uC9C0\uB9CC,
+    \uAD8C\uC7A5\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\n\uD3012: \uD574\uC0C1\uB3C4\uB97C
+    1920/1080\uC73C\uB85C \uB9DE\uCDB0\uC8FC\uC138\uC694. (Please)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cca5fd68e52eb4440a1b979d1e2219eb, type: 2}
   m_sharedMaterial: {fileID: -3905704617593069164, guid: cca5fd68e52eb4440a1b979d1e2219eb, type: 2}
@@ -466,8 +466,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 51.9
+  m_fontSizeBase: 51.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

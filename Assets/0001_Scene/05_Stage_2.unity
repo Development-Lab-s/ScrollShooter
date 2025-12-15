@@ -12039,14 +12039,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4001672275390857202, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -79.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4001672275390857202, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -216.9
-      objectReference: {fileID: 0}
     - target: {fileID: 4156874087942573660, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12126,44 +12118,6 @@ PrefabInstance:
     - target: {fileID: 4156874087942573660, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 145.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 215.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864838691844926472, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699868901502239678, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_text
-      value: "\uD301 1: \uBAA8\uB4E0 UI\uB294 \uD074\uB9AD\uC73C\uB85C\uB3C4 \uC791\uB3D9\uD558\uC9C0\uB9CC,
-        \uAD8C\uC7A5\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\n\uD3012: \uD574\uC0C1\uB3C4\uB97C
-        1920/1080\uC73C\uB85C \uB9DE\uCDB0\uC8FC\uC138\uC694. (Please)"
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699868901502239678, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_fontSize
-      value: 51.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699868901502239678, guid: edac076a1e3545b4abd8609c68e7015f, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 51.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
