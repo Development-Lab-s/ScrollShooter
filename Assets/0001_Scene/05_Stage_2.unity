@@ -11949,6 +11949,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 470336141019149006, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1937483105313156017, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
       propertyPath: hitSystem
       value: 
@@ -11956,6 +11960,10 @@ PrefabInstance:
     - target: {fileID: 2175370174316388168, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
       propertyPath: m_Name
       value: InGameUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031135361006007511, guid: 6c1833f7501a8824eba0f1ea0500e27b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

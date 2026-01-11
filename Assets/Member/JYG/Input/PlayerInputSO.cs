@@ -72,22 +72,6 @@ namespace Member.JYG.Input
 
         public void OnBrake(InputAction.CallbackContext context)
         {
-            if (inputActiveDictionary[InteractiveType.Forward] == false) return;
-            if (context.performed)
-            {
-                OnBrakePressed?.Invoke();
-                IsBraking = true;
-            }
-
-            if (context.canceled)
-            {
-                IsBraking = false;
-            }
-            
-        }
-
-        public void OnBoost(InputAction.CallbackContext context)
-        {
             if (inputActiveDictionary[InteractiveType.Back] == false) return;
             if (context.performed == false) return;
             if (isUIInput == true)
@@ -102,6 +86,21 @@ namespace Member.JYG.Input
             else
             {
                 OnDashBlocked?.Invoke();
+            }
+        }
+
+        public void OnBoost(InputAction.CallbackContext context)
+        {
+            if (inputActiveDictionary[InteractiveType.Forward] == false) return;
+            if (context.performed)
+            {
+                OnBrakePressed?.Invoke();
+                IsBraking = true;
+            }
+
+            if (context.canceled)
+            {
+                IsBraking = false;
             }
         }
 

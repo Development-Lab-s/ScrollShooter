@@ -11,7 +11,7 @@ namespace YGPacks
             get
             {
                 if (_instance == null)
-                {
+                {   
                     _instance = FindFirstObjectByType<T>();
                     if (_instance == null)
                     {

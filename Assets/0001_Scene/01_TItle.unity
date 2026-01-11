@@ -1103,7 +1103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Original: "\uB9C8\uC6B0\uC2A4\uB97C \uC4F0\uB2E4\uB4EC\uC5B4\uC8FC\uC138\uC694"
-  Change: "\uC0AC\uC774\uB4DC\uBC84\uD2BC \uB610\uB294 z, x \uBC84\uD2BC\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694"
+  Change: "\uC544\uB798\uC5D0\uC11C \uC62C\uB77C\uC628 \uB450 \uBC84\uD2BC\uC740
+    \uAC01\uAC01 \uB9C8\uC6B0\uC2A4\uC758 \uC55E\uC73C\uB85C \uAC00\uAE30, \uB4A4\uB85C
+    \uAC00\uAE30 \uBC84\uD2BC\uACFC \uD638\uD658\uB429\uB2C8\uB2E4."
 --- !u!1001 &571118988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3022,7 +3024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3708,7 +3710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

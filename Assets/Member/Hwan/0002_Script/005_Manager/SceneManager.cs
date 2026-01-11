@@ -23,7 +23,7 @@ namespace Hwan
         private ScreenFader _screenFader;
 
         [Range(0.1f, 3f)]
-        [SerializeField] float faidIn = 0.5f, faidOut = 0.5f;
+        [SerializeField] float fadeIn = 0.5f, fadeOut = 0.5f;
         private int _sceneIndex;
         public Action SceneLoadEnded;
         public void OnLoadScene(int sceneIndex)
@@ -31,7 +31,7 @@ namespace Hwan
             if (_screenFader.IsSceneFading) return;
             _sceneIndex = sceneIndex;
             _screenFader.FadeInEnded += OnFadeInEnded;
-            _screenFader.StartFadeIn(faidIn);
+            _screenFader.StartFadeIn(fadeIn);
         }
         private void OnFadeInEnded()
         {
@@ -42,7 +42,7 @@ namespace Hwan
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
             UnityEngine.SceneManagement.SceneManager.sceneUnloaded += (_) => {
-                _screenFader.StartFadeOut(faidOut); Time.timeScale = 1;
+                _screenFader.StartFadeOut(fadeOut); Time.timeScale = 1;
             };
             SceneLoadEnded?.Invoke();
         }

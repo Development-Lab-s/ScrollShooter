@@ -17,11 +17,11 @@ public class SideButtonClick : MonoBehaviour
         {
             if (Mouse.current.backButton.wasPressedThisFrame || Keyboard.current.zKey.wasPressedThisFrame)
             {
-                GetOut();
+                StageGo();
             }
             if (Mouse.current.forwardButton.wasPressedThisFrame || Keyboard.current.xKey.wasPressedThisFrame)
             {
-                StageGo();
+                GetOut();
             }
         }
     }
